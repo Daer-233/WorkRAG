@@ -1,0 +1,58 @@
+{
+  "records": [
+    {
+      "case": "known_picture_request",
+      "expected": "images",
+      "intent": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "terra",
+      "reason": "nli_factors_not_validated",
+      "guards": [
+        "explicit_media_request_cannot_be_silently_text"
+      ],
+      "elapsed_ms": 19891.0,
+      "passed": true
+    },
+    {
+      "case": "known_file_request",
+      "expected": "source_file",
+      "intent": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "terra",
+      "reason": "nli_factors_not_validated",
+      "guards": [
+        "explicit_media_request_cannot_be_silently_text"
+      ],
+      "elapsed_ms": 17625.0,
+      "passed": true
+    },
+    {
+      "case": "specific_negated_company_question",
+      "expected": "knowledge",
+      "intent": "knowledge",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "terra",
+      "reason": "nli_factors_not_validated",
+      "guards": [
+        "negated_or_contrastive_request",
+        "explicit_media_request_cannot_be_silently_text"
+      ],
+      "elapsed_ms": 15906.0,
+      "passed": true
+    }
+  ],
+  "employee_messages_sent": 0,
+  "scope": "Explicit known regression and a new specific company question; does not overwrite first probes"
+}

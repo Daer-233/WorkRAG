@@ -14,7 +14,7 @@ sys.path.insert(0,str(ROOT/'apps/backend'))
 os.environ['DESIGN_RAG_ENV_FILE']=str(ROOT/'instances/manuals/.env')
 from dotenv import load_dotenv
 load_dotenv(ROOT/'instances/manuals/.env',override=True)
-from app.manuals.intent.settings import CONFIG,activation_valid,config
+from app.manuals.intent.settings import CONFIG,activation_valid,config,report_dir
 
 
 def atomic(path,value):
@@ -25,7 +25,7 @@ def atomic(path,value):
 def main():
     p=argparse.ArgumentParser();p.add_argument('mode',choices=['off','shadow','on']);p.add_argument('--pin-answer-model',action='store_true');args=p.parse_args()
     cfg=config();cfg['mode']=args.mode
-    if args.mode=='on' and not activation_valid(cfg):raise SystemExit('Activation gates not met; keep shadow. See data/manuals/intent/acceptance.json.')
+    if args.mode=='on' and not activation_valid(cfg):raise SystemExit('Activation gates not met; keep shadow. See '+str(report_dir(cfg)/'acceptance.json'))
     bridge={'mode':args.mode,'version':cfg['version']}
     runtime=ROOT/'data/manuals/runtime';runtime.mkdir(parents=True,exist_ok=True)
     file=runtime/'intent-host.json';atomic(file,bridge)

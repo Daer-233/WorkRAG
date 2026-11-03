@@ -1,5 +1,7 @@
 # 新对话交接：BM25＋BERT 意图分流
 
+当前以 `knowledge-intent-routing-v2-handoff.md` 为准。本文件保留V1实施历史，不代表当前分类结构。
+
 日期：2026-11-03。工作目录 `H:\工作助手`。请先读 `docs\knowledge-intent-routing-v1.md` 和 `output\intent-routing-v1\acceptance.json`。
 
 ## 当前结论

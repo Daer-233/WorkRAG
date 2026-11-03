@@ -1,0 +1,221 @@
+{
+  "records": [
+    {
+      "case": "company_mixed",
+      "expected": "knowledge",
+      "intent": "knowledge",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "mode": "shadow",
+      "has_image": false,
+      "reason": "",
+      "local_elapsed_ms": 188.0,
+      "elapsed_ms": 188.0,
+      "http_elapsed_ms": 222.17,
+      "passed": true
+    },
+    {
+      "case": "general_software",
+      "expected": "daily",
+      "intent": "daily",
+      "axes": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "terra",
+      "mode": "shadow",
+      "has_image": false,
+      "reason": "nli_factors_not_validated",
+      "local_elapsed_ms": 250.0,
+      "elapsed_ms": 15078.0,
+      "http_elapsed_ms": 15093.84,
+      "passed": true
+    },
+    {
+      "case": "provided_company_notice",
+      "expected": "daily",
+      "intent": "daily",
+      "axes": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "mode": "shadow",
+      "has_image": false,
+      "reason": "",
+      "local_elapsed_ms": 141.0,
+      "elapsed_ms": 141.0,
+      "http_elapsed_ms": 159.91,
+      "passed": true
+    },
+    {
+      "case": "missing_notice_text",
+      "expected": "clarify",
+      "intent": "clarify",
+      "axes": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "layer": "context",
+      "mode": "shadow",
+      "has_image": false,
+      "reason": "missing_transform_text",
+      "local_elapsed_ms": 125.0,
+      "elapsed_ms": 125.0,
+      "http_elapsed_ms": 143.51,
+      "passed": true
+    },
+    {
+      "case": "requested_file",
+      "expected": "source_file",
+      "intent": "clarify",
+      "axes": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "layer": "fallback",
+      "mode": "shadow",
+      "has_image": false,
+      "reason": "nli_factors_not_validated,TimeoutError",
+      "local_elapsed_ms": 266.0,
+      "elapsed_ms": 20485.0,
+      "http_elapsed_ms": 20491.35,
+      "passed": false
+    },
+    {
+      "case": "existing_images",
+      "expected": "images",
+      "intent": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "terra",
+      "mode": "shadow",
+      "has_image": false,
+      "reason": "nli_factors_not_validated",
+      "local_elapsed_ms": 250.0,
+      "elapsed_ms": 13610.0,
+      "http_elapsed_ms": 13618.17,
+      "passed": true
+    },
+    {
+      "case": "known_file_offer",
+      "expected": "source_file",
+      "intent": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "context",
+      "mode": "shadow",
+      "has_image": false,
+      "reason": "previous_file_offer",
+      "local_elapsed_ms": 79.0,
+      "elapsed_ms": 94.0,
+      "http_elapsed_ms": 102.14,
+      "passed": true
+    },
+    {
+      "case": "multiple_file_offer",
+      "expected": "clarify",
+      "intent": "clarify",
+      "axes": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "layer": "context",
+      "mode": "shadow",
+      "has_image": false,
+      "reason": "choose_source",
+      "local_elapsed_ms": 109.0,
+      "elapsed_ms": 109.0,
+      "http_elapsed_ms": 126.05,
+      "passed": true
+    },
+    {
+      "case": "only_uploaded_image",
+      "expected": "clarify",
+      "intent": "clarify",
+      "axes": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "layer": "context",
+      "mode": "shadow",
+      "has_image": true,
+      "reason": "image_text_missing",
+      "local_elapsed_ms": 109.0,
+      "elapsed_ms": 109.0,
+      "http_elapsed_ms": 127.68,
+      "passed": true
+    },
+    {
+      "case": "company_with_uploaded_image",
+      "expected": "knowledge",
+      "intent": "knowledge",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "terra",
+      "mode": "shadow",
+      "has_image": true,
+      "reason": "nli_factors_not_validated",
+      "local_elapsed_ms": 235.0,
+      "elapsed_ms": 14125.0,
+      "http_elapsed_ms": 14151.73,
+      "passed": true
+    },
+    {
+      "case": "negated_output",
+      "expected": "knowledge",
+      "intent": "clarify",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": true
+      },
+      "layer": "terra",
+      "mode": "shadow",
+      "has_image": false,
+      "reason": "nli_factors_not_validated",
+      "local_elapsed_ms": 234.0,
+      "elapsed_ms": 17203.0,
+      "http_elapsed_ms": 17204.11,
+      "passed": false
+    },
+    {
+      "case": "reference_without_context",
+      "expected": "clarify",
+      "intent": "clarify",
+      "axes": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "layer": "context",
+      "mode": "shadow",
+      "has_image": false,
+      "reason": "missing_reference_context",
+      "local_elapsed_ms": 109.0,
+      "elapsed_ms": 109.0,
+      "http_elapsed_ms": 129.22,
+      "passed": true
+    }
+  ],
+  "employee_messages_sent": 0
+}

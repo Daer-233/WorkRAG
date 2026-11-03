@@ -1,0 +1,4173 @@
+{
+  "schema": "factors-v2",
+  "version": "intent-v2-factors",
+  "fingerprint": {
+    "index.jsonl": "4a5fc01468f91f329a025ec03922ada4c4242ae0c33fbcb7e9e1bfa10ed37cb1",
+    "calibration.jsonl": "844a2233b74e87e762da203885b17f9082331ac1c9752724df675dde5e5f43d3",
+    "acceptance.jsonl": "2ea2c2b6929d0536ad7095a3a09c30ad12cbedeaf90170e8a7793533b6b1de26",
+    "intent-policy.v2.json": "d37c890328b9d6c1901f3c2db5615f843e6c365fbab5c3e48b8ce2dd33660d87",
+    "bm25.py": "69f1886b60cb9bf6947cc1632f84641ff704943a068f9e0bb5d0574449da6602",
+    "factors.py": "a76d1c151527d4ffd19dc29026dfa324d57e1995eb03f1717021d1e0663dc948",
+    "nli.py": "26b3e454970c6a61636176f57ae1e87af9b15b6dedebcb544bbdccc344a7e1b6",
+    "engine.py": "4914c1891c83d8931268d286b5f817fa61d4ace9f424e9791cf4643fc493d1ac",
+    "types.py": "78b201dba437d571ab83fa43b4740edd260713b4da5d7d91e73d6864ac5efab7",
+    "terra.py": "aef9abd3aa76e8aa60022f49325232946d0b12f34b49238b30bfcadd19fc6837",
+    "settings.py": "361960ccc6a6f14eb02366f45402690407abde8a36e06802debce60f76a08d4c",
+    "intent_host.py": "69cb02446463b24242be90e127127342dcf81f9649ad427114028183c6ebc626",
+    "calibrate-knowledge-intent-v2.py": "9efa28c7ebe5b85c479a2e1d2586ab22a41c9a249fbda1f7aa875acc6b772fa8",
+    "model_manifest": "1b77e1641aa5d4321918d0f6905d60ec13c095064987b9f02db890bd86066943",
+    "sample_set": "v2"
+  },
+  "fitted_at": "2026-11-03T06:29:56.878213+00:00",
+  "bm25_axes": {
+    "scope": {
+      "general": {
+        "score": 8.895466635407896,
+        "margin": 0.5670910574737783,
+        "coverage": 0.55,
+        "support": 0.15,
+        "calibration_accepted": 7
+      },
+      "company": {
+        "score": 4.548663204128423,
+        "margin": 0.16317796920972646,
+        "coverage": 0.2,
+        "support": 0.3,
+        "calibration_accepted": 51
+      }
+    },
+    "output": {
+      "text": {
+        "score": 2.11173452379335,
+        "margin": 0.06948879821013453,
+        "coverage": 0.35,
+        "support": 0.15,
+        "calibration_accepted": 31
+      },
+      "images": {
+        "score": 3.3350237899644184,
+        "margin": 0.46150835184366007,
+        "coverage": 0.25,
+        "support": 0.3,
+        "calibration_accepted": 20
+      },
+      "source_file": {
+        "score": 4.661571892561784,
+        "margin": 0.30363387131957986,
+        "coverage": 0.35,
+        "support": 0.15,
+        "calibration_accepted": 16
+      }
+    }
+  },
+  "nli": {},
+  "nli_axes_validated": false,
+  "nli_reason": "V1 flat NLI gates and latency did not validate the new factors; no retraining or optimization in phase 1-3",
+  "fit_data": "calibration_only",
+  "minimum_calibration_accepts": 4,
+  "human_review": "pending",
+  "raw_features": [
+    {
+      "id": "v2-calibration-general-autosum",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 5.819158941294378,
+          "company": 3.6708074152225585
+        },
+        "score": 5.819158941294378,
+        "margin": 0.3691859163403352,
+        "coverage": 0.1907894205892395,
+        "support": 0.45947163289267356
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 4.0410835366647095,
+          "images": 0.0,
+          "source_file": 4.1881378466743735
+        },
+        "score": 4.1881378466743735,
+        "margin": 0.03511209883562779,
+        "coverage": 0.5226656109775475,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "file_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ]
+    },
+    {
+      "id": "v2-calibration-general-pdf-zoom",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 5.146098178898644,
+          "company": 4.494431850037224
+        },
+        "score": 5.146098178898644,
+        "margin": 0.12663309291951513,
+        "coverage": 0.1865103675735881,
+        "support": 0.41248428810297777
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.9552927515657275,
+          "images": 0.0,
+          "source_file": 2.637687671256482
+        },
+        "score": 3.9552927515657275,
+        "margin": 0.333124540474953,
+        "coverage": 0.428494742878143,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-general-screen-sleep",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 4.856772127703897,
+          "company": 3.6992335180239606
+        },
+        "score": 4.856772127703897,
+        "margin": 0.23833496389034373,
+        "coverage": 0.0783251276099117,
+        "support": 0.9549342791571042
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 1.8163808570840732,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 1.8163808570840732,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-general-css-cascade",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 8.918691505912644,
+          "company": 4.600953574575314
+        },
+        "score": 8.918691505912644,
+        "margin": 0.4841223545488581,
+        "coverage": 0.44012706853915723,
+        "support": 0.4110494803539794
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 4.513209063418283,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 4.513209063418283,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.8311708613412535
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-general-leverage-concept",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 6.531298223339304,
+          "company": 0.0
+        },
+        "score": 6.531298223339304,
+        "margin": 1.0,
+        "coverage": 0.18647895405256565,
+        "support": 0.8569894857562861
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 8.40454432197042,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 8.40454432197042,
+        "margin": 1.0,
+        "coverage": 0.7076440730373321,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-general-moon-phase",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 3.83557194015939,
+          "company": 2.010065915343011
+        },
+        "score": 3.83557194015939,
+        "margin": 0.47594102086911155,
+        "coverage": 0.09674682574374119,
+        "support": 0.8648028374713124
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 2.149291264687473,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 2.149291264687473,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-general-sql-filter",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 6.022739450445771,
+          "company": 1.8788869014562843
+        },
+        "score": 6.022739450445771,
+        "margin": 0.6880345037477557,
+        "coverage": 0.2093696668456713,
+        "support": 0.9173205741626794
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 4.066795610406571,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 4.066795610406571,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.39198510076887166
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-general-knowledge-map",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 7.801060714844414,
+          "company": 4.672882980297341
+        },
+        "score": 7.801060714844414,
+        "margin": 0.40099389671388586,
+        "coverage": 0.23175497378671903,
+        "support": 0.5423915644288654
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 8.45262879316417,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 8.45262879316417,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.41160143066654686
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-polish-plant-notice",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 10.329597353717153,
+          "company": 3.3456538374966676
+        },
+        "score": 10.329597353717153,
+        "margin": 0.6761099466967394,
+        "coverage": 0.6949719081822567,
+        "support": 0.1708183166029949
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 2.953639748980691,
+          "images": 0.0,
+          "source_file": 2.3698013928140336
+        },
+        "score": 2.953639748980691,
+        "margin": 0.19766742249732444,
+        "coverage": 0.428494742878143,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-translate-visiting-note",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 9.092056375901828,
+          "company": 3.3456538374966676
+        },
+        "score": 9.092056375901828,
+        "margin": 0.6320245168778095,
+        "coverage": 0.5718918590505132,
+        "support": 0.2523380343760762
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.1791430815322617,
+          "images": 0.0,
+          "source_file": 2.3698013928140336
+        },
+        "score": 3.1791430815322617,
+        "margin": 0.2545785666017105,
+        "coverage": 0.44659900682416576,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-shorten-supply-update",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 8.895466635407896,
+          "company": 3.3456538374966676
+        },
+        "score": 8.895466635407896,
+        "margin": 0.6238922616853528,
+        "coverage": 0.5555400937223248,
+        "support": 0.2252598026746969
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 1.9697098648729428,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 1.9697098648729428,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-rewrite-schedule-reminder",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 9.530168066539252,
+          "company": 3.3456538374966676
+        },
+        "score": 9.530168066539252,
+        "margin": 0.6489407307261061,
+        "coverage": 0.5555400937223248,
+        "support": 0.31268345138693704
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.4810581414362423,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 3.4810581414362423,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-polish-company-race",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 10.329597353717153,
+          "company": 3.3456538374966676
+        },
+        "score": 10.329597353717153,
+        "margin": 0.6761099466967394,
+        "coverage": 0.6949719081822567,
+        "support": 0.1708183166029949
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 2.953639748980691,
+          "images": 0.0,
+          "source_file": 2.3698013928140336
+        },
+        "score": 2.953639748980691,
+        "margin": 0.19766742249732444,
+        "coverage": 0.428494742878143,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-proofread-club-note",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 9.270131589569344,
+          "company": 3.3456538374966676
+        },
+        "score": 9.270131589569344,
+        "margin": 0.6390931665672186,
+        "coverage": 0.5555400937223248,
+        "support": 0.2768660788398741
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 1.9697098648729428,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 1.9697098648729428,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-provided-quoted-injection",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 9.092056375901828,
+          "company": 3.3456538374966676
+        },
+        "score": 9.092056375901828,
+        "margin": 0.6320245168778095,
+        "coverage": 0.5718918590505132,
+        "support": 0.2523380343760762
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.1791430815322617,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 3.1791430815322617,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-provided-policy-polite",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 11.106153527830733,
+          "company": 3.3456538374966676
+        },
+        "score": 11.106153527830733,
+        "margin": 0.6987567451581821,
+        "coverage": 0.4988340062974208,
+        "support": 0.5297593749404007
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 2.11173452379335,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 2.11173452379335,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-generic-approval-definition",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 9.214060922565768,
+          "company": 7.221908138905517
+        },
+        "score": 9.214060922565768,
+        "margin": 0.21620790229217532,
+        "coverage": 0.24119584038445144,
+        "support": 0.7337158082193513
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 7.570018865933919,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 7.570018865933919,
+        "margin": 1.0,
+        "coverage": 0.46608967973682525,
+        "support": 0.997851106676187
+      },
+      "blocked": true,
+      "guards": [
+        "daily_company_evidence_veto"
+      ]
+    },
+    {
+      "id": "v2-calibration-generic-image-metadata",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 4.019414575152189,
+          "company": 4.090807694342724
+        },
+        "score": 4.090807694342724,
+        "margin": 0.017452083922024894,
+        "coverage": 0.371656660867393,
+        "support": 0.8797447513976204
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 2.3698013928140336,
+          "images": 3.824897177461328,
+          "source_file": 0.0
+        },
+        "score": 3.824897177461328,
+        "margin": 0.3804274251401118,
+        "coverage": 0.44659900682416576,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-generic-template-formulas",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 10.627993840290397,
+          "company": 4.600953574575314
+        },
+        "score": 10.627993840290397,
+        "margin": 0.5670910574737783,
+        "coverage": 0.2705505526975957,
+        "support": 0.3577440085115365
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 5.1889216499797355,
+          "images": 0.0,
+          "source_file": 4.279946883326263
+        },
+        "score": 5.1889216499797355,
+        "margin": 0.17517604388129907,
+        "coverage": 0.4600410384211615,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-generic-wifi-explanation",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 2.422983714722,
+          "company": 4.192741296699978
+        },
+        "score": 4.192741296699978,
+        "margin": 0.4221003531438771,
+        "coverage": 0.42609378506772183,
+        "support": 1.0
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 2.184845654618033,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 2.184845654618033,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.9078026293324226
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-generic-translation-method",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 14.029914685780351,
+          "company": 0.0
+        },
+        "score": 14.029914685780351,
+        "margin": 1.0,
+        "coverage": 0.3649041120422253,
+        "support": 0.6405141076588475
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 4.815529108502084,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 4.815529108502084,
+        "margin": 1.0,
+        "coverage": 0.65012159034877,
+        "support": 0.4927440945485611
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-general-balance-calc",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 2.3724061930096836,
+          "company": 0.0
+        },
+        "score": 2.3724061930096836,
+        "margin": 1.0,
+        "coverage": 0.25,
+        "support": 0.0
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.6415303453269345,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 3.6415303453269345,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.9155854306706268
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-public-event-slogan",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 1.5861267796199487,
+          "company": 0.0
+        },
+        "score": 1.5861267796199487,
+        "margin": 1.0,
+        "coverage": 0.0909090909090909,
+        "support": 0.0
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 2.1513119353922168,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 2.1513119353922168,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-general-web-shortcut",
+      "expected": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 4.4998903378916,
+          "company": 3.0123134251383354
+        },
+        "score": 4.4998903378916,
+        "margin": 0.33058070331781925,
+        "coverage": 0.1179650949242493,
+        "support": 0.501420808596333
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.9552927515657275,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 3.9552927515657275,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-moving-fee",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.0889290845446196,
+          "company": 4.920470880595513
+        },
+        "score": 4.920470880595513,
+        "margin": 0.3722289676123896,
+        "coverage": 0.49700252805285255,
+        "support": 0.9098685583142082
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.9552927515657275,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 3.9552927515657275,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-site-entry",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 6.663950063772374
+        },
+        "score": 6.663950063772374,
+        "margin": 1.0,
+        "coverage": 0.5340057488296072,
+        "support": 0.8379964819591156
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 3.225957567735954,
+          "images": 3.6485744460434413,
+          "source_file": 3.9552927515657275
+        },
+        "score": 3.9552927515657275,
+        "margin": 0.07754629676927702,
+        "coverage": 0.4816149259819209,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-company-study-leave",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 8.144345274013606
+        },
+        "score": 8.144345274013606,
+        "margin": 1.0,
+        "coverage": 0.5412929349421287,
+        "support": 0.8228432720398217
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 3.7642907192601935,
+          "images": 0.0,
+          "source_file": 3.9552927515657275
+        },
+        "score": 3.9552927515657275,
+        "margin": 0.04829023900441366,
+        "coverage": 0.428494742878143,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-company-bank-change",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 4.666174877003119,
+          "company": 7.0835137367958865
+        },
+        "score": 7.0835137367958865,
+        "margin": 0.3412626769163593,
+        "coverage": 0.4518203400415232,
+        "support": 0.7389840089398357
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 4.106281323716909,
+          "images": 0.0,
+          "source_file": 3.2536144460748373
+        },
+        "score": 4.106281323716909,
+        "margin": 0.20764940597646583,
+        "coverage": 0.5183850740180791,
+        "support": 0.9290678881798288
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-marketing-review",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.9487142560788537,
+          "company": 5.525041306331016
+        },
+        "score": 5.525041306331016,
+        "margin": 0.6472941742813999,
+        "coverage": 0.3900824007857304,
+        "support": 0.6498647924950293
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 4.250666455124459,
+          "images": 0.0,
+          "source_file": 3.9552927515657275
+        },
+        "score": 4.250666455124459,
+        "margin": 0.06948879821013453,
+        "coverage": 0.571505257121857,
+        "support": 0.6115124248579524
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-chair-repair",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.549461257484197,
+          "company": 4.27814306963822
+        },
+        "score": 4.27814306963822,
+        "margin": 0.637819205140508,
+        "coverage": 0.5516489499324316,
+        "support": 0.882842210760739
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-company-recycle-assets",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 4.038948087248302
+        },
+        "score": 4.038948087248302,
+        "margin": 1.0,
+        "coverage": 0.571505257121857,
+        "support": 0.855915025942647
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 4.257269895868092,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 4.257269895868092,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-regular-travel",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.9784786069017675,
+          "company": 5.192382224316287
+        },
+        "score": 5.192382224316287,
+        "margin": 0.23378548900535948,
+        "coverage": 0.37332614157671157,
+        "support": 0.7768258082103835
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 5.084635498414027,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 5.084635498414027,
+        "margin": 1.0,
+        "coverage": 0.8053948888819898,
+        "support": 0.29070671500698775
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-mixed-knowledge-motto",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 2.3409708067625328,
+          "company": 4.937347996136618
+        },
+        "score": 4.937347996136618,
+        "margin": 0.5258647337408061,
+        "coverage": 0.36748363684128815,
+        "support": 0.9549342791571042
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 6.9846310824682405,
+          "images": 1.7767945715844917,
+          "source_file": 1.3867894077127352
+        },
+        "score": 6.9846310824682405,
+        "margin": 0.7456136837285035,
+        "coverage": 0.7104657555607499,
+        "support": 0.4451003275241362
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-mixed-knowledge-format",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.746543832377169,
+          "company": 6.258433261494631
+        },
+        "score": 6.258433261494631,
+        "margin": 0.4013607438417544,
+        "coverage": 0.45249500954009814,
+        "support": 1.0
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 4.3026238707844335,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 4.3026238707844335,
+        "margin": 1.0,
+        "coverage": 0.3562512162712343,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-mixed-knowledge-greeting",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.0800382942941313,
+          "company": 5.138482605302828
+        },
+        "score": 5.138482605302828,
+        "margin": 0.40059380737893646,
+        "coverage": 0.5848100611912443,
+        "support": 0.44288872955687814
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 4.498436340748079,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 4.498436340748079,
+        "margin": 1.0,
+        "coverage": 0.5534009931758342,
+        "support": 0.8982334782943083
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-mixed-knowledge-english",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.549461257484197,
+          "company": 5.4036870780328385
+        },
+        "score": 5.4036870780328385,
+        "margin": 0.7132585149530413,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.2603161915734042,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 3.2603161915734042,
+        "margin": 1.0,
+        "coverage": 0.43974143867087334,
+        "support": 0.951415011263438
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-no-evidence-demand",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 2.8811806641994444
+        },
+        "score": 2.8811806641994444,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.9173205741626793
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-company-system-recovery",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.549461257484197,
+          "company": 5.473559949467124
+        },
+        "score": 5.473559949467124,
+        "margin": 0.716918920814041,
+        "coverage": 0.4264137160258221,
+        "support": 0.8212271856860701
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 2.1513119353922168,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 2.1513119353922168,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-permission-not-generic",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 2.3724061930096836,
+          "company": 4.548663204128423
+        },
+        "score": 4.548663204128423,
+        "margin": 0.47843881014174483,
+        "coverage": 0.33333333333333337,
+        "support": 0.9173205741626794
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 6.313236865475935,
+          "images": 3.6777958461933054,
+          "source_file": 2.419888626530505
+        },
+        "score": 6.313236865475935,
+        "margin": 0.4174468779548876,
+        "coverage": 0.5939494944270102,
+        "support": 0.3431681315925054
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-content-location",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.549461257484197,
+          "company": 10.824003942159035
+        },
+        "score": 10.824003942159035,
+        "margin": 0.8568495294565525,
+        "coverage": 0.620039375633948,
+        "support": 0.5511800091595911
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 5.840573359794622,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 5.840573359794622,
+        "margin": 1.0,
+        "coverage": 0.620264597531712,
+        "support": 0.5088554188121266
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-read-record",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.3456538374966676,
+          "company": 4.783673402564604
+        },
+        "score": 4.783673402564604,
+        "margin": 0.30060989621427564,
+        "coverage": 0.2895342444392502,
+        "support": 0.8346411483253587
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 2.637687671256482,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 2.637687671256482,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-travel-summary",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 11.763136459880162,
+          "company": 4.9525018533284175
+        },
+        "score": 11.763136459880162,
+        "margin": 0.5789811781730473,
+        "coverage": 0.18563686165481275,
+        "support": 0.8648028374713124
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.7182064887001767,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 3.7182064887001767,
+        "margin": 1.0,
+        "coverage": 0.6176688015022304,
+        "support": 0.7467562920118808
+      },
+      "blocked": true,
+      "guards": [
+        "daily_company_evidence_veto"
+      ]
+    },
+    {
+      "id": "v2-calibration-company-template-instructions",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 4.2726276594687285,
+          "company": 6.4007008066633695
+        },
+        "score": 6.4007008066633695,
+        "margin": 0.33247502288799957,
+        "coverage": 0.41879820651675204,
+        "support": 0.6517433694656186
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.7141686586302556,
+          "images": 0.0,
+          "source_file": 3.356499272585678
+        },
+        "score": 3.7141686586302556,
+        "margin": 0.09629863878515472,
+        "coverage": 0.41316541285719466,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-image-description",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 4.117160397984293,
+          "company": 7.009526465181214
+        },
+        "score": 7.009526465181214,
+        "margin": 0.4126335896674792,
+        "coverage": 0.2576093059460084,
+        "support": 0.8903722245616693
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 5.548134891489358,
+          "images": 4.146595964398525,
+          "source_file": 0.0
+        },
+        "score": 5.548134891489358,
+        "margin": 0.25261442890307945,
+        "coverage": 0.47477120318449695,
+        "support": 0.7244430075736997
+      },
+      "blocked": true,
+      "guards": [
+        "requires_conversation_context"
+      ]
+    },
+    {
+      "id": "v2-calibration-company-edit-with-lookup",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.7850995662112488,
+          "company": 4.523183457104609
+        },
+        "score": 4.523183457104609,
+        "margin": 0.16317796920972646,
+        "coverage": 0.5035305763226322,
+        "support": 0.44052482480880956
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.4465297393632883,
+          "images": 0.0,
+          "source_file": 2.419888626530505
+        },
+        "score": 3.4465297393632883,
+        "margin": 0.2978767602401263,
+        "coverage": 0.44782420697357384,
+        "support": 0.7497651815769368
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-check-notice",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 4.137170865016272,
+          "company": 5.4036870780328385
+        },
+        "score": 5.4036870780328385,
+        "margin": 0.23438000660053573,
+        "coverage": 0.4524378058890021,
+        "support": 1.0
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 3.7141686586302556,
+          "images": 0.0,
+          "source_file": 3.7565908005267685
+        },
+        "score": 3.7565908005267685,
+        "margin": 0.011292723681952341,
+        "coverage": 0.42781291826802187,
+        "support": 0.5851922494087087
+      },
+      "blocked": true,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-company-specific-hostname",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 4.898559675226622,
+          "company": 6.5937049428507635
+        },
+        "score": 6.5937049428507635,
+        "margin": 0.257085399227957,
+        "coverage": 0.35482714611903654,
+        "support": 0.8581047791098703
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 4.513209063418283,
+          "images": 0.0,
+          "source_file": 2.419888626530505
+        },
+        "score": 4.513209063418283,
+        "margin": 0.46382084398773826,
+        "coverage": 0.5050309890199206,
+        "support": 0.8311708613412535
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-company-it-asset-number",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 2.1762570111187394,
+          "company": 3.9290140840274947
+        },
+        "score": 3.9290140840274947,
+        "margin": 0.446106080411925,
+        "coverage": 0.2545542165611337,
+        "support": 0.9586602870813395
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-photo-loading-bay",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 13.4803336811317
+        },
+        "score": 13.4803336811317,
+        "margin": 1.0,
+        "coverage": 0.695789386020747,
+        "support": 0.8271906046851636
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 10.044243205634881,
+          "source_file": 0.0
+        },
+        "score": 10.044243205634881,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.7984893064719777
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-time-off-ui",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 8.556696408762583
+        },
+        "score": 8.556696408762583,
+        "margin": 1.0,
+        "coverage": 0.4557740294259485,
+        "support": 0.6165044786732451
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 4.071315016999013,
+          "images": 7.996077940149899,
+          "source_file": 0.0
+        },
+        "score": 7.996077940149899,
+        "margin": 0.4908360014156278,
+        "coverage": 0.7487539529390651,
+        "support": 0.4114149718678709
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-package-room",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.0148214815047982,
+          "company": 10.785406467760767
+        },
+        "score": 10.785406467760767,
+        "margin": 0.7204721499818703,
+        "coverage": 0.6752602835889935,
+        "support": 0.4411490359366157
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 3.9612209667949387,
+          "source_file": 0.0
+        },
+        "score": 3.9612209667949387,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-signboard",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.549461257484197,
+          "company": 4.401875492437959
+        },
+        "score": 4.401875492437959,
+        "margin": 0.6479997537081552,
+        "coverage": 0.6135133286836795,
+        "support": 0.769722826762221
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 3.824897177461328,
+          "source_file": 0.0
+        },
+        "score": 3.824897177461328,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-event-team",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.3648743396961036,
+          "company": 7.262739549497753
+        },
+        "score": 7.262739549497753,
+        "margin": 0.536693513960748,
+        "coverage": 0.3828168550227008,
+        "support": 0.9586602870813395
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 2.1513119353922168,
+          "images": 3.995070197946,
+          "source_file": 2.1513119353922168
+        },
+        "score": 3.995070197946,
+        "margin": 0.46150835184366007,
+        "coverage": 0.30643393661857193,
+        "support": 0.9078026293324227
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-classroom-board",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 5.726677189407158
+        },
+        "score": 5.726677189407158,
+        "margin": 1.0,
+        "coverage": 0.677722648024761,
+        "support": 0.9755298541586652
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 5.731156986959247,
+          "source_file": 0.0
+        },
+        "score": 5.731156986959247,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-onboarding-stage",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 9.076883807540781
+        },
+        "score": 9.076883807540781,
+        "margin": 1.0,
+        "coverage": 0.5277017388865985,
+        "support": 0.7296608442575954
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 4.0410835366647095,
+          "source_file": 0.0
+        },
+        "score": 4.0410835366647095,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.8984389693436151
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-browser-cert",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.511955381087275,
+          "company": 7.616444289262715
+        },
+        "score": 7.616444289262715,
+        "margin": 0.5388983037612111,
+        "coverage": 0.29785375989044427,
+        "support": 0.8579861309537281
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 7.331919360331426,
+          "images": 6.891917247901667,
+          "source_file": 0.0
+        },
+        "score": 7.331919360331426,
+        "margin": 0.060011859215247834,
+        "coverage": 0.6071318447116644,
+        "support": 0.26037081382321314
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-receipt-ocr",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.9145506832239838,
+          "company": 5.617168309253481
+        },
+        "score": 5.617168309253481,
+        "margin": 0.659160883595025,
+        "coverage": 0.43123496546256085,
+        "support": 0.9618172176065052
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 3.824897177461328,
+          "source_file": 0.0
+        },
+        "score": 3.824897177461328,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-projector-ui",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.7787475600761549,
+          "company": 9.758774603005742
+        },
+        "score": 9.758774603005742,
+        "margin": 0.8177283898402271,
+        "coverage": 0.38419217856733573,
+        "support": 0.9781857336991118
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 1.912448588730664,
+          "images": 6.880922206268037,
+          "source_file": 2.1513119353922168
+        },
+        "score": 6.880922206268037,
+        "margin": 0.6873512196617304,
+        "coverage": 0.510382908559717,
+        "support": 0.3849167241182957
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-switch-panel",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.7820072250363364,
+          "company": 9.21614208940262
+        },
+        "score": 9.21614208940262,
+        "margin": 0.5896322790655366,
+        "coverage": 0.3246182155821597,
+        "support": 0.7736958994532441
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 4.1881378466743735,
+          "source_file": 0.0
+        },
+        "score": 4.1881378466743735,
+        "margin": 1.0,
+        "coverage": 0.5226656109775475,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-photo-pantry-shelf",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 9.521608008151064
+        },
+        "score": 9.521608008151064,
+        "margin": 1.0,
+        "coverage": 0.5021178008265538,
+        "support": 0.902750497965265
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 8.68548308569006,
+          "source_file": 3.225957567735954
+        },
+        "score": 8.68548308569006,
+        "margin": 0.628580525008339,
+        "coverage": 1.0,
+        "support": 0.6924517893336003
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-lab-group",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 5.331176075451412
+        },
+        "score": 5.331176075451412,
+        "margin": 1.0,
+        "coverage": 0.5860537168051314,
+        "support": 0.8018218000285484
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 3.9612209667949387,
+          "source_file": 0.0
+        },
+        "score": 3.9612209667949387,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-disaster-route",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 6.389118111591076
+        },
+        "score": 6.389118111591076,
+        "margin": 1.0,
+        "coverage": 0.5673615635398943,
+        "support": 0.7940678646082903
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 3.3350237899644184,
+          "source_file": 0.0
+        },
+        "score": 3.3350237899644184,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.898438969343615
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-kiosk-interface",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 13.007066223952775
+        },
+        "score": 13.007066223952775,
+        "margin": 1.0,
+        "coverage": 0.5230172966711201,
+        "support": 0.6862219303504632
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 1.605040286202079,
+          "images": 7.996077940149899,
+          "source_file": 0.0
+        },
+        "score": 7.996077940149899,
+        "margin": 0.7992715556031724,
+        "coverage": 0.7487539529390651,
+        "support": 0.4114149718678709
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-library-layout",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 5.991854206632482,
+          "company": 7.982585011783982
+        },
+        "score": 7.982585011783982,
+        "margin": 0.24938422856916162,
+        "coverage": 0.3767624314581422,
+        "support": 0.6181371566351913
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 1.8438980763474502,
+          "images": 2.637687671256482,
+          "source_file": 1.9288993535565693
+        },
+        "score": 2.637687671256482,
+        "margin": 0.26871578671870433,
+        "coverage": 0.6811695054342839,
+        "support": 0.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-library-title",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.7787475600761549,
+          "company": 11.235457873001934
+        },
+        "score": 11.235457873001934,
+        "margin": 0.8416844618010301,
+        "coverage": 0.43533345664957734,
+        "support": 0.8794311356911577
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 7.300837522842275,
+          "source_file": 2.1513119353922168
+        },
+        "score": 7.300837522842275,
+        "margin": 0.7053335417119797,
+        "coverage": 0.7120657547745518,
+        "support": 0.3722793160353842
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-lanyard",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.9145506832239838,
+          "company": 7.073760079930517
+        },
+        "score": 7.073760079930517,
+        "margin": 0.7293446962308071,
+        "coverage": 0.4277166498392473,
+        "support": 0.9863157042485684
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 3.824897177461328,
+          "source_file": 0.0
+        },
+        "score": 3.824897177461328,
+        "margin": 1.0,
+        "coverage": 0.5478612712257646,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-network-socket",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 9.605279846839686
+        },
+        "score": 9.605279846839686,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.620876405746941
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 8.465938406282788,
+          "source_file": 0.0
+        },
+        "score": 8.465938406282788,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.898438969343615
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-photo-safety-point",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 2.4840665547909477,
+          "company": 8.592441967392913
+        },
+        "score": 8.592441967392913,
+        "margin": 0.7109009796961534,
+        "coverage": 0.4541793528957552,
+        "support": 0.6178630116524432
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 3.9612209667949387,
+          "source_file": 0.0
+        },
+        "score": 3.9612209667949387,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-travel-portal",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 13.909861698365749
+        },
+        "score": 13.909861698365749,
+        "margin": 1.0,
+        "coverage": 0.531150272443399,
+        "support": 0.9565309716123507
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 3.995070197946,
+          "source_file": 0.0
+        },
+        "score": 3.995070197946,
+        "margin": 1.0,
+        "coverage": 0.5409823741096706,
+        "support": 0.9078026293324227
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-art-course",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 4.9103901318561585
+        },
+        "score": 4.9103901318561585,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.5951114347652995
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 5.797802527277035,
+          "source_file": 0.0
+        },
+        "score": 5.797802527277035,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.49221991586335867
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-meeting-audience",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 2.2701023923129195,
+          "company": 6.6960956115958705
+        },
+        "score": 6.6960956115958705,
+        "margin": 0.6609811860538997,
+        "coverage": 0.5423408938914064,
+        "support": 0.5129023656029675
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 3.9612209667949387,
+          "source_file": 0.0
+        },
+        "score": 3.9612209667949387,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-photo-code-ui",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.1582901929826366,
+          "company": 9.247546883838712
+        },
+        "score": 9.247546883838712,
+        "margin": 0.6584726487299936,
+        "coverage": 0.36529246858753645,
+        "support": 0.7412121150960717
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 3.4544662502732093,
+          "images": 6.880922206268037,
+          "source_file": 3.2536144460748373
+        },
+        "score": 6.880922206268037,
+        "margin": 0.497964640971172,
+        "coverage": 0.5475049904599019,
+        "support": 0.3849167241182957
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-safety-pledge",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.6501731840271796,
+          "company": 5.620571898313202
+        },
+        "score": 5.620571898313202,
+        "margin": 0.7064047549107207,
+        "coverage": 0.4118708055156792,
+        "support": 0.6409143422991828
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 4.661571892561784
+        },
+        "score": 4.661571892561784,
+        "margin": 1.0,
+        "coverage": 0.5702221727596122,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-meeting-action",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.2836401236821375,
+          "company": 5.669781724994353
+        },
+        "score": 5.669781724994353,
+        "margin": 0.42085246259009945,
+        "coverage": 0.49646942367736774,
+        "support": 0.9103436020943151
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 1.8438980763474502,
+          "images": 0.0,
+          "source_file": 6.478569384010657
+        },
+        "score": 6.478569384010657,
+        "margin": 0.7153849921097925,
+        "coverage": 0.7449196877836007,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-inventory-request",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 6.2682635840847585,
+          "company": 8.725598463349307
+        },
+        "score": 8.725598463349307,
+        "margin": 0.28162364903522097,
+        "coverage": 0.34497117180122017,
+        "support": 0.960301415181033
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 1.9697098648729428,
+          "images": 0.0,
+          "source_file": 6.478569384010657
+        },
+        "score": 6.478569384010657,
+        "margin": 0.6959653052826357,
+        "coverage": 0.40598199950629305,
+        "support": 1.0
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-room-inspection",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 2.2187541381195386,
+          "company": 11.566532592603716
+        },
+        "score": 11.566532592603716,
+        "margin": 0.8081746521391958,
+        "coverage": 0.4892509850563775,
+        "support": 0.4691150896029407
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 3.225957567735954,
+          "images": 0.0,
+          "source_file": 10.90153601261837
+        },
+        "score": 10.90153601261837,
+        "margin": 0.7040822904220144,
+        "coverage": 0.8340147855332086,
+        "support": 0.4691150896029406
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-customer-consent",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 2.942326975081145,
+          "company": 8.950089840356812
+        },
+        "score": 8.950089840356812,
+        "margin": 0.6712516826575403,
+        "coverage": 0.6728073640923525,
+        "support": 1.0
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 5.82862949259859
+        },
+        "score": 5.82862949259859,
+        "margin": 1.0,
+        "coverage": 0.5973025555590051,
+        "support": 0.8266172869761294
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-brand-guide",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 8.372645852923501
+        },
+        "score": 8.372645852923501,
+        "margin": 1.0,
+        "coverage": 0.3333333333333333,
+        "support": 0.9236344352130105
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 4.788999606648699
+        },
+        "score": 4.788999606648699,
+        "margin": 1.0,
+        "coverage": 0.5,
+        "support": 0.8156052586648455
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-donation-register",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 2.8298662893786015,
+          "company": 8.421222649416391
+        },
+        "score": 8.421222649416391,
+        "margin": 0.6639601626523058,
+        "coverage": 0.3603827859525613,
+        "support": 0.7748273196701307
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 4.12895831117508,
+          "images": 0.0,
+          "source_file": 7.810283224667565
+        },
+        "score": 7.810283224667565,
+        "margin": 0.4713433312975888,
+        "coverage": 0.35502458917128565,
+        "support": 0.9825973773988717
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-software-renewal",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 4.178400896509788,
+          "company": 8.184185956863898
+        },
+        "score": 8.184185956863898,
+        "margin": 0.4894543063253035,
+        "coverage": 0.650672175820349,
+        "support": 0.5630373911060835
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 3.7141686586302556,
+          "images": 0.0,
+          "source_file": 7.556100698146885
+        },
+        "score": 7.556100698146885,
+        "margin": 0.5084543196279602,
+        "coverage": 0.6192612848978828,
+        "support": 0.39219684580240255
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-catering-order",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 6.194810394178043
+        },
+        "score": 6.194810394178043,
+        "margin": 1.0,
+        "coverage": 0.593460379506499,
+        "support": 0.3644341363532924
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 7.03209433312529
+        },
+        "score": 7.03209433312529,
+        "margin": 1.0,
+        "coverage": 0.7501855197907188,
+        "support": 0.3330036019343221
+      },
+      "blocked": true,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-file-patrol-check",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.366200105230626,
+          "company": 9.598942065832713
+        },
+        "score": 9.598942065832713,
+        "margin": 0.6493155097567925,
+        "coverage": 0.6019578950368908,
+        "support": 0.5824941961188598
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 1.8438980763474502,
+          "images": 0.0,
+          "source_file": 6.813729006448364
+        },
+        "score": 6.813729006448364,
+        "margin": 0.7293848824039779,
+        "coverage": 0.7363592843664375,
+        "support": 0.5199231654291455
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-route-application",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.3823374087524165,
+          "company": 7.682601837204702
+        },
+        "score": 7.682601837204702,
+        "margin": 0.5597406346932235,
+        "coverage": 0.3274630930864951,
+        "support": 0.9825464473572654
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 3.7141686586302556,
+          "images": 0.0,
+          "source_file": 5.99418694384216
+        },
+        "score": 5.99418694384216,
+        "margin": 0.38037156774934616,
+        "coverage": 0.4600516085105987,
+        "support": 0.785844851151879
+      },
+      "blocked": true,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-file-key-return",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.16357941500499,
+          "company": 4.567709779975272
+        },
+        "score": 4.567709779975272,
+        "margin": 0.7452597754555043,
+        "coverage": 0.4097654351928783,
+        "support": 0.9253489530730741
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 5.615733834473144
+        },
+        "score": 5.615733834473144,
+        "margin": 1.0,
+        "coverage": 0.5973025555590051,
+        "support": 0.9221565518235547
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-service-invoice",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 2.8501152401644374,
+          "company": 10.821228508512732
+        },
+        "score": 10.821228508512732,
+        "margin": 0.7366181447954511,
+        "coverage": 0.42069387721660284,
+        "support": 0.5889486666850888
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 0.0,
+          "images": 4.1881378466743735,
+          "source_file": 6.01427564349043
+        },
+        "score": 6.01427564349043,
+        "margin": 0.30363387131957986,
+        "coverage": 0.594018000493707,
+        "support": 0.26894086182233734
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-photo-source",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 4.178400896509788,
+          "company": 6.848434013374957
+        },
+        "score": 6.848434013374957,
+        "margin": 0.3898749862597213,
+        "coverage": 0.3003949291447005,
+        "support": 0.9137552405669795
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 2.1513119353922168,
+          "images": 0.0,
+          "source_file": 6.179915852564033
+        },
+        "score": 6.179915852564033,
+        "margin": 0.6518865326459676,
+        "coverage": 0.5775066816628557,
+        "support": 0.9078026293324227
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-archive-catalogue",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 2.995570116680485,
+          "company": 8.308244811420579
+        },
+        "score": 8.308244811420579,
+        "margin": 0.6394460942505269,
+        "coverage": 0.7714014439032385,
+        "support": 0.6986864028210485
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 8.572638307347844
+        },
+        "score": 8.572638307347844,
+        "margin": 1.0,
+        "coverage": 0.7716460066955103,
+        "support": 0.6073635700222171
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-guide-source",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 9.449191175144037
+        },
+        "score": 9.449191175144037,
+        "margin": 1.0,
+        "coverage": 0.7087352122796264,
+        "support": 0.6368525533189574
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 3.225957567735954,
+          "images": 0.0,
+          "source_file": 6.946119993320238
+        },
+        "score": 6.946119993320238,
+        "margin": 0.5355741664644135,
+        "coverage": 0.620264597531712,
+        "support": 0.6122151803914189
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-department-brief",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 2.6152288370116326,
+          "company": 4.998634344412753
+        },
+        "score": 4.998634344412753,
+        "margin": 0.4768113334925534,
+        "coverage": 0.31180916521108887,
+        "support": 0.9033511394439282
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 1.8438980763474502,
+          "images": 0.0,
+          "source_file": 5.82862949259859
+        },
+        "score": 5.82862949259859,
+        "margin": 0.6836480893683669,
+        "coverage": 0.5025735171051251,
+        "support": 0.8266172869761294
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-use-picture-archive",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 4.527006536979178,
+          "company": 8.529578718177593
+        },
+        "score": 8.529578718177593,
+        "margin": 0.4692578981267195,
+        "coverage": 0.27977502481819644,
+        "support": 0.8226882643525418
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 3.5906251596508407,
+          "images": 4.146595964398525,
+          "source_file": 8.323572988473959
+        },
+        "score": 8.323572988473959,
+        "margin": 0.5018250010974241,
+        "coverage": 0.3730596986525857,
+        "support": 0.6752776867112643
+      },
+      "blocked": false,
+      "guards": []
+    },
+    {
+      "id": "v2-calibration-file-company-policy-vs-view",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.9974727857687584,
+          "company": 7.722306974623107
+        },
+        "score": 7.722306974623107,
+        "margin": 0.7413372982539008,
+        "coverage": 0.39168318767369564,
+        "support": 0.5026040902339177
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 4.12102180026516,
+          "images": 0.0,
+          "source_file": 8.263833598472752
+        },
+        "score": 8.263833598472752,
+        "margin": 0.5013183952509922,
+        "coverage": 0.39477750782770266,
+        "support": 0.5468815175721577
+      },
+      "blocked": true,
+      "guards": [
+        "negated_or_contrastive_request"
+      ]
+    },
+    {
+      "id": "v2-calibration-file-keep-template-not-summary",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 4.787942065905516,
+          "company": 11.882438148506056
+        },
+        "score": 11.882438148506056,
+        "margin": 0.5970572700597234,
+        "coverage": 0.46859355201857456,
+        "support": 0.7878114006053513
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 3.9556326001407998,
+          "images": 0.0,
+          "source_file": 8.97180108894688
+        },
+        "score": 8.97180108894688,
+        "margin": 0.5591038453790423,
+        "coverage": 0.5333163910315549,
+        "support": 0.6530368871687582
+      },
+      "blocked": true,
+      "guards": [
+        "negated_or_contrastive_request"
+      ]
+    },
+    {
+      "id": "v2-calibration-file-file-offer-single",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.16357941500499,
+          "company": 6.848434013374957
+        },
+        "score": 6.848434013374957,
+        "margin": 0.8300955499122098,
+        "coverage": 0.6838214869011731,
+        "support": 0.9137552405669795
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 3.225957567735954,
+          "images": 0.0,
+          "source_file": 6.179915852564033
+        },
+        "score": 6.179915852564033,
+        "margin": 0.4779932858798536,
+        "coverage": 0.645780204375617,
+        "support": 0.9078026293324227
+      },
+      "blocked": true,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-file-file-offer-short",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-file-file-offer-specific",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.16357941500499,
+          "company": 5.532485423103753
+        },
+        "score": 5.532485423103753,
+        "margin": 0.7896823351497931,
+        "coverage": 0.7495149968061285,
+        "support": 0.3997624994190333
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 3.225957567735954,
+          "images": 0.0,
+          "source_file": 3.9552927515657275
+        },
+        "score": 3.9552927515657275,
+        "margin": 0.1843947413351544,
+        "coverage": 0.4238185303015089,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-file-file-offer-send",
+      "expected": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.16357941500499,
+          "company": 6.551988079422004
+        },
+        "score": 6.551988079422004,
+        "margin": 0.822408191086386,
+        "coverage": 0.5902345648071218,
+        "support": 0.9173205741626794
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 6.478569384010657
+        },
+        "score": 6.478569384010657,
+        "margin": 1.0,
+        "coverage": 0.6073635700222171,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "requires_conversation_context"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-first-ref",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 3.0800382942941313,
+          "company": 3.005604609849341
+        },
+        "score": 3.0800382942941313,
+        "margin": 0.024166480196912133,
+        "coverage": 0.13136078297340328,
+        "support": 0.95280751584007
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 4.0410835366647095,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 4.0410835366647095,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.8984389693436151
+      },
+      "blocked": true,
+      "guards": [
+        "requires_conversation_context",
+        "missing_reference_context"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-compare-ref",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 10.12204038836671,
+          "company": 1.8788869014562843
+        },
+        "score": 10.12204038836671,
+        "margin": 0.8143766642528226,
+        "coverage": 0.5167304260468294,
+        "support": 0.4499801167158794
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.8020025492176273,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 3.8020025492176273,
+        "margin": 1.0,
+        "coverage": 0.6464602906022506,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "requires_conversation_context",
+        "missing_reference_context"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-subject",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 5.4355165250716375,
+          "company": 1.7020437323707347
+        },
+        "score": 5.4355165250716375,
+        "margin": 0.6868662390188756,
+        "coverage": 0.3043194158925711,
+        "support": 0.4864260162737276
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-action",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 3.4816574490987504,
+          "company": 3.160079230094069
+        },
+        "score": 3.4816574490987504,
+        "margin": 0.0923635434289849,
+        "coverage": 0.2498144802092811,
+        "support": 0.9056150316801398
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-text-polish",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.249015209578408,
+          "company": 3.9194537692393987
+        },
+        "score": 3.9194537692393987,
+        "margin": 0.17105408027075536,
+        "coverage": 0.5,
+        "support": 0.9549342791571042
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 2.953639748980691,
+          "images": 4.1881378466743735,
+          "source_file": 0.0
+        },
+        "score": 4.1881378466743735,
+        "margin": 0.29476061746008336,
+        "coverage": 0.5409823741096706,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "missing_transform_text",
+        "requires_conversation_context",
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-text-translate",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 4.008247712794234,
+          "company": 2.010065915343011
+        },
+        "score": 4.008247712794234,
+        "margin": 0.49851754198550974,
+        "coverage": 0.14690742332129564,
+        "support": 0.8418080641742454
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 3.6485744460434413,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 3.6485744460434413,
+        "margin": 1.0,
+        "coverage": 0.5,
+        "support": 0.9078026293324226
+      },
+      "blocked": true,
+      "guards": [
+        "missing_transform_text"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-text-proof",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 5.934682513910007,
+          "company": 1.756256731998575
+        },
+        "score": 5.934682513910007,
+        "margin": 0.7040689661355646,
+        "coverage": 0.4160592236267081,
+        "support": 0.47624077116328595
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 1.9697098648729428,
+          "images": 0.0,
+          "source_file": 2.3698013928140336
+        },
+        "score": 2.3698013928140336,
+        "margin": 0.1688291386587464,
+        "coverage": 0.5,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "missing_transform_text",
+        "file_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-text-shorten",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 5.48382080454203,
+          "company": 3.2820833474177693
+        },
+        "score": 5.48382080454203,
+        "margin": 0.4014969736612563,
+        "coverage": 0.2727286874369708,
+        "support": 0.4996355681849328
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 1.9697098648729428,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 1.9697098648729428,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "missing_transform_text"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-only-image",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "employee_image_not_read",
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-image-identify",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.9145506832239838,
+          "company": 3.6708074152225585
+        },
+        "score": 3.6708074152225585,
+        "margin": 0.47843881014174483,
+        "coverage": 1.0,
+        "support": 0.9173205741626794
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 3.824897177461328,
+          "source_file": 0.0
+        },
+        "score": 3.824897177461328,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "employee_image_not_read"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-file-short",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 3.0148214815047982,
+          "company": 2.87015487153775
+        },
+        "score": 3.0148214815047982,
+        "margin": 0.04798513306825731,
+        "coverage": 1.0,
+        "support": 0.7221099062672304
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-file-no-source",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.16357941500499,
+          "company": 6.848434013374957
+        },
+        "score": 6.848434013374957,
+        "margin": 0.8300955499122098,
+        "coverage": 1.0,
+        "support": 0.9137552405669795
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 6.179915852564033
+        },
+        "score": 6.179915852564033,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.9078026293324227
+      },
+      "blocked": true,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-multi-source",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 3.0148214815047982,
+          "company": 4.9277605042350245
+        },
+        "score": 4.9277605042350245,
+        "margin": 0.3881964273803901,
+        "coverage": 1.0,
+        "support": 0.410881092740861
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 2.3698013928140336
+        },
+        "score": 2.3698013928140336,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-multi-source-name",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.16357941500499,
+          "company": 6.551988079422004
+        },
+        "score": 6.551988079422004,
+        "margin": 0.822408191086386,
+        "coverage": 0.6838214869011731,
+        "support": 0.9173205741626794
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 3.225957567735954,
+          "images": 0.0,
+          "source_file": 6.478569384010657
+        },
+        "score": 6.478569384010657,
+        "margin": 0.5020571091362032,
+        "coverage": 0.645780204375617,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-follow-up",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "requires_conversation_context",
+        "missing_reference_context",
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-who",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-output-combination",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.16357941500499,
+          "company": 10.143411052866774
+        },
+        "score": 10.143411052866774,
+        "margin": 0.8852871673108293,
+        "coverage": 0.41316862685491257,
+        "support": 0.9737017690500991
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 0.0,
+          "images": 5.731156986959247,
+          "source_file": 10.435575717568593
+        },
+        "score": 10.435575717568593,
+        "margin": 0.4508058642791812,
+        "coverage": 0.4530430728246992,
+        "support": 0.9534032250740133
+      },
+      "blocked": true,
+      "guards": [
+        "multiple_output_requests"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-image-generation",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 1.9145506832239838,
+          "company": 3.6708074152225585
+        },
+        "score": 3.6708074152225585,
+        "margin": 0.47843881014174483,
+        "coverage": 1.0,
+        "support": 0.9173205741626794
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 3.824897177461328,
+          "source_file": 0.0
+        },
+        "score": 3.824897177461328,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-only-audio",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-read-picture",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 4.898559675226622,
+          "company": 4.600953574575314
+        },
+        "score": 4.898559675226622,
+        "margin": 0.06075379711231948,
+        "coverage": 0.5336861147167632,
+        "support": 0.8854516528195158
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 4.513209063418283,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 4.513209063418283,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 0.8311708613412535
+      },
+      "blocked": true,
+      "guards": [
+        "employee_image_not_read"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-missing-objects",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 3.605799399622702,
+          "company": 3.2820833474177693
+        },
+        "score": 3.605799399622702,
+        "margin": 0.08977650066689928,
+        "coverage": 0.1508246226784263,
+        "support": 0.973561626208493
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-no-file-name",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 4.178400896509788,
+          "company": 7.868414136769413
+        },
+        "score": 7.868414136769413,
+        "margin": 0.468965305602821,
+        "coverage": 1.0,
+        "support": 0.7677255528463625
+      },
+      "output": {
+        "label": "source_file",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 6.478569384010657
+        },
+        "score": 6.478569384010657,
+        "margin": 1.0,
+        "coverage": 1.0,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "requires_conversation_context",
+        "missing_reference_context"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-missing-notice",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "general",
+        "scores": {
+          "general": 7.96437214730922,
+          "company": 3.4583004643693096
+        },
+        "score": 7.96437214730922,
+        "margin": 0.5657786451455933,
+        "coverage": 0.40176949848816246,
+        "support": 0.6088771072142981
+      },
+      "output": {
+        "label": "text",
+        "scores": {
+          "text": 2.953639748980691,
+          "images": 0.0,
+          "source_file": 2.3698013928140336
+        },
+        "score": 2.953639748980691,
+        "margin": 0.19766742249732444,
+        "coverage": 0.428494742878143,
+        "support": 1.0
+      },
+      "blocked": true,
+      "guards": [
+        "missing_transform_text"
+      ]
+    },
+    {
+      "id": "v2-calibration-ambiguous-context-confirm",
+      "expected": {
+        "knowledge_scope": "unknown",
+        "output_kind": "unknown",
+        "needs_clarification": true
+      },
+      "scope": {
+        "label": "company",
+        "scores": {
+          "general": 0.0,
+          "company": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "output": {
+        "label": "images",
+        "scores": {
+          "text": 0.0,
+          "images": 0.0,
+          "source_file": 0.0
+        },
+        "score": 0.0,
+        "margin": 0.0,
+        "coverage": 0,
+        "support": 0.0
+      },
+      "blocked": true,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ]
+    }
+  ],
+  "calibration_replay": {
+    "local_auto_precision": 1.0,
+    "clear_local_auto_coverage": 0.5652173913043478,
+    "company_to_daily": 0,
+    "local_auto_count": 52,
+    "local_auto_correct": 52,
+    "clear_count": 92,
+    "warm_local_p95_ms": 3.787,
+    "layers": {
+      "unresolved": 47,
+      "bm25_axes": 52,
+      "context": 21
+    },
+    "unresolved_are_not_counted_as_correct": true,
+    "terra_not_in_offline_precision": true,
+    "quality_passed": false
+  },
+  "evaluation_role": "fixed_v2_holdout_replay_after_monotone_guards_no_refit",
+  "original_calibration_sha256": "d8bf8ddcaa9ffb06a176166943663a14f1a72eaae9e4258e8d7337c9f8b15bec",
+  "threshold_values_sha256": "35b8eee5df69f268c840a19c4e063963da3284e113f7ac197b9d1f29b1b1956a",
+  "monotone_revalidation": {
+    "calibration": {
+      "cases": 120,
+      "new_direct_routes": 0,
+      "removed_direct_routes": 0
+    },
+    "acceptance": {
+      "cases": 100,
+      "new_direct_routes": 0,
+      "removed_direct_routes": 0
+    },
+    "regression": {
+      "cases": 100,
+      "new_direct_routes": 0,
+      "removed_direct_routes": 2
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "thresholds_unchanged": true,
+  "proof": "Exact source comparison: only append a blocker; calibration change is report role only",
+  "groups": {
+    "calibration": {
+      "cases": 120,
+      "new_direct_routes": 0,
+      "removed_direct_routes": 0
+    },
+    "acceptance": {
+      "cases": 100,
+      "new_direct_routes": 0,
+      "removed_direct_routes": 0
+    },
+    "regression": {
+      "cases": 100,
+      "new_direct_routes": 0,
+      "removed_direct_routes": 2
+    }
+  }
+}

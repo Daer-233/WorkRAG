@@ -21,37 +21,49 @@ def read_json(path):
 
 
 def config():
-    value={'mode':'shadow','version':'intent-v1','model_path':str(MODEL),'terra_enabled':True}
+    value={'mode':'shadow','version':'intent-v2-factors','sample_set':'v2','model_path':str(MODEL),'terra_enabled':True}
     if CONFIG.exists(): value.update(read_json(CONFIG))
     if value['mode'] not in ('off','shadow','on'): raise ValueError('Invalid intent mode')
     path=Path(value['model_path']).resolve()
     if not path.is_relative_to((DATA/'models/intent').resolve()): raise ValueError('Intent model directory is outside its model root')
     value['model_path']=str(path)
+    if value['sample_set'] not in ('v1','v2'):raise ValueError('Unknown intent sample set')
     return value
+
+
+def sample_path(version=None):
+    version=version or config().get('sample_set','v2')
+    if version not in ('v1','v2'):raise ValueError('Unknown intent sample set')
+    return SAMPLES if version=='v1' else SAMPLES/'v2'
+
+
+def report_dir(cfg):return DATA/'intent' if cfg.get('sample_set','v2')=='v1' else DATA/'intent/v2'
 
 
 def fingerprint(model_path):
     manifest=Path(model_path)/'intent-manifest.json'
-    files=[SAMPLES/'index.jsonl',SAMPLES/'calibration.jsonl',SAMPLES/'acceptance.jsonl']
-    code=[Path(__file__).parent/name for name in ('bm25.py','nli.py','engine.py','types.py','terra.py')]
+    files=[sample_path()/name for name in ('index.jsonl','calibration.jsonl','acceptance.jsonl')]
+    files.append(ROOT/'instances/manuals/intent-policy.v2.json')
+    code=[Path(__file__).parent/name for name in ('bm25.py','factors.py','nli.py','engine.py','types.py','terra.py','settings.py')]
     host=ROOT/'scripts/knowledge_card/intent_host.py'
-    return {str(p.name):digest(p) for p in files+code+[host]}|{'model_manifest':digest(manifest) if manifest.exists() else None}
+    calibrator=ROOT/'scripts/calibrate-knowledge-intent-v2.py'
+    return {str(p.name):digest(p) for p in files+code+[host,calibrator]}|{'model_manifest':digest(manifest) if manifest.exists() else None,'sample_set':config()['sample_set']}
 
 
-def load_rows(name):
-    return [json.loads(line) for line in (SAMPLES/(name+'.jsonl')).read_text(encoding='utf-8').splitlines() if line.strip()]
+def load_rows(name,version=None):
+    return [json.loads(line) for line in (sample_path(version)/(name+'.jsonl')).read_text(encoding='utf-8').splitlines() if line.strip()]
 
 
 def calibration_valid(cfg):
     try:
-        artifact=read_json(DATA/'intent/calibration.json')
+        artifact=read_json(report_dir(cfg)/'calibration.json')
         return artifact if artifact.get('fingerprint')==fingerprint(cfg['model_path']) else None
     except (OSError,ValueError): return None
 
 
 def activation_valid(cfg):
     try:
-        report=read_json(DATA/'intent/acceptance.json')
+        report=read_json(report_dir(cfg)/'acceptance.json')
         return bool(report.get('passed') and report.get('integration_passed') and
                     report.get('shadow_passed') and report.get('fingerprint')==fingerprint(cfg['model_path']))
     except (OSError,ValueError): return False

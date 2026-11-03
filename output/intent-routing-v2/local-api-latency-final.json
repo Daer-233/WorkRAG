@@ -1,0 +1,7 @@
+{
+  "scope": "Final guarded build, warm local API BM25 fast path only; three calibration questions repeated 30 times; excludes Terra and answer generation",
+  "samples": 30,
+  "local_p95_ms": 156.0,
+  "http_p95_ms": 167.23,
+  "employee_messages_sent": 0
+}

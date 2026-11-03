@@ -18,4 +18,4 @@
 
 父子分块说明见 `docs\knowledge-procedure-groups.md`。资料导入、图片和钉钉验证记录在 `docs` 下，原迁移前文档中的绝对路径以本 README 为准。
 
-BM25＋BERT 意图分流已接入影子模式，当前未通过正式上线门槛，员工回答仍沿用原链路。部署、配置、校准及即时关闭方法见 `docs\knowledge-intent-routing-v1.md`，后续继续工作先读 `docs\knowledge-intent-routing-handoff.md`。回答固定使用 Terra / Medium。
+当前意图分流为 V2 双维度结构（公司资料范围 × 返回形式），仍保持影子模式，员工回答沿用原链路，回答固定使用 Terra / Medium。部署、配置、校准及关闭方法见 `docs\knowledge-intent-routing-v2.md`，后续先读 `docs\knowledge-intent-routing-v2-handoff.md`。V1文档和验收报告保留作历史记录。

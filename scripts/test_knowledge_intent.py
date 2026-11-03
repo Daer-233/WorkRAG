@@ -20,7 +20,7 @@ from app.manuals.intent import engine
 from app.manuals.intent.bm25 import BM25,accepted,ranking,tokenize
 from app.manuals.intent.nli import BertWorker,entailment_index
 from app.manuals.intent.terra import TerraClassifier,parse_output
-from app.manuals.intent.types import RouteRequest,context_text
+from app.manuals.intent.types import RouteRequest,axes_for_intent,context_text
 from knowledge_card import intent_host as host
 
 
@@ -119,7 +119,7 @@ def test_new_named_file_does_not_reuse_previous_source(monkeypatch):
     monkeypatch.setattr(engine,'calibration_valid',lambda cfg:None)
     seen=[]
     class Terra:
-        async def classify(self,request):seen.append(request);return 'source_file'
+        async def classify(self,request):seen.append(request);return axes_for_intent('source_file')
     async def run():
         router=engine.Router();router.terra=Terra()
         async def warm():pass

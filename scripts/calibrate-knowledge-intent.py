@@ -24,7 +24,7 @@ def request(row):return RouteRequest.model_validate({k:v for k,v in row.items() 
 
 
 def audit():
-    groups={name:load_rows(name) for name in ('index','calibration','acceptance')}
+    groups={name:load_rows(name,version='v1') for name in ('index','calibration','acceptance')}
     for name,rows in groups.items():
         expected={'index':80,'calibration':60,'acceptance':100}[name]
         assert len(rows)==expected
@@ -63,6 +63,8 @@ def main():
     parser.add_argument('--diagnostic-nli-timeout',type=float,default=2,help='Offline measurement only; serving hard timeout remains two seconds')
     parser.add_argument('--reuse-scores',action='store_true',help='Reuse only score artifacts with identical data, model and inference code hashes')
     args=parser.parse_args()
+    if not args.audit_only and config().get('sample_set','v2')!='v1':
+        raise SystemExit('V1 calibration is archived. Use calibrate-knowledge-intent-v2.py for the active factor classifier.')
     groups=audit()
     if args.audit_only:print('Dataset audit passed: 80/60/100; no exact request or family overlap. Human business review pending.');return
     cfg=config();out=ROOT/'data/manuals/intent';out.mkdir(parents=True,exist_ok=True)

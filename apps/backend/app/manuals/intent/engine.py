@@ -6,9 +6,10 @@ import time
 
 from .bm25 import BM25, accepted, ranking
 from .nli import BertWorker
+from .factors import FactorBM25,inspect_request,validate_semantic
 from .settings import DATA, activation_valid, calibration_valid, config, load_rows
 from .terra import TerraClassifier
-from .types import Decision, context_text
+from .types import Decision, Axes, axes_for_intent, context_text
 
 log=logging.getLogger('work.intent')
 if not log.handlers:
@@ -30,13 +31,16 @@ def direct(request):
 
 
 def file_followup(text):
-    return text.rstrip('。！？!?,， ') in ('需要','要','好的要','发给我','发我','给我','需要源文件','要原文件','原文件也给我',
+    return text.rstrip('。！？!?,， ') in ('需要','要','好的要','发给我','发我','给我','需要源文件','需要原文件','要原文件','原文件也给我',
         '把刚才的源文件发我','上一份资料的原件给我','需要上一条的文件')
 
 
 def message_for(intent,reason,request):
     if reason=='image_text_missing':return '目前还不能读取你上传的图片，请补充具体问题或图片中的报错文字。'
     if reason=='choose_source':return '请确认需要哪份文件：'+ '；'.join(f'{i+1}. {s.title}'+(f'（{s.version}）' if s.version else '') for i,s in enumerate(request.previous_sources))
+    if reason=='missing_transform_text':return '请贴出需要润色、改写或翻译的原文；若要依据公司规定重新拟写，也请说明资料主题。'
+    if reason=='missing_reference_context':return '请补充具体对象、资料名称或需要处理的文字，方便确认你指的是哪一项。'
+    if reason=='company_scope_conflict':return '这个问题涉及公司资料，请明确需要查询的制度、流程或资料名称。'
     if intent=='source_file':
         if len(request.previous_sources)>1:return message_for('clarify','choose_source',request)
         if len(request.previous_sources)==1:
@@ -51,10 +55,15 @@ def message_for(intent,reason,request):
 class Router:
     def __init__(self):
         self.worker=None;self.terra=TerraClassifier();self.warming=None;self.model_path=None;self.retry_after=0
+        self.factor_index=None;self.factor_key=None
 
     async def warm(self):
         cfg=config()
         if cfg['mode']=='off':return
+        artifact=calibration_valid(cfg)
+        # V1 flat NLI thresholds cannot authorize the new independent factors.
+        # Keep its adapter, but require separately validated factor calibration.
+        if not artifact or not artifact.get('nli_axes_validated'):return
         if self.warming and not self.warming.done():return
         if self.worker and self.worker.ready and self.model_path==cfg['model_path']:return
         if time.monotonic()<self.retry_after:return
@@ -80,43 +89,58 @@ class Router:
         if not file_followup(request.text):
             request=request.model_copy(update={'previous_sources':[],'previous_file_offer':False})
         result=direct(request);artifact=calibration_valid(cfg);reasons=[]
+        signals=inspect_request(request)
+        if not result and signals.clarification:result=('clarify',signals.clarification)
         if result:decision.intent,decision.reason=result
-        if not result and artifact:
-            scores=BM25(load_rows('index')).scores(request.text);label,score,gap=ranking(scores)
-            decision.scores=scores;decision.margin=gap
-            if accepted(scores,artifact.get('bm25',{})):
-                decision.intent=label;decision.method='bm25'
+        if not result and artifact and artifact.get('schema')=='factors-v2':
+            key=(artifact['fingerprint']['index.jsonl'],artifact['fingerprint']['intent-policy.v2.json'])
+            if self.factor_key!=key:
+                self.factor_index=FactorBM25(load_rows('index'));self.factor_key=key
+            axes,features,guard_reasons=self.factor_index.decide(request,artifact.get('bm25_axes',{}))
+            decision.axis_scores={name:features[name]['scores'] for name in ('scope','output')}
+            decision.guard_reasons=guard_reasons
+            if axes:
+                decision.axes=axes;decision.intent=axes.intent;decision.method='bm25_axes'
         if decision.intent is None:
             await self.warm()
-            if artifact and self.worker and self.worker.ready:
+            if artifact and artifact.get('nli_axes_validated') and self.worker and self.worker.ready:
                 try:
                     scores=await asyncio.to_thread(self.worker.classify,context_text(request),2)
                     label,score,gap=ranking(scores);decision.scores=scores;decision.margin=gap
                     if accepted(scores,artifact.get('nli',{})):
-                        decision.intent=label;decision.method='bert_nli'
+                        axes,conflict=validate_semantic(axes_for_intent(label),request)
+                        if not conflict:decision.axes=axes;decision.intent=axes.intent;decision.method='bert_nli'
+                        else:reasons.append(conflict)
                     else:reasons.append('nli_below_calibrated_threshold')
                 except Exception as exc:
                     reasons.append(type(exc).__name__)
                     if isinstance(exc,TimeoutError):self.retry_after=time.monotonic()+300
-            else:reasons.append('calibration_or_model_unavailable')
+            else:reasons.append('nli_factors_not_validated' if artifact else 'calibration_or_model_unavailable')
         decision.local_elapsed_ms=round((time.monotonic()-started)*1000,2)
         if decision.intent is None:
             if cfg['terra_enabled']:
                 try:
-                    decision.intent=await self.terra.classify(request);decision.method='terra'
+                    axes=await self.terra.classify(request)
+                    # The model returns factors, never a Host route or resource ID.
+                    if not isinstance(axes,Axes):raise ValueError('invalid_semantic_factors')
+                    axes,conflict=validate_semantic(axes,request)
+                    decision.axes=axes;decision.intent=axes.intent;decision.method='terra'
+                    if conflict:decision.reason=conflict
                 except Exception as exc:
                     decision.intent='clarify';decision.method='fallback';reasons.append(type(exc).__name__)
             else:decision.intent='clarify';decision.method='fallback';reasons.append('terra_disabled')
         # No previous sources are ever invented by a classifier.
         if decision.intent=='source_file' and len(request.previous_sources)>1:
             decision.intent='clarify';decision.reason='choose_source'
+            decision.axes=axes_for_intent('clarify')
+        if decision.axes is None:decision.axes=axes_for_intent(decision.intent)
         decision.needs_clarification=decision.intent=='clarify'
         decision.message=message_for(decision.intent,decision.reason,request)
         decision.reason=decision.reason or ','.join(reasons)
         decision.elapsed_ms=round((time.monotonic()-started)*1000,2)
-        log.info('intent=%s layer=%s mode=%s scores=%s margin=%s elapsed_ms=%s local_ms=%s reason=%s version=%s',
+        log.info('intent=%s layer=%s mode=%s scores=%s margin=%s elapsed_ms=%s local_ms=%s reason=%s version=%s axes=%s axis_scores=%s guards=%s',
             decision.intent,decision.method,mode,decision.scores,decision.margin,decision.elapsed_ms,
-            decision.local_elapsed_ms,decision.reason,cfg['version'])
+            decision.local_elapsed_ms,decision.reason,cfg['version'],decision.axes.model_dump(),decision.axis_scores,decision.guard_reasons)
         return decision
 
 

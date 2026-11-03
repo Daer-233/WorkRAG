@@ -22,14 +22,20 @@ class BM25:
         frequency=Counter(term for row in self.terms for term in row)
         self.idf={term:math.log1p((len(examples)-count+.5)/(count+.5)) for term,count in frequency.items()}
 
-    def scores(self, question):
-        query=set(tokenize(question));scores={}
+    def sample_scores(self, question):
+        query=set(tokenize(question));values=[]
         for sample,terms,length in zip(self.examples,self.terms,self.lengths):
             score=0.
             for term in query:
                 tf=terms.get(term,0)
                 if tf:
                     score+=self.idf[term]*(tf*(self.k1+1))/(tf+self.k1*(1-self.b+self.b*length/self.average))
+            values.append(score)
+        return values
+
+    def scores(self, question):
+        scores={}
+        for sample,score in zip(self.examples,self.sample_scores(question)):
             label=sample['intent']
             scores[label]=max(scores.get(label,0.),score)
         return scores

@@ -11,6 +11,9 @@ async def route(request:RouteRequest):return await engine.route(request)
 @router.get('/status')
 def status():
     cfg=config()
+    artifact=calibration_valid(cfg)
     return {'configured_mode':cfg['mode'],'effective_mode':'shadow' if cfg['mode']=='on' and not activation_valid(cfg) else cfg['mode'],
-            'version':cfg['version'],'calibrated':bool(calibration_valid(cfg)),
+            'version':cfg['version'],'sample_set':cfg['sample_set'],'calibrated':bool(artifact),
+            'classifier_schema':artifact.get('schema') if artifact else None,
+            'nli_factors_validated':bool(artifact and artifact.get('nli_axes_validated')),
             'model_ready':bool(engine.worker and engine.worker.ready),'activation_allowed':activation_valid(cfg)}

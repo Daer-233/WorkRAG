@@ -26,6 +26,7 @@ node_modules/
 # Only the reviewed synthetic intent reports and generic card template ship.
 /output/*
 !/output/intent-routing-v1/
+!/output/intent-routing-v2/
 !/output/knowledge-card-v1/
 /output/knowledge-card-v1/*
 !/output/knowledge-card-v1/dingtalk-template.json

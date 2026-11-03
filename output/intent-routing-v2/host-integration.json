@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "checks": {
+    "installed_host_hooks": true,
+    "trusted_route_not_user_variable": true,
+    "canonical_config_and_employee_text_unchanged": true,
+    "daily_snapshot_empty_business_resources": true,
+    "business_snapshot_work_kb_only": true,
+    "actual_host_proxy_denies_daily_retrieval": true,
+    "actual_host_proxy_allows_work_retrieval_only": true,
+    "actual_host_proxy_denies_design_tools_and_skills": true,
+    "workspace_validation_retained": true,
+    "immediate_ack_before_classification_and_runner": true,
+    "shadow_preserves_original_stream": true,
+    "shadow_http_probe_finished": true,
+    "synthetic_on_scope_reaches_real_host_builder": true,
+    "synthetic_image_route_work_kb_only_and_vision_disclosure": true
+  },
+  "employee_messages_sent": 0,
+  "scope": "V2 backend and unchanged real Host; synthetic events only"
+}
