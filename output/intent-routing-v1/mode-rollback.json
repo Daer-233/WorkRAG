@@ -1,0 +1,12 @@
+{
+  "off_immediate": true,
+  "on_refused_by_gate": true,
+  "after": {
+    "configured_mode": "shadow",
+    "effective_mode": "shadow",
+    "version": "intent-v1",
+    "calibrated": true,
+    "model_ready": true,
+    "activation_allowed": false
+  }
+}

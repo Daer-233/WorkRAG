@@ -1,0 +1,17 @@
+services:
+  knowledge_codex_relay:
+    image: rockchin/langbot:v4.11.3
+    container_name: knowledge_codex_relay
+    entrypoint: [python, /relay.py]
+    restart: unless-stopped
+    read_only: true
+    ports:
+      - "127.0.0.1:18768:8768"
+    volumes:
+      - ../../scripts/langbot-codex-relay.py:/relay.py:ro
+    networks:
+      - langbot_existing
+networks:
+  langbot_existing:
+    external: true
+    name: langbot_langbot_network

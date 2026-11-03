@@ -1,0 +1,6 @@
+{
+  "mode": "shadow",
+  "version": "intent-v1",
+  "terra_enabled": true,
+  "description": "Model path defaults to data/manuals/models/intent/erlangshen-110m-nli. Activation requires current offline, integration and shadow reports; use set-knowledge-intent-mode.py."
+}

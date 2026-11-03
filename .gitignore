@@ -1,0 +1,32 @@
+/instances/manuals/.env
+/data/
+/backups/
+/artifacts/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local credentials and runtime state must never enter source control.
+.env
+.env.*
+!.env.example
+*.private.*
+auth.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+*.pid
+.venv/
+venv/
+node_modules/
+
+# Generated exports may contain employee documents, photos and signed links.
+# Only the reviewed synthetic intent reports and generic card template ship.
+/output/*
+!/output/intent-routing-v1/
+!/output/knowledge-card-v1/
+/output/knowledge-card-v1/*
+!/output/knowledge-card-v1/dingtalk-template.json
+!/output/knowledge-card-v1/README.md

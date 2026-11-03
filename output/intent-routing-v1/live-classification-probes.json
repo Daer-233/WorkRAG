@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "case": "你好，补卡怎么申请",
+      "expected": "knowledge",
+      "intent": "knowledge",
+      "layer": "terra",
+      "mode": "shadow",
+      "elapsed_ms": 13344.0,
+      "passed": true
+    },
+    {
+      "case": "Excel 怎么筛选",
+      "expected": "daily",
+      "intent": "daily",
+      "layer": "terra",
+      "mode": "shadow",
+      "elapsed_ms": 12703.0,
+      "passed": true
+    },
+    {
+      "case": "润色报销通知：请大家周五前提交单据",
+      "expected": "daily",
+      "intent": "daily",
+      "layer": "terra",
+      "mode": "shadow",
+      "elapsed_ms": 12375.0,
+      "passed": true
+    },
+    {
+      "case": "发我报销模板",
+      "expected": "source_file",
+      "intent": "source_file",
+      "layer": "terra",
+      "mode": "shadow",
+      "elapsed_ms": 13578.0,
+      "passed": true
+    }
+  ],
+  "employee_messages_sent": 0
+}
