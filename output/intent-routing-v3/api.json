@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "status": {
+    "configured_mode": "shadow",
+    "effective_mode": "shadow",
+    "version": "intent-v3-supervised",
+    "sample_set": "v3",
+    "calibrated": true,
+    "classifier_schema": "factors-v3",
+    "nli_factors_validated": false,
+    "supervised_validated": true,
+    "model_ready": true,
+    "activation_allowed": false
+  },
+  "calibration_probe_cases": [
+    {
+      "expected": "daily",
+      "actual": "daily",
+      "method": "bert_supervised",
+      "mode": "shadow",
+      "elapsed_ms": 328.0,
+      "http_ms": 337.9,
+      "correct": true
+    },
+    {
+      "expected": "knowledge",
+      "actual": "knowledge",
+      "method": "bm25_axes",
+      "mode": "shadow",
+      "elapsed_ms": 47.0,
+      "http_ms": 51.14,
+      "correct": true
+    },
+    {
+      "expected": "images",
+      "actual": "images",
+      "method": "bert_supervised",
+      "mode": "shadow",
+      "elapsed_ms": 204.0,
+      "http_ms": 219.64,
+      "correct": true
+    },
+    {
+      "expected": "source_file",
+      "actual": "source_file",
+      "method": "bert_supervised",
+      "mode": "shadow",
+      "elapsed_ms": 235.0,
+      "http_ms": 249.4,
+      "correct": true
+    }
+  ],
+  "pure_image_asks_for_text": true,
+  "employee_cannot_set_route_field": true,
+  "terra_probe": null,
+  "dataset_role": "calibration_integration_probes_not_independent_acceptance",
+  "employee_messages_sent": 0
+}

@@ -1,0 +1,12 @@
+{
+  "intent": "daily",
+  "method": "terra",
+  "mode": "shadow",
+  "reason": "classifier_input_truncated",
+  "elapsed_ms": 10219.0,
+  "local_elapsed_ms": 94.0,
+  "synthetic": true,
+  "employee_messages_sent": 0,
+  "terra_reached": true,
+  "safe_fallback": false
+}
