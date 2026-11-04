@@ -1,0 +1,2338 @@
+{
+  "local_auto_count": 63,
+  "local_auto_correct": 63,
+  "local_auto_precision": 1.0,
+  "clear_count": 124,
+  "clear_local_auto_coverage": 0.5080645161290323,
+  "company_to_daily": 0,
+  "warm_local_p95_ms": 14.037,
+  "layers": {
+    "unresolved": 80,
+    "bm25_axes": 63,
+    "context": 5
+  },
+  "quality_passed": false,
+  "unresolved_are_not_counted_as_correct": true,
+  "terra_not_in_offline_precision": true,
+  "cases": [
+    {
+      "id": "v3-acceptance-等比数列求和-8951025568",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.226
+    },
+    {
+      "id": "v3-acceptance-等比数列求和-44087fe27d",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.625
+    },
+    {
+      "id": "v3-acceptance-HTTP状态码含义-ffaa1ca113",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.971
+    },
+    {
+      "id": "v3-acceptance-HTTP状态码含义-54b2359b70",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 9.927
+    },
+    {
+      "id": "v3-acceptance-HSL颜色表示-bd7ca4a8ee",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 9.781
+    },
+    {
+      "id": "v3-acceptance-HSL颜色表示-304b0f168a",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 5.497
+    },
+    {
+      "id": "v3-acceptance-声速与温度关系-82755e224a",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.825
+    },
+    {
+      "id": "v3-acceptance-声速与温度关系-172fd3f45b",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 10.043
+    },
+    {
+      "id": "v3-acceptance-幻灯片母版-7287bc7615",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.588
+    },
+    {
+      "id": "v3-acceptance-幻灯片母版-e6764427f6",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 5.272
+    },
+    {
+      "id": "v3-acceptance-触控板手势-2152a178ab",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 4.826
+    },
+    {
+      "id": "v3-acceptance-触控板手势-fd3212977d",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.876
+    },
+    {
+      "id": "v3-acceptance-Unicode编码-b785105751",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.394
+    },
+    {
+      "id": "v3-acceptance-Unicode编码-1d7acd2290",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.82
+    },
+    {
+      "id": "v3-acceptance-复利计算原理-2ca6ae8670",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.803
+    },
+    {
+      "id": "v3-acceptance-复利计算原理-a138c26743",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.536
+    },
+    {
+      "id": "v3-acceptance-Word分节符-2e5b66a4f6",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 5.108
+    },
+    {
+      "id": "v3-acceptance-Word分节符-7e8b977642",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 4.876
+    },
+    {
+      "id": "v3-acceptance-无损音频格式-0a6fb2e5fd",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.281
+    },
+    {
+      "id": "v3-acceptance-无损音频格式-c362f58030",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.802
+    },
+    {
+      "id": "v3-acceptance-蓝牙配对原理-b9e3a90836",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.971
+    },
+    {
+      "id": "v3-acceptance-蓝牙配对原理-4ccac3b87a",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.229
+    },
+    {
+      "id": "v3-acceptance-屏幕刷新率-b52c2f0f24",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 4.882
+    },
+    {
+      "id": "v3-acceptance-屏幕刷新率-9ebb887174",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.497
+    },
+    {
+      "id": "v3-acceptance-本公司哺乳室使用-903b68e872",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.162
+    },
+    {
+      "id": "v3-acceptance-本公司哺乳室使用-8fee307361",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.916
+    },
+    {
+      "id": "v3-acceptance-公司献血假-60f3d887cc",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.601
+    },
+    {
+      "id": "v3-acceptance-公司献血假-34ecd8d0c6",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.994
+    },
+    {
+      "id": "v3-acceptance-公司夜班餐补-b5c14a7691",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.722
+    },
+    {
+      "id": "v3-acceptance-公司夜班餐补-bb9d89ad9c",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.161
+    },
+    {
+      "id": "v3-acceptance-本公司海外轮岗-6e4145a79f",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.812
+    },
+    {
+      "id": "v3-acceptance-本公司海外轮岗-c7eef7bb23",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.017
+    },
+    {
+      "id": "v3-acceptance-公司心理咨询预约-8d42bff66b",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.641
+    },
+    {
+      "id": "v3-acceptance-公司心理咨询预约-bc7d6e8766",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.87
+    },
+    {
+      "id": "v3-acceptance-公司供应商入场-27ca32279c",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.427
+    },
+    {
+      "id": "v3-acceptance-公司供应商入场-4a0aa93159",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.824
+    },
+    {
+      "id": "v3-acceptance-公司失物招领-49edacd550",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.115
+    },
+    {
+      "id": "v3-acceptance-公司失物招领-f2ab67977e",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.362
+    },
+    {
+      "id": "v3-acceptance-公司福利体检-91dbd826e8",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.921
+    },
+    {
+      "id": "v3-acceptance-公司福利体检-88a79b2660",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.002
+    },
+    {
+      "id": "v3-acceptance-公司实习生答辩-df67d52361",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.161
+    },
+    {
+      "id": "v3-acceptance-公司实习生答辩-1f62dd1194",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.005
+    },
+    {
+      "id": "v3-acceptance-公司爱心基金申请-b83111b330",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.928
+    },
+    {
+      "id": "v3-acceptance-公司爱心基金申请-48c48a8735",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.114
+    },
+    {
+      "id": "v3-acceptance-公司环保积分兑换-e7ed67e93b",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.498
+    },
+    {
+      "id": "v3-acceptance-公司环保积分兑换-89b000c9d9",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.865
+    },
+    {
+      "id": "v3-acceptance-公司应急联系人变更-cc8005b817",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.425
+    },
+    {
+      "id": "v3-acceptance-公司应急联系人变更-4f739257f4",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.034
+    },
+    {
+      "id": "v3-acceptance-公司健康跑活动-fa90b9de6c",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.271
+    },
+    {
+      "id": "v3-acceptance-公司健康跑活动-a28a3bb058",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.998
+    },
+    {
+      "id": "v3-acceptance-公司义卖活动-49e57a5316",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.365
+    },
+    {
+      "id": "v3-acceptance-公司义卖活动-d2a7bae2f1",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.739
+    },
+    {
+      "id": "v3-acceptance-内部急救课程-c65c25bd4a",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.814
+    },
+    {
+      "id": "v3-acceptance-内部急救课程-24b0052d28",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.564
+    },
+    {
+      "id": "v3-acceptance-公司中秋手作活动-b63ca74d32",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.325
+    },
+    {
+      "id": "v3-acceptance-公司中秋手作活动-acb93f5194",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.287
+    },
+    {
+      "id": "v3-acceptance-公司年度开放日-470e5c97a2",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.872
+    },
+    {
+      "id": "v3-acceptance-公司年度开放日-36b9a8dbae",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 12.545
+    },
+    {
+      "id": "v3-acceptance-公司员工答辩现场-b87b2a03f9",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.175
+    },
+    {
+      "id": "v3-acceptance-公司员工答辩现场-9fcddea126",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.896
+    },
+    {
+      "id": "v3-acceptance-内部健康讲座-77889de112",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.218
+    },
+    {
+      "id": "v3-acceptance-内部健康讲座-17711baa86",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.859
+    },
+    {
+      "id": "v3-acceptance-公司园区导览-1f6b6be77e",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.888
+    },
+    {
+      "id": "v3-acceptance-公司园区导览-a4f06e74a3",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.297
+    },
+    {
+      "id": "v3-acceptance-公司音乐交流会-2157fc88f0",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.598
+    },
+    {
+      "id": "v3-acceptance-公司音乐交流会-50176b9eff",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 11.478
+    },
+    {
+      "id": "v3-acceptance-公司绿色办公宣讲-4511d434ee",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.511
+    },
+    {
+      "id": "v3-acceptance-公司绿色办公宣讲-a4bf9709d0",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.595
+    },
+    {
+      "id": "v3-acceptance-公司校友见面会-fe8e70edcc",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.33
+    },
+    {
+      "id": "v3-acceptance-公司校友见面会-35f8784d61",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.976
+    },
+    {
+      "id": "v3-acceptance-公司急救设备培训-2b77224dfb",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 9.323
+    },
+    {
+      "id": "v3-acceptance-公司急救设备培训-9436819c1a",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 10.019
+    },
+    {
+      "id": "v3-acceptance-公司哺乳室预约表-9b5ad3c159",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.339
+    },
+    {
+      "id": "v3-acceptance-公司哺乳室预约表-257216637f",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.634
+    },
+    {
+      "id": "v3-acceptance-本公司夜班餐补表-1bdcd6dcb4",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "negated_or_contrastive_request",
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 9.1
+    },
+    {
+      "id": "v3-acceptance-本公司夜班餐补表-aa5635be1a",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.451
+    },
+    {
+      "id": "v3-acceptance-公司轮岗登记表-f1a65629bb",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.914
+    },
+    {
+      "id": "v3-acceptance-公司轮岗登记表-1291330a0c",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.04
+    },
+    {
+      "id": "v3-acceptance-内部心理服务介绍-1720fafa24",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.262
+    },
+    {
+      "id": "v3-acceptance-内部心理服务介绍-b67871d040",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "explicit_media_request_cannot_be_silently_text"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.731
+    },
+    {
+      "id": "v3-acceptance-公司供应商入场须知-0d00aec463",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 11.826
+    },
+    {
+      "id": "v3-acceptance-公司供应商入场须知-e87e28f850",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "negated_or_contrastive_request",
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 9.111
+    },
+    {
+      "id": "v3-acceptance-公司失物登记表-59a687d6ac",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.381
+    },
+    {
+      "id": "v3-acceptance-公司失物登记表-42e51c9988",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.072
+    },
+    {
+      "id": "v3-acceptance-公司体检项目清单-01e30af8c1",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.273
+    },
+    {
+      "id": "v3-acceptance-公司体检项目清单-d3ac8b3cf0",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.462
+    },
+    {
+      "id": "v3-acceptance-内部实习答辩模板-b6ca0dad00",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "negated_or_contrastive_request",
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.861
+    },
+    {
+      "id": "v3-acceptance-内部实习答辩模板-828e9d9f51",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.033
+    },
+    {
+      "id": "v3-acceptance-公司爱心基金表-eb51a24de1",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 6.668
+    },
+    {
+      "id": "v3-acceptance-公司爱心基金表-4b18f45e81",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.207
+    },
+    {
+      "id": "v3-acceptance-公司环保积分手册-d68fdffc58",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.519
+    },
+    {
+      "id": "v3-acceptance-公司环保积分手册-94d33d119c",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 8.589
+    },
+    {
+      "id": "v3-acceptance-公司应急信息更新单-b077c8af1b",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.31
+    },
+    {
+      "id": "v3-acceptance-公司应急信息更新单-dec43c20a5",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "negated_or_contrastive_request",
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 10.168
+    },
+    {
+      "id": "v3-acceptance-内部急救教学讲义-cdab1977fd",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.635
+    },
+    {
+      "id": "v3-acceptance-内部急救教学讲义-9a497fd483",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 7.546
+    },
+    {
+      "id": "v3-acceptance-acceptance-ambiguous-0-d16cdc3bdf",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "requires_conversation_context"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 6.842
+    },
+    {
+      "id": "v3-acceptance-acceptance-ambiguous-1-f53dd8ebac",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 1.527
+    },
+    {
+      "id": "v3-acceptance-acceptance-ambiguous-2-034c794d3b",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 5.028
+    },
+    {
+      "id": "v3-acceptance-acceptance-ambiguous-3-65bb624ecf",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "requires_conversation_context",
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 4.879
+    },
+    {
+      "id": "v3-acceptance-acceptance-ambiguous-4-ae60c4c9b5",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "requires_conversation_context"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 6.46
+    },
+    {
+      "id": "v3-acceptance-acceptance-ambiguous-5-7fbb9a4186",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 7.184
+    },
+    {
+      "id": "v3-acceptance-acceptance-ambiguous-6-2d2871ef12",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "requires_conversation_context",
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 4.772
+    },
+    {
+      "id": "v3-acceptance-acceptance-ambiguous-7-7da91f35ba",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "requires_conversation_context",
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 5.923
+    },
+    {
+      "id": "v3-acceptance-acceptance-ambiguous-8-69c2876b5d",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 7.244
+    },
+    {
+      "id": "v3-acceptance-acceptance-ambiguous-9-11fc3c7ce2",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 6.128
+    },
+    {
+      "id": "v3-acceptance-acceptance-ambiguous-10-a4607cd6d5",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "requires_conversation_context"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 6.167
+    },
+    {
+      "id": "v3-acceptance-acceptance-ambiguous-11-b294ef97d3",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "requires_conversation_context",
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 4.69
+    },
+    {
+      "id": "v3-acceptance-本公司哺乳室使用-a8b8825e53",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 17.617
+    },
+    {
+      "id": "v3-acceptance-本公司哺乳室使用-98a3c5fe53",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 8.91
+    },
+    {
+      "id": "v3-acceptance-公司献血假-04ccad886f",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 11.682
+    },
+    {
+      "id": "v3-acceptance-公司献血假-e28f7a1b2c",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 11.233
+    },
+    {
+      "id": "v3-acceptance-公司夜班餐补-4706e9531f",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 11.472
+    },
+    {
+      "id": "v3-acceptance-公司夜班餐补-50fab258fb",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 9.239
+    },
+    {
+      "id": "v3-acceptance-本公司海外轮岗-81e6b22629",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 17.571
+    },
+    {
+      "id": "v3-acceptance-本公司海外轮岗-ca767f3b0a",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 11.442
+    },
+    {
+      "id": "v3-acceptance-公司心理咨询预约-2069c2c1fa",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 12.162
+    },
+    {
+      "id": "v3-acceptance-公司心理咨询预约-092edb2939",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 9.111
+    },
+    {
+      "id": "v3-acceptance-公司供应商入场-faa9c9699a",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 14.844
+    },
+    {
+      "id": "v3-acceptance-公司供应商入场-7621667169",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 9.511
+    },
+    {
+      "id": "v3-acceptance-公司失物招领-032b8b6cda",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 18.819
+    },
+    {
+      "id": "v3-acceptance-公司失物招领-1e312deda7",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 11.316
+    },
+    {
+      "id": "v3-acceptance-公司福利体检-5e004a3414",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 11.523
+    },
+    {
+      "id": "v3-acceptance-公司福利体检-5649fcc35e",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 8.206
+    },
+    {
+      "id": "v3-acceptance-公司实习生答辩-290495645a",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 11.973
+    },
+    {
+      "id": "v3-acceptance-公司实习生答辩-e768103c24",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 7.625
+    },
+    {
+      "id": "v3-acceptance-公司爱心基金申请-8c3eed8bc0",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 18.162
+    },
+    {
+      "id": "v3-acceptance-公司爱心基金申请-e9a25f5e7d",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 8.865
+    },
+    {
+      "id": "v3-acceptance-公司环保积分兑换-d016db0427",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 12.805
+    },
+    {
+      "id": "v3-acceptance-公司环保积分兑换-95fe0475b2",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 7.629
+    },
+    {
+      "id": "v3-acceptance-公司应急联系人变更-9ed7edbf4f",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 13.58
+    },
+    {
+      "id": "v3-acceptance-公司应急联系人变更-29a9722fe6",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 15.543
+    },
+    {
+      "id": "v3-acceptance-本公司哺乳室使用-5b0ed3614e",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [
+        "employee_image_not_read"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 19.333
+    },
+    {
+      "id": "v3-acceptance-公司献血假-49e5c503a2",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [
+        "employee_image_not_read"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 9.957
+    },
+    {
+      "id": "v3-acceptance-公司夜班餐补-c9d9f9d446",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [
+        "employee_image_not_read"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 10.304
+    },
+    {
+      "id": "v3-acceptance-本公司海外轮岗-1c07957eee",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [
+        "employee_image_not_read"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 9.139
+    },
+    {
+      "id": "v3-acceptance-本公司哺乳室使用-134644fdcc",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 5.422
+    },
+    {
+      "id": "v3-acceptance-公司献血假-134644fdcc",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 5.132
+    },
+    {
+      "id": "v3-acceptance-公司夜班餐补-134644fdcc",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 5.095
+    },
+    {
+      "id": "v3-acceptance-本公司海外轮岗-134644fdcc",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 14.037
+    },
+    {
+      "id": "v3-acceptance-公司健康跑活动-be3f093c5a",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 5.919
+    },
+    {
+      "id": "v3-acceptance-公司义卖活动-be3f093c5a",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 5.493
+    },
+    {
+      "id": "v3-acceptance-内部急救课程-be3f093c5a",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 5.967
+    },
+    {
+      "id": "v3-acceptance-公司中秋手作活动-be3f093c5a",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 8.32
+    },
+    {
+      "id": "v3-acceptance-公司哺乳室预约表-82e931a11e",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 0.085
+    },
+    {
+      "id": "v3-acceptance-本公司夜班餐补表-82e931a11e",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 0.064
+    },
+    {
+      "id": "v3-acceptance-公司轮岗登记表-82e931a11e",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 0.116
+    },
+    {
+      "id": "v3-acceptance-内部心理服务介绍-82e931a11e",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 0.068
+    }
+  ],
+  "dataset_role": "frozen_v2_on_same_v3_topic_holdout"
+}

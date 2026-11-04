@@ -59,8 +59,9 @@ def worker(pipe, model_path):
 
 
 class BertWorker:
-    def __init__(self, model_path):
+    def __init__(self, model_path, target=None):
         self.model_path=str(model_path);self.lock=threading.Lock()
+        self.target=target or worker
         self.process=None;self.pipe=None;self.ready=False;self.error='not_loaded'
 
     def start(self, timeout=180):
@@ -68,7 +69,7 @@ class BertWorker:
             if self.ready and self.process and self.process.is_alive():return True
             self._stop()
             context=mp.get_context('spawn');parent,child=context.Pipe()
-            self.pipe=parent;self.process=context.Process(target=worker,args=(child,self.model_path),daemon=True)
+            self.pipe=parent;self.process=context.Process(target=self.target,args=(child,self.model_path),daemon=True)
             self.process.start();child.close()
             if not parent.poll(timeout):self.error='model_load_timeout';self._stop();return False
             try:result=parent.recv()

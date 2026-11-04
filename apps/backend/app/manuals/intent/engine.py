@@ -10,6 +10,7 @@ from .factors import FactorBM25,inspect_request,validate_semantic
 from .settings import DATA, activation_valid, calibration_valid, config, load_rows
 from .terra import TerraClassifier
 from .types import Decision, Axes, axes_for_intent, context_text
+from .supervised import guarded_accept,worker as supervised_worker
 
 log=logging.getLogger('work.intent')
 if not log.handlers:
@@ -63,14 +64,14 @@ class Router:
         artifact=calibration_valid(cfg)
         # V1 flat NLI thresholds cannot authorize the new independent factors.
         # Keep its adapter, but require separately validated factor calibration.
-        if not artifact or not artifact.get('nli_axes_validated'):return
+        if not artifact or not (artifact.get('nli_axes_validated') or artifact.get('supervised_validated')):return
         if self.warming and not self.warming.done():return
         if self.worker and self.worker.ready and self.model_path==cfg['model_path']:return
         if time.monotonic()<self.retry_after:return
         self.retry_after=time.monotonic()+60
         async def start():
             if self.worker:await asyncio.to_thread(self.worker.close)
-            self.model_path=cfg['model_path'];self.worker=BertWorker(self.model_path)
+            self.model_path=cfg['model_path'];self.worker=BertWorker(self.model_path,target=supervised_worker if artifact.get('schema')=='factors-v3' else None)
             try:ready=await asyncio.to_thread(self.worker.start)
             except Exception as exc:
                 ready=False;self.worker.error=type(exc).__name__
@@ -92,10 +93,10 @@ class Router:
         signals=inspect_request(request)
         if not result and signals.clarification:result=('clarify',signals.clarification)
         if result:decision.intent,decision.reason=result
-        if not result and artifact and artifact.get('schema')=='factors-v2':
+        if not result and artifact and artifact.get('schema') in ('factors-v2','factors-v3'):
             key=(artifact['fingerprint']['index.jsonl'],artifact['fingerprint']['intent-policy.v2.json'])
             if self.factor_key!=key:
-                self.factor_index=FactorBM25(load_rows('index'));self.factor_key=key
+                self.factor_index=FactorBM25(load_rows('index',version=cfg.get('sample_set','v2')));self.factor_key=key
             axes,features,guard_reasons=self.factor_index.decide(request,artifact.get('bm25_axes',{}))
             decision.axis_scores={name:features[name]['scores'] for name in ('scope','output')}
             decision.guard_reasons=guard_reasons
@@ -103,7 +104,17 @@ class Router:
                 decision.axes=axes;decision.intent=axes.intent;decision.method='bm25_axes'
         if decision.intent is None:
             await self.warm()
-            if artifact and artifact.get('nli_axes_validated') and self.worker and self.worker.ready:
+            if artifact and artifact.get('supervised_validated') and self.worker and self.worker.ready:
+                try:
+                    scores=await asyncio.to_thread(self.worker.classify,request.model_dump(mode='json'),2)
+                    decision.axis_scores.update({k:v for k,v in scores.items() if isinstance(v,dict)})
+                    axes,reason=guarded_accept(scores,artifact.get('supervised',{}),request)
+                    if axes:decision.axes=axes;decision.intent=axes.intent;decision.method='bert_supervised'
+                    else:reasons.append(reason)
+                except Exception as exc:
+                    reasons.append(type(exc).__name__)
+                    if isinstance(exc,TimeoutError):self.retry_after=time.monotonic()+300
+            elif artifact and artifact.get('nli_axes_validated') and self.worker and self.worker.ready:
                 try:
                     scores=await asyncio.to_thread(self.worker.classify,context_text(request),2)
                     label,score,gap=ranking(scores);decision.scores=scores;decision.margin=gap
@@ -115,7 +126,7 @@ class Router:
                 except Exception as exc:
                     reasons.append(type(exc).__name__)
                     if isinstance(exc,TimeoutError):self.retry_after=time.monotonic()+300
-            else:reasons.append('nli_factors_not_validated' if artifact else 'calibration_or_model_unavailable')
+            else:reasons.append('local_classifier_not_ready' if artifact and artifact.get('supervised_validated') else 'nli_factors_not_validated' if artifact else 'calibration_or_model_unavailable')
         decision.local_elapsed_ms=round((time.monotonic()-started)*1000,2)
         if decision.intent is None:
             if cfg['terra_enabled']:

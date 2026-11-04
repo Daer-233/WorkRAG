@@ -16,4 +16,5 @@ def status():
             'version':cfg['version'],'sample_set':cfg['sample_set'],'calibrated':bool(artifact),
             'classifier_schema':artifact.get('schema') if artifact else None,
             'nli_factors_validated':bool(artifact and artifact.get('nli_axes_validated')),
+            'supervised_validated':bool(artifact and artifact.get('supervised_validated')),
             'model_ready':bool(engine.worker and engine.worker.ready),'activation_allowed':activation_valid(cfg)}

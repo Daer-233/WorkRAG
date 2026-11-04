@@ -18,4 +18,4 @@
 
 父子分块说明见 `docs\knowledge-procedure-groups.md`。资料导入、图片和钉钉验证记录在 `docs` 下，原迁移前文档中的绝对路径以本 README 为准。
 
-当前意图分流为 V2 双维度结构（公司资料范围 × 返回形式），仍保持影子模式，员工回答沿用原链路，回答固定使用 Terra / Medium。部署、配置、校准及关闭方法见 `docs\knowledge-intent-routing-v2.md`，后续先读 `docs\knowledge-intent-routing-v2-handoff.md`。V1文档和验收报告保留作历史记录。
+当前意图分流配置为 V3 影子模式，使用 BM25 和专用 BERT，疑难分流由 Terra 补充。员工回答沿用 LangBot Codex Agent 的 Terra / Medium 链路。配置、校准与关闭方法见 `docs\knowledge-intent-routing-v3.md`，新对话先读 `docs\knowledge-intent-routing-v3-handoff.md`。验收结果与联调状态见 `output\intent-routing-v3\验收记录.md`。

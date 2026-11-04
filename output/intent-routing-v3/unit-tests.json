@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "unique_tests_passed": 77,
+  "intent_tests": 50,
+  "card_streaming_media_watchdog_model_tests": 27,
+  "existing_sdk_deprecation_warnings": 7,
+  "runs": [
+    {
+      "command": "python -m pytest scripts/test_knowledge_intent.py scripts/test_knowledge_intent_v2.py scripts/test_knowledge_intent_v3.py -q",
+      "result": "49 passed before adding the final activation-gate test"
+    },
+    {
+      "command": "python -m pytest scripts/test_knowledge_intent_v3.py -q",
+      "result": "19 passed, including the added human-review/fingerprint activation test; 18 overlap the prior run"
+    },
+    {
+      "command": "python -m pytest scripts/test_knowledge_card.py scripts/test_knowledge_dingtalk_media.py scripts/test_knowledge_streaming.py scripts/test_knowledge_connection_watchdog.py scripts/test_knowledge_codex_model.py -q",
+      "result": "27 passed, 7 existing SDK deprecation warnings"
+    }
+  ],
+  "employee_messages_sent": 0
+}

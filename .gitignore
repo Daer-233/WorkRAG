@@ -27,6 +27,7 @@ node_modules/
 /output/*
 !/output/intent-routing-v1/
 !/output/intent-routing-v2/
+!/output/intent-routing-v3/
 !/output/knowledge-card-v1/
 /output/knowledge-card-v1/*
 !/output/knowledge-card-v1/dingtalk-template.json
