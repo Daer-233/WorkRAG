@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     model_id: str = Field("BAAI/bge-reranker-v2-m3", validation_alias="RERANK_MODEL_ID")
     model_revision: str = Field("master", validation_alias="RERANK_MODEL_REVISION")
     model_dir: Path = Field(
-        Path(r"I:\design-ai-data\models\bge-reranker-v2-m3"),
+        Path(r"data/models/\bge-reranker-v2-m3"),
         validation_alias="RERANK_MODEL_DIR",
     )
     batch_size: int = Field(1, ge=1, le=32, validation_alias="RERANK_BATCH_SIZE")

@@ -36,7 +36,7 @@ class ManualModel:
                 'url':'data:image/png;base64,'+base64.b64encode(inside_data(image_path).read_bytes()).decode()}}]
         with httpx.Client(timeout=settings.llm_timeout_seconds) as client:
             response = client.post(settings.llm_base_url.rstrip('/')+'/chat/completions',
-                headers={'Authorization':'REPLACE_ME'+settings.effective_llm_api_key}, json={
+                headers={'Authorization':'Bearer '+settings.effective_llm_api_key}, json={
                     'model':settings.llm_model_id,'temperature':0,'max_tokens':2400,
                     'messages':[{'role':'system','content':system},{'role':'user','content':content}]})
             response.raise_for_status()
@@ -171,7 +171,7 @@ class ManualService:
             self.lock.release()
 
     def ask(self, question, category_id=None, product=None, version=None, entry_id=None,
-            page=1, source_only=False, evidence_limit=None, context_page=None):
+            page=1, source_only=False, evidence_limit=None, context_page=None, *, pinned_version=None):
         if not self.lock.acquire(blocking=False):
             raise ValueError('正在处理另一条检索，请稍后重试')
         try:
@@ -179,6 +179,7 @@ class ManualService:
                        and (not category_id or str(e['category_id'])==str(category_id))
                        and (not product or e['product'].casefold()==product.casefold())
                        and (not version or e['version'].casefold()==version.casefold())
+                       and (pinned_version is None or (e.get('version') or '') == pinned_version)
                        and (not entry_id or str(e['id'])==str(entry_id))]
             retrieval = self.retriever.search(question, entries, evidence_limit)
             common = {'retrieval_mode':retrieval.mode, 'retrieval_metrics':retrieval.metrics,

@@ -1,5 +1,6 @@
 """Read-only LangBot HTTP RAG response adapter; PostgreSQL remains authoritative."""
 import json
+from typing import Literal
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -14,6 +15,8 @@ class KnowledgeFilters(BaseModel):
     entry_id: UUID | None = None
     page: int = Field(default=1, ge=1, le=1000)
     context_page: int | None = Field(default=None, ge=1, le=1000)
+    followup: Literal['images', 'source_file', 'next_step', 'context'] | None = None
+    cursor: UUID | None = None
 
 
 class KnowledgeRetrieval(BaseModel):
@@ -33,8 +36,30 @@ def retrieve(service, payload: KnowledgeRetrieval):
         control, separator, query = query.partition('\n')
         if not separator or not query.strip() or payload.filters.model_dump(exclude_defaults=True):
             raise ValueError('知识检索控制参数无效或重复')
-        selected_filters = KnowledgeFilters.model_validate(json.loads(control[len('@knowledge '):]))
-    filters = selected_filters.model_dump()
+        envelope = json.loads(control[len('@knowledge '):])
+        if isinstance(envelope, dict) and 'memory_turn' in envelope:
+            from .session_memory import retrieval_scope
+            from .session_followup import notice, retrieve_followup
+
+            if set(envelope) != {'memory_turn'}:
+                raise ValueError('会话追问范围由后端决定')
+            try:
+                turn = UUID(str(envelope['memory_turn']))
+            except ValueError:
+                return notice('会话追问已失效，请重新提出问题。')
+            scope = retrieval_scope(turn)
+            if not scope:
+                return notice('会话追问已失效，请重新提出问题。')
+            source = scope['source']
+            selected_filters = KnowledgeFilters(entry_id=source['entry_id'], version=source['version'],
+                                                cursor=source['cursor'], followup=scope['kind'])
+            seed = source['title']
+            return retrieve_followup(service, seed, selected_filters, payload.top_k)
+        selected_filters = KnowledgeFilters.model_validate(envelope)
+    if selected_filters.followup:
+        from .session_followup import retrieve_followup
+        return retrieve_followup(service, query, selected_filters, payload.top_k)
+    filters = selected_filters.model_dump(exclude={'followup', 'cursor'})
     try:
         answer = service.ask(question=query, source_only=True, evidence_limit=payload.top_k, **filters)
     except ValueError as error:
@@ -42,9 +67,7 @@ def retrieve(service, payload: KnowledgeRetrieval):
             raise
         # The installed connector swallows HTTP errors as empty retrievals.
         # Preserve busy vs. no-evidence semantics through an explicit notice.
-        return {'status':'busy','results':[{'id':'retrieval_busy','score':0.0,
-                'content':'知识库正忙，本次尚未执行检索。请稍后重试，不能据此判断资料不存在；此消息不是知识证据。',
-                'metadata':{'result_type':'retrieval_notice','retryable':True}}]}
+        return busy_result()
     status = answer['status']
     if status == 'insufficient_evidence':
         notices = answer.get('limitations', [])
@@ -70,6 +93,12 @@ def retrieve(service, payload: KnowledgeRetrieval):
                              'retrieval_metrics':answer.get('retrieval_metrics', {})}, query, filters)
                for packet in packets]
     return {'status':'ok','results':results,'retrieval_metrics':answer.get('retrieval_metrics',{})}
+
+
+def busy_result():
+    return {'status':'busy','results':[{'id':'retrieval_busy','score':0.0,
+            'content':'知识库正忙，本次尚未执行检索。请稍后重试。',
+            'metadata':{'result_type':'retrieval_notice','retryable':True}}]}
 
 
 def source_result(answer, query, filters):

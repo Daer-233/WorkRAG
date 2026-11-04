@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     model_id: str = Field("BAAI/bge-m3", validation_alias="EMBEDDING_MODEL_ID")
     model_revision: str | None = Field("master", validation_alias="EMBEDDING_MODEL_REVISION")
     model_dir: Path = Field(
-        Path(r"I:\design-ai-data\models\bge-m3"),
+        Path(r"data/models/\bge-m3"),
         validation_alias="EMBEDDING_MODEL_DIR",
     )
     batch_size: int = Field(4, validation_alias="EMBEDDING_BATCH_SIZE")

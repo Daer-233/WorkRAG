@@ -17,6 +17,7 @@ from app.manuals.api import router, reconcile_cloud, service
 from app.db.connection import connection
 from app.manuals.intent.api import router as intent_router
 from app.manuals.intent.engine import router as intent_engine
+from app.manuals.session_memory import SCHEMA as MEMORY_SCHEMA, cleanup as cleanup_memory, router as memory_router
 
 
 async def worker():
@@ -36,6 +37,15 @@ async def index_worker():
         await asyncio.sleep(2)
 
 
+async def memory_worker():
+    while True:
+        try:
+            await asyncio.to_thread(cleanup_memory)
+        except Exception as error:
+            logging.getLogger(__name__).warning('Session memory cleanup failed (%s)', type(error).__name__)
+        await asyncio.sleep(300)
+
+
 @asynccontextmanager
 async def lifespan(app):
     validate_isolation()
@@ -43,6 +53,7 @@ async def lifespan(app):
         identity = c.execute('SELECT current_database() AS db,current_user AS owner').fetchone()
         if identity != {'db':'manual_rag','owner':'manual_rag'}:
             raise RuntimeError('Manual database identity mismatch')
+        c.execute(MEMORY_SCHEMA.read_text(encoding='utf-8'))
         # Local processing is retryable; external submitted jobs are reconciled separately.
         c.execute("UPDATE manual_entries SET processing_status='failed',error_message='本地提取被中断，可重新提取' WHERE processing_status='processing'")
         c.execute("UPDATE manual_entries SET index_status='queued' WHERE index_status='indexing' OR (status='published' AND processing_status='ready' AND index_status IN ('pending','failed'))")
@@ -52,12 +63,15 @@ async def lifespan(app):
     task = asyncio.create_task(worker())
     indexing = asyncio.create_task(index_worker())
     await intent_engine.warm()
+    memory_cleanup = asyncio.create_task(memory_worker())
     try: yield
     finally:
         task.cancel()
         indexing.cancel()
+        memory_cleanup.cancel()
         with suppress(asyncio.CancelledError): await task
         with suppress(asyncio.CancelledError): await indexing
+        with suppress(asyncio.CancelledError): await memory_cleanup
         await intent_engine.close()
 
 
@@ -99,5 +113,6 @@ def root(): return RedirectResponse('/knowledge/')
 
 app.include_router(router)
 app.include_router(intent_router)
+app.include_router(memory_router)
 app.mount('/knowledge',StaticFiles(directory=ROOT/'apps'/'manual-web',html=True),name='knowledge-web')
 app.mount('/manuals',StaticFiles(directory=ROOT/'apps'/'manual-web',html=True),name='manual-web')

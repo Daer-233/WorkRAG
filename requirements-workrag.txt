@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+pydantic-settings
+python-dotenv
+psycopg[binary]
+qdrant-client
+httpx
+python-multipart
+Pillow
+PyMuPDF
+python-docx
+python-pptx
+pypdf
+beautifulsoup4
+mcp

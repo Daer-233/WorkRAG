@@ -10,11 +10,11 @@ import time
 from .codex_delta import KEY
 from .model import LABELS, packets
 
-PIPELINE = '46b1174d-a808-46e3-ace9-ce34432803db'
+from .deployment import PIPELINE
 
 
 def selected(query):
-    return str(getattr(query, 'pipeline_uuid', '')) == PIPELINE
+    return bool(PIPELINE) and str(getattr(query, 'pipeline_uuid', '')) == PIPELINE
 
 
 async def prime(results, query, message_class):
@@ -23,7 +23,7 @@ async def prime(results, query, message_class):
         yield message_class(role='assistant', content='正在处理', all_content='',
             provider_specific_fields={KEY: {'stage':'processing', 'status_only':True}})
     try:
-        from .intent_host import route_results
+        from .session_memory import route_results
         async for result in route_results(results,query,message_class):
             yield result
     finally:

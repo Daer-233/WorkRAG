@@ -15,8 +15,8 @@ import sys
 import httpx
 
 ROOT = Path(__file__).resolve().parents[1]
-KB = 'b557ed18-fd7a-408c-89b7-fc9ffcc3e446'
-PIPELINE = '46b1174d-a808-46e3-ace9-ce34432803db'
+from knowledge_card.deployment import KB,PIPELINE
+
 RUNNER = 'plugin:langbot-team/CodexAgent/default'
 RUNTIME = ROOT / 'data/manuals/runtime/langbot-integration'
 
@@ -107,7 +107,7 @@ def setup_daemon(client):
         subprocess.run(['docker', 'cp', f'langbot_plugin_runtime:/app/.venv/lib/python3.12/site-packages/{package}', str(sdk)], check=True)
     config_path = runtime / 'daemon.private.json'
     private = json.loads(config_path.read_text(encoding='utf-8')) if config_path.exists() else {
-        'url': 'ws://127.0.0.1:18768', 'daemon_id': 'work-knowledge-liwj', 'token': secrets.token_urlsafe(40)}
+        'url': 'ws://127.0.0.1:18768', 'daemon_id': 'work-knowledge-local', 'token': secrets.token_urlsafe(40)}
     config_path.write_text(json.dumps(private, indent=2), encoding='utf-8')
     plugins = data(client.get('/api/v1/plugins'))['plugins']
     plugin = next(p for p in plugins if p.get('manifest', {}).get('manifest', {}).get('metadata', {}).get('name') == 'CodexAgent')
