@@ -15,9 +15,9 @@ from uuid import UUID
 from .codex_delta import KEY
 from .model import packets
 
-PIPELINE='46b1174d-a808-46e3-ace9-ce34432803db'
-BOT='9777ca2e-7df1-4441-84ca-abedd4bc5c01'
-KB='b557ed18-fd7a-408c-89b7-fc9ffcc3e446'
+from .deployment import PIPELINE,BOT,KB
+
+
 RUNNER='plugin:langbot-team/CodexAgent/default'
 CONFIG=Path('/app/data/work-knowledge-intent.json')
 ACTIVE=ContextVar('work_knowledge_intent',default=None)
@@ -45,7 +45,7 @@ def settings():
 
 def selected(query,cfg):
     launcher=getattr(query,'launcher_type',None);launcher=getattr(launcher,'value',launcher)
-    return (str(getattr(query,'pipeline_uuid',''))==PIPELINE and
+    return (bool(PIPELINE and BOT and KB) and str(getattr(query,'pipeline_uuid',''))==PIPELINE and
             str(getattr(query,'bot_uuid',''))==BOT and launcher=='person')
 
 

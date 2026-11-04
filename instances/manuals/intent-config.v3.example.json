@@ -1,0 +1,7 @@
+{
+  "mode": "shadow",
+  "version": "intent-v3-supervised",
+  "sample_set": "v3",
+  "model_path": "data/manuals/models/intent/supervised-bert-v3",
+  "terra_enabled": true
+}

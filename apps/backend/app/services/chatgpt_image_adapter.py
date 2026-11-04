@@ -14,7 +14,7 @@ def main() -> int:
     except ImportError:
         print(json.dumps({"error": "未安装 playwright，请安装 requirements/browser.txt"}, ensure_ascii=False))
         return 2
-    root = Path(os.getenv("DESIGN_RAG_DATA_ROOT", r"I:\design-ai-data"))
+    root = Path(os.getenv("DESIGN_RAG_DATA_ROOT", r"data"))
     profile = Path(os.getenv("DESIGN_RAG_CHATGPT_PROFILE", str(root / "chatgpt-browser-profile")))
     output_dir = root / "generated" / "ai-concept-images" / str(payload["project_id"])
     output_dir.mkdir(parents=True, exist_ok=True)

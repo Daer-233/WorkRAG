@@ -65,7 +65,7 @@ class Settings(BaseSettings):
     inference_timeout_seconds: float = Field(default=360.0, gt=0)
     embedding_request_batch_size: int = Field(default=4, ge=1, le=64)
     embedding_long_text_batch_chars: int = Field(default=1_800, ge=256, le=20_000)
-    data_root: Path = Path(r"I:\design-ai-data")
+    data_root: Path = Path(r"data")
 
     # OpenAI-compatible LLM gateway. It is independent of local Embedding/Rerank.
     # Actual external submission remains an explicit Step-6 action.
@@ -91,7 +91,7 @@ class Settings(BaseSettings):
     llm_vision_prompt_version: str = "design-image-v2-materials"
     llm_vision_batch_max_images: int = Field(default=20, ge=1, le=100)
     # Only EXIF-free, locally derived images may leave the machine for vision analysis.
-    vision_analysis_derivative_root: Path = Path(r"I:\design-ai-data\vision-analysis-derivatives")
+    vision_analysis_derivative_root: Path = Path(r"data/vision-analysis-derivatives")
     vision_analysis_max_dimension: int = Field(default=2048, ge=256, le=8192)
     # Local-only document page rendering. No page leaves the host until Admin approves Vision.
     document_page_vision_enabled: bool = True
@@ -99,7 +99,7 @@ class Settings(BaseSettings):
     document_page_vision_max_pages: int = Field(default=300, ge=1, le=2000)
     document_page_render_timeout_seconds: float = Field(default=300.0, gt=0, le=1800)
     soffice_path: Path = Path(r"C:\Program Files\LibreOffice\program\soffice.exe")
-    pdftoppm_path: Path = Path(r"C:\Users\liwj\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\poppler\Library\bin\pdftoppm.exe")
+    pdftoppm_path: Path = Path("pdftoppm")
 
     @property
     def effective_llm_api_key(self) -> str | None:

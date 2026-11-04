@@ -6,7 +6,20 @@ import json
 import re
 from uuid import NAMESPACE_URL, uuid5
 
-from mineru_markdown_import import IMAGE, norm, plain
+import html
+import unicodedata
+
+
+IMAGE = re.compile(r'!\[[^\]]*\]\(([^)]+)\)')
+
+
+def plain(text):
+    text=re.sub(r'\\([\\`*_{}\[\]()#+.!|\-])',r'\1',text)
+    return re.sub(r'[#*_`]', '',text).strip()
+
+
+def norm(text):
+    return re.sub(r'[\W_]+','',unicodedata.normalize('NFKC',html.unescape(plain(text))).casefold())
 
 TABLE=re.compile(r'<table\b[^>]*>[\s\S]*?</table>',re.I)
 STEP=re.compile(r'^\s*(?:#{1,6}\s*)?(?:\d+[.、．](?!\d)\s*|第\s*\d+\s*步)')
