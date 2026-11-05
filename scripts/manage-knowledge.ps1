@@ -87,7 +87,9 @@ function Wait-ServiceHealth($Service) {
         try { $health = Invoke-RestMethod -Uri "http://127.0.0.1:$($Service.Port)/health" -TimeoutSec 3 } catch { }
         if ($health) {
             if ($Service.Port -eq 8060) {
-                if ($health.status -ne 'ok' -or $health.library -ne 'manuals' -or $health.database -ne 'manual_rag' -or $health.collection -ne 'manual_rag_chunks_v1') {
+                $validIndex = ($health.vector_provider -eq 'milvus' -and $health.collection -match '^(manual_rag_|wk_manual_)') -or
+                    ($health.vector_provider -in @($null,'qdrant') -and $health.collection -eq 'manual_rag_chunks_v1')
+                if ($health.status -ne 'ok' -or $health.library -ne 'manuals' -or $health.database -ne 'manual_rag' -or -not $validIndex) {
                     throw 'Backend health identity mismatch; check the isolated knowledge configuration.'
                 }
             } else {

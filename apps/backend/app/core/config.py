@@ -18,6 +18,8 @@ class Settings(BaseSettings):
     postgres_dsn: str = "postgresql://design_rag:design_rag@127.0.0.1:5432/design_rag"
     qdrant_url: str = "http://127.0.0.1:6333"
     vector_provider: str = "qdrant"
+    milvus_uri: str = "http://127.0.0.1:19530"
+    milvus_collection: str | None = None
     qdrant_collection: str = "design_rag_chunks_v1"
 
     # Agent evidence-only API. Tokens and allowed projects are configured server-side.

@@ -23,7 +23,14 @@ def atomic(path,value):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=['off','shadow','on']);p.add_argument('--pin-answer-model',action='store_true');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=['off','shadow','on']);p.add_argument('--pin-answer-model',action='store_true')
+    p.add_argument('--codex2-only',action='store_true',help='Activate only the LSD AI assistant Codex2 direct-message route; preserve backend mode.')
+    args=p.parse_args()
+    if args.codex2_only:
+        if args.pin_answer_model or args.mode == 'off':
+            p.error('--codex2-only accepts on or shadow without --pin-answer-model')
+        set_codex2_mode(args.mode)
+        return
     cfg=config();cfg['mode']=args.mode
     if args.mode=='on' and not activation_valid(cfg):raise SystemExit('Activation gates not met; keep shadow. See '+str(report_dir(cfg)/'acceptance.json'))
     bridge={'mode':args.mode,'version':cfg['version']}
@@ -55,6 +62,35 @@ def main():
             saved=module.data(client.get('/api/v1/pipelines/'+module.PIPELINE))['pipeline']['config']
             if saved!=after:raise RuntimeError('Model config verification failed')
     print(json.dumps({'mode':args.mode,'version':cfg['version'],'answer_model':'gpt-6.1-terra/medium' if args.pin_answer_model else 'unchanged'}))
+
+
+def set_codex2_mode(mode):
+    if mode == 'on':
+        from urllib.request import ProxyHandler, build_opener
+        with build_opener(ProxyHandler({})).open('http://127.0.0.1:8060/api/v1/manuals/intent/status', timeout=8) as response:
+            status = json.load(response)
+        if not (status.get('effective_mode') == 'shadow' and status.get('version') == 'intent-v3-supervised'
+                and status.get('calibrated') and status.get('supervised_validated') and status.get('model_ready')):
+            raise SystemExit('Codex2 requires a ready and calibrated V3 classifier in backend shadow mode.')
+    subprocess.run(['docker','exec','-e','PYTHONPATH=/app/src','langbot','/app/.venv/bin/python','-c', '''
+import json
+from pathlib import Path
+import sys
+p = Path('/app/data/work-knowledge-intent.json')
+value = json.loads(p.read_text(encoding='utf-8'))
+mode = sys.argv[1]
+if mode == 'on':
+    from langbot.pkg.platform.adapters.dingtalk.knowledge_card.session_memory import native_intent_results
+    if value.get('mode') != 'shadow' or value.get('version') != 'intent-v3-supervised':
+        raise SystemExit('Unexpected Codex2 Host configuration.')
+    value['native_mode'] = mode
+else:
+    value.pop('native_mode', None)
+pending = p.with_suffix('.native.pending')
+pending.write_text(json.dumps(value), encoding='utf-8')
+pending.replace(p)
+print(json.dumps({'codex2_mode': mode, 'legacy_mode': value['mode'], 'version': value['version']}))
+''',mode],check=True)
 
 
 if __name__=='__main__':main()

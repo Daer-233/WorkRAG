@@ -18,4 +18,16 @@
 
 父子分块说明见 `docs\knowledge-procedure-groups.md`。资料导入、图片和钉钉验证记录在 `docs` 下，原迁移前文档中的绝对路径以本 README 为准。
 
-当前意图分流配置为 V3 影子模式，使用 BM25 和专用 BERT，疑难分流由 Terra 补充。员工回答沿用 LangBot Codex Agent 的 Terra / Medium 链路。配置、校准与关闭方法见 `docs\knowledge-intent-routing-v3.md`，新对话先读 `docs\knowledge-intent-routing-v3-handoff.md`。验收结果与联调状态见 `output\intent-routing-v3\验收记录.md`。
+意图分流使用 BM25 和专用 BERT，疑难分流由 Terra 补充。员工回答通过 LangBot Codex Agent 处理。当前运行模式以本机配置及 `/api/v1/manuals/intent/status` 为准。配置和校准见 `docs\knowledge-intent-routing-v3.md`，验收记录见 `output\intent-routing-v3\验收记录.md`。
+
+## 会话记忆与部门范围
+
+LSD AI 助手单聊可使用 PostgreSQL 会话记忆，保存已引用资料和版本以支持追问。部署、有效期和回退方式见 `docs\knowledge-session-memory-postgres.md`。
+
+资料管理页提供部门映射、跨部门授权及资料适用范围设置。部门识别复用本机审批助手的钉钉通讯录配置，应用密钥不会写入仓库。**部门检索限制仍在联调，不能将配置页面或影子检查视为权限已生效。** 已有资料需确认归属，正式启用前需完成普通检索、会话追问、图片和原文件的端到端隔离验证。
+
+## 向量存储试验
+
+默认配置仍为 Qdrant。项目包含 Milvus 独立实例、迁移工具和适配器的试验代码。已有隔离测试与暂存快照，生产切换须重新同步并完成验证。参见 `docs\milvus-adapter-validation.md` 和 `docs\milvus-migration-handoff.md`。
+
+员工资料、截图、数据库、模型权重、凭据、备份以及本机运行日志均不随仓库上传。配置模板位于 `instances\manuals\.env.example`。

@@ -3,7 +3,7 @@ from collections import OrderedDict
 from app.manuals.groups import batches
 
 
-def assemble_sources(service, hits, question, page, entry_id, mode, force_page=False):
+def assemble_sources(service, hits, question, page, entry_id, mode, force_page=False, department_context=None):
     budget = 24000
     groups = OrderedDict()
     omitted_anchors = 0
@@ -27,7 +27,7 @@ def assemble_sources(service, hits, question, page, entry_id, mode, force_page=F
     sources = []
     for group in groups.values():
         entry, source_page = group['entry'], group['page']
-        source = service.answer_entry(entry, question, source_page, mode, None, True)
+        source = service.answer_entry(entry, question, source_page, mode, None, True, department_context)
         start = source.get('batch_start', (source_page - 1) * 20)
         anchors = {h.step_index: h for h in group['hits']}
         included = {index for index in anchors if start <= index < start + len(source['steps'])}

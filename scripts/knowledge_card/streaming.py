@@ -23,7 +23,7 @@ async def prime(results, query, message_class):
         yield message_class(role='assistant', content='正在处理', all_content='',
             provider_specific_fields={KEY: {'stage':'processing', 'status_only':True}})
     try:
-        from .intent_host import route_results
+        from .session_memory import route_results
         async for result in route_results(results,query,message_class):
             yield result
     finally:

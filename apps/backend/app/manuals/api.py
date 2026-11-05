@@ -12,6 +12,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 from starlette.datastructures import UploadFile as StarletteUploadFile
 
 from app.core.config import settings
+from app.providers.vector.factory import vector_identity
 from app.db.connection import connection
 from app.manuals.isolation import DATA, inside_data
 from app.manuals.service import ManualService
@@ -182,9 +183,20 @@ def understand(entry_id:UUID,asset_id:UUID,payload:Approval): return service.und
 @router.get('/assets/{asset_id}')
 def asset(asset_id:UUID,access_token:str,variant:Literal['preview','thumbnail']='preview'):
     row = service.store.asset(asset_id)
-    if not verify_asset_access(access_token,str(asset_id),str(row['entry_id'])):
+    access = verify_asset_access(access_token,str(asset_id),str(row['entry_id']))
+    if not access:
         from fastapi import HTTPException
         raise HTTPException(403,'图片引用已失效，请重新查询')
+    if access.get('run_id'):
+        from fastapi import HTTPException
+        from .departments import permitted_for_context
+        try:
+            allowed = permitted_for_context(UUID(access['run_id']))
+            entry = service.store.get(row['entry_id'])
+            if str(row['entry_id']) not in allowed or entry['status'] != 'published' or entry['processing_status'] != 'ready':
+                raise ValueError('图片不可用')
+        except (ValueError, KeyError):
+            raise HTTPException(403,'图片授权已失效，请重新查询') from None
     path = inside_data(row['thumbnail_path'] if variant=='thumbnail' else row['storage_path'])
     if not path.is_file():
         from fastapi import HTTPException
@@ -216,7 +228,7 @@ def cloud_jobs():
             identity = ModelIdentity('embedding','modelscope',settings.embedding_model_id,
                                      settings.embedding_model_revision,None,{'identity_source':'configuration'})
             result = service.repository.store_document(payload=payload,embedding_model=identity,
-                provider_name='qdrant',collection_name=settings.qdrant_collection)
+                provider_name=vector_identity()[0],collection_name=vector_identity()[1])
             return {'project_id':result.project_id,'document_id':result.document_id,
                     'document_version_id':result.document_version_id,'index_status':'pending'}
 

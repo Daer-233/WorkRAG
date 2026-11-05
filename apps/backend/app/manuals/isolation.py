@@ -19,6 +19,11 @@ def validate_isolation():
             or settings.vision_analysis_derivative_root.resolve() != (DATA / 'vision-analysis-derivatives').resolve()
             or not settings.design_rag_asset_signing_secret):
         raise RuntimeError('Manual instance isolation check failed; refusing to access another library')
+    if settings.vector_provider.lower() == 'milvus' and (
+        urlsplit(settings.milvus_uri).hostname not in {'localhost', '127.0.0.1', '::1'}
+        or not (settings.milvus_collection or '').startswith(('manual_rag_', 'wk_manual_'))
+    ):
+        raise RuntimeError('Milvus collection must belong to the manual library')
     return dsn
 
 

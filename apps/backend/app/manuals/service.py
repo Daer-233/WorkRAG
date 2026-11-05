@@ -14,7 +14,7 @@ from app.clients.inference import EmbeddingClient, RerankClient, ModelIdentity
 from app.core.config import settings
 from app.db.connection import connection
 from app.providers.vector.base import VectorRecord
-from app.providers.vector.qdrant_provider import QdrantVectorProvider
+from app.providers.vector.factory import get_vector_provider, vector_identity
 from app.repositories.rag_repository import RagRepository
 from app.services.image_asset_access import sign_asset_access
 from app.manuals.content import extract_local, save_image
@@ -52,9 +52,9 @@ class ManualService:
         self.lock = Lock()
         self.retriever = retriever or HybridRetriever()
 
-    def asset_public(self, asset):
+    def asset_public(self, asset, department_context=None):
         aid = str(asset['id'])
-        token = sign_asset_access(aid, str(asset['entry_id']))
+        token = sign_asset_access(aid, str(asset['entry_id']), run_id=str(department_context) if department_context else None)
         base = f'/api/v1/manuals/assets/{aid}'
         return {'asset_id':aid,'name':asset['name'],'page':asset['page_number'],
                 'preview_url':f'{base}?access_token={token}',
@@ -118,7 +118,7 @@ class ManualService:
             'document':{'external_key':'manual-'+str(entry_id),'file_name':entry['source_name'] or entry['title'],
                         'file_type':'manual','source_uri':'manual://'+str(entry_id),'metadata':{},'access_scope':{}},
             'parser':{'provider':'manual-source','model':'manual-content-v1','version':'1'},'chunks':parents},
-            embedding_model=identity,provider_name='qdrant',collection_name=settings.qdrant_collection)
+            embedding_model=identity,provider_name=vector_identity()[0],collection_name=vector_identity()[1])
         data = {'steps':steps}
         if groups is not None: data['groups'] = groups
         entry = self.store.update(entry_id,data=data,document_id=result.document_id,
@@ -154,15 +154,29 @@ class ManualService:
             if not rows:
                 raise ValueError('请先整理内容')
             self.store.update(entry_id,index_status='indexing')
-            embedding = EmbeddingClient().embed_many([r['content'] for r in rows])
-            provider = QdrantVectorProvider()
+            provider_name, collection_name = vector_identity()
+            chunk_ids = [str(row['id']) for row in rows]
+            self.repository.register_index_records(chunk_ids, provider_name, collection_name)
+            try:
+                embedding = EmbeddingClient().embed_many([r['content'] for r in rows])
+                provider = get_vector_provider()
+            except Exception as error:
+                self.repository.mark_index_status(chunk_ids, status='failed', error=type(error).__name__,
+                    provider_name=provider_name, collection_name=collection_name)
+                raise
             records = [VectorRecord(str(row['id']),str(row['id']),embedding['dense_vectors'][i],
                 embedding['sparse_vectors'][i]['indices'],embedding['sparse_vectors'][i]['values'],{
                     'chunk_id':str(row['id']),'chunk_level':'child','access_open':True,
                     'manual_entry_id':str(entry_id),'document_version_id':str(entry['document_version_id'])})
                 for i,row in enumerate(rows)]
-            provider.upsert_chunks(records,embedding['dense_dimension'])
-            self.repository.mark_index_status([str(r['id']) for r in rows],status='indexed')
+            try:
+                provider.upsert_chunks(records, embedding['dense_dimension'])
+            except Exception as error:
+                self.repository.mark_index_status(chunk_ids, status='failed', error=type(error).__name__,
+                    provider_name=provider_name, collection_name=collection_name)
+                raise
+            self.repository.mark_index_status([str(r['id']) for r in rows], status='indexed',
+                provider_name=provider.provider_name, collection_name=provider.collection_name)
             self.store.update(entry_id,index_status='indexed')
         except Exception:
             self.store.update(entry_id,index_status='failed')
@@ -171,16 +185,31 @@ class ManualService:
             self.lock.release()
 
     def ask(self, question, category_id=None, product=None, version=None, entry_id=None,
-            page=1, source_only=False, evidence_limit=None, context_page=None):
+            page=1, source_only=False, evidence_limit=None, context_page=None, *, pinned_version=None,
+            permitted_entry_ids=None, department_context=None):
         if not self.lock.acquire(blocking=False):
             raise ValueError('正在处理另一条检索，请稍后重试')
         try:
             entries = [e for e in self.store.entries() if e['status']=='published' and e['processing_status']=='ready'
+                       and (permitted_entry_ids is None or str(e['id']) in permitted_entry_ids)
                        and (not category_id or str(e['category_id'])==str(category_id))
                        and (not product or e['product'].casefold()==product.casefold())
                        and (not version or e['version'].casefold()==version.casefold())
+                       and (pinned_version is None or (e.get('version') or '') == pinned_version)
                        and (not entry_id or str(e['id'])==str(entry_id))]
             retrieval = self.retriever.search(question, entries, evidence_limit)
+            if department_context is not None and retrieval.hits:
+                from .departments import permitted_for_context
+
+                current_grants = permitted_for_context(department_context)
+                current_versions = {str(entry['id']): entry['document_version_id']
+                                    for entry in self.store.entries()
+                                    if entry['status'] == 'published' and entry['processing_status'] == 'ready'
+                                    and str(entry['id']) in current_grants}
+                entries = [entry for entry in entries
+                           if current_versions.get(str(entry['id'])) == entry['document_version_id']]
+                active_entries = {str(entry['id']) for entry in entries}
+                retrieval.hits = [hit for hit in retrieval.hits if str(hit.entry['id']) in active_entries]
             common = {'retrieval_mode':retrieval.mode, 'retrieval_metrics':retrieval.metrics,
                       'limitations':list(retrieval.limitations)}
             if not retrieval.hits:
@@ -196,7 +225,7 @@ class ManualService:
                 if ambiguous:
                     return {**common,'status':'choose_version','summary':'相关资料存在多个适用版本，请先选择；本次未混合这些版本。',
                             'options':list(ambiguous.values()),'steps':[],'sources':[]}
-            sources, extra, omitted = assemble_sources(self,retrieval.hits,question,context_page or page,entry_id,retrieval.mode,context_page is not None)
+            sources, extra, omitted = assemble_sources(self,retrieval.hits,question,context_page or page,entry_id,retrieval.mode,context_page is not None,department_context)
             common['limitations'].extend(extra)
             common['retrieval_metrics']['omitted_anchors'] = omitted
             common['retrieval_metrics']['returned_evidence_count'] = sum(len(s['matched_evidence_ids']) for s in sources)
@@ -246,19 +275,19 @@ class ManualService:
                 # indexing failure is recorded by index_entry itself.
                 pass
 
-    def answer_entry(self, entry, question, page, mode, limitation, source_only=False):
+    def answer_entry(self, entry, question, page, mode, limitation, source_only=False, department_context=None):
         source_steps = entry['data'].get('steps',[])
         pages = batches(entry)
         selected_batch = pages[page-1] if 0 < page <= len(pages) else None
         start = selected_batch['start'] if selected_batch else len(source_steps)
         end = selected_batch['end'] if selected_batch else start
         selected = source_steps[start:end]
-        assets = {str(a['id']):self.asset_public(a) for a in self.store.assets(entry['id'])}
+        assets = {str(a['id']):self.asset_public(a, department_context) for a in self.store.assets(entry['id'])}
         steps = [{'order':s.get('order'),'instruction':s['instruction'],'evidence_ids':[s['evidence_id']],
                   'images':[assets[aid] for aid in s.get('asset_ids',[]) if aid in assets],
                   'section_images':[assets[aid] for aid in s.get('section_asset_ids',[]) if aid in assets],
                   'source':{'file_name':entry['source_name'] or entry['title'],'page':s.get('page'),
-                            'url':f"/api/v1/manuals/entries/{entry['id']}/source" if entry['source_path'] else None}}
+                            'url':f"/api/v1/manuals/entries/{entry['id']}/source" if entry['source_path'] and department_context is None else None}}
                  for s in selected]
         summary, generated = '以下为相关知识资料原文；未补写资料外的内容。', False
         limitations = [limitation] if limitation else []
