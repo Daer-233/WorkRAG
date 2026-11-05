@@ -27,15 +27,6 @@ flowchart LR
 - **可追问的图文回答**。卡片显示处理状态、真实增量和来源，支持已入库图片。会话记忆按单聊和员工隔离，有效期 24 小时。追问时重新核对发布状态和版本，必要时请员工选择资料。
 - **工作与日常分流**。独立 BM25 样例索引和监督 BERT 负责本地分类，Terra 处理低置信度问题。日常路线不获得知识库权限。V3 接管范围可限定到指定机器人单聊，支持退回影子模式。钉钉接收端在消息入队后确认，短期内按消息 ID 去重。
 
-## 开源组件与设计参考
-
-| 组件 | 在 WorkRAG 中的用途 |
-| --- | --- |
-| [LangBot](https://github.com/langbot-app/LangBot) | 接收钉钉消息、管理运行器和授权。WorkRAG 在 Host 层实现意图分流、会话范围约束、卡片初始状态和消息去重。 |
-| [MinerU](https://github.com/opendatalab/MinerU) | 解析文档并导入 Markdown、页码及图片。WorkRAG 将提取结果整理成可审核的章节和流程。 |
-| [PostgreSQL](https://www.postgresql.org/) 与 [Qdrant](https://github.com/qdrant/qdrant) | 分别保存权威资料和可重建的向量索引。 |
-| [Dify](https://docs.dify.ai/en/cloud/use-dify/knowledge/create-knowledge/chunking-and-cleaning-text) | 父子分块交互的设计参考。WorkRAG 独立实现流程边界编辑、发布前预览和父块上下文回填。 |
-
 ## 当前成果
 
 | 指标 | 本机试点结果 |
@@ -60,3 +51,35 @@ python scripts/manual-instance.py serve
 ```
 
 知识管理界面在 `http://127.0.0.1:8060/knowledge/`。LangBot 需要另行部署和设置 CodexAgent、机器人及工作知识库绑定。部署顺序和配置边界见 [本地部署说明](docs/deployment.md)。代码与示例可用于部署，业务资料、模型权重及运行凭据由部署方保管。
+
+## 开源依赖与来源
+
+### 实际使用
+
+- [LangBot](https://github.com/langbot-app/LangBot)：接收钉钉消息并管理运行器和授权。
+- [MinerU](https://github.com/opendatalab/MinerU)：提取 Markdown、页码和配图。
+- [PostgreSQL](https://github.com/postgres/postgres)：保存原文、版本与会话引用。
+- [Qdrant](https://github.com/qdrant/qdrant)：保存可重建的混合检索索引。
+- [BGE-M3](https://huggingface.co/BAAI/bge-m3)：生成稠密向量与稀疏权重。
+- [BGE-Reranker-v2-m3](https://huggingface.co/BAAI/bge-reranker-v2-m3)：对候选证据重排。
+- [FastAPI](https://github.com/fastapi/fastapi)：提供后端 HTTP API。
+- [Uvicorn](https://github.com/encode/uvicorn)：运行 ASGI 服务。
+- [Pydantic Settings](https://github.com/pydantic/pydantic-settings)：读取环境和应用配置。
+- [python-dotenv](https://github.com/theskumar/python-dotenv)：加载本地环境文件。
+- [Psycopg](https://github.com/psycopg/psycopg)：访问 PostgreSQL。
+- [Qdrant Python Client](https://github.com/qdrant/qdrant-client)：访问 Qdrant 向量索引。
+- [HTTPX](https://github.com/encode/httpx)：发起 HTTP 请求及测试接口。
+- [python-multipart](https://github.com/Kludex/python-multipart)：处理表单文件上传。
+- [pypdf](https://github.com/py-pdf/pypdf)：处理 PDF 页及页段。
+- [Pillow](https://github.com/python-pillow/Pillow)：处理图像和缩略图。
+- [PyMuPDF](https://github.com/pymupdf/PyMuPDF)：读取 PDF 页面和图像。
+- [python-docx](https://github.com/python-openxml/python-docx)：读取 Word 文档。
+- [python-pptx](https://github.com/scanny/python-pptx)：读取 PowerPoint 演示文稿。
+- [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)：解析 HTML 文档。
+- [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)：实现 MCP 服务和工具通信。
+- [FlagEmbedding](https://github.com/FlagOpen/FlagEmbedding)：运行 BGE 向量化与重排。
+- [PyTorch](https://github.com/pytorch/pytorch)、[Transformers](https://github.com/huggingface/transformers)和 [Safetensors](https://github.com/huggingface/safetensors)：用于训练本地意图分类器、加载分词器并保存权重。
+
+### 设计参考
+
+- [Dify 父子分块文档](https://docs.dify.ai/en/cloud/use-dify/knowledge/create-knowledge/chunking-and-cleaning-text)：参考父子分块交互，WorkRAG 自行实现流程边界编辑、发布前预览和父块上下文回填。
