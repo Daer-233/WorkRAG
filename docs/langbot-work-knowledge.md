@@ -1,5 +1,11 @@
 # 工作知识助手与 LangBot Codex 接入
 
+## 当前状态（2026-11-06 下午）
+
+工作助手已按用户选择切回 Qdrant `manual_rag_chunks_v1`；本地三路混合检索、无证据降级、LangBot HTTP RAG 验证均已通过。BM25/BERT 意图分流保持 `off`，由现有 LangBot Codex Agent 识别并回答。Codex 桌面版升级导致的旧可执行文件路径已刷新；随后实际 Pipeline 已能到达 Codex，但当前账号返回用量限制，完整生成需待额度恢复后复验。未向钉钉会话发送测试消息。
+
+钉钉自动化审批平台 MCP 当前在 `127.0.0.1:8070` 已启用并绑定本人试用身份，提供五个预览/查询工具，`can_submit=false`；15 项服务测试、9 项 Host 测试和链接测试通过。真实钉钉文件上传仍需本人端到端验收，正式提交和批准仍只发生在原平台。
+
 最新检索链路已按用户确认升级为三路召回、统一重排及跨资料证据，见 [混合检索与 Codex 工作流](knowledge-hybrid-workflow.md)。本文件保留 LangBot 接入、Daemon 和本地修订的运维说明；最新验收以 `artifacts/knowledge-hybrid-20261029/verification.json` 为准。
 
 更新：2026-10-29。当前方案采用用户指定的既有 **Codex** 处理器，连接既有 **工作知识** HTTP RAG 知识库。独立专用 Runner 源码保留为备选，未安装、未替换 Codex。

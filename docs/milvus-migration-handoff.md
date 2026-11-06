@@ -1,4 +1,6 @@
-# Milvus 迁移进度与交接（2026-11-05）
+# Milvus 迁移进度与交接
+
+**最新状态（2026-11-06 下午）：工作助手已按用户选择回退到 Qdrant `manual_rag_chunks_v1`，意图分流保持关闭并由 LangBot Codex Agent 处理。Milvus 仅作为已核对备份保留。[正式启用记录](milvus-production-cutover.md) 已标记为历史，不再代表当前配置。**
 
 用户希望工作助手及 Design RAG 从 Qdrant 迁移至 Milvus。当前仅完成一份暂存快照，**没有切换应用、没有停写、没有删除 Qdrant**。PostgreSQL 的业务记录、原始文件和图片继续存放在原位置，Milvus 不替代它们。
 

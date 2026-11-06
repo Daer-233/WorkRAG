@@ -84,11 +84,14 @@ def configure(client):
             'bot_routes_changed': False}
 
 
-def verify(client):
+def verify(client, query='图文操作条目演示如何添加截图？'):
     result = data(client.post(f'/api/v1/knowledge/bases/{KB}/retrieve', json={
-        'query': '图文操作条目演示如何添加截图？'}))['results']
-    return {'matched_results': len(result), 'has_text': any(r.get('content') for r in result),
-            'has_metadata': any(r.get('metadata') for r in result)}
+        'query': query}))['results']
+    report = {'matched_results': len(result), 'has_text': any(r.get('content') for r in result),
+              'has_metadata': any(r.get('metadata') for r in result)}
+    if not result or not report['has_text'] or not report['has_metadata']:
+        raise RuntimeError('LangBot knowledge verification returned no usable evidence: ' + json.dumps(report, ensure_ascii=False))
+    return report
 
 
 def setup_daemon(client):
@@ -160,9 +163,13 @@ def main():
     sys.stdout.reconfigure(encoding='utf-8')
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=['configure', 'verify', 'setup-daemon'])
+    parser.add_argument('--query', default='图文操作条目演示如何添加截图？', help='Read-only query used by verify.')
     args = parser.parse_args()
     with httpx.Client(base_url='http://127.0.0.1:5300', headers={'X-API-Key': credential()}, trust_env=False, timeout=150) as client:
-        result = {'configure': configure, 'verify': verify, 'setup-daemon': setup_daemon}[args.command](client)
+        if args.command == 'verify':
+            result = verify(client, args.query)
+        else:
+            result = {'configure': configure, 'setup-daemon': setup_daemon}[args.command](client)
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 

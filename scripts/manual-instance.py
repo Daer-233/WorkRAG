@@ -15,6 +15,11 @@ def load():
     if not CONFIG.is_file(): raise RuntimeError('Run manual-instance.py init first')
     load_dotenv(CONFIG,override=True)
     os.environ['DESIGN_RAG_ENV_FILE']=str(CONFIG)
+    if os.environ.get('VECTOR_PROVIDER', 'qdrant').lower() == 'milvus':
+        sdk = Path(os.environ.get('MILVUS_SDK_PATH') or ROOT / 'data/milvus-sdk')
+        if not (sdk / 'pymilvus').is_dir():
+            raise RuntimeError('Milvus SDK not found; install requirements-milvus.txt into MILVUS_SDK_PATH')
+        sys.path.insert(0, str(sdk))
     from app.manuals.isolation import validate_isolation
     validate_isolation()
 

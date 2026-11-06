@@ -2,6 +2,11 @@
 /data/
 /backups/
 /artifacts/
+
+# Personal documents and local tooling state are not part of the project.
+/.playwright-cli/
+/*.docx
+/Daer-233-profile-README.md
 __pycache__/
 *.pyc
 .pytest_cache/

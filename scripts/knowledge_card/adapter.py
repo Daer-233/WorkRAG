@@ -43,6 +43,9 @@ def install(adapter_class, media=None):
             return await reply(self,message_source,bot_message,message,quote_origin=quote_origin,is_final=is_final)
         info = (getattr(bot_message,'provider_specific_fields',None) or {}).get(KEY,{})
         stage = info.get('stage')
+        if info.get('business'): await delivery.push({'type':'business.updated'})
+        if stage in ('payment_reading','payment_preparing','payment_review','payment_ready'):
+            await delivery.push({'type':'payment.stage','stage':stage})
         if stage == 'retrieving': await delivery.push({'type':'retrieval.started'})
         if stage == 'generating': await delivery.push({'type':'generation.started'})
         if info.get('packets'): await delivery.push({'type':'retrieval.completed','results':info['packets']})
@@ -72,7 +75,7 @@ def install(adapter_class, media=None):
                             match = re.search(r'!\[[^\]]*\]\((@?[\w-]+)\)',text)
                             if match: await delivery.push({'type':'image.ready','asset_id':image['asset_id'],'media_id':match[1]})
                             else: await delivery.push({'type':'image.failed'})
-                if not delivery.state.sources:
+                if not delivery.state.sources and not delivery.state.business:
                     delivery.state.notices.append('本次未提供可核对的知识库依据。')
                 await delivery.push({'type':'run.completed'})
             except BaseException:

@@ -16,7 +16,7 @@ def main():
     questions = [
         ('source', '图文操作条目演示中如何添加截图并发布？'),
         ('multiple', '请结合日常手册库使用手册和图文操作条目演示，说明新建、添加截图和发布资料的流程。'),
-        ('missing', '财务付款审批额度上限和审批人是谁？')]
+        ('missing', '紫色飞船维修审批额度是多少？')]
     report = []
     with httpx.Client(base_url='http://127.0.0.1:8060', headers={'X-Manual-Request':'1'},
                       trust_env=False, timeout=420) as client:
