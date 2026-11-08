@@ -1,4 +1,4 @@
-"""Three-lane retrieval over published knowledge, followed by one shared reranker."""
+"""Three-lane recall, rule-based coarse ranking, then BGE reranking."""
 from __future__ import annotations
 
 from collections import defaultdict
@@ -11,6 +11,7 @@ from app.clients.inference import EmbeddingClient, RerankClient
 from app.core.config import settings
 from app.providers.vector.base import SearchFilter
 from app.providers.vector.factory import get_vector_provider
+from app.manuals.coarse import rank_manual_candidates
 
 
 def keyword_score(query, text):
@@ -62,7 +63,7 @@ class HybridRetriever:
         ]
         lanes = {}
         for name, rows in zip(('dense', 'sparse'), points):
-            ids = []
+            scores = {}
             for point in rows:
                 eid = str(point.id)
                 payload = point.payload or {}
@@ -74,9 +75,11 @@ class HybridRetriever:
                         or str(payload.get('manual_entry_id')) != str(entry['id'])
                         or payload.get('chunk_level') != 'child'):
                     continue
-                if eid not in ids:
-                    ids.append(eid)
-            lanes[name] = ids
+                score = float(point.score)
+                if not math.isfinite(score):
+                    continue
+                scores[eid] = max(score, scores.get(eid, float('-inf')))
+            lanes[name] = scores
         metrics['vector_ms'] = round((perf_counter() - started) * 1000, 2)
         return lanes
 
@@ -88,6 +91,8 @@ class HybridRetriever:
         metrics = {'dense_count': 0, 'sparse_count': 0, 'keyword_count': 0,
                    'rerank_input_count': 0, 'evidence_count': 0, 'embedding_ms': 0,
                    'vector_ms': 0, 'rerank_ms': 0,
+                   'coarse_method': 'weighted_rules_v1', 'coarse_ms': 0,
+                   'coarse_input_count': 0, 'coarse_count': 0,
                    'rerank_candidate_top_k': settings.effective_rerank_candidate_top_k,
                    'unindexed_entries': sum(e.get('index_status') != 'indexed' for e in entries)}
         if not lookup:
@@ -101,7 +106,7 @@ class HybridRetriever:
         keywords = sorted((eid for eid in lookup if lexical_scores[eid] > 0),
                           key=lambda eid: (-lexical_scores[eid], eid))[:40]
         limitations = []
-        lanes = {'keyword': keywords}
+        lanes = {'keyword': {eid: lexical_scores[eid] for eid in keywords}}
         vectors_available = False
         try:
             lanes.update(self.vector_lanes(question, lookup, metrics))
@@ -111,11 +116,12 @@ class HybridRetriever:
             limitations.append('向量检索不可用，本次仅从标题和原文关键词召回候选。')
         for name, ids in lanes.items():
             metrics[name + '_count'] = len(ids)
-        fused = defaultdict(float)
-        for ids in lanes.values():
-            for rank, eid in enumerate(ids, 1):
-                fused[eid] += 1 / (60 + rank)
-        order = sorted(fused, key=lambda eid: (-fused[eid], -lexical_scores[eid], eid))
+        coarse_started = perf_counter()
+        metrics['coarse_input_count'] = len(set().union(*(set(ids) for ids in lanes.values())))
+        coarse = rank_manual_candidates(question, lookup, lanes, settings.retrieval_coarse_top_k)
+        order = [item.evidence_id for item in coarse]
+        metrics['coarse_count'] = len(order)
+        metrics['coarse_ms'] = round((perf_counter() - coarse_started) * 1000, 2)
         budget = settings.effective_rerank_candidate_top_k
         # Keep room for another document before filling the remaining slots.
         candidates, by_document = [], defaultdict(int)
