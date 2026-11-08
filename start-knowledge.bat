@@ -2,7 +2,7 @@
 setlocal
 cd /d "%~dp0"
 title Work Knowledge Assistant - Start
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\manage-knowledge.ps1" -Action Start
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0start-local.ps1"
 set "KNOWLEDGE_EXIT_CODE=%ERRORLEVEL%"
 echo.
 if /I not "%~1"=="--no-pause" pause

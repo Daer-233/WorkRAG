@@ -1,0 +1,5 @@
+{
+  "postgres:16.11": "postgres@sha256:468e1f126ca5af849799cda06ac9b03d8090aae9fa5163408b3e8da44fad0702",
+  "qdrant/qdrant:v1.16.3": "qdrant/qdrant@sha256:0425e3e03e7fd9b3dc95c4214546afe19de2eb2e28ca621441a56663ac6e1f46",
+  "rockchin/langbot:v4.11.3": "rockchin/langbot@sha256:bee69e3601233cf2e45d550f6ddab8e435607dd328ab3e2cc80c087bcad328ba"
+}

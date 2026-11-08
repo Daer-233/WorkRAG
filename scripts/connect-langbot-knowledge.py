@@ -23,6 +23,9 @@ RUNTIME = ROOT / 'data/manuals/runtime/langbot-integration'
 
 def credential():
     key = os.environ.get('LANGBOT_API_KEY')
+    if not key:
+        from dotenv import dotenv_values
+        key = dotenv_values(RUNTIME / '.env').get('LANGBOT_API_KEY')
     if not key and os.name == 'nt':
         import winreg
         with winreg.OpenKey(winreg.HKEY_CURRENT_USER, 'Environment') as item:

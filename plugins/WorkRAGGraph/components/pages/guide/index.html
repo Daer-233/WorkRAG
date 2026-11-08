@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>入口说明</title>
+<style>*{box-sizing:border-box}body{font:15px/1.75 system-ui;margin:0;padding:28px;background:var(--langbot-bg,#f6f7f8);color:var(--langbot-text,#192a32)}main{max-width:1050px;margin:auto}h1{font-size:26px}h2{font-size:19px;margin-top:30px}section{padding:22px;border:1px solid var(--langbot-border,#dce2e7);border-radius:12px;background:var(--langbot-bg-card,#fff);margin:18px 0}table{border-collapse:collapse;width:100%}td,th{padding:12px;text-align:left;border-bottom:1px solid var(--langbot-border,#dce2e7)}th{white-space:nowrap}a{color:#329c8e}code{overflow-wrap:anywhere}.flow{font-size:17px;line-height:2.1}small{color:var(--langbot-text-muted,#73838e)}</style>
+<main><h1>这些入口分别做什么？</h1><p>日常调试用“调试助手”；配置机器人问答用“问答流水线”；上传和发布原始资料进入 WorkRAG。</p>
+<section><div class="flow">消息入口 → 问答流水线 → 问答引擎插件（LangGraph → Pi Agent） → LangBot 模型 / 资料检索工具（MCP） → WorkRAG</div><p>本机调试也可以从“调试助手”直接调用同一个引擎。LangGraph 管理记忆和资料确认，Pi 执行内部问答与工具循环；模型仍由 LangBot 授权。</p></section>
+<section><h2>入口对照</h2><table><thead><tr><th>位置 / 名称</th><th>作用</th><th>什么时候用</th></tr></thead><tbody>
+<tr><td>机器人 / 钉钉</td><td>收发平台消息</td><td>后续接入钉钉时绑定问答流水线；投递尚待联调</td></tr>
+<tr><td>处理器 / 调试助手</td><td>本机对话和反馈事件测试</td><td>测试 DeepSeek、资料检索及追问</td></tr>
+<tr><td>处理器 / 问答流水线</td><td>触发条件、安全控制、模型运行器及输出设置</td><td>配置机器人后续使用的问答流程</td></tr>
+<tr><td>扩展 / 问答引擎插件</td><td>实现 LangGraph 工作流、会话记忆和审核页面</td><td>安装升级和插件私有配置；它不是另一个机器人</td></tr>
+<tr><td>扩展 / 资料检索工具</td><td>MCP 连接，提供知识、图片、原文件和个人历史四个只读工具</td><td>检查连接和授权；旧名 WorkRAGReadOnly</td></tr>
+<tr><td>知识库 / 工作知识库（备用）</td><td>尚未配置的 HTTP 知识库入口</td><td>当前新助手不使用这个入口</td></tr>
+<tr><td>知识库 / design知识库（备用）</td><td>保留的旧 HTTP 入口，尚未配置</td><td>当前新助手不使用这个入口</td></tr>
+<tr><td>扩展 / HTTP RAG 连接器</td><td>为上述备用 HTTP 知识库提供连接能力</td><td>当前 MCP 链路不依赖它</td></tr>
+<tr><td>插件页面 / 标准问答审核</td><td>查看候选、编辑、发布和下架标准问答</td><td>审核用户反馈形成的可复用答案</td></tr></tbody></table></section>
+<section><h2>资料在哪里管理？</h2><p>正式原件、解析结果、发布状态和检索索引在 WorkRAG 管理。LangBot 中配置模型、处理器、工具授权，并审核标准问答。左侧两个备用知识库没有自动连接到 WorkRAG。</p>
+<p><a href="http://127.0.0.1:8060/knowledge/" target="_blank" rel="noopener noreferrer">打开 WorkRAG 资料管理页 ↗</a></p><p>若浏览器未打开新窗口，请复制地址：<code>http://127.0.0.1:8060/knowledge/</code></p>
+<p>导入资料后，需要在 WorkRAG 发布、索引，再把资料 ID 加入处理器的“授权资料 ID”列表。仅上传资料不会自动授权给员工助手。</p><small>当前为本机部署，仅授权合成验收示例。真实钉钉附件投递和部门身份映射仍待接入。</small></section>
+<script src="/api/v1/plugins/_sdk/page-sdk.js"></script></main></html>

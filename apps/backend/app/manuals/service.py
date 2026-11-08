@@ -49,7 +49,8 @@ class ManualService:
         self.store = store or ManualStore()
         self.repository = RagRepository()
         self.model = model or ManualModel()
-        self.lock = Lock()
+        from .admission import RetrievalGate
+        self.lock = RetrievalGate()
         self.retriever = retriever or HybridRetriever()
 
     def asset_public(self, asset, department_context=None):
@@ -187,7 +188,7 @@ class ManualService:
     def ask(self, question, category_id=None, product=None, version=None, entry_id=None,
             page=1, source_only=False, evidence_limit=None, context_page=None, *, pinned_version=None,
             permitted_entry_ids=None, department_context=None):
-        if not self.lock.acquire(blocking=False):
+        if not self.lock.acquire(timeout=150):
             raise ValueError('正在处理另一条检索，请稍后重试')
         try:
             entries = [e for e in self.store.entries() if e['status']=='published' and e['processing_status']=='ready'

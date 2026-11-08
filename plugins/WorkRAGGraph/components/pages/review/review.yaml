@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Page
+metadata:
+  name: review
+  label:
+    en_US: Reviewed answers
+    zh_Hans: 标准问答审核
+spec:
+  path: index.html
+execution:
+  python:
+    path: review.py
+    attr: ReviewPage
