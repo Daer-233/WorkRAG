@@ -14,12 +14,12 @@ if ($LASTEXITCODE -ne 0) {
 }
 & $workragPython "$PSScriptRoot\deployment\local.py" start
 if ($LASTEXITCODE -ne 0) { throw 'Service startup failed.' }
-& $workragPython "$PSScriptRoot\deployment\verify_local.py"
+& $workragPython "$PSScriptRoot\deployment\checks\verify_local.py"
 if ($LASTEXITCODE -ne 0) { throw 'Deployment acceptance failed.' }
 & $workragPython "$PSScriptRoot\deployment\local.py" stop
 if ($LASTEXITCODE -ne 0) { throw 'Service restart check failed while stopping.' }
 & $workragPython "$PSScriptRoot\deployment\local.py" start
 if ($LASTEXITCODE -ne 0) { throw 'Service restart check failed while starting.' }
-& $workragPython "$PSScriptRoot\deployment\verify_local.py"
+& $workragPython "$PSScriptRoot\deployment\checks\verify_local.py"
 if ($LASTEXITCODE -ne 0) { throw 'Persistence verification failed.' }
 Write-Output 'Verified WorkRAG: http://127.0.0.1:8060/knowledge/ ; LangBot: http://127.0.0.1:5300'

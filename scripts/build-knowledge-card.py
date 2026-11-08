@@ -59,7 +59,7 @@ def main():
         {'type':'images.started'},{'type':'image.ready','asset_id':'from_retrieval','media_id':'@uploaded'},
         {'type':'run.completed'}]
     (OUT/'events.example.json').write_text(json.dumps(events,ensure_ascii=False,indent=2),encoding='utf-8')
-    (OUT/'README.md').write_text((ROOT/'docs/knowledge-card-v1-handoff.md').read_text(encoding='utf-8'),encoding='utf-8')
+    (OUT/'README.md').write_text((ROOT/'docs/history/cards/knowledge-card-v1-handoff.md').read_text(encoding='utf-8'),encoding='utf-8')
     print(json.dumps({'output':str(OUT),'images':len(state.images),'sources':len(state.sources),
         'cloud_template_validated':False,'active_template_changed':False},ensure_ascii=False))
 

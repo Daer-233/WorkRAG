@@ -1,10 +1,29 @@
-> 当前交付入口为仓库根 README。问答引擎已更新至 0.4.2，使用 LangGraph＋Pi；钉钉旧模板正文、图片及文件状态见 docs/给下一聊天的接手说明.md。以下为首次安装记录，其中“尚未接入 Agent／钉钉”等早期状态不代表当前版本。
+# 部署工具导航
+
+日常使用根目录 start-knowledge.bat、stop-knowledge.bat、restart-knowledge.bat；它们调用本目录的运行管理代码。Python 环境和目录说明见 [项目环境](../docs/current/项目目录与Python环境.md)。
+
+| 位置 | 用途 |
+|---|---|
+| local.py | 全部服务的 start / stop / status 入口 |
+| stop_all.py | 停止部署并核查残留进程；--check 只查看 |
+| pi_harness_service.py | 管理 Pi 工作进程，由 local.py 调用 |
+| install_agent.py、select_agent_engine.py | 插件打包安装、切换 Pi / legacy |
+| configure_*.py、provision_agent.py、download_models.py | 初次部署工具，已有环境不要当作日常启动器运行 |
+| *_bridge.py、install_*_bridge.py、ensure_native_file_output.py | 当前启动器使用的卡片、媒体及 SDK 兼容模块 |
+| checks/ | 验收与联调脚本，部分会重启服务、改测试配置或向本人单聊发消息；详见该目录 README |
+| tests/ | 不调用真实模型、不给钉钉发消息的兼容测试；需安装 LangBot SDK 的环境 |
+
+脚本命令从仓库根目录执行，例如 `.\.venv\Scripts\python.exe deployment/local.py status`。当前使用说明见 [问答助手](../docs/current/agent-README.md)，历史验收见 [历史记录目录](../docs/README.md)。
+
+---
+
+> 以下保留首次安装记录，其中旧版本、“尚未接入 Agent／钉钉”等状态以当前交接说明为准。
 
 # 本机部署记录
 
-界面名称与资料管理入口见 [入口说明](入口说明.md)，LangBot 内也有同名说明页面。
+界面名称与资料管理入口见 [入口说明](../docs/current/入口说明.md)，LangBot 内也有同名说明页面。
 
-工作知识助手新增部署见 [使用说明](agent-README.md) 和 [首轮验收记录](agent-acceptance.md)。日常启动同时启动本机只读 MCP（8061）。独立 Agent 和测试流水线现已启用用户配置的真实 DeepSeek API，见 [最新验收记录](deepseek-acceptance.md)；真实钉钉投递仍留待后续接入。
+工作知识助手新增部署见 [使用说明](../docs/current/agent-README.md) 和 [首轮验收记录](../docs/history/acceptance/agent-acceptance.md)。日常启动同时启动本机只读 MCP（8061）。独立 Agent 和测试流水线现已启用用户配置的真实 DeepSeek API，见 [最新验收记录](../docs/history/acceptance/deepseek-acceptance.md)；真实钉钉投递仍留待后续接入。
 
 代码位置：`G:\项目\WorkRAG`，跟踪 `origin/full-project`。
 原始提交：`aef926d69cb147919b8504304c16eb8a8c9faa45`。

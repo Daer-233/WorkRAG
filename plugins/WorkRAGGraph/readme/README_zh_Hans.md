@@ -122,4 +122,4 @@
 
 **如何日常启动？** 在 G:\项目\WorkRAG 双击 start-knowledge.bat，或运行 start-local.ps1。status-local.ps1 查看状态，stop-local.ps1 停止服务并保留数据。
 
-本机完整使用文档位于 G:\项目\WorkRAG\deployment\agent-README.md，入口对照位于 deployment\入口说明.md，真实模型验收记录位于 deployment\deepseek-acceptance.md。
+本机完整使用文档位于 G:\项目\WorkRAG\docs\current\agent-README.md，入口对照位于 docs\current\入口说明.md，真实模型验收记录位于 docs\history\acceptance\deepseek-acceptance.md。

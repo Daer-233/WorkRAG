@@ -20,10 +20,10 @@ From `G:\项目\WorkRAG`, normal `deployment/local.py start|stop|status` manages
 Verification:
 
 - `npm test`: real Pi core with explicit mock model streams, scoped tools and interleaved Agents.
-- `deployment/verify_pi_contract.py`: actual installed SDK + real Pi worker with mocked I/O; owner-task authorization, deltas, limits, provider/tool errors, cancellation and isolation.
-- `deployment/verify_pi_real.py`: real DeepSeek and MCP knowledge, images, file and personal history in the debug processor.
-- `deployment/verify_pi_release.py`: debug-only real streaming, grants, call limit, timeout/cleanup, restart and persisted history; restores settings in `finally`.
+- `deployment/checks/verify_pi_contract.py`: actual installed SDK + real Pi worker with mocked I/O; owner-task authorization, deltas, limits, provider/tool errors, cancellation and isolation.
+- `deployment/checks/verify_pi_real.py`: real DeepSeek and MCP knowledge, images, file and personal history in the debug processor.
+- `deployment/checks/verify_pi_release.py`: debug-only real streaming, grants, call limit, timeout/cleanup, restart and persisted history; restores settings in `finally`.
 
-Installed-state report: `docs/Pi-Agent接入与验收.md`.
+Installed-state report: `docs/current/Pi-Agent接入与验收.md`.
 
 Source: https://github.com/earendil-works/pi/tree/main/packages/agent
