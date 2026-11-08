@@ -1,8 +1,45 @@
 # WorkRAG 工作知识助手
 
-基于 **LangBot＋LangGraph＋Pi Agent** 的工作资料检索助手。员工通过钉钉单聊提问，助手检索已发布且获授权的资料，回答操作步骤，并支持继续获取图片或原文件。管理员通过 WorkRAG 管理资料，通过 LangBot 配置模型、处理器和标准问答审核。
+基于 **LangBot＋LangGraph＋Pi Agent** 的工作资料检索助手。员工可以在钉钉中查询工作资料、获取操作步骤，并继续索取相关图片或原文件。管理员在 WorkRAG 中管理资料，在 LangBot 中配置模型、工具授权和标准问答审核。
 
-当前问答引擎插件版本 **0.4.2**，Pi 核心版本 **1.5.0**。本仓库保存源码、配置示例和部署说明，不包含企业资料、数据库、模型权重或任何实际密钥。
+当前问答引擎插件 **0.4.2**，Pi 核心 **1.5.0**。`main` 已同步当前助手源码和整理后的目录；`full-project` 保留开发来源。本仓库提供源码、配置示例与部署说明，企业资料、数据库、模型权重和实际密钥由部署者在本机准备。
+
+[使用说明](docs/current/agent-README.md) · [环境与目录](docs/current/项目目录与Python环境.md) · [部署工具](deployment/README.md) · [全部文档](docs/README.md) · [当前交接](docs/current/给下一聊天的接手说明.md)
+
+## 快速开始
+
+### 当前机器：启动与关闭
+
+已经配置好的机器直接双击根目录的 `start-knowledge.bat`。其他日常入口：
+
+| 操作 | 入口 |
+|---|---|
+| 启动 | `start-knowledge.bat` 或 `start-local.ps1` |
+| 查看状态 | `status-local.ps1` |
+| 重启 | `restart-knowledge.bat` |
+| 关闭项目并检查残留进程 | `stop-knowledge.bat`；加 `--check` 只查看 |
+
+真正的 Python 入口是 **`deployment/local.py`**，使用项目的 **`.venv`**，无需 Conda。从项目根目录运行：
+
+```powershell
+.\.venv\Scripts\python.exe deployment/local.py start
+.\.venv\Scripts\python.exe deployment/local.py status
+.\.venv\Scripts\python.exe deployment/local.py stop
+```
+
+启动后访问：
+
+- **资料管理**：<http://127.0.0.1:8060/knowledge/>
+- **LangBot 管理与调试**：<http://127.0.0.1:5300>
+
+### 新机器：获取代码
+
+```powershell
+git clone --branch main https://github.com/Daer-233/WorkRAG.git
+cd WorkRAG
+```
+
+新克隆的仓库需要先准备 Python、Node.js、Docker、模型、数据库和本地配置，按下方[环境与首次部署](#环境与首次部署)完成安装。现有一键入口用于已配置的部署；复制代码不会恢复另一台机器的资料或登录状态。
 
 ## 工作流
 
@@ -64,7 +101,7 @@ LangBot 左侧的备用知识库不等于已连接 WorkRAG。当前原始资料�
 | Qdrant | 1.16.3；manual_rag_chunks_v1 | 127.0.0.1:6333 |
 | Embedding / Rerank | BGE-M3 / BGE-Reranker-v2-m3，CPU 推理 | 127.0.0.1:8031 / 8032 |
 
-## 本机部署与启动
+## 环境与首次部署
 
 当前机器使用项目独立 **venv，不用 Conda**。解释器为 `G:\项目\WorkRAG\.venv\Scripts\python.exe`，Python **3.11.16**。PyCharm 请选“已有虚拟环境”并指向该文件；无需新建或切换 Conda 环境。详细配置见 [Python 环境与目录导航](docs/current/项目目录与Python环境.md)。
 
@@ -78,16 +115,7 @@ LangBot 左侧的备用知识库不等于已连接 WorkRAG。当前原始资料�
 4. 构建、安装 LangBot 插件，在模型页填入自己的 API 配置，给处理器选择模型并授权四个 MCP 工具与资料 ID。
 5. 导入并发布资料，先在调试助手验收，再绑定自己的机器人和模板。正式部署前自行核对平台凭据、权限与收件范围。
 
-**已配置好的当前机器**可直接运行：
-
-```powershell
-.\start-local.ps1       # 或双击 start-knowledge.bat
-.\status-local.ps1
-.\stop-local.ps1        # 停止服务，保留持久化数据
-.\stop-knowledge.bat    # 关闭项目：停服务、清理残留进程、停容器（--check 只查看不停）
-```
-
-Pi 随启动器启停。切换或回退两个处理器的内部 Agent 引擎：
+Pi 随启动器启停。LangBot 插件使用 Docker 内的 Python 环境，本机 WorkRAG、模型和 MCP 服务使用项目 `.venv`；Pi 本身是 Node.js 服务。切换或回退两个处理器的内部 Agent 引擎：
 
 ```powershell
 .\.venv\Scripts\python.exe deployment/select_agent_engine.py pi --target both
@@ -97,6 +125,8 @@ Pi 随启动器启停。切换或回退两个处理器的内部 Agent 引擎：
 两个处理器分别保存配置。不要重复运行初始化处理器脚本覆盖已配置的模型。只导入 `.lbpkg` 不会安装 Node 服务或恢复数据库、资料与私有凭据。
 
 ## 验证与当前边界
+
+目录整理后已检查文件引用、Python 与 PowerShell 入口语法、文档链接，以及 9 项离线卡片兼容测试；实际服务健康检查和真实 DeepSeek＋MCP 流水线检索也已通过。验收脚本集中在 [deployment/checks](deployment/checks/README.md)，离线测试在 [deployment/tests](deployment/tests/README.md)。部分验收脚本会调用真实 API、临时修改测试配置、重启服务或向指定单聊投递测试消息，应按各自说明运行。
 
 本轮本机检查覆盖真实 DeepSeek／MCP 问答、图片和原文件追问、本人历史、无证据、工具授权拒绝、调用上限、超时取消与 Pi 重启恢复。另有实际 SDK 契约和工作流／附件测试；具体口径与历史记录见 [Pi 验收说明](docs/current/Pi-Agent接入与验收.md)。这些功能性检查不代表生产准确率或并发压测结论，历史评测见 [原评测记录](docs/history/knowledge/evaluation.md)。
 
@@ -109,6 +139,7 @@ Pi 随启动器启停。切换或回退两个处理器的内部 Agent 引擎：
 - 普通成员完整登录验收、生产级部门身份映射与权限隔离联调。
 - LangBot 内原始资料上传／发布一体化页面、拖拽工作流编辑器。
 - 当前 Pi 助手的付款审批及其他业务写操作。仓库保留的 payment-mcp、Milvus、Codex Host 和意图分类实验属于历史模块，不代表已接入当前流水线。
+- 模型轮次与上下文提速：合并分类和工具决策、缩短内部规划结果、压缩重复工具内容已形成计划，尚未上线；当前版本不承诺固定的响应秒数。
 
 ## 目录与文档
 
@@ -127,6 +158,9 @@ docs/current/        当前使用说明、环境、架构与交接
 docs/history/        按主题分类的历史方案与验收记录
 docs/guides/         仓库上传等参考说明
 scripts/             旧工具及仍共用的资料初始化／导入辅助脚本
+instances/           配置示例与本地实例配置
+data/                本机资料、私有配置及运行记录（忽略提交）
+.venv/               本机 Python 虚拟环境（忽略提交）
 ```
 
 - [当前交接入口](docs/current/给下一聊天的接手说明.md)
