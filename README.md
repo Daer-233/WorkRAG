@@ -66,9 +66,11 @@ LangBot 左侧的备用知识库不等于已连接 WorkRAG。当前原始资料�
 
 ## 本机部署与启动
 
+当前机器使用项目独立 **venv，不用 Conda**。解释器为 `G:\项目\WorkRAG\.venv\Scripts\python.exe`，Python **3.11.16**。PyCharm 请选“已有虚拟环境”并指向该文件；无需新建或切换 Conda 环境。详细配置见 [Python 环境与目录导航](docs/current/项目目录与Python环境.md)。
+
 当前启动脚本面向 **Windows＋WSL 2＋Docker Desktop、Python 3.11、Node.js ≥22.19**。现有部署代码位于 `G:\项目\WorkRAG`，Docker、模型和容器数据位于 `G:\docker`；换机器时先调整部署脚本中的绝对路径。本仓库不是跨平台的一键安装包。
 
-首次部署请阅读 [本机部署说明](deployment/README.md)、[问答引擎配置说明](deployment/agent-README.md) 和 [Pi 接入与验收](docs/Pi-Agent接入与验收.md)。需要准备：
+首次部署请阅读 [本机部署说明](deployment/README.md)、[问答引擎配置说明](docs/current/agent-README.md) 和 [Pi 接入与验收](docs/current/Pi-Agent接入与验收.md)。需要准备：
 
 1. Docker Desktop／WSL 2、Python 环境和 Node.js，安装 Python 依赖并单独准备合适的 CPU PyTorch。
 2. 在 `apps/pi-harness` 执行 `npm ci --ignore-scripts`，安装 lockfile 固定的 Pi 依赖。
@@ -79,9 +81,10 @@ LangBot 左侧的备用知识库不等于已连接 WorkRAG。当前原始资料�
 **已配置好的当前机器**可直接运行：
 
 ```powershell
-.\start-local.ps1     # 或双击 start-knowledge.bat
+.\start-local.ps1       # 或双击 start-knowledge.bat
 .\status-local.ps1
-.\stop-local.ps1      # 停止服务，保留持久化数据
+.\stop-local.ps1        # 停止服务，保留持久化数据
+.\stop-knowledge.bat    # 关闭项目：停服务、清理残留进程、停容器（--check 只查看不停）
 ```
 
 Pi 随启动器启停。切换或回退两个处理器的内部 Agent 引擎：
@@ -95,7 +98,7 @@ Pi 随启动器启停。切换或回退两个处理器的内部 Agent 引擎：
 
 ## 验证与当前边界
 
-本轮本机检查覆盖真实 DeepSeek／MCP 问答、图片和原文件追问、本人历史、无证据、工具授权拒绝、调用上限、超时取消与 Pi 重启恢复。另有实际 SDK 契约和工作流／附件测试；具体口径与历史记录见 [Pi 验收说明](docs/Pi-Agent接入与验收.md)。这些功能性检查不代表生产准确率或并发压测结论，历史评测见 [原评测记录](docs/evaluation.md)。
+本轮本机检查覆盖真实 DeepSeek／MCP 问答、图片和原文件追问、本人历史、无证据、工具授权拒绝、调用上限、超时取消与 Pi 重启恢复。另有实际 SDK 契约和工作流／附件测试；具体口径与历史记录见 [Pi 验收说明](docs/current/Pi-Agent接入与验收.md)。这些功能性检查不代表生产准确率或并发压测结论，历史评测见 [原评测记录](docs/history/knowledge/evaluation.md)。
 
 用户已在本人钉钉单聊确认旧模板正文、分段输出、图片默认收起／展开／放大和演示 DOCX 收件。最新正文更新优化已获得平台接口成功，客户端最终显示仍须实测；不能把接口受理当作收件或渲染成功。
 
@@ -117,17 +120,22 @@ apps/rerank/         重排服务
 apps/workrag-agent/  LangGraph、Pi 适配、MCP、存储及输出过滤
 apps/pi-harness/     Pi Node worker 与固定依赖
 plugins/WorkRAGGraph/ LangBot Runner、审核与说明页面
- deployment/         当前 Windows 部署、兼容处理及验收脚本
- docs/               架构、实施计划和交接记录
+deployment/          日常启停、部署配置与运行兼容模块
+deployment/checks/   联调、诊断及验收工具（部分会改配置或发送测试消息）
+deployment/tests/    模拟接口的离线兼容测试
+docs/current/        当前使用说明、环境、架构与交接
+docs/history/        按主题分类的历史方案与验收记录
+docs/guides/         仓库上传等参考说明
+scripts/             旧工具及仍共用的资料初始化／导入辅助脚本
 ```
 
-- [当前交接入口](docs/给下一聊天的接手说明.md)
-- [Pi 架构、限制、验收和回退](docs/Pi-Agent接入与验收.md)
-- [旧模板空白正文与更新方式修复](docs/旧模板空白正文修复.md)
+- [当前交接入口](docs/current/给下一聊天的接手说明.md)
+- [Pi 架构、限制、验收和回退](docs/current/Pi-Agent接入与验收.md)
+- [旧模板空白正文与更新方式修复](docs/current/旧模板空白正文修复.md)
 - [插件使用说明](plugins/WorkRAGGraph/README.md)
-- [实施计划与历史记录](docs/WorkRAG实施计划与交接_2026-11-08.md)
+- [实施计划与历史记录](docs/current/WorkRAG实施计划与交接_2026-11-08.md)
 
-部分历史文档记录旧机器路径、旧 Agent、A2UI 或实验功能，以当前交接说明和实际配置为准。A2UI 新卡片当前停用，已有旧模板继续使用。
+完整分类入口见 [文档目录](docs/README.md) 和 [部署工具目录](deployment/README.md)。部分历史文档记录旧机器路径、旧 Agent、A2UI 或实验功能，以当前交接说明和实际配置为准。A2UI 新卡片当前停用，已有旧模板继续使用。
 
 ## 数据与密钥
 

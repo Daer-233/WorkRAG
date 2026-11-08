@@ -3,7 +3,7 @@ $knowledgeRoot = Split-Path -Parent $PSScriptRoot
 $daemonRoot = Join-Path $knowledgeRoot 'data\manuals\runtime\langbot-codex'
 $daemonPython = Join-Path $env:USERPROFILE '.conda\envs\design-rag\python.exe'
 if (-not (Test-Path -LiteralPath $daemonPython)) { throw 'The design-rag Python environment is missing.' }
-if (-not (Test-Path -LiteralPath (Join-Path $daemonRoot 'sdk\langbot_plugin\__init__.py'))) { throw 'Offline SDK is missing. See docs/langbot-work-knowledge.md.' }
+if (-not (Test-Path -LiteralPath (Join-Path $daemonRoot 'sdk\langbot_plugin\__init__.py'))) { throw 'Offline SDK is missing. See docs/history/knowledge/langbot-work-knowledge.md.' }
 if (-not (Test-Path -LiteralPath (Join-Path $daemonRoot 'daemon.private.json'))) { throw 'Private daemon configuration is missing.' }
 & docker compose -f (Join-Path $knowledgeRoot 'instances\langbot-codex\compose.yaml') up -d
 if ($LASTEXITCODE -ne 0) { throw 'Codex loopback relay failed to start.' }
