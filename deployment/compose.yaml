@@ -1,0 +1,56 @@
+name: workrag
+services:
+  postgres:
+    image: postgres:16.11
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: manual_rag
+      POSTGRES_DB: manual_rag
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run configure_local.py first}
+    ports: ["127.0.0.1:5432:5432"]
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U manual_rag -d manual_rag"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  qdrant:
+    image: qdrant/qdrant:v1.16.3
+    restart: unless-stopped
+    ports: ["127.0.0.1:6333:6333"]
+    volumes: ["qdrant_data:/qdrant/storage"]
+  langbot_plugin_runtime:
+    image: rockchin/langbot:v4.11.3
+    restart: unless-stopped
+    command: ["uv", "run", "--no-sync", "-m", "langbot_plugin.cli.__init__", "rt"]
+    volumes: ["./langbot/plugins:/app/data/plugins"]
+    environment:
+      TZ: Asia/Shanghai
+      LANGBOT_PLUGIN_RUNTIME_CONTROL_TOKEN: ${LANGBOT_PLUGIN_RUNTIME_CONTROL_TOKEN}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5400/healthz',timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+  langbot:
+    image: rockchin/langbot:v4.11.3
+    restart: unless-stopped
+    depends_on:
+      langbot_plugin_runtime:
+        condition: service_healthy
+    ports: ["127.0.0.1:5300:5300"]
+    volumes: ["./langbot:/app/data"]
+    environment:
+      TZ: Asia/Shanghai
+      BOX__ENABLED: "false"
+      PLUGIN__RUNTIME_WS_URL: ws://langbot_plugin_runtime:5400/control/ws
+      LANGBOT_PLUGIN_RUNTIME_CONTROL_TOKEN: ${LANGBOT_PLUGIN_RUNTIME_CONTROL_TOKEN}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5300/healthz',timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+volumes:
+  postgres_data:
+  qdrant_data:

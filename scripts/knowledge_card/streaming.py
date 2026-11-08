@@ -10,11 +10,11 @@ import time
 from .codex_delta import KEY
 from .model import LABELS, packets
 
-from .deployment import PIPELINE
+PIPELINE = '46b1174d-a808-46e3-ace9-ce34432803db'
 
 
 def selected(query):
-    return bool(PIPELINE) and str(getattr(query, 'pipeline_uuid', '')) == PIPELINE
+    return str(getattr(query, 'pipeline_uuid', '')) == PIPELINE
 
 
 async def prime(results, query, message_class):
@@ -63,7 +63,7 @@ def install(adapter_class, plain_class, chain_class):
             raise state.error
         previous = state.stage
         stage = info.get('stage')
-        if stage in LABELS and (stage != 'generating' or state.stage not in ('busy','empty')):
+        if stage in LABELS and (stage != 'generating' or state.stage not in ('busy','empty','payment_review','payment_ready')):
             state.stage = stage
         notices=[p for p in packets(info.get('packets',[]))
                  if p['metadata'].get('result_type')=='retrieval_notice']
@@ -76,7 +76,7 @@ def install(adapter_class, plain_class, chain_class):
             if isinstance(text,str):
                 state.answer = text
         final = is_final and not getattr(bot_message,'tool_calls',None)
-        if final and state.stage not in ('failed','busy','empty'):
+        if final and state.stage not in ('failed','busy','empty','payment_review','payment_ready'):
             state.stage = 'completed'
 
         async def flush(terminal=False):

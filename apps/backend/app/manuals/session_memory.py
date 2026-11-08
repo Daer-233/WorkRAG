@@ -41,16 +41,19 @@ class Begin(Payload):
     host_boot: UUID
     text: str = Field(max_length=4000)
     has_attachment: bool = False
+    department_context: UUID | None = None
 
 
 class Finish(Payload):
     turn_id: UUID
     sources: list[Reference] = Field(max_length=12)
     offered_file: bool = False
+    department_context: UUID | None = None
 
 
 class FileRequest(Payload):
     turn_id: UUID
+    department_context: UUID | None = None
 
 
 def normalize(text):
@@ -88,12 +91,18 @@ def label(source):
 
 
 def begin(payload: Begin):
+    from .departments import enforced, permitted_for_context
+    if enforced() and payload.department_context is None:
+        raise HTTPException(status_code=403, detail='缺少部门授权上下文')
+    permitted = permitted_for_context(payload.department_context) if payload.department_context else None
     key = hashlib.sha256(json.dumps(payload.identity, ensure_ascii=False).encode()).hexdigest()
     with connection() as conn:
         row = conn.execute('''INSERT INTO manual_session_memory (session_key) VALUES (%s)
                               ON CONFLICT (session_key) DO UPDATE SET session_key=EXCLUDED.session_key
                               RETURNING *, expires_at > now() AS live, turn_expires_at > now() AS running''', (key,)).fetchone()
         sources = row['sources'] if row['live'] else []
+        if permitted is not None:
+            sources = [source for source in sources if source.get('entry_id') in permitted]
         text = normalize(payload.text)
         kind = intent(text, row['live'] and row['offered_file']) if not payload.has_attachment else None
         selected, source = False, None
@@ -123,6 +132,12 @@ def begin(payload: Begin):
 
 
 def finish(payload: Finish):
+    from .departments import enforced, permitted_for_context
+    if enforced() and payload.department_context is None:
+        raise HTTPException(status_code=403, detail='缺少部门授权上下文')
+    if payload.department_context:
+        permitted = permitted_for_context(payload.department_context)
+        payload.sources = [source for source in payload.sources if str(source.entry_id) in permitted]
     with connection() as conn:
         if payload.sources:
             result = conn.execute('''UPDATE manual_session_memory SET sources=%s, offered_file=%s,
@@ -146,6 +161,10 @@ def retrieval_scope(turn_id):
 
 def file_for_turn(payload: FileRequest):
     from .session_followup import published
+    from .departments import enforced
+
+    if enforced() and payload.department_context is None:
+        raise HTTPException(status_code=403, detail='缺少部门授权上下文')
 
     with connection() as conn:
         claimed = conn.execute('''UPDATE manual_session_memory SET file_claimed=true
@@ -156,6 +175,10 @@ def file_for_turn(payload: FileRequest):
             raise HTTPException(status_code=409, detail='本轮附件发送资格已失效')
         reference = claimed['retrieval']['source']
         try:
+            if payload.department_context is not None:
+                from .departments import permitted_for_context
+                if reference['entry_id'] not in permitted_for_context(payload.department_context):
+                    raise ValueError('Source is outside department scope')
             entry = ManualStore().get(UUID(reference['entry_id']))
             if not published(entry, reference['version']) or not entry.get('source_path'):
                 raise ValueError('Source is unavailable')

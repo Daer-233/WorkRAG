@@ -29,6 +29,20 @@ def packet(entry, title, *, version='', images=None, available=True):
             'source_file': {'available': available, 'kind': 'archived_file'}}}
 
 
+def test_host_injects_department_scope_and_rejects_override():
+    memory.DEPARTMENT_RUNS['test-run'] = FIRST
+    try:
+        query_text, top_k, filters = memory.scoped_query({'run_id': 'test-run'}, memory.host.KB, '报销', 5, {})
+        envelope, _, text = query_text.partition('\n')
+        assert json.loads(envelope.removeprefix('@knowledge ')) == {'department_context': FIRST}
+        assert text == '报销' and top_k == 5 and filters == {}
+        with pytest.raises(ValueError):
+            memory.scoped_query({'run_id': 'test-run'}, memory.host.KB, '报销', 5,
+                                {'department_context': SECOND})
+    finally:
+        memory.DEPARTMENT_RUNS.clear()
+
+
 async def message(text, evidence=()):
     yield NS(content=text, all_content=text, is_final=True, provider_specific_fields={KEY: {'packets': evidence}})
 

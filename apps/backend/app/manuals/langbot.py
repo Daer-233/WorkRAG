@@ -30,6 +30,8 @@ def retrieve(service, payload: KnowledgeRetrieval):
     """Return separately attributable evidence packets for the LangBot Codex processor."""
     query = payload.query
     selected_filters = payload.filters
+    permitted_entry_ids = None
+    department_context = None
     # The installed HTTP connector drops undeclared dynamic filter fields. This
     # explicit read-only envelope keeps continuation usable through its query tool.
     if query.startswith('@knowledge '):
@@ -37,9 +39,18 @@ def retrieve(service, payload: KnowledgeRetrieval):
         if not separator or not query.strip() or payload.filters.model_dump(exclude_defaults=True):
             raise ValueError('知识检索控制参数无效或重复')
         envelope = json.loads(control[len('@knowledge '):])
+        if isinstance(envelope, dict) and 'department_context' in envelope:
+            from .departments import permitted_for_context
+            context_id = UUID(str(envelope.pop('department_context')))
+            department_context = context_id
+            permitted_entry_ids = permitted_for_context(context_id)
         if isinstance(envelope, dict) and 'memory_turn' in envelope:
             from .session_memory import retrieval_scope
             from .session_followup import notice, retrieve_followup
+            from .departments import enforced
+
+            if enforced() and permitted_entry_ids is None:
+                raise ValueError('部门授权上下文缺失，请重新提问')
 
             if set(envelope) != {'memory_turn'}:
                 raise ValueError('会话追问范围由后端决定')
@@ -54,14 +65,18 @@ def retrieve(service, payload: KnowledgeRetrieval):
             selected_filters = KnowledgeFilters(entry_id=source['entry_id'], version=source['version'],
                                                 cursor=source['cursor'], followup=scope['kind'])
             seed = source['title']
-            return retrieve_followup(service, seed, selected_filters, payload.top_k)
+            return retrieve_followup(service, seed, selected_filters, payload.top_k, permitted_entry_ids, department_context)
         selected_filters = KnowledgeFilters.model_validate(envelope)
+    from .departments import enforced
+    if enforced() and permitted_entry_ids is None:
+        raise ValueError('部门授权上下文缺失，请重新提问')
     if selected_filters.followup:
         from .session_followup import retrieve_followup
-        return retrieve_followup(service, query, selected_filters, payload.top_k)
+        return retrieve_followup(service, query, selected_filters, payload.top_k, permitted_entry_ids, department_context)
     filters = selected_filters.model_dump(exclude={'followup', 'cursor'})
     try:
-        answer = service.ask(question=query, source_only=True, evidence_limit=payload.top_k, **filters)
+        kwargs = {'permitted_entry_ids': permitted_entry_ids, 'department_context': department_context} if permitted_entry_ids is not None else {}
+        answer = service.ask(question=query, source_only=True, evidence_limit=payload.top_k, **kwargs, **filters)
     except ValueError as error:
         if '正在处理另一条检索' not in str(error):
             raise
@@ -97,7 +112,7 @@ def retrieve(service, payload: KnowledgeRetrieval):
 
 def busy_result():
     return {'status':'busy','results':[{'id':'retrieval_busy','score':0.0,
-            'content':'知识库正忙，本次尚未执行检索。请稍后重试。',
+            'content':'知识库正忙，本次尚未执行检索，不能据此判断资料不存在。请稍后重试。',
             'metadata':{'result_type':'retrieval_notice','retryable':True}}]}
 
 

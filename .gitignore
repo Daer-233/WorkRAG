@@ -1,16 +1,39 @@
-node_modules/
-.venv/
-venv/
+/instances/manuals/.env
+/data/
+/backups/
+/artifacts/
+
+# Personal documents and local tooling state are not part of the project.
+/.playwright-cli/
+/*.docx
+/Daer-233-profile-README.md
 __pycache__/
+*.pyc
+.pytest_cache/
+
+# Local credentials and runtime state must never enter source control.
 .env
-.env.local
-.env.*.local
-*.db
-*.sqlite*
+.env.*
+!.env.example
+*.private.*
+auth.json
+*.pem
+*.key
+*.p12
+*.pfx
 *.log
 *.pid
-*.tar
-*.zip
-*.exe
-data/
-backups/
+.venv/
+venv/
+node_modules/
+
+# Generated exports may contain employee documents, photos and signed links.
+# Only the reviewed synthetic intent reports and generic card template ship.
+/output/*
+!/output/intent-routing-v1/
+!/output/intent-routing-v2/
+!/output/intent-routing-v3/
+!/output/knowledge-card-v1/
+/output/knowledge-card-v1/*
+!/output/knowledge-card-v1/dingtalk-template.json
+!/output/knowledge-card-v1/README.md

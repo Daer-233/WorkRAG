@@ -38,7 +38,7 @@ def result_for(entry, service):
     return {'entry': service.public(entry), 'source_file': source_file_info(entry), 'steps': []}
 
 
-def next_step(entry, service, cursor, query):
+def next_step(entry, service, cursor, query, department_context=None):
     steps = entry['data'].get('steps', [])
     index = next((index for index, step in enumerate(steps)
                   if str(step.get('evidence_id')) == str(cursor)), None) if cursor else None
@@ -52,13 +52,13 @@ def next_step(entry, service, cursor, query):
             or steps[index + 1].get('order') != steps[index]['order'] + 1):
         return notice('当前资料在这个流程中没有明确的下一步，请说明要继续哪项操作。')
     number, batch = target
-    answer = service.answer_entry(entry, query, number, 'session_followup', None, True)
+    answer = service.answer_entry(entry, query, number, 'session_followup', None, True, department_context)
     answer['steps'] = [answer['steps'][index + 1 - batch['start']]]
     answer['has_more'] = False
     return {'status': 'ok', 'results': [source_result(answer, query, {})]}
 
 
-def image_results(service, entry, query):
+def image_results(service, entry, query, permitted_entry_ids=None, department_context=None):
     results, seen = [], set()
     candidates = [entry]
     related = linked_photo(entry)
@@ -67,14 +67,15 @@ def image_results(service, entry, query):
             photo_entry = service.store.get(related[0])
         except ValueError:
             photo_entry = None
-        if photo_entry and published(photo_entry, related[1]):
+        if (photo_entry and published(photo_entry, related[1])
+                and (permitted_entry_ids is None or str(photo_entry['id']) in permitted_entry_ids)):
             candidates.insert(0, photo_entry)
     for candidate in candidates:
         for number, batch in enumerate(batches(candidate), 1):
             stored = candidate['data']['steps'][batch['start']:batch['end']]
             if not any(step.get('asset_ids') or step.get('section_asset_ids') for step in stored):
                 continue
-            answer = service.answer_entry(candidate, query, number, 'session_followup', None, True)
+            answer = service.answer_entry(candidate, query, number, 'session_followup', None, True, department_context)
             selected = []
             for step in answer['steps']:
                 for field in ('images', 'section_images'):
@@ -97,26 +98,28 @@ def image_results(service, entry, query):
             notice('这份资料及已关联条目当前没有可展示的图片。'))
 
 
-def retrieve_followup(service, query, filters, top_k):
+def retrieve_followup(service, query, filters, top_k, permitted_entry_ids=None, department_context=None):
     if filters.entry_id is None or filters.version is None:
         raise ValueError('会话追问必须指定资料编号和版本')
     try:
         entry = service.store.get(filters.entry_id)
     except ValueError:
         return notice(UNAVAILABLE)
-    if not published(entry, filters.version):
+    if (not published(entry, filters.version)
+            or (permitted_entry_ids is not None and str(entry['id']) not in permitted_entry_ids)):
         return notice(UNAVAILABLE)
 
     if filters.followup == 'source_file':
         return {'status': 'ok', 'results': [source_result(result_for(entry, service), query, {})]}
     if filters.followup == 'images':
-        return image_results(service, entry, query)
+        return image_results(service, entry, query, permitted_entry_ids, department_context)
     if filters.followup == 'next_step':
-        return next_step(entry, service, filters.cursor, query)
+        return next_step(entry, service, filters.cursor, query, department_context)
 
     try:
         answer = service.ask(question=query, entry_id=filters.entry_id, pinned_version=filters.version,
-                             source_only=True, evidence_limit=top_k)
+                             source_only=True, evidence_limit=top_k, permitted_entry_ids=permitted_entry_ids,
+                             department_context=department_context)
     except ValueError as error:
         if '正在处理另一条检索' not in str(error):
             raise

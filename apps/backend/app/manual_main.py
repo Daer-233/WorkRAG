@@ -18,6 +18,7 @@ from app.db.connection import connection
 from app.manuals.intent.api import router as intent_router
 from app.manuals.intent.engine import router as intent_engine
 from app.manuals.session_memory import SCHEMA as MEMORY_SCHEMA, cleanup as cleanup_memory, router as memory_router
+from app.manuals.departments import initialize as initialize_departments, router as department_router, internal_router as department_internal_router
 
 
 async def worker():
@@ -54,6 +55,7 @@ async def lifespan(app):
         if identity != {'db':'manual_rag','owner':'manual_rag'}:
             raise RuntimeError('Manual database identity mismatch')
         c.execute(MEMORY_SCHEMA.read_text(encoding='utf-8'))
+        initialize_departments(c)
         # Local processing is retryable; external submitted jobs are reconciled separately.
         c.execute("UPDATE manual_entries SET processing_status='failed',error_message='本地提取被中断，可重新提取' WHERE processing_status='processing'")
         c.execute("UPDATE manual_entries SET index_status='queued' WHERE index_status='indexing' OR (status='published' AND processing_status='ready' AND index_status IN ('pending','failed'))")
@@ -104,7 +106,14 @@ async def conflict(request,error): return JSONResponse({'detail':'名称重复�
 def health():
     validate_isolation()
     with connection() as c: c.execute('SELECT 1')
-    return {'status':'ok','library':'manuals','database':'manual_rag','collection':'manual_rag_chunks_v1'}
+    from app.providers.vector.factory import get_vector_provider, vector_identity
+    provider, collection = vector_identity()
+    try:
+        vector_ready = get_vector_provider().health()
+    except Exception:
+        vector_ready = False
+    return {'status':'ok','library':'manuals','database':'manual_rag','collection':collection,
+            'vector_provider':provider,'vector_ready':vector_ready}
 
 
 @app.get('/')
@@ -114,5 +123,7 @@ def root(): return RedirectResponse('/knowledge/')
 app.include_router(router)
 app.include_router(intent_router)
 app.include_router(memory_router)
+app.include_router(department_router)
+app.include_router(department_internal_router)
 app.mount('/knowledge',StaticFiles(directory=ROOT/'apps'/'manual-web',html=True),name='knowledge-web')
 app.mount('/manuals',StaticFiles(directory=ROOT/'apps'/'manual-web',html=True),name='manual-web')

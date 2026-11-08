@@ -19,11 +19,12 @@ import httpx
 from . import intent_host as host
 from .codex_delta import KEY
 from .model import packets
+from .department_identity import resolve_event_scope
 
 CONFIG = Path('/app/data/work-knowledge-session-memory.json')
 TOKEN_FILE = CONFIG.with_name('work-knowledge-session-memory-token')
 HOST_BOOT = str(uuid4())
-from .deployment import NATIVE_AGENT
+NATIVE_AGENT = 'bc961801-ec74-41c9-ad71-61785aa3d39c'
 TTL = 1800
 LIMIT = 1000
 MEMORY = OrderedDict()
@@ -34,6 +35,32 @@ RUNS = {}
 LOG = logging.getLogger('work.knowledge.memory')
 SHADOW_LOG = logging.getLogger('work.intent.codex2.shadow')
 NATIVE_SHADOW_TASKS = set()
+DEPARTMENT_SHADOW_TASKS = set()
+DEPARTMENT_ACTIVE = ContextVar('work_knowledge_department', default=None)
+DEPARTMENT_RUNS = {}
+
+
+def start_department_shadow(source, sender_id):
+    try:
+        if json.loads(CONFIG.read_text(encoding='utf-8')).get('department_shadow') is not True:
+            return
+    except (OSError, ValueError, AttributeError):
+        return
+    if len(DEPARTMENT_SHADOW_TASKS) >= 8:
+        LOG.warning('Department shadow skipped: capacity')
+        return
+
+    async def observe():
+        try:
+            result = await resolve_event_scope(source, sender_id, memory_headers())
+            LOG.info('Department shadow complete mapping_complete=%s accessible_count=%d',
+                     result['department_mapping_complete'], len(result['entry_ids']))
+        except Exception as error:
+            LOG.warning('Department shadow unavailable (%s)', type(error).__name__)
+
+    task = asyncio.create_task(observe())
+    DEPARTMENT_SHADOW_TASKS.add(task)
+    task.add_done_callback(DEPARTMENT_SHADOW_TASKS.discard)
 
 
 @dataclass(frozen=True)
@@ -365,7 +392,8 @@ async def postgres_results(results, query, message_class, key, send_file=None):
     text, attachments = host.incoming(query)
     try:
         decision = await memory_request('begin', {'identity': key, 'host_boot': HOST_BOOT,
-                                                  'text': text[:4000], 'has_attachment': bool(attachments)})
+                                                  'text': text[:4000], 'has_attachment': bool(attachments),
+                                                  'department_context': DEPARTMENT_ACTIVE.get()})
         action = decision['action']
         if action not in {'ordinary', 'retrieve', 'reply'}:
             raise ValueError('Unknown session memory action')
@@ -501,7 +529,8 @@ async def run_turn(results, query, message_class, key, scope, *, turn_id=None, t
             sources = cited_sources(evidence, answer) if succeeded and current else ()
             try:
                 await memory_request('finish', {'turn_id': turn_id, 'sources': [asdict(source) for source in sources],
-                                                'offered_file': kind != 'source_file' and any(word in answer for word in ('源文件', '原文件', '整理稿'))})
+                                                'offered_file': kind != 'source_file' and any(word in answer for word in ('源文件', '原文件', '整理稿')),
+                                                'department_context': DEPARTMENT_ACTIVE.get()})
             except (httpx.HTTPError, OSError, ValueError) as error:
                 LOG.warning('Session memory write failed (%s)', type(error).__name__)
         elif LATEST.get(key) is ticket:
@@ -520,6 +549,28 @@ async def run_turn(results, query, message_class, key, scope, *, turn_id=None, t
 
 def scoped_query(session, kb_id, query_text, top_k, filters):
     scope = RUNS.get(str(session.get('run_id'))) if session else None
+    department = DEPARTMENT_RUNS.get(str(session.get('run_id'))) if session else None
+    if department:
+        if str(kb_id) != host.KB:
+            raise ValueError('部门授权只允许使用工作知识库')
+        envelope = {'department_context': department}
+        if scope and scope.turn_id:
+            envelope['memory_turn'] = scope.turn_id
+            query_text = '会话追问'
+            top_k = 12 if scope.kind == 'images' else 5
+        elif query_text.startswith('@knowledge '):
+            control, separator, query_text = query_text.partition('\n')
+            if not separator:
+                raise ValueError('知识检索参数无效')
+            supplied = json.loads(control[len('@knowledge '):])
+            if not isinstance(supplied, dict) or 'department_context' in supplied or 'memory_turn' in supplied:
+                raise ValueError('知识检索参数无效')
+            envelope.update(supplied)
+        elif filters:
+            if 'department_context' in filters or 'memory_turn' in filters:
+                raise ValueError('知识检索参数无效')
+            envelope.update(filters)
+        return '@knowledge ' + json.dumps(envelope, ensure_ascii=False) + '\n' + query_text, top_k, {}
     if scope is None or scope.closed:
         return query_text, top_k, filters
     if str(kb_id) != host.KB:
@@ -583,7 +634,7 @@ async def deliver_source_file(adapter, source, employee, turn_id, title):
         body = bytearray()
         async with httpx.AsyncClient(timeout=12, trust_env=False, follow_redirects=False) as client:
             async with client.stream('POST', 'http://host.docker.internal:8060/api/v1/manuals/internal/session-memory/file',
-                                     json={'turn_id': turn_id}, headers=memory_headers()) as response:
+                                     json={'turn_id': turn_id, 'department_context': DEPARTMENT_ACTIVE.get()}, headers=memory_headers()) as response:
                 if response.status_code == 413:
                     return f'《{title}》的文件为空或超过 10 MB，无法在钉钉发送。', 'failed'
                 if response.status_code in (404, 409):
@@ -628,12 +679,20 @@ def install_native(orchestrator_class):
         adapter = context.get('_delivery_adapter')
         platform_event = context.get('_platform_event')
         target = getattr(event.delivery, 'reply_target', None) or {}
-        selected = (bool(NATIVE_AGENT and host.BOT and host.KB) and binding.processor_type == 'agent' and str(binding.processor_id) == NATIVE_AGENT
+        selected = (binding.processor_type == 'agent' and str(binding.processor_id) == NATIVE_AGENT
                     and binding.runner_id == host.RUNNER and str(event.bot_id) == host.BOT
                     and event.source == 'platform' and event.event_type == 'message.received'
                     and target.get('target_type') == 'person' and adapter is not None
                     and type(adapter).__module__.endswith('.dingtalk.adapter') and platform_event is not None)
         if not selected:
+            try:
+                department_enabled = json.loads(CONFIG.read_text(encoding='utf-8')).get('department_mode') == 'on'
+            except (OSError, ValueError, AttributeError):
+                department_enabled = False
+            if (department_enabled and binding.processor_type == 'agent'
+                    and str(binding.processor_id) == NATIVE_AGENT and str(event.bot_id) == host.BOT
+                    and event.source == 'platform' and target.get('target_type') != 'person'):
+                raise RuntimeError('部门知识问答仅支持钉钉单聊')
             async for part in original(self, event, binding, bound_plugins, adapter_context):
                 yield part
             return
@@ -697,6 +756,20 @@ def install_native(orchestrator_class):
 
         if card:
             await deliver('正在处理', False, {KEY: {'stage': 'processing', 'status_only': True}})
+        start_department_shadow(source, str(query.sender_id))
+        department_token = None
+        try:
+            department_enabled = json.loads(CONFIG.read_text(encoding='utf-8')).get('department_mode') == 'on'
+        except (OSError, ValueError, AttributeError):
+            department_enabled = False
+        if department_enabled:
+            try:
+                department = await resolve_event_scope(source, str(query.sender_id), memory_headers(), issue_context=True)
+                context_id = str(UUID(department['context_id']))
+                department_token = DEPARTMENT_ACTIVE.set(context_id)
+            except Exception:
+                await deliver('暂时无法确认资料访问范围，请稍后重试。', True, {KEY: {'stage': 'failed'}})
+                return
         latest = ''
         final_sent = False
         try:
@@ -721,6 +794,12 @@ def install_native(orchestrator_class):
                 except Exception:
                     LOG.warning('Codex2 error card could not be closed')
             raise
+        finally:
+            if department_token is not None:
+                for run_id, context_id in list(DEPARTMENT_RUNS.items()):
+                    if context_id == DEPARTMENT_ACTIVE.get():
+                        DEPARTMENT_RUNS.pop(run_id, None)
+                DEPARTMENT_ACTIVE.reset(department_token)
 
     orchestrator_class.run = run
     orchestrator_class._work_memory_native_installed = True
@@ -756,8 +835,12 @@ def install(bridge_class, builder_class, registry_class):
 
     async def register_run(self, *args, **kwargs):
         scope = ACTIVE.get()
+        department = DEPARTMENT_ACTIVE.get()
         if scope is None:
-            return await register(self, *args, **kwargs)
+            result = await register(self, *args, **kwargs)
+            if department:
+                DEPARTMENT_RUNS[str(kwargs['run_id'])] = department
+            return result
         query = kwargs.get('execution_query')
         query_key = identity(query, durable=bool(scope.turn_id)) if query is not None else None
         if query is not None and scope.key[2] == NATIVE_AGENT:
@@ -772,6 +855,8 @@ def install(bridge_class, builder_class, registry_class):
         result = await register(self, *args, **kwargs)
         run_id = str(kwargs['run_id'])
         RUNS[run_id] = scope
+        if department:
+            DEPARTMENT_RUNS[run_id] = department
         scope.runs.add(run_id)
         return result
 

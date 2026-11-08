@@ -1,0 +1,4269 @@
+{
+  "local_auto_precision": 1.0,
+  "clear_local_auto_coverage": 0.475,
+  "company_to_daily": 0,
+  "local_auto_count": 38,
+  "local_auto_correct": 38,
+  "clear_count": 80,
+  "warm_local_p95_ms": 3.557,
+  "layers": {
+    "unresolved": 62,
+    "bm25_axes": 38
+  },
+  "unresolved_are_not_counted_as_correct": true,
+  "terra_not_in_offline_precision": true,
+  "cases": [
+    {
+      "id": "v2-acceptance-freezing-water",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 7.637816497613729,
+            "company": 1.8788869014562843
+          },
+          "score": 7.637816497613729,
+          "margin": 0.7540020892039888,
+          "coverage": 0.23374734373943823,
+          "support": 0.20031200668050805
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 2.184845654618033,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 2.184845654618033,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.9078026293324226
+        }
+      },
+      "elapsed_ms": 2.22,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-excel-row-height",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "file_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 4.580736583044202,
+            "company": 3.6708074152225585
+          },
+          "score": 4.580736583044202,
+          "margin": 0.19864254390653818,
+          "coverage": 0.13002792980789077,
+          "support": 0.8438252268211124
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 4.1881378466743735
+          },
+          "score": 4.1881378466743735,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.018,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-word-line-spacing",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "file_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 4.8524304239175295,
+            "company": 3.6010865083834314
+          },
+          "score": 4.8524304239175295,
+          "margin": 0.2578798264404266,
+          "coverage": 0.16784671198102735,
+          "support": 0.4486475069884838
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 3.9552927515657275,
+            "images": 0.0,
+            "source_file": 4.071315016999013
+          },
+          "score": 4.071315016999013,
+          "margin": 0.02849749158413348,
+          "coverage": 0.5409823741096706,
+          "support": 0.7467562920118805
+        }
+      },
+      "elapsed_ms": 2.147,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-browser-bookmark-export",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 5.384719618148019,
+            "company": 3.77290469723759
+          },
+          "score": 5.384719618148019,
+          "margin": 0.2993312623888827,
+          "coverage": 0.1382953100339524,
+          "support": 0.414246295755036
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 4.0410835366647095,
+            "images": 0.0,
+            "source_file": 2.3698013928140336
+          },
+          "score": 4.0410835366647095,
+          "margin": 0.4135727778669137,
+          "coverage": 0.44659900682416576,
+          "support": 0.8984389693436151
+        }
+      },
+      "elapsed_ms": 2.135,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-polish-museum-invite",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "axes": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 10.329597353717153,
+            "company": 3.3456538374966676
+          },
+          "score": 10.329597353717153,
+          "margin": 0.6761099466967394,
+          "coverage": 0.6949719081822568,
+          "support": 0.1708183166029949
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 2.953639748980691,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 2.953639748980691,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 7.037,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-translate-box-label",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "axes": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 9.092056375901828,
+            "company": 3.3456538374966676
+          },
+          "score": 9.092056375901828,
+          "margin": 0.6320245168778095,
+          "coverage": 0.5718918590505133,
+          "support": 0.2523380343760762
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 3.1791430815322617,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 3.1791430815322617,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.957,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-shorten-internal-fundraiser",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "file_request_not_supported_by_action",
+        "scope_output_disagreement",
+        "provided_text_is_data"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 8.846192453846282,
+            "company": 3.3456538374966676
+          },
+          "score": 8.846192453846282,
+          "margin": 0.6217973037606712,
+          "coverage": 0.5555400937223249,
+          "support": 0.21847278672020745
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 1.9697098648729428,
+            "images": 0.0,
+            "source_file": 2.3698013928140336
+          },
+          "score": 2.3698013928140336,
+          "margin": 0.1688291386587464,
+          "coverage": 0.5,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.414,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-proofread-explicit-library",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 9.270131589569344,
+            "company": 3.3456538374966676
+          },
+          "score": 9.270131589569344,
+          "margin": 0.6390931665672186,
+          "coverage": 0.5555400937223248,
+          "support": 0.2768660788398741
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 1.9697098648729428,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 1.9697098648729428,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.417,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-rewrite-queue-note",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 11.106153527830733,
+            "company": 3.3456538374966676
+          },
+          "score": 11.106153527830733,
+          "margin": 0.6987567451581821,
+          "coverage": 0.4988340062974208,
+          "support": 0.5297593749404007
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 2.11173452379335,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 2.11173452379335,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.717,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-generic-project-management",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 6.842592345181594,
+            "company": 3.7466240155311414
+          },
+          "score": 6.842592345181594,
+          "margin": 0.45245546913671786,
+          "coverage": 0.15150017462276746,
+          "support": 0.6692095673883318
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 3.9473562406558065,
+            "images": 0.0,
+            "source_file": 3.2536144460748373
+          },
+          "score": 3.9473562406558065,
+          "margin": 0.17574846360097263,
+          "coverage": 0.2932466589417745,
+          "support": 0.9959868907772861
+        }
+      },
+      "elapsed_ms": 2.166,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-generic-business-card",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 4.036862820312318,
+            "company": 3.7534930004882
+          },
+          "score": 4.036862820312318,
+          "margin": 0.07019555343775456,
+          "coverage": 0.10964834035614004,
+          "support": 0.5957333160922279
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 3.9552927515657275,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 3.9552927515657275,
+          "margin": 1.0,
+          "coverage": 0.6001503685330849,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.16,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-sql-order-by",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 4.102340805575283,
+            "company": 0.0
+          },
+          "score": 4.102340805575283,
+          "margin": 1.0,
+          "coverage": 0.11208611784131049,
+          "support": 0.9568776202834898
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 0.0,
+          "margin": 0.0,
+          "coverage": 0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 3.175,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-python-set-dedup",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 3.6790593160434097,
+            "company": 3.0123134251383354
+          },
+          "score": 3.6790593160434097,
+          "margin": 0.18122727404735522,
+          "coverage": 0.1314941031522866,
+          "support": 0.6905444978450093
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 3.9552927515657275,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 3.9552927515657275,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 3.557,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-general-photo-resolution",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 6.195671586270929,
+            "company": 3.0919441618468824
+          },
+          "score": 6.195671586270929,
+          "margin": 0.5009509269829017,
+          "coverage": 0.12679206847727675,
+          "support": 0.5113971089454131
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 2.149291264687473,
+            "images": 3.9612209667949387,
+            "source_file": 2.419888626530505
+          },
+          "score": 3.9612209667949387,
+          "margin": 0.38910536755831127,
+          "coverage": 0.40393659029406104,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 4.137,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-general-file-extension",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 4.784703654563637,
+            "company": 2.70412027774122
+          },
+          "score": 4.784703654563637,
+          "margin": 0.43484059348962245,
+          "coverage": 0.1360685207905885,
+          "support": 1.0
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 3.312374404345533,
+            "images": 0.0,
+            "source_file": 2.419888626530505
+          },
+          "score": 3.312374404345533,
+          "margin": 0.2694398847679079,
+          "coverage": 0.6703674483860268,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 3.741,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-generic-hr-concept",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 10.82426010918725,
+            "company": 8.233158684666876
+          },
+          "score": 10.82426010918725,
+          "margin": 0.23937907980621595,
+          "coverage": 0.3078648296336904,
+          "support": 0.3627853186839928
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 4.615969471561481,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 4.615969471561481,
+          "margin": 1.0,
+          "coverage": 0.5098104198162232,
+          "support": 0.8728644462045344
+        }
+      },
+      "elapsed_ms": 2.673,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-generic-presentation-opening",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 5.553369419533444,
+            "company": 1.6501731840271796
+          },
+          "score": 5.553369419533444,
+          "margin": 0.7028518977644718,
+          "coverage": 0.14182548407317971,
+          "support": 0.6914157068225707
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 2.149291264687473,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 2.149291264687473,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.137,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-polish-quote-corporate-data",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "axes": {
+        "knowledge_scope": "general",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 10.329597353717153,
+            "company": 3.3456538374966676
+          },
+          "score": 10.329597353717153,
+          "margin": 0.6761099466967394,
+          "coverage": 0.6949719081822568,
+          "support": 0.1708183166029949
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 2.953639748980691,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 2.953639748980691,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.937,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-math-cube-root",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 5.509675684080814,
+            "company": 5.274920167016542
+          },
+          "score": 5.509675684080814,
+          "margin": 0.04260786487715686,
+          "coverage": 0.24624016495679993,
+          "support": 0.5499580589949485
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 6.9621162828724845,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 6.9621162828724845,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 1.945,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-generic-translation-quality",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 7.419757627745315,
+            "company": 1.8788869014562843
+          },
+          "score": 7.419757627745315,
+          "margin": 0.7467724694361435,
+          "coverage": 0.11033954454393691,
+          "support": 0.9755590281318909
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 3.1791430815322617,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 3.1791430815322617,
+          "margin": 1.0,
+          "coverage": 0.6254606016854016,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.198,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-first-aid",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.9487142560788537,
+            "company": 7.85577107900983
+          },
+          "score": 7.85577107900983,
+          "margin": 0.7519385129124108,
+          "coverage": 0.4583086241187263,
+          "support": 0.9568776202834897
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 4.257269895868092,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 4.257269895868092,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.747,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-client-escort",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.549461257484197,
+            "company": 7.494045331599663
+          },
+          "score": 7.494045331599663,
+          "margin": 0.7932410081707563,
+          "coverage": 0.37367632380497723,
+          "support": 0.9372540256732841
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 4.071315016999013,
+            "images": 0.0,
+            "source_file": 3.9552927515657275
+          },
+          "score": 4.071315016999013,
+          "margin": 0.02849749158413348,
+          "coverage": 0.5409823741096706,
+          "support": 0.7467562920118805
+        }
+      },
+      "elapsed_ms": 3.191,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-artwork-transport",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 2.005970157225294,
+            "company": 13.947638875334642
+          },
+          "score": 13.947638875334642,
+          "margin": 0.8561785134276237,
+          "coverage": 0.8482020705814696,
+          "support": 0.19439908371200393
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 1.8163808570840732,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 1.8163808570840732,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 3.091,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-courier-billing",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 4.102340805575283,
+            "company": 5.180300205524686
+          },
+          "score": 5.180300205524686,
+          "margin": 0.20808821056350774,
+          "coverage": 0.4215138275862232,
+          "support": 1.0
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 1.9697098648729428,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 1.9697098648729428,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.468,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-board-room-permission",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.5873019047124717,
+            "company": 11.924363968468771
+          },
+          "score": 11.924363968468771,
+          "margin": 0.699161991851451,
+          "coverage": 0.4178657747329584,
+          "support": 0.9764287714856383
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 8.53585553723632,
+            "images": 0.0,
+            "source_file": 1.3867894077127352
+          },
+          "score": 8.53585553723632,
+          "margin": 0.8375336365917763,
+          "coverage": 1.0,
+          "support": 0.2887409159061474
+        }
+      },
+      "elapsed_ms": 2.819,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-data-retention",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.5866317572786133,
+            "company": 10.688606206837717
+          },
+          "score": 10.688606206837717,
+          "margin": 0.6644434561557546,
+          "coverage": 0.6368599854993999,
+          "support": 0.6077900180791715
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 3.718175446500985,
+            "images": 0.0,
+            "source_file": 3.2536144460748373
+          },
+          "score": 3.718175446500985,
+          "margin": 0.12494327045898981,
+          "coverage": 0.4590176258903293,
+          "support": 0.8801012617986983
+        }
+      },
+      "elapsed_ms": 2.626,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-library-borrow",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.0669856222001286,
+            "company": 3.513569256274581
+          },
+          "score": 3.513569256274581,
+          "margin": 0.12710255626153866,
+          "coverage": 1.0,
+          "support": 0.9603014151810328
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 2.184845654618033,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 2.184845654618033,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.9078026293324226
+        }
+      },
+      "elapsed_ms": 2.681,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-waste-disposal",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.9487142560788537,
+            "company": 6.564935947823054
+          },
+          "score": 6.564935947823054,
+          "margin": 0.7031632491821871,
+          "coverage": 0.7271275158113949,
+          "support": 0.44000552962304124
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 2.1513119353922168,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 2.1513119353922168,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.835,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-contract-number",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.549461257484197,
+            "company": 4.9525018533284175
+          },
+          "score": 4.9525018533284175,
+          "margin": 0.6871356531764135,
+          "coverage": 0.26469795621049885,
+          "support": 0.9934671395089762
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 1.912448588730664,
+            "images": 3.6485744460434413,
+            "source_file": 0.0
+          },
+          "score": 3.6485744460434413,
+          "margin": 0.47583676391623403,
+          "coverage": 1.0,
+          "support": 0.9078026293324226
+        }
+      },
+      "elapsed_ms": 2.634,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-disabled-access",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 5.205699473040498
+          },
+          "score": 5.205699473040498,
+          "margin": 1.0,
+          "coverage": 0.5546927484177052,
+          "support": 0.43579366982358636
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 3.7141686586302556,
+            "images": 0.0,
+            "source_file": 3.9552927515657275
+          },
+          "score": 3.9552927515657275,
+          "margin": 0.06096238839464446,
+          "coverage": 0.5157197539722226,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.674,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-mixed-slogan-parking",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.549461257484197,
+            "company": 6.462427604242136
+          },
+          "score": 6.462427604242136,
+          "margin": 0.7602354173426897,
+          "coverage": 0.47730580813972384,
+          "support": 0.6688957859483251
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 4.12102180026516,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 4.12102180026516,
+          "margin": 1.0,
+          "coverage": 0.5,
+          "support": 0.9155854306706269
+        }
+      },
+      "elapsed_ms": 3.327,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-mixed-translation-holiday",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.549461257484197,
+            "company": 8.600253240619399
+          },
+          "score": 8.600253240619399,
+          "margin": 0.81983539157126,
+          "coverage": 0.6818998775325785,
+          "support": 1.0
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 3.171806752914918,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 3.171806752914918,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.8984389693436151
+        }
+      },
+      "elapsed_ms": 3.895,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-welfare-refuse-guess",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "negated_or_contrastive_request",
+        "image_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.9487142560788537,
+            "company": 10.654352944799443
+          },
+          "score": 10.654352944799443,
+          "margin": 0.8170968930562742,
+          "coverage": 1.0,
+          "support": 0.9586602870813398
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 0.0,
+          "margin": 0.0,
+          "coverage": 0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 3.348,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-mentor-policy",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.9487142560788537,
+            "company": 4.291674235315577
+          },
+          "score": 4.291674235315577,
+          "margin": 0.5459314595587984,
+          "coverage": 0.2532992594800457,
+          "support": 0.9549342791571042
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 3.2259575677359535,
+            "images": 0.0,
+            "source_file": 1.9697098648729428
+          },
+          "score": 3.2259575677359535,
+          "margin": 0.38941854518708763,
+          "coverage": 0.40007515601379356,
+          "support": 0.49953036315387356
+        }
+      },
+      "elapsed_ms": 3.391,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-card-fill",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.2089177224689838,
+            "company": 9.938942175089803
+          },
+          "score": 9.938942175089803,
+          "margin": 0.6771368958648771,
+          "coverage": 0.3624075158566922,
+          "support": 0.6815575448857663
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 5.898167865979837,
+            "images": 0.0,
+            "source_file": 3.356499272585678
+          },
+          "score": 5.898167865979837,
+          "margin": 0.4309251027008406,
+          "coverage": 0.6017627043357822,
+          "support": 0.47982520988045596
+        }
+      },
+      "elapsed_ms": 3.102,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-portal-code",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.549461257484197,
+            "company": 4.1863229264617505
+          },
+          "score": 4.1863229264617505,
+          "margin": 0.6298753620534022,
+          "coverage": 0.41960780289945426,
+          "support": 0.9236344352130105
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 2.1513119353922168,
+            "source_file": 0.0
+          },
+          "score": 2.1513119353922168,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.643,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-edit-required-check",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.5185265268349424,
+            "company": 8.872722521068148
+          },
+          "score": 8.872722521068148,
+          "margin": 0.6034445438274156,
+          "coverage": 0.4513543539287416,
+          "support": 0.8958884866607618
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 4.1881378466743735,
+            "source_file": 0.0
+          },
+          "score": 4.1881378466743735,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 3.404,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-nonimage-signal",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "negated_or_contrastive_request"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.5070774359987644,
+            "company": 3.842056617018506
+          },
+          "score": 3.842056617018506,
+          "margin": 0.6077420022070681,
+          "coverage": 0.3066703079037906,
+          "support": 0.9114082715853982
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 6.512304671235659,
+            "images": 3.824897177461328,
+            "source_file": 0.0
+          },
+          "score": 6.512304671235659,
+          "margin": 0.4126661189001799,
+          "coverage": 0.48058974904275553,
+          "support": 0.9078026293324226
+        }
+      },
+      "elapsed_ms": 3.371,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-lost-umbrella",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "text",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 4.102340805575283,
+            "company": 5.745812555044885
+          },
+          "score": 5.745812555044885,
+          "margin": 0.2860294751569325,
+          "coverage": 0.2871760777520618,
+          "support": 0.9088124598783435
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 4.347447768596897,
+            "images": 0.0,
+            "source_file": 3.2536144460748373
+          },
+          "score": 4.347447768596897,
+          "margin": 0.25160355701641596,
+          "coverage": 0.571505257121857,
+          "support": 0.8345198807713151
+        }
+      },
+      "elapsed_ms": 2.841,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-company-new-service-policy",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.9487142560788537,
+            "company": 11.811990445814223
+          },
+          "score": 11.811990445814223,
+          "margin": 0.8350223643493199,
+          "coverage": 0.5029828942362996,
+          "support": 0.8536236413041314
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 3.7642907192601935,
+            "images": 0.0,
+            "source_file": 3.9552927515657275
+          },
+          "score": 3.9552927515657275,
+          "margin": 0.04829023900441366,
+          "coverage": 0.428494742878143,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.957,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-wheelchair-map",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 13.480333681131698
+          },
+          "score": 13.480333681131698,
+          "margin": 1.0,
+          "coverage": 0.695789386020747,
+          "support": 0.8271906046851637
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 10.044243205634881,
+            "source_file": 0.0
+          },
+          "score": 10.044243205634881,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.7984893064719777
+        }
+      },
+      "elapsed_ms": 2.505,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-reading-area-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 6.318952344701994,
+            "company": 9.63688836334638
+          },
+          "score": 9.63688836334638,
+          "margin": 0.34429536729553256,
+          "coverage": 0.47199256859241195,
+          "support": 0.8581047791098702
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 3.9612209667949387,
+            "source_file": 2.1513119353922168
+          },
+          "score": 3.9612209667949387,
+          "margin": 0.4569068594189373,
+          "coverage": 0.39976249941903336,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.048,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-art-exhibit-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.4516494220066423,
+            "company": 12.111532426573325
+          },
+          "score": 12.111532426573325,
+          "margin": 0.8801432080698848,
+          "coverage": 0.5571356247113719,
+          "support": 0.8430314426290635
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 1.8438980763474502,
+            "images": 11.292219090032884,
+            "source_file": 1.9288993535565693
+          },
+          "score": 11.292219090032884,
+          "margin": 0.8291833218805399,
+          "coverage": 0.8421758261756116,
+          "support": 0.9078026293324226
+        }
+      },
+      "elapsed_ms": 2.846,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-client-route-map",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 9.509802499529272
+          },
+          "score": 9.509802499529272,
+          "margin": 1.0,
+          "coverage": 0.584106677789802,
+          "support": 0.9277169931838306
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 0.0,
+          "margin": 0.0,
+          "coverage": 0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.327,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-doorbell-ui",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.511955381087275,
+            "company": 10.432615488653862
+          },
+          "score": 10.432615488653862,
+          "margin": 0.6633676967289026,
+          "coverage": 0.6824504510806989,
+          "support": 0.4284603226016711
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 3.029295489546992,
+            "images": 10.944230457902698,
+            "source_file": 0.0
+          },
+          "score": 10.944230457902698,
+          "margin": 0.7232061677429705,
+          "coverage": 0.8376801100555269,
+          "support": 0.4001260082954051
+        }
+      },
+      "elapsed_ms": 2.286,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-visitor-device-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.6010865083834314,
+            "company": 7.574857490587746
+          },
+          "score": 7.574857490587746,
+          "margin": 0.5246000980403901,
+          "coverage": 0.3070190492994072,
+          "support": 0.8842311171907816
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 4.1881378466743735,
+            "source_file": 0.0
+          },
+          "score": 4.1881378466743735,
+          "margin": 1.0,
+          "coverage": 0.5226656109775475,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.793,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-repair-ticket-ui",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 7.078389967275143
+          },
+          "score": 7.078389967275143,
+          "margin": 1.0,
+          "coverage": 0.3405746696011192,
+          "support": 0.987615779150405
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 6.091536061215578,
+            "source_file": 0.0
+          },
+          "score": 6.091536061215578,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.685,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-borrow-book-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 9.060220734191258
+          },
+          "score": 9.060220734191258,
+          "margin": 1.0,
+          "coverage": 0.44533430199758195,
+          "support": 1.0
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 1.605040286202079,
+            "images": 3.824897177461328,
+            "source_file": 0.0
+          },
+          "score": 3.824897177461328,
+          "margin": 0.5803703441598445,
+          "coverage": 0.4773343890224525,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.128,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-poster-course-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 7.067239123898873
+          },
+          "score": 7.067239123898873,
+          "margin": 1.0,
+          "coverage": 0.8013663911876685,
+          "support": 0.33068396812556117
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 1.9697098648729428,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 1.9697098648729428,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.076,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-internal-locker-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 6.666783772037758
+          },
+          "score": 6.666783772037758,
+          "margin": 1.0,
+          "coverage": 0.7103585879315479,
+          "support": 0.7979392662857778
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 4.074679406734656,
+            "source_file": 0.0
+          },
+          "score": 4.074679406734656,
+          "margin": 1.0,
+          "coverage": 0.5702221727596122,
+          "support": 0.9458191472709954
+        }
+      },
+      "elapsed_ms": 2.152,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-voucher-sample-image",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.0148214815047982,
+            "company": 9.489662447782747
+          },
+          "score": 9.489662447782747,
+          "margin": 0.6823046659358037,
+          "coverage": 0.41812669711558903,
+          "support": 0.9236344352130106
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 3.4544662502732093,
+            "images": 3.3897733554524687,
+            "source_file": 3.2536144460748373
+          },
+          "score": 3.4544662502732093,
+          "margin": 0.018727319977615675,
+          "coverage": 0.5,
+          "support": 0.7467562920118807
+        }
+      },
+      "elapsed_ms": 2.184,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-customer-waiting-plan",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 4.917734183232679
+          },
+          "score": 4.917734183232679,
+          "margin": 1.0,
+          "coverage": 0.5651076889468938,
+          "support": 0.7390232161482672
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 4.394406661868807,
+            "source_file": 0.0
+          },
+          "score": 4.394406661868807,
+          "margin": 1.0,
+          "coverage": 0.6002375005809666,
+          "support": 0.6660072038686442
+        }
+      },
+      "elapsed_ms": 2.227,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-storage-tag-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.9145506832239838,
+            "company": 9.605279846839686
+          },
+          "score": 9.605279846839686,
+          "margin": 0.8006772614903139,
+          "coverage": 0.628777971601255,
+          "support": 0.620876405746941
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 8.465938406282788,
+            "source_file": 0.0
+          },
+          "score": 8.465938406282788,
+          "margin": 1.0,
+          "coverage": 0.6768948231562503,
+          "support": 0.898438969343615
+        }
+      },
+      "elapsed_ms": 2.298,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-shredder-picture",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 8.73909678604062
+          },
+          "score": 8.73909678604062,
+          "margin": 1.0,
+          "coverage": 0.5982005141703508,
+          "support": 0.6285978102980355
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 7.107178286337967,
+            "source_file": 3.225957567735954
+          },
+          "score": 7.107178286337967,
+          "margin": 0.5460986853337887,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.728,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-design-review-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.9550045711948942,
+            "company": 10.640148498214927
+          },
+          "score": 10.640148498214927,
+          "margin": 0.6282942318090375,
+          "coverage": 0.41084860832899467,
+          "support": 0.9206028303620657
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 3.597647733520314,
+            "images": 11.292219090032884,
+            "source_file": 2.1513119353922168
+          },
+          "score": 11.292219090032884,
+          "margin": 0.6814047172804334,
+          "coverage": 0.4708422458639909,
+          "support": 0.9078026293324226
+        }
+      },
+      "elapsed_ms": 2.125,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-library-terminal-ui",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 8.405709557292532
+          },
+          "score": 8.405709557292532,
+          "margin": 1.0,
+          "coverage": 0.6029201370684343,
+          "support": 0.8366679442011287
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 3.3897733554524687,
+            "source_file": 1.8163808570840732
+          },
+          "score": 3.3897733554524687,
+          "margin": 0.464158612798577,
+          "coverage": 0.428494742878143,
+          "support": 0.9078026293324226
+        }
+      },
+      "elapsed_ms": 2.225,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-seasonal-decoration-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 5.1208781283163205
+          },
+          "score": 5.1208781283163205,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.6439901839291529
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 3.9612209667949387,
+            "source_file": 0.0
+          },
+          "score": 3.9612209667949387,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.403,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-donation-area-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 2.010065915343011,
+            "company": 12.809449509053858
+          },
+          "score": 12.809449509053858,
+          "margin": 0.8430794458479832,
+          "coverage": 0.4201190072909342,
+          "support": 0.9099355324377614
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 9.618594779664242,
+            "source_file": 0.0
+          },
+          "score": 9.618594779664242,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.42434052755685636
+        }
+      },
+      "elapsed_ms": 2.207,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-printing-proof-image",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "images",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 10.34114272898152
+          },
+          "score": 10.34114272898152,
+          "margin": 1.0,
+          "coverage": 0.45706749429913823,
+          "support": 0.9122117899959471
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 4.006517512067851,
+            "source_file": 0.0
+          },
+          "score": 4.006517512067851,
+          "margin": 1.0,
+          "coverage": 0.5226656109775475,
+          "support": 0.913269170569092
+        }
+      },
+      "elapsed_ms": 2.635,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-archive-visitor-path-map",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.7787475600761549,
+            "company": 8.888782835768161
+          },
+          "score": 8.888782835768161,
+          "margin": 0.799888511966055,
+          "coverage": 0.39103582473657855,
+          "support": 0.7062699388948901
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 8.465938406282788,
+            "source_file": 9.6250462886794
+          },
+          "score": 9.6250462886794,
+          "margin": 0.12042621382090479,
+          "coverage": 0.4386240654588651,
+          "support": 0.551519645868169
+        }
+      },
+      "elapsed_ms": 2.237,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-visitor-guide",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.16357941500499,
+            "company": 8.177116383093296
+          },
+          "score": 8.177116383093296,
+          "margin": 0.8577029651417505,
+          "coverage": 0.41870193729947636,
+          "support": 0.5911007635324467
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 6.222333669816797
+          },
+          "score": 6.222333669816797,
+          "margin": 1.0,
+          "coverage": 0.47098473319000966,
+          "support": 0.9499990968809602
+        }
+      },
+      "elapsed_ms": 2.143,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-artwork-loan",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 4.178400896509788,
+            "company": 15.07486232445807
+          },
+          "score": 15.07486232445807,
+          "margin": 0.72282327980332,
+          "coverage": 0.5593552084968132,
+          "support": 0.8919609587347488
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 3.4544662502732093,
+            "images": 0.0,
+            "source_file": 8.60214704037568
+          },
+          "score": 8.60214704037568,
+          "margin": 0.5984181351400913,
+          "coverage": 0.5794467417978398,
+          "support": 0.940511285274618
+        }
+      },
+      "elapsed_ms": 2.866,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-print-proof-form",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.366200105230626,
+            "company": 5.905643822532575
+          },
+          "score": 5.905643822532575,
+          "margin": 0.43000285720125503,
+          "coverage": 0.49140951167090924,
+          "support": 0.6714539019924454
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 1.8438980763474502,
+            "images": 0.0,
+            "source_file": 4.968473617537374
+          },
+          "score": 4.968473617537374,
+          "margin": 0.6288803728696502,
+          "coverage": 0.42522235194874236,
+          "support": 0.8836474354716171
+        }
+      },
+      "elapsed_ms": 2.198,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-library-registration",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.0757302114341476,
+            "company": 8.308244811420579
+          },
+          "score": 8.308244811420579,
+          "margin": 0.6297978356143015,
+          "coverage": 0.5742852792878257,
+          "support": 0.6986864028210485
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 3.4544662502732093,
+            "images": 0.0,
+            "source_file": 10.66670723068503
+          },
+          "score": 10.66670723068503,
+          "margin": 0.6761450206174489,
+          "coverage": 0.5794467417978398,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.239,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-maintenance-contract",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 6.486977822281165
+          },
+          "score": 6.486977822281165,
+          "margin": 1.0,
+          "coverage": 0.433816208601935,
+          "support": 0.4774671395785521
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 4.661571892561784
+          },
+          "score": 4.661571892561784,
+          "margin": 1.0,
+          "coverage": 0.4691150896029406,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.155,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-umbrella-register",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 2.7952611481045135,
+            "company": 10.683382895479568
+          },
+          "score": 10.683382895479568,
+          "margin": 0.7383543044883971,
+          "coverage": 0.595520473753451,
+          "support": 0.49431559436644223
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 8.373645605209013
+          },
+          "score": 8.373645605209013,
+          "margin": 1.0,
+          "coverage": 0.7885195347092114,
+          "support": 0.5674368883457444
+        }
+      },
+      "elapsed_ms": 2.187,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-client-tour-slides",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.0148214815047982,
+            "company": 4.468776841359673
+          },
+          "score": 4.468776841359673,
+          "margin": 0.32535868571420834,
+          "coverage": 0.2866519488565661,
+          "support": 0.8836474354716171
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 2.3698013928140336,
+            "source_file": 4.788999606648699
+          },
+          "score": 4.788999606648699,
+          "margin": 0.5051573214739935,
+          "coverage": 0.33333333333333337,
+          "support": 0.8156052586648455
+        }
+      },
+      "elapsed_ms": 2.051,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-museum-visit-guide",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.16357941500499,
+            "company": 10.503605420238898
+          },
+          "score": 10.503605420238898,
+          "margin": 0.8892209514303588,
+          "coverage": 0.5398816765255986,
+          "support": 0.5423100819602502
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 8.254619947110243
+          },
+          "score": 8.254619947110243,
+          "margin": 1.0,
+          "coverage": 0.574175772597174,
+          "support": 0.7416269507100444
+        }
+      },
+      "elapsed_ms": 2.209,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-donation-budget",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "scope_output_disagreement"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 6.721193756403631,
+            "company": 4.151153753085838
+          },
+          "score": 6.721193756403631,
+          "margin": 0.38237850246009975,
+          "coverage": 0.26189411206683305,
+          "support": 0.30888142000699076
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 3.073260973565942,
+            "images": 0.0,
+            "source_file": 4.098344812806989
+          },
+          "score": 4.098344812806989,
+          "margin": 0.2501214236629735,
+          "coverage": 0.2464092775166255,
+          "support": 0.925339437269247
+        }
+      },
+      "elapsed_ms": 2.075,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-voucher-receipt",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 4.178400896509788,
+            "company": 7.132109743302404
+          },
+          "score": 7.132109743302404,
+          "margin": 0.41414237204725773,
+          "coverage": 1.0,
+          "support": 0.516062309643229
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 6.754301853487505
+          },
+          "score": 6.754301853487505,
+          "margin": 1.0,
+          "coverage": 0.6266648627474889,
+          "support": 0.921555868205042
+        }
+      },
+      "elapsed_ms": 2.053,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-retention-schedule",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 2.7952611481045135,
+            "company": 6.631210977811026
+          },
+          "score": 6.631210977811026,
+          "margin": 0.5784689768644288,
+          "coverage": 0.34347549612230077,
+          "support": 0.9405037196728391
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 6.478569384010657
+          },
+          "score": 6.478569384010657,
+          "margin": 1.0,
+          "coverage": 0.672387030446759,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.932,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-event-equipment",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.336782455272842,
+            "company": 7.1309994409013715
+          },
+          "score": 7.1309994409013715,
+          "margin": 0.5320736619142034,
+          "coverage": 0.30823521900827483,
+          "support": 0.7738222877344024
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 2.1513119353922168,
+            "images": 0.0,
+            "source_file": 4.788999606648699
+          },
+          "score": 4.788999606648699,
+          "margin": 0.5507805153281926,
+          "coverage": 0.25,
+          "support": 0.8156052586648455
+        }
+      },
+      "elapsed_ms": 2.141,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-seating-plan-document",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.564723867251163,
+            "company": 7.137134774923908
+          },
+          "score": 7.137134774923908,
+          "margin": 0.5005385242582633,
+          "coverage": 0.3185368908533838,
+          "support": 0.7410614353538241
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 8.564499963089395,
+            "source_file": 5.754912416494923
+          },
+          "score": 8.564499963089395,
+          "margin": 0.32805038924665886,
+          "coverage": 0.5663550390881996,
+          "support": 0.2874975674575314
+        }
+      },
+      "elapsed_ms": 2.209,
+      "tags": [
+        "clear",
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-accessibility-request",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 7.352820526794048
+          },
+          "score": 7.352820526794048,
+          "margin": 1.0,
+          "coverage": 0.30584999029642385,
+          "support": 1.0
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 3.7141686586302556,
+            "images": 0.0,
+            "source_file": 4.615334047039346
+          },
+          "score": 4.615334047039346,
+          "margin": 0.19525464012451527,
+          "coverage": 0.4075273750678233,
+          "support": 0.7497651815769367
+        }
+      },
+      "elapsed_ms": 2.268,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-reading-feedback",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 4.184653075536904,
+            "company": 8.929376409717104
+          },
+          "score": 8.929376409717104,
+          "margin": 0.5313611070328393,
+          "coverage": 0.3933849220066468,
+          "support": 0.7053558266162122
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 2.1513119353922168,
+            "images": 0.0,
+            "source_file": 9.886886644427777
+          },
+          "score": 9.886886644427777,
+          "margin": 0.7824075451896992,
+          "coverage": 0.5487090635479653,
+          "support": 0.8216396195664728
+        }
+      },
+      "elapsed_ms": 2.164,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-repair-acceptance",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.4516494220066423,
+            "company": 13.133438870024229
+          },
+          "score": 13.133438870024229,
+          "margin": 0.8894692063234185,
+          "coverage": 1.0,
+          "support": 0.3912489208455885
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 1.8438980763474502,
+            "images": 0.0,
+            "source_file": 11.823485050792094
+          },
+          "score": 11.823485050792094,
+          "margin": 0.8440478362829307,
+          "coverage": 1.0,
+          "support": 0.41727163800887607
+        }
+      },
+      "elapsed_ms": 2.141,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-basketball-score",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.4636724347750185,
+            "company": 9.203619530081811
+          },
+          "score": 9.203619530081811,
+          "margin": 0.6236619274130044,
+          "coverage": 0.4695482541247681,
+          "support": 0.6651476515565566
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 3.4544662502732093,
+            "images": 0.0,
+            "source_file": 7.088212440130145
+          },
+          "score": 7.088212440130145,
+          "margin": 0.5126463435667311,
+          "coverage": 0.4098775479903477,
+          "support": 0.8311708613412535
+        }
+      },
+      "elapsed_ms": 2.276,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-plant-maintenance",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.4336818073179094,
+            "company": 10.2584457330098
+          },
+          "score": 10.2584457330098,
+          "margin": 0.6652824514859059,
+          "coverage": 0.4195175716748651,
+          "support": 0.49951341478111166
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 6.478569384010657
+          },
+          "score": 6.478569384010657,
+          "margin": 1.0,
+          "coverage": 0.4506899296571019,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.17,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-naming-standard",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "axes": {
+        "knowledge_scope": "company",
+        "output_kind": "source_file",
+        "needs_clarification": false
+      },
+      "layer": "bm25_axes",
+      "correct": true,
+      "guards": [],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.16357941500499,
+            "company": 10.486717440335783
+          },
+          "score": 10.486717440335783,
+          "margin": 0.8890425510532557,
+          "coverage": 0.49128559403336514,
+          "support": 0.5398303142398894
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 3.5826886487409197,
+            "images": 0.0,
+            "source_file": 6.717249161410931
+          },
+          "score": 6.717249161410931,
+          "margin": 0.4666434782079171,
+          "coverage": 0.47247601789311505,
+          "support": 0.41725994038565756
+        }
+      },
+      "elapsed_ms": 2.373,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-file-studio-tour-map",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.0148214815047982,
+            "company": 6.664080428325261
+          },
+          "score": 6.664080428325261,
+          "margin": 0.547601276135491,
+          "coverage": 0.5399512083366118,
+          "support": 0.4912537960382116
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 2.3698013928140336,
+            "source_file": 7.299259563818266
+          },
+          "score": 7.299259563818266,
+          "margin": 0.6753367417483119,
+          "coverage": 0.6532169683092859,
+          "support": 0.4691150896029407
+        }
+      },
+      "elapsed_ms": 2.02,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-side-by-side-docs",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context",
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 2.484365934694213,
+            "company": 2.1762570111187394
+          },
+          "score": 2.484365934694213,
+          "margin": 0.12401913875598086,
+          "coverage": 0.07142857142857142,
+          "support": 0.0
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 0.0,
+          "margin": 0.0,
+          "coverage": 0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.072,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-client-sentence",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context",
+        "file_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.61073826175165,
+            "company": 3.878300743489474
+          },
+          "score": 3.878300743489474,
+          "margin": 0.06898961669926769,
+          "coverage": 0.3911180008719611,
+          "support": 0.7820968404351157
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 2.3698013928140336
+          },
+          "score": 2.3698013928140336,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 1.964,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-image-data",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context",
+        "employee_image_not_read"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 4.35996507988789
+          },
+          "score": 4.35996507988789,
+          "margin": 1.0,
+          "coverage": 0.3562512162712343,
+          "support": 0.9206028303620658
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 2.3698013928140336,
+            "images": 0.0,
+            "source_file": 2.1513119353922168
+          },
+          "score": 2.3698013928140336,
+          "margin": 0.09219737066757747,
+          "coverage": 0.5,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.102,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-other-version",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 7.352820526794048
+          },
+          "score": 7.352820526794048,
+          "margin": 1.0,
+          "coverage": 0.6077900180791718,
+          "support": 1.0
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 3.225957567735954,
+            "images": 0.0,
+            "source_file": 3.9552927515657275
+          },
+          "score": 3.9552927515657275,
+          "margin": 0.1843947413351544,
+          "coverage": 0.428494742878143,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 2.581,
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-multi-output-file",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "multiple_output_requests"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 3.386056636834457,
+            "company": 5.210420637781498
+          },
+          "score": 5.210420637781498,
+          "margin": 0.3501375661915507,
+          "coverage": 0.24656059130246474,
+          "support": 0.7280989593327811
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 4.350411876211503,
+            "source_file": 4.661571892561784
+          },
+          "score": 4.661571892561784,
+          "margin": 0.06675001984776473,
+          "coverage": 0.3465753446907093,
+          "support": 1.0
+        }
+      },
+      "elapsed_ms": 3.602,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-fill-from-photo",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "employee_image_not_read",
+        "file_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 4.287921684137213,
+            "company": 7.194284967422165
+          },
+          "score": 7.194284967422165,
+          "margin": 0.4039822298457481,
+          "coverage": 0.5232550782261035,
+          "support": 0.9568776202834897
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 3.4544662502732093,
+            "images": 3.824897177461328,
+            "source_file": 7.088212440130145
+          },
+          "score": 7.088212440130145,
+          "margin": 0.46038621023735854,
+          "coverage": 0.6693160318744389,
+          "support": 0.8311708613412535
+        }
+      },
+      "elapsed_ms": 3.373,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-remote-desktop",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context",
+        "file_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 2.2701023923129195
+          },
+          "score": 2.2701023923129195,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.0
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 2.3698013928140336
+          },
+          "score": 2.3698013928140336,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.953,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-video-operation",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 4.820150414036369
+          },
+          "score": 4.820150414036369,
+          "margin": 1.0,
+          "coverage": 0.5860537168051314,
+          "support": 0.8231258524708913
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 1.605040286202079,
+            "images": 5.485102456740842,
+            "source_file": 0.0
+          },
+          "score": 5.485102456740842,
+          "margin": 0.7073818950766204,
+          "coverage": 0.6534246553092908,
+          "support": 0.5303983280622645
+        }
+      },
+      "elapsed_ms": 3.24,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-table-progress",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context",
+        "image_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 0.0
+          },
+          "score": 0.0,
+          "margin": 0.0,
+          "coverage": 0,
+          "support": 0.0
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 0.0,
+          "margin": 0.0,
+          "coverage": 0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.876,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-chat-paragraph",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context",
+        "image_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 0.0
+          },
+          "score": 0.0,
+          "margin": 0.0,
+          "coverage": 0,
+          "support": 0.0
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 0.0,
+          "margin": 0.0,
+          "coverage": 0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.067,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-last-quarter-style",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 0.0
+          },
+          "score": 0.0,
+          "margin": 0.0,
+          "coverage": 0,
+          "support": 0.0
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 0.0,
+          "margin": 0.0,
+          "coverage": 0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.013,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-approval-reference",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context",
+        "negated_or_contrastive_request"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.5070774359987644,
+            "company": 6.396827065718645
+          },
+          "score": 6.396827065718645,
+          "margin": 0.7644023481461033,
+          "coverage": 0.6843646598137356,
+          "support": 0.957646785937863
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 5.548134891489358,
+            "images": 1.7767945715844917,
+            "source_file": 0.0
+          },
+          "score": 5.548134891489358,
+          "margin": 0.679749211881991,
+          "coverage": 1.0,
+          "support": 0.7244430075736997
+        }
+      },
+      "elapsed_ms": 2.567,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-multiple-topic-files",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context",
+        "file_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 4.286956876233667
+          },
+          "score": 4.286956876233667,
+          "margin": 1.0,
+          "coverage": 0.5534009931758342,
+          "support": 0.8070079604686689
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 1.9697098648729428
+          },
+          "score": 1.9697098648729428,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.308,
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-soft-reference",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 2.1762570111187394,
+            "company": 0.0
+          },
+          "score": 2.1762570111187394,
+          "margin": 1.0,
+          "coverage": 0.07692307692307691,
+          "support": 0.0
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 3.6485744460434413,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 3.6485744460434413,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.9078026293324226
+        }
+      },
+      "elapsed_ms": 2.081,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-scanned-amount",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context",
+        "employee_image_not_read",
+        "image_request_not_supported_by_action",
+        "uploaded_image_is_not_a_retrieval_request"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 0.0,
+            "company": 0.0
+          },
+          "score": 0.0,
+          "margin": 0.0,
+          "coverage": 0,
+          "support": 0.0
+        },
+        "output": {
+          "label": "images",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 0.0,
+          "margin": 0.0,
+          "coverage": 0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.077,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-voice-task",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 2.005970157225294,
+            "company": 1.8467018043634438
+          },
+          "score": 2.005970157225294,
+          "margin": 0.07939716963793428,
+          "coverage": 0.09946898972411838,
+          "support": 0.0
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 1.8163808570840732,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 1.8163808570840732,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.607,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-missing-calculation-input",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "features": {
+        "scope": {
+          "label": "general",
+          "scores": {
+            "general": 3.6462041018885074,
+            "company": 1.7020437323707347
+          },
+          "score": 3.6462041018885074,
+          "margin": 0.533201190934654,
+          "coverage": 0.07843281705650333,
+          "support": 0.9524974318009531
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 2.1513119353922168,
+            "images": 0.0,
+            "source_file": 0.0
+          },
+          "score": 2.1513119353922168,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.0
+        }
+      },
+      "elapsed_ms": 2.647,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-missing-recipient",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.16357941500499,
+            "company": 2.70412027774122
+          },
+          "score": 2.70412027774122,
+          "margin": 0.5697013093008791,
+          "coverage": 1.0,
+          "support": 0.954934279157104
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 2.419888626530505
+          },
+          "score": 2.419888626530505,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.898438969343615
+        }
+      },
+      "elapsed_ms": 2.32,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-missing-comparison-files",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 1.16357941500499,
+            "company": 8.038829150304379
+          },
+          "score": 8.038829150304379,
+          "margin": 0.8552551132448272,
+          "coverage": 0.7604316487581728,
+          "support": 0.9173205741626793
+        },
+        "output": {
+          "label": "source_file",
+          "scores": {
+            "text": 0.0,
+            "images": 0.0,
+            "source_file": 2.419888626530505
+          },
+          "score": 2.419888626530505,
+          "margin": 1.0,
+          "coverage": 1.0,
+          "support": 0.898438969343615
+        }
+      },
+      "elapsed_ms": 2.683,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "v2-acceptance-unclear-unknown-attachment",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "axes": null,
+      "layer": "unresolved",
+      "correct": false,
+      "guards": [
+        "requires_conversation_context"
+      ],
+      "features": {
+        "scope": {
+          "label": "company",
+          "scores": {
+            "general": 2.0898626875749704,
+            "company": 4.548663204128423
+          },
+          "score": 4.548663204128423,
+          "margin": 0.5405545335433529,
+          "coverage": 0.25,
+          "support": 0.9173205741626794
+        },
+        "output": {
+          "label": "text",
+          "scores": {
+            "text": 4.008396264707344,
+            "images": 0.0,
+            "source_file": 1.9697098648729428
+          },
+          "score": 4.008396264707344,
+          "margin": 0.5086040064911714,
+          "coverage": 0.36981459308839343,
+          "support": 0.8632334059805015
+        }
+      },
+      "elapsed_ms": 2.398,
+      "tags": [
+        "boundary"
+      ]
+    }
+  ],
+  "quality_passed": false,
+  "fingerprint": {
+    "index.jsonl": "4a5fc01468f91f329a025ec03922ada4c4242ae0c33fbcb7e9e1bfa10ed37cb1",
+    "calibration.jsonl": "844a2233b74e87e762da203885b17f9082331ac1c9752724df675dde5e5f43d3",
+    "acceptance.jsonl": "2ea2c2b6929d0536ad7095a3a09c30ad12cbedeaf90170e8a7793533b6b1de26",
+    "intent-policy.v2.json": "d37c890328b9d6c1901f3c2db5615f843e6c365fbab5c3e48b8ce2dd33660d87",
+    "bm25.py": "69f1886b60cb9bf6947cc1632f84641ff704943a068f9e0bb5d0574449da6602",
+    "factors.py": "c1d216fdeb1f550ad6ce8e2c126c6ecc1cf9e1e4adf589e0393f9599a36b6bac",
+    "nli.py": "26b3e454970c6a61636176f57ae1e87af9b15b6dedebcb544bbdccc344a7e1b6",
+    "engine.py": "4914c1891c83d8931268d286b5f817fa61d4ace9f424e9791cf4643fc493d1ac",
+    "types.py": "78b201dba437d571ab83fa43b4740edd260713b4da5d7d91e73d6864ac5efab7",
+    "terra.py": "aef9abd3aa76e8aa60022f49325232946d0b12f34b49238b30bfcadd19fc6837",
+    "settings.py": "361960ccc6a6f14eb02366f45402690407abde8a36e06802debce60f76a08d4c",
+    "intent_host.py": "69cb02446463b24242be90e127127342dcf81f9649ad427114028183c6ebc626",
+    "calibrate-knowledge-intent-v2.py": "a6dd5c710902463ffb3f092251b25047ee2f8cb08f639d7012b4537f3e3c7c20",
+    "model_manifest": "1b77e1641aa5d4321918d0f6905d60ec13c095064987b9f02db890bd86066943",
+    "sample_set": "v2"
+  },
+  "calibration_sha256": "d8bf8ddcaa9ffb06a176166943663a14f1a72eaae9e4258e8d7337c9f8b15bec",
+  "dataset_role": "fresh_independent_v2_acceptance",
+  "passed": false,
+  "integration_passed": false,
+  "shadow_passed": false,
+  "human_review": "pending",
+  "audit": {
+    "counts": {
+      "index": 120,
+      "calibration": 120,
+      "acceptance": 100
+    },
+    "fresh_boundary_count": 36,
+    "cross_split_exact_duplicates": 0,
+    "cross_split_family_overlap": 0,
+    "v1_acceptance_text_reused": 0,
+    "human_review": "pending"
+  },
+  "nli_axes_validated": false,
+  "scope": "First three improvements only; no new BERT training or speed claim"
+}

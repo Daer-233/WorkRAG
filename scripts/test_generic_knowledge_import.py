@@ -33,6 +33,6 @@ def test_cross_page_step_not_cut_at_footer_and_major_heading_is_boundary(tmp_pat
 
 
 def test_ip_addresses_are_not_treated_as_numbered_procedures(tmp_path):
-    source=tmp_path/'printers.txt';source.write_text('##打印机地址\n192.0.2.40 1018\n192.0.2.41 二楼',encoding='utf-8')
+    source=tmp_path/'printers.txt';source.write_text('##打印机地址\n10.20.30.40 1018\n10.20.30.41 二楼',encoding='utf-8')
     p=prepare_generic(source,title='打印机地址')
     assert len(p['steps'])==1 and '1018' in p['steps'][0]['instruction'] and '二楼' in p['steps'][0]['instruction']

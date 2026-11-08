@@ -1,4 +1,4 @@
-param([switch]$Initialize,[switch]$WithModels)
+﻿param([switch]$Initialize,[switch]$WithModels)
 $ErrorActionPreference = 'Stop'
 $manualRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $manualRoot

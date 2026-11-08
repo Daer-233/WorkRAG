@@ -1,12 +1,13 @@
 """Qdrant implementation. This is the only module that imports qdrant_client."""
 
 from collections.abc import Iterable
+from uuid import UUID
 
 from qdrant_client import QdrantClient
 from qdrant_client.http import models
 
 from app.core.config import settings
-from app.providers.vector.base import SearchFilter, VectorCandidate, VectorRecord
+from app.providers.vector.base import SearchFilter, VectorCandidate, VectorHit, VectorRecord
 
 
 class QdrantVectorProvider:
@@ -92,24 +93,25 @@ class QdrantVectorProvider:
         search_filter: SearchFilter,
         limit: int,
     ) -> list[VectorCandidate]:
-        query_filter = self._access_filter(search_filter)
-        dense = self.client.query_points(
-            collection_name=self.collection_name,
-            query=dense_vector,
-            using=self.dense_vector_name,
-            query_filter=query_filter,
-            limit=limit,
-            with_payload=False,
-        ).points
-        sparse = self.client.query_points(
-            collection_name=self.collection_name,
-            query=models.SparseVector(indices=sparse_indices, values=sparse_values),
-            using=self.sparse_vector_name,
-            query_filter=query_filter,
-            limit=limit,
-            with_payload=False,
-        ).points
+        dense = self.search_lane("dense", dense_vector, search_filter, limit)
+        sparse = self.search_lane("sparse", dict(zip(sparse_indices, sparse_values, strict=True)), search_filter, limit)
         return self._rrf_fuse(dense, sparse)
+
+    def delete_chunks(self, chunk_ids: list[str]) -> None:
+        ids = list(dict.fromkeys(str(UUID(value)) for value in chunk_ids))
+        for start in range(0, len(ids), 100):
+            self.client.delete(self.collection_name, models.PointIdsList(points=ids[start:start + 100]), wait=True)
+
+    def search_lane(self, kind, vector, search_filter, limit):
+        if search_filter.document_version_ids == [] or search_filter.point_ids == [] or not vector:
+            return []
+        if kind == "sparse":
+            vector = models.SparseVector(indices=list(vector), values=list(vector.values()))
+        points = self.client.query_points(
+            collection_name=self.collection_name, query=vector, using=kind,
+            query_filter=self._access_filter(search_filter), limit=limit, with_payload=True,
+        ).points
+        return [VectorHit(str(point.id), point.score, point.payload or {}) for point in points]
 
     @staticmethod
     def _rrf_fuse(
@@ -179,4 +181,9 @@ class QdrantVectorProvider:
             must.append(models.FieldCondition(key="page_end", range=models.Range(gte=search_filter.page_start)))
         if search_filter.page_end is not None:
             must.append(models.FieldCondition(key="page_start", range=models.Range(lte=search_filter.page_end)))
-        return models.Filter(must=must, should=access_conditions)
+        if search_filter.document_version_ids:
+            must.insert(0, models.FieldCondition(
+                key="document_version_id", match=models.MatchAny(any=search_filter.document_version_ids)))
+        if search_filter.point_ids:
+            must.append(models.HasIdCondition(has_id=search_filter.point_ids))
+        return models.Filter(must=must, should=access_conditions if search_filter.enforce_roles else None)

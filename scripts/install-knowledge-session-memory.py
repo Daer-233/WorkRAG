@@ -71,7 +71,9 @@ def flag(value, storage='memory'):
     docker('exec', 'langbot', '/app/.venv/bin/python', '-c',
            'import json,sys; from pathlib import Path; '
            'p=Path(sys.argv[1]); t=p.with_suffix(".tmp"); '
-           't.write_text(json.dumps({"enabled":sys.argv[2]=="on","storage":sys.argv[3]}),encoding="utf-8"); t.replace(p)',
+           'd=json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}; '
+           'd.update(enabled=sys.argv[2]=="on",storage=sys.argv[3]); '
+           't.write_text(json.dumps(d),encoding="utf-8"); t.replace(p)',
            FLAG, 'on' if value else 'off', storage)
 
 
@@ -88,12 +90,12 @@ def provision_postgres_token():
     docker('cp', str(token), 'langbot:/app/data/work-knowledge-session-memory-token')
 
 
-def link_photos(article_title, album_title):
+def link_training_photos():
     client = build_opener(ProxyHandler({}))
     with client.open('http://127.0.0.1:8060/api/v1/manuals/entries', timeout=8) as response:
         rows = json.load(response)
     selected = []
-    for title in (article_title, album_title):
+    for title in ('AI赋能设计培训回顾', 'AI赋能设计培训回顾｜现场照片'):
         matches = [row for row in rows if row['title'] == title and row['status'] == 'published'
                    and row['processing_status'] == 'ready']
         if len(matches) != 1:
@@ -136,8 +138,10 @@ def install():
     flag(False)
     if not record.exists():
         record.write_text(json.dumps(changes, ensure_ascii=False, indent=2), encoding='utf-8')
-    docker('cp', str(module.with_name('deployment.py')), f'langbot:{CARD}/deployment.py')
     docker('cp', str(module), f'langbot:{CARD}/session_memory.py')
+    identity_module = ROOT / 'scripts/knowledge_card/department_identity.py'
+    compile(identity_module.read_text(encoding='utf-8'), str(identity_module), 'exec')
+    docker('cp', str(identity_module), f'langbot:{CARD}/department_identity.py')
     installed = []
     try:
         for backup, patched, target in changes:
@@ -152,16 +156,12 @@ def install():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('action', choices=('install', 'enable', 'enable-postgres', 'provision-postgres', 'disable', 'rollback', 'link-photos'))
-    parser.add_argument('--article')
-    parser.add_argument('--album')
+    parser.add_argument('action', choices=('install', 'enable', 'enable-postgres', 'provision-postgres', 'disable', 'rollback', 'link-training-photos'))
     args = parser.parse_args()
     if args.action == 'install':
         install()
-    elif args.action == 'link-photos':
-        if not args.article or not args.album:
-            parser.error('link-photos requires --article and --album')
-        link_photos(args.article, args.album)
+    elif args.action == 'link-training-photos':
+        link_training_photos()
     elif args.action == 'provision-postgres':
         provision_postgres_token()
     elif args.action == 'rollback':
@@ -173,14 +173,7 @@ def main():
     else:
         if args.action in {'enable', 'enable-postgres'}:
             postgres = args.action == 'enable-postgres'
-            fixtures = ('WORKRAG_TEST_ARTICLE', 'WORKRAG_TEST_ALBUM',
-                        'WORKRAG_TEST_REIMBURSEMENT', 'WORKRAG_TEST_ONBOARDING')
-            import os
-            if not all(os.environ.get(key) for key in fixtures):
-                parser.error('Set the four WORKRAG_TEST_* fixture titles before enabling memory.')
-            env_args = [part for key in fixtures for part in ('-e', key)]
-            result = docker('exec', '-e', 'PYTHONPATH=/app/src', *env_args, 'langbot',
-                            '/app/.venv/bin/python', '/tmp/verify-work-session-memory.py',
+            result = docker('exec', 'langbot', '/app/.venv/bin/python', '/tmp/verify-work-session-memory.py',
                             *(['--postgres'] if postgres else []))
             print(result)
             flag(True, 'postgres' if postgres else 'memory')

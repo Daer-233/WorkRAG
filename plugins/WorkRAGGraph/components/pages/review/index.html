@@ -1,0 +1,19 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>标准问答审核</title><style>
+*{box-sizing:border-box}body{font:15px/1.65 system-ui;margin:0;padding:28px;background:var(--langbot-bg,#f5f6f8);color:var(--langbot-text,#172b36)}
+header{max-width:1100px;margin:auto}h1{margin:0;font-size:26px}small{color:var(--langbot-text-muted,#647680)}
+button{padding:9px 15px;border:1px solid var(--langbot-border,#ccd5da);border-radius:8px;cursor:pointer;background:var(--langbot-bg-card,white);color:inherit;margin:4px}button.primary{background:#146b60;color:white;border-color:#146b60}
+main{max-width:1100px;margin:20px auto;display:grid;gap:18px}article{background:var(--langbot-bg-card,white);border:1px solid var(--langbot-border,#dce1e5);border-radius:12px;padding:22px}
+label{display:block;font-weight:600;margin-top:12px}textarea,input[type=text]{width:100%;padding:10px;font:inherit;border:1px solid var(--langbot-border,#ccd5da);border-radius:7px;background:var(--langbot-bg,white);color:inherit}textarea{min-height:130px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}#status{max-width:1100px;margin:12px auto;color:#b34829}.badge{padding:3px 10px;background:#e0ece8;color:#235b4b;border-radius:20px;font-size:13px}details{margin:12px 0}
+</style><header><h1>标准问答审核</h1><small>点赞进入候选 · 人工审核后发布 · 来源版本变化后停止复用</small><p><button id="refresh">刷新候选</button></p></header><div id="status" role="status"></div><main id="list"></main>
+<script src="/api/v1/plugins/_sdk/page-sdk.js"></script><script>
+const list=document.getElementById('list'),status=document.getElementById('status');
+const el=(tag,text)=>{let x=document.createElement(tag);if(text!==undefined)x.textContent=text;return x};
+async function load(){try{const d=await langbot.api('/candidates',null,'GET');list.replaceChildren();if(!d.candidates.length)list.append(el('p','暂无候选。对具体回答提交正反馈后，会在这里显示。'));for(const row of d.candidates)render(row);status.textContent=''}catch(e){status.textContent='加载失败：'+e.message}}
+function render(row){const a=el('article');const badge=el('span',({pending:'待审核',published:'已发布',rejected:'已驳回',unpublished:'已下架'})[row.state]||row.state);badge.className='badge';a.append(badge);if(row.simulation)a.append(el('small','　模拟验收数据 · 不用于真实模型问答'));
+let fields={};for(const [name,title] of [['question','完整问题'],['answer','可复用答案'],['conditions','适用条件（不为空时仅召回，不直接套用）']]){const label=el('label',title);const input=el(name==='question'?'input':'textarea');if(name==='question')input.type='text';input.value=row[name]||'';fields[name]=input;a.append(label,input)}
+const check=el('input');check.type='checkbox';check.checked=row.privacy_checked;const label=el('label');label.append(check,document.createTextNode(' 已核对个人信息、适用范围和来源'));a.append(label);
+const details=el('details');details.append(el('summary','原始问答、上下文、引用与反馈'));details.append(el('pre',JSON.stringify({question:row.original_question,answer:row.original_answer,context:row.context,refs:row.refs,feedback:row.feedback},null,2)));a.append(details);
+for(const [action,title] of [['edit','保存修改'],['publish','审核发布'],['reject','驳回'],['unpublish','下架']]){const b=el('button',title);if(action==='publish')b.className='primary';b.onclick=async()=>{b.disabled=true;try{await langbot.api('/review',{id:row.id,revision:row.revision,action,question:fields.question.value,answer:fields.answer.value,conditions:fields.conditions.value,privacy_checked:check.checked},'POST');await load()}catch(e){status.textContent=e.message}finally{b.disabled=false}};a.append(b)}list.append(a)}
+document.getElementById('refresh').onclick=load;langbot.onReady(load);
+</script></html>

@@ -32,9 +32,9 @@ def engine(entries, *, scores=None, vector_error=False, rerank_error=False, extr
     class Provider:
         collection_name = 'manual_rag_chunks_v1'
         def __init__(self): self.client = self
-        def query_points(self, **kwargs):
-            queries.append(kwargs)
-            return NS(points=points + (extra_points or []))
+        def search_lane(self, kind, vector, search_filter, limit):
+            queries.append(dict(using=kind, query_filter=search_filter))
+            return points + (extra_points or [])
     def embed(texts):
         embeds.append(texts)
         if vector_error: raise RuntimeError('Embedding offline')
@@ -73,7 +73,7 @@ def test_stale_vector_ids_and_wrong_version_payloads_cannot_enter_candidates():
     retriever, queries, reranks, _ = engine([row], extra_points=[stale])
     result = retriever.search('账号申请', [row])
     assert len(queries) == 2
-    assert all(q['query_filter'].must[0].match.any == ['v-one'] for q in queries)
+    assert all(q['query_filter'].document_version_ids == ['v-one'] for q in queries)
     assert all(h.evidence_id != 'deleted-child' for h in result.hits)
     assert result.metrics['dense_count'] == 2
     assert all('deleted-child' not in text for text in reranks[0][1])
@@ -139,7 +139,7 @@ def test_unpublished_versions_do_not_reach_vector_filters_or_rerank():
     hidden['status'] = 'superseded'
     retriever, queries, reranks, _ = engine([live, hidden])
     response = ManualService(Store([live, hidden]), retriever=retriever).ask('账号申请', source_only=True)
-    assert all(q['query_filter'].must[0].match.any == ['v-live'] for q in queries)
+    assert all(q['query_filter'].document_version_ids == ['v-live'] for q in queries)
     assert all(s['entry']['id'] == 'live' for s in response['sources'])
 
 
@@ -216,9 +216,9 @@ def test_wrong_version_payload_is_not_a_vector_hit_even_when_chunk_id_exists():
     class WrongProvider:
         collection_name = 'manual_rag_chunks_v1'
         def __init__(self): self.client = self
-        def query_points(self, **kwargs):
-            return NS(points=[NS(id='one-s0', payload={'manual_entry_id':'one',
-                'document_version_id':'old-version','chunk_level':'child'})])
+        def search_lane(self, kind, vector, search_filter, limit):
+            return [NS(id='one-s0', payload={'manual_entry_id':'one',
+                'document_version_id':'old-version','chunk_level':'child'})]
     retriever.provider_factory = WrongProvider
     result = retriever.search('账号申请', [row])
     assert result.metrics['dense_count'] == result.metrics['sparse_count'] == 0

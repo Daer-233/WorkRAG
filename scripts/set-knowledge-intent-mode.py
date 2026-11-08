@@ -24,7 +24,7 @@ def atomic(path,value):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('mode',choices=['off','shadow','on']);p.add_argument('--pin-answer-model',action='store_true')
-    p.add_argument('--codex2-only',action='store_true',help='Activate only the 示例公司 AI assistant Codex2 direct-message route; preserve backend mode.')
+    p.add_argument('--codex2-only',action='store_true',help='Activate only the LSD AI assistant Codex2 direct-message route; preserve backend mode.')
     args=p.parse_args()
     if args.codex2_only:
         if args.pin_answer_model or args.mode == 'off':

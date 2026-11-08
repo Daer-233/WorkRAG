@@ -1,0 +1,12 @@
+{
+  "passed": false,
+  "cases": 12,
+  "employee_messages_sent": 0,
+  "latency": {
+    "scope": "warm local API BM25 fast path only, three calibration questions repeated 30 times; excludes Terra and answer generation",
+    "samples": 30,
+    "local_p95_ms": 141.0,
+    "http_p95_ms": 154.19,
+    "employee_messages_sent": 0
+  }
+}

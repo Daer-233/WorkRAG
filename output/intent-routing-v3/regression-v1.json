@@ -1,0 +1,1570 @@
+{
+  "local_auto_count": 63,
+  "local_auto_correct": 63,
+  "local_auto_precision": 1.0,
+  "clear_count": 57,
+  "clear_local_auto_coverage": 0.7719298245614035,
+  "company_to_daily": 0,
+  "warm_local_p95_ms": 468.179,
+  "layers": {
+    "bert_supervised": 44,
+    "unresolved": 19,
+    "bm25_axes": 19,
+    "context": 18
+  },
+  "quality_passed": true,
+  "unresolved_are_not_counted_as_correct": true,
+  "terra_not_in_offline_precision": true,
+  "cases": [
+    {
+      "id": "acceptance-daily-01",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 263.905
+    },
+    {
+      "id": "acceptance-daily-02",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action",
+        "scope_output_disagreement",
+        "provided_text_is_data"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 465.873
+    },
+    {
+      "id": "acceptance-daily-03",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 278.449
+    },
+    {
+      "id": "acceptance-daily-04",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 349.438
+    },
+    {
+      "id": "acceptance-daily-05",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 343.091
+    },
+    {
+      "id": "acceptance-daily-06",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 312.265
+    },
+    {
+      "id": "acceptance-daily-07",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 343.871
+    },
+    {
+      "id": "acceptance-daily-08",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 416.203
+    },
+    {
+      "id": "acceptance-daily-09",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 343.956
+    },
+    {
+      "id": "acceptance-daily-10",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 427.957
+    },
+    {
+      "id": "acceptance-daily-11",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 403.98
+    },
+    {
+      "id": "acceptance-daily-12",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 253.701
+    },
+    {
+      "id": "acceptance-daily-13",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 279.521
+    },
+    {
+      "id": "acceptance-daily-14",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 430.618
+    },
+    {
+      "id": "acceptance-daily-15",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 373.936
+    },
+    {
+      "id": "acceptance-daily-16",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 335.69
+    },
+    {
+      "id": "acceptance-daily-17",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 358.822
+    },
+    {
+      "id": "acceptance-daily-18",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 371.449
+    },
+    {
+      "id": "acceptance-daily-19",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 327.136
+    },
+    {
+      "id": "acceptance-daily-20",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 353.86
+    },
+    {
+      "id": "acceptance-knowledge-01",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 25.294
+    },
+    {
+      "id": "acceptance-knowledge-02",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 31.691
+    },
+    {
+      "id": "acceptance-knowledge-03",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 345.681
+    },
+    {
+      "id": "acceptance-knowledge-04",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 34.675
+    },
+    {
+      "id": "acceptance-knowledge-05",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 383.467
+    },
+    {
+      "id": "acceptance-knowledge-06",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 475.095
+    },
+    {
+      "id": "acceptance-knowledge-07",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 28.104
+    },
+    {
+      "id": "acceptance-knowledge-08",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 46.687
+    },
+    {
+      "id": "acceptance-knowledge-09",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 419.561
+    },
+    {
+      "id": "acceptance-knowledge-10",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 26.262
+    },
+    {
+      "id": "acceptance-knowledge-11",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "daily_company_evidence_veto"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 347.587
+    },
+    {
+      "id": "acceptance-knowledge-12",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 350.446
+    },
+    {
+      "id": "acceptance-knowledge-13",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 536.914
+    },
+    {
+      "id": "acceptance-knowledge-14",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "negated_or_contrastive_request"
+      ],
+      "tags": [
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 416.448
+    },
+    {
+      "id": "acceptance-knowledge-15",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 373.921
+    },
+    {
+      "id": "acceptance-knowledge-16",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 468.179
+    },
+    {
+      "id": "acceptance-knowledge-17",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 25.404
+    },
+    {
+      "id": "acceptance-knowledge-18",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "negated_or_contrastive_request"
+      ],
+      "tags": [
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 422.457
+    },
+    {
+      "id": "acceptance-knowledge-19",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 457.91
+    },
+    {
+      "id": "acceptance-knowledge-20",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary",
+        "mixed"
+      ],
+      "elapsed_ms": 408.013
+    },
+    {
+      "id": "acceptance-images-01",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 465.729
+    },
+    {
+      "id": "acceptance-images-02",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 461.177
+    },
+    {
+      "id": "acceptance-images-03",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 31.587
+    },
+    {
+      "id": "acceptance-images-04",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 16.619
+    },
+    {
+      "id": "acceptance-images-05",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 15.805
+    },
+    {
+      "id": "acceptance-images-06",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 337.382
+    },
+    {
+      "id": "acceptance-images-07",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 346.626
+    },
+    {
+      "id": "acceptance-images-08",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 433.354
+    },
+    {
+      "id": "acceptance-images-09",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 417.719
+    },
+    {
+      "id": "acceptance-images-10",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 17.858
+    },
+    {
+      "id": "acceptance-images-11",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 402.417
+    },
+    {
+      "id": "acceptance-images-12",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 31.628
+    },
+    {
+      "id": "acceptance-images-13",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "negated_or_contrastive_request",
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 477.602
+    },
+    {
+      "id": "acceptance-images-14",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 39.281
+    },
+    {
+      "id": "acceptance-images-15",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 469.584
+    },
+    {
+      "id": "acceptance-images-16",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 428.291
+    },
+    {
+      "id": "acceptance-images-17",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 16.394
+    },
+    {
+      "id": "acceptance-images-18",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "explicit_media_request_cannot_be_silently_text"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 332.903
+    },
+    {
+      "id": "acceptance-images-19",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "classifier_factors_inconsistent",
+      "guards": [
+        "explicit_media_request_cannot_be_silently_text"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 417.518
+    },
+    {
+      "id": "acceptance-images-20",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "classifier_factors_inconsistent",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 452.974
+    },
+    {
+      "id": "acceptance-source_file-01",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 17.061
+    },
+    {
+      "id": "acceptance-source_file-02",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 417.842
+    },
+    {
+      "id": "acceptance-source_file-03",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 408.287
+    },
+    {
+      "id": "acceptance-source_file-04",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 383.414
+    },
+    {
+      "id": "acceptance-source_file-05",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 385.092
+    },
+    {
+      "id": "acceptance-source_file-06",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 332.534
+    },
+    {
+      "id": "acceptance-source_file-07",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 350.27
+    },
+    {
+      "id": "acceptance-source_file-08",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "negated_or_contrastive_request"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 341.197
+    },
+    {
+      "id": "acceptance-source_file-09",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 18.336
+    },
+    {
+      "id": "acceptance-source_file-10",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 332.883
+    },
+    {
+      "id": "acceptance-source_file-11",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 291.177
+    },
+    {
+      "id": "acceptance-source_file-12",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 37.371
+    },
+    {
+      "id": "acceptance-source_file-13",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "explicit_media_request_cannot_be_silently_text"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 385.837
+    },
+    {
+      "id": "acceptance-source_file-14",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 389.063
+    },
+    {
+      "id": "acceptance-source_file-15",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 28.272
+    },
+    {
+      "id": "acceptance-source_file-16",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 22.828
+    },
+    {
+      "id": "acceptance-source_file-17",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 414.117
+    },
+    {
+      "id": "acceptance-source_file-18",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 0.082
+    },
+    {
+      "id": "acceptance-source_file-19",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 0.034
+    },
+    {
+      "id": "acceptance-source_file-20",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 0.028
+    },
+    {
+      "id": "acceptance-clarify-01",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 0.028
+    },
+    {
+      "id": "acceptance-clarify-02",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 140.375
+    },
+    {
+      "id": "acceptance-clarify-03",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 1.531
+    },
+    {
+      "id": "acceptance-clarify-04",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "employee_image_not_read",
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 368.345
+    },
+    {
+      "id": "acceptance-clarify-05",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 1.671
+    },
+    {
+      "id": "acceptance-clarify-06",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 1.607
+    },
+    {
+      "id": "acceptance-clarify-07",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 1.607
+    },
+    {
+      "id": "acceptance-clarify-08",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 1.598
+    },
+    {
+      "id": "acceptance-clarify-09",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 1.498
+    },
+    {
+      "id": "acceptance-clarify-10",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 1.48
+    },
+    {
+      "id": "acceptance-clarify-11",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 1.471
+    },
+    {
+      "id": "acceptance-clarify-12",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "employee_image_not_read",
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 287.968
+    },
+    {
+      "id": "acceptance-clarify-13",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "employee_image_not_read",
+        "uploaded_image_is_not_a_retrieval_request"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 314.471
+    },
+    {
+      "id": "acceptance-clarify-14",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 0.041
+    },
+    {
+      "id": "acceptance-clarify-15",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 1.753
+    },
+    {
+      "id": "acceptance-clarify-16",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 0.032
+    },
+    {
+      "id": "acceptance-clarify-17",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "requires_conversation_context",
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 577.368
+    },
+    {
+      "id": "acceptance-clarify-18",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 2.034
+    },
+    {
+      "id": "acceptance-clarify-19",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 1.628
+    },
+    {
+      "id": "acceptance-clarify-20",
+      "expected": "clarify",
+      "expected_scope": "company",
+      "prediction": "clarify",
+      "correct": true,
+      "layer": "context",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 1.605
+    }
+  ],
+  "dataset_role": "known_v1_regression_not_independent"
+}

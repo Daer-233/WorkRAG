@@ -15,14 +15,17 @@ import sys
 import httpx
 
 ROOT = Path(__file__).resolve().parents[1]
-from knowledge_card.deployment import KB,PIPELINE
-
+KB = 'b557ed18-fd7a-408c-89b7-fc9ffcc3e446'
+PIPELINE = '46b1174d-a808-46e3-ace9-ce34432803db'
 RUNNER = 'plugin:langbot-team/CodexAgent/default'
 RUNTIME = ROOT / 'data/manuals/runtime/langbot-integration'
 
 
 def credential():
     key = os.environ.get('LANGBOT_API_KEY')
+    if not key:
+        from dotenv import dotenv_values
+        key = dotenv_values(RUNTIME / '.env').get('LANGBOT_API_KEY')
     if not key and os.name == 'nt':
         import winreg
         with winreg.OpenKey(winreg.HKEY_CURRENT_USER, 'Environment') as item:
@@ -84,11 +87,14 @@ def configure(client):
             'bot_routes_changed': False}
 
 
-def verify(client):
+def verify(client, query='图文操作条目演示如何添加截图？'):
     result = data(client.post(f'/api/v1/knowledge/bases/{KB}/retrieve', json={
-        'query': '图文操作条目演示如何添加截图？'}))['results']
-    return {'matched_results': len(result), 'has_text': any(r.get('content') for r in result),
-            'has_metadata': any(r.get('metadata') for r in result)}
+        'query': query}))['results']
+    report = {'matched_results': len(result), 'has_text': any(r.get('content') for r in result),
+              'has_metadata': any(r.get('metadata') for r in result)}
+    if not result or not report['has_text'] or not report['has_metadata']:
+        raise RuntimeError('LangBot knowledge verification returned no usable evidence: ' + json.dumps(report, ensure_ascii=False))
+    return report
 
 
 def setup_daemon(client):
@@ -107,7 +113,7 @@ def setup_daemon(client):
         subprocess.run(['docker', 'cp', f'langbot_plugin_runtime:/app/.venv/lib/python3.12/site-packages/{package}', str(sdk)], check=True)
     config_path = runtime / 'daemon.private.json'
     private = json.loads(config_path.read_text(encoding='utf-8')) if config_path.exists() else {
-        'url': 'ws://127.0.0.1:18768', 'daemon_id': 'work-knowledge-local', 'token': secrets.token_urlsafe(40)}
+        'url': 'ws://127.0.0.1:18768', 'daemon_id': 'work-knowledge-liwj', 'token': secrets.token_urlsafe(40)}
     config_path.write_text(json.dumps(private, indent=2), encoding='utf-8')
     plugins = data(client.get('/api/v1/plugins'))['plugins']
     plugin = next(p for p in plugins if p.get('manifest', {}).get('manifest', {}).get('metadata', {}).get('name') == 'CodexAgent')
@@ -160,9 +166,13 @@ def main():
     sys.stdout.reconfigure(encoding='utf-8')
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=['configure', 'verify', 'setup-daemon'])
+    parser.add_argument('--query', default='图文操作条目演示如何添加截图？', help='Read-only query used by verify.')
     args = parser.parse_args()
     with httpx.Client(base_url='http://127.0.0.1:5300', headers={'X-API-Key': credential()}, trust_env=False, timeout=150) as client:
-        result = {'configure': configure, 'verify': verify, 'setup-daemon': setup_daemon}[args.command](client)
+        if args.command == 'verify':
+            result = verify(client, args.query)
+        else:
+            result = {'configure': configure, 'setup-daemon': setup_daemon}[args.command](client)
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 

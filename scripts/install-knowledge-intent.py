@@ -41,7 +41,6 @@ def main():
     compile((ROOT/'scripts/knowledge_card/streaming.py').read_text(encoding='utf-8'),target,'exec')
     files.append({'target':target,'backup':str(backup),'patched':str(ROOT/'scripts/knowledge_card/streaming.py')})
     if not record.exists():record.write_text(json.dumps({'files':files},ensure_ascii=False,indent=2),encoding='utf-8')
-    run('docker','cp',str(ROOT/'scripts/knowledge_card/deployment.py'),'langbot:'+PACKAGE+'/deployment.py')
     run('docker','cp',str(ROOT/'scripts/knowledge_card/intent_host.py'),'langbot:'+PACKAGE+'/intent_host.py')
     run('docker','cp',str(ROOT/'scripts/knowledge_card/session_memory.py'),'langbot:'+PACKAGE+'/session_memory.py')
     for item in files:run('docker','cp',item['patched'],'langbot:'+item['target'])

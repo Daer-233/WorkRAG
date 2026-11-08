@@ -79,8 +79,7 @@ def test_repeated_provider_tokens_and_final_snapshot():
     from pathlib import Path
     root=Path(__file__).resolve().parents[1]/'data/manuals/runtime/langbot-codex'
     sys.path[:0]=[str(root/'sdk'),str(root/'official-plugin')]
-    import pytest
-    _CodexAppServerClient = pytest.importorskip('pkg.native_cli', reason='Local CodexAgent artifact required')._CodexAppServerClient
+    from pkg.native_cli import _CodexAppServerClient
     from knowledge_card.codex_delta import install as install_delta
     install_delta(_CodexAppServerClient)
     async def run():

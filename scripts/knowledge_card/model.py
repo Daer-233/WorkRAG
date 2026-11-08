@@ -12,6 +12,9 @@ LABELS = {'processing':'正在处理','retrieving':'正在检索资料','generat
           'empty':'未找到可引用的资料','failed':'处理失败，已保留可用内容'}
 
 
+LABELS.update({'payment_reading':'正在读取表格','payment_preparing':'正在生成预览','payment_review':'需要补充信息','payment_ready':'待平台确认'})
+
+
 def packets(value, depth=0):
     """Decode only Host tool-result envelopes; callers must not pass model text."""
     if depth > 12:
@@ -37,6 +40,7 @@ def packets(value, depth=0):
 
 @dataclass
 class CardState:
+    business: bool = False
     stage: str = 'processing'
     answer: str = ''
     sources: list = field(default_factory=list)
@@ -89,15 +93,17 @@ class CardState:
 
     def apply(self, event):
         kind = event['type']
-        if kind == 'retrieval.started': self.stage = 'retrieving'
-        elif kind == 'generation.started' and self.stage not in ('busy','empty','failed'): self.stage = 'generating'
+        if kind == 'business.updated': self.business = True
+        elif kind == 'payment.stage': self.stage = event['stage']
+        elif kind == 'retrieval.started': self.stage = 'retrieving'
+        elif kind == 'generation.started' and self.stage not in ('busy','empty','failed','payment_review','payment_ready'): self.stage = 'generating'
         elif kind == 'retrieval.completed': self.ingest(event.get('results', []))
         elif kind == 'answer.delta':
             self.answer += event.get('text', '')
-            if self.stage not in ('busy','empty','failed'): self.stage = 'generating'
+            if self.stage not in ('busy','empty','failed','payment_review','payment_ready'): self.stage = 'generating'
         elif kind == 'answer.snapshot':
             self.answer = event.get('text', '')
-            if self.answer and self.stage not in ('busy','empty','failed'): self.stage = 'generating'
+            if self.answer and self.stage not in ('busy','empty','failed','payment_review','payment_ready'): self.stage = 'generating'
         elif kind == 'images.started': self.stage = 'images'
         elif kind == 'image.ready':
             for image in self.images:
@@ -106,7 +112,7 @@ class CardState:
             if '部分图片暂时无法加载，文字与依据仍可查看。' not in self.notices:
                 self.notices.append('部分图片暂时无法加载，文字与依据仍可查看。')
         elif kind == 'run.failed': self.stage = 'failed'
-        elif kind == 'run.completed' and self.stage not in ('busy','empty','failed'): self.stage = 'completed'
+        elif kind == 'run.completed' and self.stage not in ('busy','empty','failed','payment_review','payment_ready'): self.stage = 'completed'
 
     def public_answer(self):
         answer = IMAGE.sub('', self.answer)

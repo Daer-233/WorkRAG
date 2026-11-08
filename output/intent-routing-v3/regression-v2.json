@@ -1,0 +1,1591 @@
+{
+  "local_auto_count": 71,
+  "local_auto_correct": 67,
+  "local_auto_precision": 0.9436619718309859,
+  "clear_count": 80,
+  "clear_local_auto_coverage": 0.8375,
+  "company_to_daily": 0,
+  "warm_local_p95_ms": 544.355,
+  "layers": {
+    "bert_supervised": 39,
+    "unresolved": 29,
+    "bm25_axes": 32
+  },
+  "quality_passed": false,
+  "unresolved_are_not_counted_as_correct": true,
+  "terra_not_in_offline_precision": true,
+  "cases": [
+    {
+      "id": "v2-acceptance-freezing-water",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 303.759
+    },
+    {
+      "id": "v2-acceptance-excel-row-height",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 285.657
+    },
+    {
+      "id": "v2-acceptance-word-line-spacing",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 311.895
+    },
+    {
+      "id": "v2-acceptance-browser-bookmark-export",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 312.41
+    },
+    {
+      "id": "v2-acceptance-polish-museum-invite",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 417.994
+    },
+    {
+      "id": "v2-acceptance-translate-box-label",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "classifier_factors_inconsistent",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 433.194
+    },
+    {
+      "id": "v2-acceptance-shorten-internal-fundraiser",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 542.333
+    },
+    {
+      "id": "v2-acceptance-proofread-explicit-library",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 453.541
+    },
+    {
+      "id": "v2-acceptance-rewrite-queue-note",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 443.625
+    },
+    {
+      "id": "v2-acceptance-generic-project-management",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 460.839
+    },
+    {
+      "id": "v2-acceptance-generic-business-card",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 397.187
+    },
+    {
+      "id": "v2-acceptance-sql-order-by",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 383.532
+    },
+    {
+      "id": "v2-acceptance-python-set-dedup",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 334.357
+    },
+    {
+      "id": "v2-acceptance-general-photo-resolution",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 457.685
+    },
+    {
+      "id": "v2-acceptance-general-file-extension",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 347.752
+    },
+    {
+      "id": "v2-acceptance-generic-hr-concept",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 349.152
+    },
+    {
+      "id": "v2-acceptance-generic-presentation-opening",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 329.93
+    },
+    {
+      "id": "v2-acceptance-polish-quote-corporate-data",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 433.574
+    },
+    {
+      "id": "v2-acceptance-math-cube-root",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 276.51
+    },
+    {
+      "id": "v2-acceptance-generic-translation-quality",
+      "expected": "daily",
+      "expected_scope": "general",
+      "prediction": "daily",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 427.273
+    },
+    {
+      "id": "v2-acceptance-company-first-aid",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 34.867
+    },
+    {
+      "id": "v2-acceptance-company-client-escort",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 388.504
+    },
+    {
+      "id": "v2-acceptance-company-artwork-transport",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 444.271
+    },
+    {
+      "id": "v2-acceptance-company-courier-billing",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 451.278
+    },
+    {
+      "id": "v2-acceptance-company-board-room-permission",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 38.879
+    },
+    {
+      "id": "v2-acceptance-company-data-retention",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 50.633
+    },
+    {
+      "id": "v2-acceptance-company-library-borrow",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 724.741
+    },
+    {
+      "id": "v2-acceptance-company-waste-disposal",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 457.632
+    },
+    {
+      "id": "v2-acceptance-company-contract-number",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 346.722
+    },
+    {
+      "id": "v2-acceptance-company-disabled-access",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 429.052
+    },
+    {
+      "id": "v2-acceptance-mixed-slogan-parking",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 39.262
+    },
+    {
+      "id": "v2-acceptance-mixed-translation-holiday",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 32.958
+    },
+    {
+      "id": "v2-acceptance-company-welfare-refuse-guess",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "negated_or_contrastive_request"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 476.462
+    },
+    {
+      "id": "v2-acceptance-company-mentor-policy",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 57.386
+    },
+    {
+      "id": "v2-acceptance-company-card-fill",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 51.931
+    },
+    {
+      "id": "v2-acceptance-company-portal-code",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 469.572
+    },
+    {
+      "id": "v2-acceptance-company-edit-required-check",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 611.71
+    },
+    {
+      "id": "v2-acceptance-company-nonimage-signal",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "negated_or_contrastive_request"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 535.688
+    },
+    {
+      "id": "v2-acceptance-company-lost-umbrella",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 544.355
+    },
+    {
+      "id": "v2-acceptance-company-new-service-policy",
+      "expected": "knowledge",
+      "expected_scope": "company",
+      "prediction": "knowledge",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 546.973
+    },
+    {
+      "id": "v2-acceptance-archive-wheelchair-map",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 20.358
+    },
+    {
+      "id": "v2-acceptance-archive-reading-area-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 338.255
+    },
+    {
+      "id": "v2-acceptance-archive-art-exhibit-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 36.376
+    },
+    {
+      "id": "v2-acceptance-archive-client-route-map",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 422.229
+    },
+    {
+      "id": "v2-acceptance-archive-doorbell-ui",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 19.173
+    },
+    {
+      "id": "v2-acceptance-archive-visitor-device-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 365.289
+    },
+    {
+      "id": "v2-acceptance-archive-repair-ticket-ui",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 25.252
+    },
+    {
+      "id": "v2-acceptance-archive-borrow-book-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 18.095
+    },
+    {
+      "id": "v2-acceptance-archive-poster-course-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "explicit_media_request_cannot_be_silently_text"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 337.092
+    },
+    {
+      "id": "v2-acceptance-archive-internal-locker-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 16.909
+    },
+    {
+      "id": "v2-acceptance-archive-voucher-sample-image",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "explicit_media_request_cannot_be_silently_text"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 412.271
+    },
+    {
+      "id": "v2-acceptance-archive-customer-waiting-plan",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 19.383
+    },
+    {
+      "id": "v2-acceptance-archive-storage-tag-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 19.281
+    },
+    {
+      "id": "v2-acceptance-archive-shredder-picture",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 32.432
+    },
+    {
+      "id": "v2-acceptance-archive-design-review-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 15.322
+    },
+    {
+      "id": "v2-acceptance-archive-library-terminal-ui",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 16.452
+    },
+    {
+      "id": "v2-acceptance-archive-seasonal-decoration-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 332.696
+    },
+    {
+      "id": "v2-acceptance-archive-donation-area-photo",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 23.527
+    },
+    {
+      "id": "v2-acceptance-archive-printing-proof-image",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 27.746
+    },
+    {
+      "id": "v2-acceptance-archive-visitor-path-map",
+      "expected": "images",
+      "expected_scope": "company",
+      "prediction": "images",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 389.373
+    },
+    {
+      "id": "v2-acceptance-file-visitor-guide",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 16.631
+    },
+    {
+      "id": "v2-acceptance-file-artwork-loan",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 29.599
+    },
+    {
+      "id": "v2-acceptance-file-print-proof-form",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 389.691
+    },
+    {
+      "id": "v2-acceptance-file-library-registration",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 16.467
+    },
+    {
+      "id": "v2-acceptance-file-maintenance-contract",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 314.942
+    },
+    {
+      "id": "v2-acceptance-file-umbrella-register",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "classifier_factors_inconsistent",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 392.123
+    },
+    {
+      "id": "v2-acceptance-file-client-tour-slides",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 469.004
+    },
+    {
+      "id": "v2-acceptance-file-museum-visit-guide",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 31.536
+    },
+    {
+      "id": "v2-acceptance-file-donation-budget",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "explicit_media_request_cannot_be_silently_text"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 371.537
+    },
+    {
+      "id": "v2-acceptance-file-voucher-receipt",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 16.996
+    },
+    {
+      "id": "v2-acceptance-file-retention-schedule",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 28.459
+    },
+    {
+      "id": "v2-acceptance-file-event-equipment",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 16.613
+    },
+    {
+      "id": "v2-acceptance-file-seating-plan-document",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear",
+        "boundary"
+      ],
+      "elapsed_ms": 365.547
+    },
+    {
+      "id": "v2-acceptance-file-accessibility-request",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 400.501
+    },
+    {
+      "id": "v2-acceptance-file-reading-feedback",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 17.818
+    },
+    {
+      "id": "v2-acceptance-file-repair-acceptance",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 27.629
+    },
+    {
+      "id": "v2-acceptance-file-basketball-score",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 17.343
+    },
+    {
+      "id": "v2-acceptance-file-plant-maintenance",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 17.358
+    },
+    {
+      "id": "v2-acceptance-file-naming-standard",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": "source_file",
+      "correct": true,
+      "layer": "bm25_axes",
+      "reason": "",
+      "guards": [],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 17.735
+    },
+    {
+      "id": "v2-acceptance-file-studio-tour-map",
+      "expected": "source_file",
+      "expected_scope": "company",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "requires_conversation_context"
+      ],
+      "tags": [
+        "clear"
+      ],
+      "elapsed_ms": 321.129
+    },
+    {
+      "id": "v2-acceptance-unclear-side-by-side-docs",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": "daily",
+      "correct": false,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "requires_conversation_context",
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 424.154
+    },
+    {
+      "id": "v2-acceptance-unclear-client-sentence",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "requires_conversation_context",
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 253.561
+    },
+    {
+      "id": "v2-acceptance-unclear-image-data",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "requires_conversation_context",
+        "employee_image_not_read"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 517.792
+    },
+    {
+      "id": "v2-acceptance-unclear-other-version",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 813.68
+    },
+    {
+      "id": "v2-acceptance-unclear-multi-output-file",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "classifier_explicit_image_request_conflict",
+      "guards": [
+        "multiple_output_requests"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 405.588
+    },
+    {
+      "id": "v2-acceptance-unclear-fill-from-photo",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "employee_image_not_read",
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 449.292
+    },
+    {
+      "id": "v2-acceptance-unclear-remote-desktop",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "classifier_factors_inconsistent",
+      "guards": [
+        "requires_conversation_context",
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 355.754
+    },
+    {
+      "id": "v2-acceptance-unclear-video-operation",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 414.174
+    },
+    {
+      "id": "v2-acceptance-unclear-table-progress",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "classifier_factors_inconsistent",
+      "guards": [
+        "requires_conversation_context",
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 395.888
+    },
+    {
+      "id": "v2-acceptance-unclear-chat-paragraph",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": "daily",
+      "correct": false,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "requires_conversation_context",
+        "image_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 311.205
+    },
+    {
+      "id": "v2-acceptance-unclear-last-quarter-style",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "image_request_not_supported_by_action",
+        "scope_output_disagreement"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 352.927
+    },
+    {
+      "id": "v2-acceptance-unclear-approval-reference",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": "knowledge",
+      "correct": false,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "requires_conversation_context",
+        "negated_or_contrastive_request"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 317.902
+    },
+    {
+      "id": "v2-acceptance-unclear-multiple-topic-files",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "requires_conversation_context",
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ],
+      "elapsed_ms": 712.567
+    },
+    {
+      "id": "v2-acceptance-unclear-soft-reference",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "requires_conversation_context"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 296.287
+    },
+    {
+      "id": "v2-acceptance-unclear-scanned-amount",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "classifier_factors_inconsistent",
+      "guards": [
+        "requires_conversation_context",
+        "employee_image_not_read",
+        "image_request_not_supported_by_action",
+        "uploaded_image_is_not_a_retrieval_request"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 384.721
+    },
+    {
+      "id": "v2-acceptance-unclear-voice-task",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "requires_conversation_context"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 370.247
+    },
+    {
+      "id": "v2-acceptance-unclear-missing-calculation-input",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "below_calibrated_axis_thresholds"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 423.891
+    },
+    {
+      "id": "v2-acceptance-unclear-missing-recipient",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "classifier_factors_inconsistent",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 388.749
+    },
+    {
+      "id": "v2-acceptance-unclear-missing-comparison-files",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": "source_file",
+      "correct": false,
+      "layer": "bert_supervised",
+      "reason": "",
+      "guards": [
+        "file_request_not_supported_by_action"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 470.489
+    },
+    {
+      "id": "v2-acceptance-unclear-unknown-attachment",
+      "expected": "clarify",
+      "expected_scope": "unknown",
+      "prediction": null,
+      "correct": false,
+      "layer": "unresolved",
+      "reason": "below_calibrated_classifier_thresholds",
+      "guards": [
+        "requires_conversation_context"
+      ],
+      "tags": [
+        "boundary"
+      ],
+      "elapsed_ms": 513.552
+    }
+  ],
+  "dataset_role": "known_v2_regression_not_independent"
+}

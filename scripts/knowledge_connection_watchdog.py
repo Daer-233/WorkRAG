@@ -17,7 +17,7 @@ import httpx
 
 ROOT=Path(__file__).resolve().parents[1]
 RUNTIME=ROOT/'data/manuals/runtime/connection-watchdog'
-from knowledge_card.deployment import BOT
+BOT='9777ca2e-7df1-4441-84ca-abedd4bc5c01'
 BASE='http://127.0.0.1:5300'
 TERMINAL={'success','failed','error','cancelled','canceled','dropped','completed','skipped','interrupted'}
 FAILURES=('DingTalk: open connection failed','DingTalk: connection closed','DingTalk: unknown exception')

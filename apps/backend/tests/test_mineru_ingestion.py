@@ -86,12 +86,12 @@ def test_mineru_precision_api_upload_poll_and_download(tmp_path: Path) -> None:
 
 
 def test_mineru_precision_api_accepts_xlsx() -> None:
-    provider = MinerUParserProvider(api_token="REPLACE_ME")
+    provider = MinerUParserProvider(api_token="token-is-present")
     provider._require_supported_file_type("case.xlsx")
 
 
 def test_mineru_precision_api_rejects_unknown_extension() -> None:
-    provider = MinerUParserProvider(api_token="REPLACE_ME")
+    provider = MinerUParserProvider(api_token="token-is-present")
     with pytest.raises(ParserProviderError, match="not configured to parse '.dwg'"):
         provider._require_supported_file_type("case.dwg")
 

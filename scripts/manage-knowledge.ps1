@@ -74,10 +74,25 @@ function Ensure-Storage {
             $state = & docker inspect --format '{{ .State.Health.Status }}' $containerName 2>$null
             if ($LASTEXITCODE -ne 0 -or ([string]$state).Trim() -ne 'healthy') { $storageReady = $false }
         }
-        if ($storageReady) { Write-Host 'PostgreSQL and Qdrant are healthy.'; return }
+        if ($storageReady) { Write-Host 'PostgreSQL and Qdrant are healthy.'; break }
         Start-Sleep -Seconds 2
     } while ((Get-Date) -lt $deadline)
-    throw 'Storage did not become healthy within 60 seconds. Check Docker Desktop.'
+    if (-not $storageReady) { throw 'Storage did not become healthy within 60 seconds. Check Docker Desktop.' }
+    $vectorChoice = & $knowledgePython -c "from dotenv import dotenv_values; print(dotenv_values('instances/manuals/.env').get('VECTOR_PROVIDER','qdrant').lower())"
+    if ($LASTEXITCODE -ne 0) { throw 'Cannot read selected vector backend.' }
+    if (([string]$vectorChoice).Trim() -eq 'milvus') {
+        & (Join-Path $PSScriptRoot 'start-milvus.ps1')
+        if ($LASTEXITCODE -ne 0) { throw 'Milvus storage startup failed.' }
+        $milvusDeadline = (Get-Date).AddSeconds(120)
+        do {
+            try {
+                $milvusResponse = Invoke-WebRequest -Uri 'http://127.0.0.1:9091/healthz' -UseBasicParsing -TimeoutSec 3
+                if ($milvusResponse.StatusCode -eq 200) { Write-Host 'Milvus is healthy.'; return }
+            } catch { }
+            Start-Sleep -Seconds 2
+        } while ((Get-Date) -lt $milvusDeadline)
+        throw 'Milvus did not become healthy within 120 seconds.'
+    }
 }
 
 function Wait-ServiceHealth($Service) {
@@ -87,8 +102,13 @@ function Wait-ServiceHealth($Service) {
         try { $health = Invoke-RestMethod -Uri "http://127.0.0.1:$($Service.Port)/health" -TimeoutSec 3 } catch { }
         if ($health) {
             if ($Service.Port -eq 8060) {
-                if ($health.status -ne 'ok' -or $health.library -ne 'manuals' -or $health.database -ne 'manual_rag' -or $health.collection -ne 'manual_rag_chunks_v1') {
+                $validIndex = ($health.vector_provider -eq 'milvus' -and $health.collection -match '^(manual_rag_|wk_manual_)') -or
+                    ($health.vector_provider -in @($null,'qdrant') -and $health.collection -eq 'manual_rag_chunks_v1')
+                if ($health.status -ne 'ok' -or $health.library -ne 'manuals' -or $health.database -ne 'manual_rag' -or -not $validIndex) {
                     throw 'Backend health identity mismatch; check the isolated knowledge configuration.'
+                }
+                if ($health.vector_provider -eq 'milvus' -and $health.vector_ready -ne $true) {
+                    throw 'Milvus is not ready; inspect its storage services.'
                 }
             } else {
                 $expectedName = if ($Service.Port -eq 8031) { 'design-rag-embedding' } else { 'design-rag-rerank' }

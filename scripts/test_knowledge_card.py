@@ -89,8 +89,7 @@ def test_native_template_bindings_collapse_defaults_and_unique_nodes():
 def test_delta_hook_on_actual_installed_codex_client():
     root=Path(__file__).resolve().parents[1]/'data/manuals/runtime/langbot-codex'
     sys.path[:0]=[str(root/'sdk'),str(root/'official-plugin')]
-    import pytest
-    _CodexAppServerClient = pytest.importorskip('pkg.native_cli', reason='Local CodexAgent artifact required')._CodexAppServerClient
+    from pkg.native_cli import _CodexAppServerClient
     from langbot_plugin.api.entities.builtin.runner.result import RunnerResult
     from knowledge_card.codex_delta import install, KEY
     class FakeRunner:
@@ -132,8 +131,7 @@ def test_delta_hook_on_actual_installed_codex_client():
 
 
 def test_knowledge_tool_results_feed_real_metadata_not_model_claims():
-    import pytest
-    _CodexAppServerClient = pytest.importorskip('pkg.native_cli', reason='Local CodexAgent artifact required')._CodexAppServerClient
+    from pkg.native_cli import _CodexAppServerClient
     from knowledge_card.codex_delta import KEY
     async def run():
         client=object.__new__(_CodexAppServerClient)

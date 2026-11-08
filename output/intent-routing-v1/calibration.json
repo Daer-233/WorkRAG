@@ -1,0 +1,1308 @@
+{
+  "fingerprint": {
+    "index.jsonl": "4dca355b601daafbaa3ab956ac0cc8c15bb8cf03f77108a5facc3662ac39326c",
+    "calibration.jsonl": "05841b19bad971379399335e83137913e8abb2e5e0832d16c6250a7a68ecbc28",
+    "acceptance.jsonl": "ef6ec15764183905fdc43718c27e181db5758ac8d3b786c92db27eb7c00e54e2",
+    "bm25.py": "19a21174a0ce2c15a07d532abc7d5ab0810c1c0571672fbfff115b9d68f1869d",
+    "nli.py": "26b3e454970c6a61636176f57ae1e87af9b15b6dedebcb544bbdccc344a7e1b6",
+    "engine.py": "5e43d55bdc273bf0ee58bdf259c92b5687e78ada6f2c0440ac0e7740efe95d6a",
+    "types.py": "dd2115c3f6126c08b6af63e8f8b245af676a3689e92993d38c1642ed3acc6e5d",
+    "terra.py": "005c894ff8174e4a80eae10ead1992abda869ba7fe7e227b5fc43bbacc680d26",
+    "intent_host.py": "69cb02446463b24242be90e127127342dcf81f9649ad427114028183c6ebc626",
+    "model_manifest": "1b77e1641aa5d4321918d0f6905d60ec13c095064987b9f02db890bd86066943"
+  },
+  "bm25": {
+    "daily": {
+      "score": 4.187978033888805,
+      "margin": 0.3595045227302456,
+      "calibration_accepted": 7
+    },
+    "knowledge": {
+      "score": 6.315013121107675,
+      "margin": 2.157512564985508,
+      "calibration_accepted": 6
+    },
+    "images": {
+      "score": 4.187978033888805,
+      "margin": 1.1534175316306858,
+      "calibration_accepted": 9
+    },
+    "source_file": {
+      "score": 6.3001608705029675,
+      "margin": 2.442172994578148,
+      "calibration_accepted": 8
+    }
+  },
+  "nli": {
+    "source_file": {
+      "score": 0.5905529260635376,
+      "margin": 0.518793873488903,
+      "calibration_accepted": 3
+    }
+  },
+  "model_ready": true,
+  "method": "per-label score and distinct-intent margin; >=3 calibration accepts, zero calibration errors",
+  "human_review": "pending",
+  "raw_scores": [
+    {
+      "id": "calibration-daily-01",
+      "expected": "daily",
+      "bm25": {
+        "daily": 3.184056469526394,
+        "knowledge": 3.3490453617940448,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0055456506088376045,
+        "knowledge": 0.008670460432767868,
+        "images": 0.04666412994265556,
+        "source_file": 0.21175087988376617,
+        "clarify": 0.010876954533159733
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3875.0,
+      "elapsed_ms": 3875.0
+    },
+    {
+      "id": "calibration-daily-02",
+      "expected": "daily",
+      "bm25": {
+        "daily": 4.621996628260873,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 3.1504919089038204
+      },
+      "nli": {
+        "daily": 0.008912315592169762,
+        "knowledge": 0.023910922929644585,
+        "images": 0.1018276959657669,
+        "source_file": 0.5584519505500793,
+        "clarify": 0.011700994335114956
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4016.0,
+      "elapsed_ms": 4016.0
+    },
+    {
+      "id": "calibration-daily-03",
+      "expected": "daily",
+      "bm25": {
+        "daily": 11.172228808092132,
+        "knowledge": 0.0,
+        "images": 2.648491447154264,
+        "source_file": 2.648491447154264
+      },
+      "nli": {
+        "daily": 0.002880410524085164,
+        "knowledge": 0.03687998652458191,
+        "images": 0.0704873725771904,
+        "source_file": 0.20557372272014618,
+        "clarify": 0.011057591997087002
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 2828.0,
+      "elapsed_ms": 2828.0
+    },
+    {
+      "id": "calibration-daily-04",
+      "expected": "daily",
+      "bm25": {
+        "daily": 2.77035997050676,
+        "knowledge": 2.0569200257920532,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0033825498539954424,
+        "knowledge": 0.008081651292741299,
+        "images": 0.0068971458822488785,
+        "source_file": 0.026113279163837433,
+        "clarify": 0.004955158103257418
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4860.0,
+      "elapsed_ms": 4860.0
+    },
+    {
+      "id": "calibration-daily-05",
+      "expected": "daily",
+      "bm25": {
+        "daily": 4.621996628260873,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.029252544045448303,
+        "knowledge": 0.019150739535689354,
+        "images": 0.05760305002331734,
+        "source_file": 0.1641739159822464,
+        "clarify": 0.01071616169065237
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3125.0,
+      "elapsed_ms": 3125.0
+    },
+    {
+      "id": "calibration-daily-06",
+      "expected": "daily",
+      "bm25": {
+        "daily": 2.77035997050676,
+        "knowledge": 2.0569200257920532,
+        "images": 3.1504919089038204,
+        "source_file": 4.000164630936458
+      },
+      "nli": {
+        "daily": 0.002670585410669446,
+        "knowledge": 0.016241971403360367,
+        "images": 0.03437231108546257,
+        "source_file": 0.11296012997627258,
+        "clarify": 0.0031802512239664793
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4734.0,
+      "elapsed_ms": 4734.0
+    },
+    {
+      "id": "calibration-daily-07",
+      "expected": "daily",
+      "bm25": {
+        "daily": 2.9229662714725184,
+        "knowledge": 2.77896793309002,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.07756559550762177,
+        "knowledge": 0.029378632083535194,
+        "images": 0.038555510342121124,
+        "source_file": 0.14381441473960876,
+        "clarify": 0.012572999112308025
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 2766.0,
+      "elapsed_ms": 2766.0
+    },
+    {
+      "id": "calibration-daily-08",
+      "expected": "daily",
+      "bm25": {
+        "daily": 7.1052520030476085,
+        "knowledge": 2.0569200257920532,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0462108813226223,
+        "knowledge": 0.08415157347917557,
+        "images": 0.26417070627212524,
+        "source_file": 0.3774506747722626,
+        "clarify": 0.015156697481870651
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 2375.0,
+      "elapsed_ms": 2375.0
+    },
+    {
+      "id": "calibration-daily-09",
+      "expected": "daily",
+      "bm25": {
+        "daily": 4.187978033888805,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 3.8284735111585593
+      },
+      "nli": {
+        "daily": 0.0205253753811121,
+        "knowledge": 0.027526242658495903,
+        "images": 0.1299775391817093,
+        "source_file": 0.5759651064872742,
+        "clarify": 0.012911083176732063
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4687.0,
+      "elapsed_ms": 4687.0
+    },
+    {
+      "id": "calibration-daily-10",
+      "expected": "daily",
+      "bm25": {
+        "daily": 4.187978033888805,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.007302866317331791,
+        "knowledge": 0.1233300268650055,
+        "images": 0.14573980867862701,
+        "source_file": 0.25318312644958496,
+        "clarify": 0.00738485949113965
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 2453.0,
+      "elapsed_ms": 2453.0
+    },
+    {
+      "id": "calibration-daily-11",
+      "expected": "daily",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.04415448382496834,
+        "knowledge": 0.06272349506616592,
+        "images": 0.2179751843214035,
+        "source_file": 0.6959004402160645,
+        "clarify": 0.02995208464562893
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3328.0,
+      "elapsed_ms": 3328.0
+    },
+    {
+      "id": "calibration-daily-12",
+      "expected": "daily",
+      "bm25": {
+        "daily": 8.225863411340212,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.004762589931488037,
+        "knowledge": 0.029517140239477158,
+        "images": 0.01314646378159523,
+        "source_file": 0.3643239438533783,
+        "clarify": 0.003971089608967304
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4375.0,
+      "elapsed_ms": 4375.0
+    },
+    {
+      "id": "calibration-knowledge-01",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 2.77035997050676,
+        "knowledge": 7.605055382230594,
+        "images": 1.881142970627433,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0005723743233829737,
+        "knowledge": 0.024783411994576454,
+        "images": 0.033174045383930206,
+        "source_file": 0.24622437357902527,
+        "clarify": 0.017280422151088715
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4485.0,
+      "elapsed_ms": 4485.0
+    },
+    {
+      "id": "calibration-knowledge-02",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 1.9216413181800585,
+        "knowledge": 8.636133132396346,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.08768618106842041,
+        "knowledge": 0.3267139792442322,
+        "images": 0.367170125246048,
+        "source_file": 0.39823028445243835,
+        "clarify": 0.007180656772106886
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3562.0,
+      "elapsed_ms": 3562.0
+    },
+    {
+      "id": "calibration-knowledge-03",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.8284735111585593,
+        "images": 0.0,
+        "source_file": 3.1504919089038204
+      },
+      "nli": {
+        "daily": 0.0006684604450128973,
+        "knowledge": 0.006900886073708534,
+        "images": 0.010365736670792103,
+        "source_file": 0.226682648062706,
+        "clarify": 0.010945212095975876
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4219.0,
+      "elapsed_ms": 4219.0
+    },
+    {
+      "id": "calibration-knowledge-04",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 2.77035997050676,
+        "knowledge": 8.695419240509795,
+        "images": 3.8284735111585593,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0008135828538797796,
+        "knowledge": 0.17375969886779785,
+        "images": 0.26825183629989624,
+        "source_file": 0.37585651874542236,
+        "clarify": 0.011886635795235634
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3797.0,
+      "elapsed_ms": 3797.0
+    },
+    {
+      "id": "calibration-knowledge-05",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 4.000164630936458,
+        "knowledge": 6.315013121107675,
+        "images": 2.366844874987695,
+        "source_file": 2.366844874987695
+      },
+      "nli": {
+        "daily": 0.003231140086427331,
+        "knowledge": 0.0804285779595375,
+        "images": 0.04317781701683998,
+        "source_file": 0.3938111960887909,
+        "clarify": 0.007747752591967583
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4719.0,
+      "elapsed_ms": 4719.0
+    },
+    {
+      "id": "calibration-knowledge-06",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 1.9216413181800585,
+        "knowledge": 5.54813535643854,
+        "images": 1.881142970627433,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.003433802630752325,
+        "knowledge": 0.02533814311027527,
+        "images": 0.04875628277659416,
+        "source_file": 0.28121620416641235,
+        "clarify": 0.006103063002228737
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4859.0,
+      "elapsed_ms": 4859.0
+    },
+    {
+      "id": "calibration-knowledge-07",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 5.8853935369506125,
+        "knowledge": 8.04290610193612,
+        "images": 3.338202718751259,
+        "source_file": 3.1504919089038204
+      },
+      "nli": {
+        "daily": 0.0006755652138963342,
+        "knowledge": 0.07453015446662903,
+        "images": 0.028961213305592537,
+        "source_file": 0.12424725294113159,
+        "clarify": 0.03075559437274933
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3437.0,
+      "elapsed_ms": 3437.0
+    },
+    {
+      "id": "calibration-knowledge-08",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 2.076094095327217,
+        "images": 3.338202718751259,
+        "source_file": 3.4879072318313527
+      },
+      "nli": {
+        "daily": 0.0032506543211638927,
+        "knowledge": 0.0031965263187885284,
+        "images": 0.02556944638490677,
+        "source_file": 0.18397673964500427,
+        "clarify": 0.003262844868004322
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3547.0,
+      "elapsed_ms": 3547.0
+    },
+    {
+      "id": "calibration-knowledge-09",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 2.9229662714725184,
+        "knowledge": 13.54137735860773,
+        "images": 1.881142970627433,
+        "source_file": 2.621326907936764
+      },
+      "nli": {
+        "daily": 0.0006475663394667208,
+        "knowledge": 0.22919861972332,
+        "images": 0.3924412429332733,
+        "source_file": 0.44231879711151123,
+        "clarify": 0.004719678778201342
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4313.0,
+      "elapsed_ms": 4313.0
+    },
+    {
+      "id": "calibration-knowledge-10",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 2.8984730801699317,
+        "images": 2.6599019892614035,
+        "source_file": 3.034560502258119
+      },
+      "nli": {
+        "daily": 0.0010987739078700542,
+        "knowledge": 0.11490725725889206,
+        "images": 0.4668663442134857,
+        "source_file": 0.6946200728416443,
+        "clarify": 0.012660233303904533
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3234.0,
+      "elapsed_ms": 3234.0
+    },
+    {
+      "id": "calibration-knowledge-11",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 4.000164630936458,
+        "knowledge": 5.54813535643854,
+        "images": 6.069121004516238,
+        "source_file": 3.3490453617940448
+      },
+      "nli": {
+        "daily": 0.000489812926389277,
+        "knowledge": 0.12175746262073517,
+        "images": 0.300821453332901,
+        "source_file": 0.4390588700771332,
+        "clarify": 0.005063250660896301
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3313.0,
+      "elapsed_ms": 3313.0
+    },
+    {
+      "id": "calibration-knowledge-12",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 4.752784385677888,
+        "images": 1.881142970627433,
+        "source_file": 2.648491447154264
+      },
+      "nli": {
+        "daily": 0.0005447016446851194,
+        "knowledge": 0.017848461866378784,
+        "images": 0.04809584096074104,
+        "source_file": 0.4327352046966553,
+        "clarify": 0.006687578279525042
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3875.0,
+      "elapsed_ms": 3875.0
+    },
+    {
+      "id": "calibration-images-01",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 12.19928245332051,
+        "source_file": 3.034560502258119
+      },
+      "nli": {
+        "daily": 0.000545388669706881,
+        "knowledge": 0.02498115971684456,
+        "images": 0.14975295960903168,
+        "source_file": 0.14656800031661987,
+        "clarify": 0.0013785680057480931
+      },
+      "failure": "",
+      "bm25_ms": 15.0,
+      "nli_ms": 3157.0,
+      "elapsed_ms": 3172.0
+    },
+    {
+      "id": "calibration-images-02",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 4.187978033888805,
+        "source_file": 3.034560502258119
+      },
+      "nli": {
+        "daily": 0.0002468666061758995,
+        "knowledge": 0.0035705266054719687,
+        "images": 0.2430988997220993,
+        "source_file": 0.26533180475234985,
+        "clarify": 0.00556490384042263
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3093.0,
+      "elapsed_ms": 3093.0
+    },
+    {
+      "id": "calibration-images-03",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 11.532262759486855,
+        "source_file": 4.570805006731919
+      },
+      "nli": {
+        "daily": 0.0034701121039688587,
+        "knowledge": 0.006522427313029766,
+        "images": 0.31053224205970764,
+        "source_file": 0.42172637581825256,
+        "clarify": 0.0050658886320889
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4141.0,
+      "elapsed_ms": 4141.0
+    },
+    {
+      "id": "calibration-images-04",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 2.483446196232385,
+        "images": 7.856979785815261,
+        "source_file": 6.300983817807641
+      },
+      "nli": {
+        "daily": 0.010302180424332619,
+        "knowledge": 0.09674127399921417,
+        "images": 0.3606131970882416,
+        "source_file": 0.4339137375354767,
+        "clarify": 0.0044229947961866856
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4078.0,
+      "elapsed_ms": 4078.0
+    },
+    {
+      "id": "calibration-images-05",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 7.839647457237508,
+        "source_file": 3.4879072318313527
+      },
+      "nli": {
+        "daily": 0.006290789693593979,
+        "knowledge": 0.026769213378429413,
+        "images": 0.2742041051387787,
+        "source_file": 0.43101808428764343,
+        "clarify": 0.007738090120255947
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 2406.0,
+      "elapsed_ms": 2406.0
+    },
+    {
+      "id": "calibration-images-06",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 7.051621537160014,
+        "images": 6.0305392068495784,
+        "source_file": 3.83156692487529
+      },
+      "nli": {
+        "daily": 0.00031626978307031095,
+        "knowledge": 0.006265685893595219,
+        "images": 0.3667539060115814,
+        "source_file": 0.2593477964401245,
+        "clarify": 0.003739552106708288
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3985.0,
+      "elapsed_ms": 3985.0
+    },
+    {
+      "id": "calibration-images-07",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 3.6516694233487033,
+        "source_file": 6.116560353942365
+      },
+      "nli": {
+        "daily": 0.0005905377911403775,
+        "knowledge": 0.018731603398919106,
+        "images": 0.07945214211940765,
+        "source_file": 0.21984338760375977,
+        "clarify": 0.002464644843712449
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4390.0,
+      "elapsed_ms": 4390.0
+    },
+    {
+      "id": "calibration-images-08",
+      "expected": "images",
+      "bm25": {
+        "daily": 3.2609085782505534,
+        "knowledge": 0.0,
+        "images": 7.150656539840278,
+        "source_file": 2.648491447154264
+      },
+      "nli": {
+        "daily": 0.0013272230280563235,
+        "knowledge": 0.03329358994960785,
+        "images": 0.15329153835773468,
+        "source_file": 0.5434662103652954,
+        "clarify": 0.005037852097302675
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3875.0,
+      "elapsed_ms": 3875.0
+    },
+    {
+      "id": "calibration-images-09",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 9.617810792802619,
+        "source_file": 3.034560502258119
+      },
+      "nli": {
+        "daily": 0.00039759845822118223,
+        "knowledge": 0.010792101733386517,
+        "images": 0.10640416294336319,
+        "source_file": 0.160903200507164,
+        "clarify": 0.004759338218718767
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4703.0,
+      "elapsed_ms": 4703.0
+    },
+    {
+      "id": "calibration-images-10",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.1504919089038204,
+        "images": 12.249499411345912,
+        "source_file": 4.570805006731919
+      },
+      "nli": {
+        "daily": 0.003328483086079359,
+        "knowledge": 0.011742242611944675,
+        "images": 0.07702574133872986,
+        "source_file": 0.17387059330940247,
+        "clarify": 0.004466312006115913
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3719.0,
+      "elapsed_ms": 3719.0
+    },
+    {
+      "id": "calibration-images-11",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 2.75715672972262,
+        "images": 2.5814716605178907,
+        "source_file": 2.621326907936764
+      },
+      "nli": {
+        "daily": 0.000784238800406456,
+        "knowledge": 0.027352269738912582,
+        "images": 0.1921120136976242,
+        "source_file": 0.234816312789917,
+        "clarify": 0.0036319384817034006
+      },
+      "failure": "",
+      "bm25_ms": 16.0,
+      "nli_ms": 3875.0,
+      "elapsed_ms": 3891.0
+    },
+    {
+      "id": "calibration-images-12",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 2.483446196232385,
+        "images": 5.903202319784378,
+        "source_file": 3.6516694233487033
+      },
+      "nli": {
+        "daily": 0.0017189059872180223,
+        "knowledge": 0.08764529228210449,
+        "images": 0.12288373708724976,
+        "source_file": 0.31598228216171265,
+        "clarify": 0.008857342414557934
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4688.0,
+      "elapsed_ms": 4688.0
+    },
+    {
+      "id": "calibration-source_file-01",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 2.321498504836276,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 3.6516694233487033
+      },
+      "nli": {
+        "daily": 0.009398531168699265,
+        "knowledge": 0.02044094353914261,
+        "images": 0.00027830860926769674,
+        "source_file": 0.07950430363416672,
+        "clarify": 0.015056075528264046
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 2828.0,
+      "elapsed_ms": 2828.0
+    },
+    {
+      "id": "calibration-source_file-02",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 3.8284735111585593,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 4.187978033888805
+      },
+      "nli": {
+        "daily": 0.018184470012784004,
+        "knowledge": 0.01551766786724329,
+        "images": 0.02553565800189972,
+        "source_file": 0.6219189167022705,
+        "clarify": 0.01866677589714527
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4250.0,
+      "elapsed_ms": 4250.0
+    },
+    {
+      "id": "calibration-source_file-03",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 3.2609085782505534,
+        "knowledge": 2.77896793309002,
+        "images": 2.648491447154264,
+        "source_file": 8.000329261872915
+      },
+      "nli": {
+        "daily": 0.0005128287593834102,
+        "knowledge": 0.157886803150177,
+        "images": 0.46325066685676575,
+        "source_file": 0.8068573474884033,
+        "clarify": 0.005181415937840939
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4328.0,
+      "elapsed_ms": 4328.0
+    },
+    {
+      "id": "calibration-source_file-04",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.074298688281766,
+        "images": 3.2008202690512926,
+        "source_file": 7.341828310909954
+      },
+      "nli": {
+        "daily": 0.000195453962078318,
+        "knowledge": 0.0016231402987614274,
+        "images": 0.009971600025892258,
+        "source_file": 0.7290349006652832,
+        "clarify": 0.001954189268872142
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3750.0,
+      "elapsed_ms": 3750.0
+    },
+    {
+      "id": "calibration-source_file-05",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 4.394296486464921,
+        "knowledge": 2.77896793309002,
+        "images": 0.0,
+        "source_file": 6.8364694810430695
+      },
+      "nli": {
+        "daily": 0.0006023443420417607,
+        "knowledge": 0.023742040619254112,
+        "images": 0.1004977598786354,
+        "source_file": 0.7797258496284485,
+        "clarify": 0.0028983785305172205
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4531.0,
+      "elapsed_ms": 4531.0
+    },
+    {
+      "id": "calibration-source_file-06",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.1504919089038204,
+        "images": 3.525810768580007,
+        "source_file": 4.187978033888805
+      },
+      "nli": {
+        "daily": 0.001469509326852858,
+        "knowledge": 0.01661764085292816,
+        "images": 0.05440746620297432,
+        "source_file": 0.5905529260635376,
+        "clarify": 0.004954484757035971
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3860.0,
+      "elapsed_ms": 3860.0
+    },
+    {
+      "id": "calibration-source_file-07",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 2.321498504836276,
+        "knowledge": 2.75715672972262,
+        "images": 0.0,
+        "source_file": 5.400294841026784
+      },
+      "nli": {
+        "daily": 0.0004973271279595792,
+        "knowledge": 0.06226981058716774,
+        "images": 0.11134851723909378,
+        "source_file": 0.6301423907279968,
+        "clarify": 0.016372518613934517
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4531.0,
+      "elapsed_ms": 4531.0
+    },
+    {
+      "id": "calibration-source_file-08",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 2.321498504836276,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 6.8364694810430695
+      },
+      "nli": {
+        "daily": 0.00024306419072672725,
+        "knowledge": 0.06180863454937935,
+        "images": 0.030721353366971016,
+        "source_file": 0.1705854833126068,
+        "clarify": 0.0023615239188075066
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4297.0,
+      "elapsed_ms": 4297.0
+    },
+    {
+      "id": "calibration-source_file-09",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 2.77406767821927,
+        "knowledge": 2.77896793309002,
+        "images": 2.554761751420711,
+        "source_file": 6.8364694810430695
+      },
+      "nli": {
+        "daily": 0.0012732468312606215,
+        "knowledge": 0.0016050677513703704,
+        "images": 0.006386821623891592,
+        "source_file": 0.36484473943710327,
+        "clarify": 0.002217600354924798
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4906.0,
+      "elapsed_ms": 4906.0
+    },
+    {
+      "id": "calibration-source_file-10",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.8284735111585593,
+        "images": 3.6516694233487033,
+        "source_file": 6.950081395794144
+      },
+      "nli": {
+        "daily": 0.00307183968834579,
+        "knowledge": 0.01697075180709362,
+        "images": 0.16215109825134277,
+        "source_file": 0.6757500171661377,
+        "clarify": 0.036971315741539
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3547.0,
+      "elapsed_ms": 3547.0
+    },
+    {
+      "id": "calibration-source_file-11",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 2.77896793309002,
+        "images": 0.0,
+        "source_file": 6.3001608705029675
+      },
+      "nli": {
+        "daily": 0.0004225847951602191,
+        "knowledge": 0.003979329019784927,
+        "images": 0.009253331460058689,
+        "source_file": 0.13714347779750824,
+        "clarify": 0.0016917971661314368
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3938.0,
+      "elapsed_ms": 3938.0
+    },
+    {
+      "id": "calibration-source_file-12",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 2.77406767821927,
+        "knowledge": 2.77896793309002,
+        "images": 2.554761751420711,
+        "source_file": 6.8364694810430695
+      },
+      "nli": {
+        "daily": 0.001178760314360261,
+        "knowledge": 0.008182738907635212,
+        "images": 0.04364433139562607,
+        "source_file": 0.691131591796875,
+        "clarify": 0.010184409096837044
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4265.0,
+      "elapsed_ms": 4265.0
+    },
+    {
+      "id": "calibration-clarify-01",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 2.9229662714725184,
+        "knowledge": 6.249613084458747,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.004421801771968603,
+        "knowledge": 0.138795867562294,
+        "images": 0.09498428553342819,
+        "source_file": 0.23243902623653412,
+        "clarify": 0.011000393889844418
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3563.0,
+      "elapsed_ms": 3563.0
+    },
+    {
+      "id": "calibration-clarify-02",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 3.298411972445441,
+        "knowledge": 0.0,
+        "images": 2.648491447154264,
+        "source_file": 3.1504919089038204
+      },
+      "nli": {
+        "daily": 0.0018970764940604568,
+        "knowledge": 0.057206351310014725,
+        "images": 0.035592418164014816,
+        "source_file": 0.3104512691497803,
+        "clarify": 0.012083879671990871
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3968.0,
+      "elapsed_ms": 3968.0
+    },
+    {
+      "id": "calibration-clarify-03",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 4.394296486464921,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.005813959054648876,
+        "knowledge": 0.02384556643664837,
+        "images": 0.028692051768302917,
+        "source_file": 0.04823731258511543,
+        "clarify": 0.005702518858015537
+      },
+      "failure": "",
+      "bm25_ms": 16.0,
+      "nli_ms": 2516.0,
+      "elapsed_ms": 2532.0
+    },
+    {
+      "id": "calibration-clarify-04",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 2.77035997050676,
+        "knowledge": 3.1504919089038204,
+        "images": 0.0,
+        "source_file": 3.298411972445441
+      },
+      "nli": {
+        "daily": 0.002494782442227006,
+        "knowledge": 0.017989978194236755,
+        "images": 0.08257350325584412,
+        "source_file": 0.19334515929222107,
+        "clarify": 0.009070043452084064
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 2140.0,
+      "elapsed_ms": 2140.0
+    },
+    {
+      "id": "calibration-clarify-05",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 3.6516694233487033,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0044487882405519485,
+        "knowledge": 0.08723146468400955,
+        "images": 0.03658980876207352,
+        "source_file": 0.3082956075668335,
+        "clarify": 0.0047163814306259155
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3672.0,
+      "elapsed_ms": 3672.0
+    },
+    {
+      "id": "calibration-clarify-06",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.009962859563529491,
+        "knowledge": 0.04353942722082138,
+        "images": 0.04330014809966087,
+        "source_file": 0.5199581980705261,
+        "clarify": 0.004472631495445967
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3906.0,
+      "elapsed_ms": 3906.0
+    },
+    {
+      "id": "calibration-clarify-07",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 3.298411972445441,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 3.1504919089038204
+      },
+      "nli": {
+        "daily": 0.004737292882055044,
+        "knowledge": 0.04258963465690613,
+        "images": 0.1707204133272171,
+        "source_file": 0.44995325803756714,
+        "clarify": 0.006508455611765385
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3188.0,
+      "elapsed_ms": 3188.0
+    },
+    {
+      "id": "calibration-clarify-08",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 3.2609085782505534,
+        "knowledge": 0.0,
+        "images": 2.648491447154264,
+        "source_file": 2.648491447154264
+      },
+      "nli": {
+        "daily": 0.006545461714267731,
+        "knowledge": 0.07706446200609207,
+        "images": 0.06314082443714142,
+        "source_file": 0.3691147267818451,
+        "clarify": 0.00754306698217988
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3906.0,
+      "elapsed_ms": 3906.0
+    },
+    {
+      "id": "calibration-clarify-09",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.029521167278289795,
+        "knowledge": 0.20862217247486115,
+        "images": 0.40386396646499634,
+        "source_file": 0.543328046798706,
+        "clarify": 0.005669011268764734
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3469.0,
+      "elapsed_ms": 3469.0
+    },
+    {
+      "id": "calibration-clarify-10",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.017908360809087753,
+        "knowledge": 0.07194243371486664,
+        "images": 0.17264103889465332,
+        "source_file": 0.4197963774204254,
+        "clarify": 0.025704583153128624
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3687.0,
+      "elapsed_ms": 3687.0
+    },
+    {
+      "id": "calibration-clarify-11",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 3.6516694233487033,
+        "knowledge": 0.0,
+        "images": 2.648491447154264,
+        "source_file": 2.648491447154264
+      },
+      "nli": {
+        "daily": 0.022847186774015427,
+        "knowledge": 0.17008082568645477,
+        "images": 0.17368127405643463,
+        "source_file": 0.37273356318473816,
+        "clarify": 0.03590792417526245
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4078.0,
+      "elapsed_ms": 4078.0
+    },
+    {
+      "id": "calibration-clarify-12",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.012209843844175339,
+        "knowledge": 0.12710100412368774,
+        "images": 0.07610124349594116,
+        "source_file": 0.5256400108337402,
+        "clarify": 0.0074405367486178875
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3219.0,
+      "elapsed_ms": 3219.0
+    }
+  ]
+}

@@ -333,7 +333,25 @@ class RagRepository:
             )
             conn.commit()
 
-    def mark_index_status(self, chunk_ids: list[str], *, status: str, error: str | None = None) -> None:
+    def register_index_records(self, chunk_ids: list[str], provider_name: str, collection_name: str) -> None:
+        ids = [UUID(chunk_id) for chunk_id in chunk_ids]
+        if not ids:
+            return
+        with connection() as conn:
+            conn.execute(
+                """
+                INSERT INTO vector_index_records
+                    (id, chunk_id, provider_name, collection_name, point_id, embedding_model_version_id, index_status)
+                SELECT gen_random_uuid(), c.id, %s, %s, c.id::text, c.embedding_model_version_id, 'pending'
+                FROM chunks c WHERE c.id = ANY(%s)
+                ON CONFLICT (provider_name, collection_name, chunk_id) DO NOTHING
+                """,
+                (provider_name, collection_name, ids),
+            )
+            conn.commit()
+
+    def mark_index_status(self, chunk_ids: list[str], *, status: str, error: str | None = None,
+                          provider_name: str | None = None, collection_name: str | None = None) -> None:
         ids = [UUID(chunk_id) for chunk_id in chunk_ids]
         if not ids:
             return
@@ -346,8 +364,10 @@ class RagRepository:
                     last_error = %s,
                     updated_at = NOW()
                 WHERE chunk_id = ANY(%s)
+                  AND (%s::text IS NULL OR provider_name = %s)
+                  AND (%s::text IS NULL OR collection_name = %s)
                 """,
-                (status, status, error, ids),
+                (status, status, error, ids, provider_name, provider_name, collection_name, collection_name),
             )
             conn.commit()
 

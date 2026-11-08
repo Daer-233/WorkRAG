@@ -1,0 +1,75 @@
+apiVersion: langbot/v1
+kind: Runner
+metadata:
+  name: workrag
+  label:
+    en_US: WorkRAG Graph
+    zh_Hans: 知识问答引擎（LangGraph＋Pi）
+  description:
+    en_US: Isolated SQL sessions, approved FAQ and read-only MCP tools.
+    zh_Hans: Pi 负责 Agent 循环，LangGraph 保留记忆和资料确认；模型由 LangBot 授权，资料通过 MCP 检索。engine=legacy 可回退。
+spec:
+  usages: [agent, event]
+  events: [feedback.received]
+  capabilities:
+    streaming: true
+    tool_calling: true
+    knowledge_retrieval: false
+    multimodal_input: false
+    skill_authoring: false
+    interrupt: false
+    steering: false
+    interactions: false
+  permissions:
+    models: [invoke, stream]
+    tools: [detail, call]
+    knowledge_bases: []
+    history: []
+    events: []
+    storage: []
+    interactions: []
+  config:
+    - name: engine
+      type: text
+      label: {en_US: Agent engine, zh_Hans: Agent 引擎（pi 或 legacy，可回退）}
+      default: legacy
+    - name: model
+      type: llm-model-selector
+      label: {en_US: API model, zh_Hans: 回答模型（LangBot 中配置的 API 模型）}
+      required: false
+    - name: prompt
+      type: text
+      label: {en_US: Instructions, zh_Hans: 助手提示词}
+      default: 依据已发布资料回答工作问题，保留可核对的来源。
+    - name: tools
+      type: tool-multi-selector
+      label: {en_US: Read-only MCP tools, zh_Hans: 授权的 WorkRAG MCP 工具}
+      default: []
+    - name: allowed_entry_ids
+      type: text
+      label: {en_US: Authorized document IDs, zh_Hans: 授权资料 ID（JSON 数组；空数组禁止检索）}
+      default: '[]'
+    - name: reuse
+      type: boolean
+      label: {en_US: Reuse reviewed answers, zh_Hans: 启用审核后的标准答案复用}
+      default: true
+    - name: simulation
+      type: boolean
+      label: {en_US: Explicit simulation mode, zh_Hans: 模拟模型验收（回答带明显标记）}
+      default: false
+    - name: top_k
+      type: integer
+      label: {en_US: Retrieval count, zh_Hans: 检索数量}
+      default: 5
+    - name: timeout
+      type: integer
+      label: {en_US: Turn timeout, zh_Hans: 单轮超时（秒）}
+      default: 180
+    - name: max_calls
+      type: integer
+      label: {en_US: Tool call limit, zh_Hans: 单轮工具调用上限}
+      default: 6
+execution:
+  python:
+    path: workrag.py
+    attr: WorkRAGRunner

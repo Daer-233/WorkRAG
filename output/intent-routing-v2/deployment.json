@@ -1,0 +1,23 @@
+{
+  "health": {
+    "status": "ok",
+    "library": "manuals",
+    "database": "manual_rag",
+    "collection": "manual_rag_chunks_v1"
+  },
+  "intent_status": {
+    "configured_mode": "shadow",
+    "effective_mode": "shadow",
+    "version": "intent-v2-factors",
+    "sample_set": "v2",
+    "calibrated": true,
+    "classifier_schema": "factors-v2",
+    "nli_factors_validated": false,
+    "model_ready": false,
+    "activation_allowed": false
+  },
+  "answer_model": "gpt-6.1-terra/medium",
+  "classification_fallback": "gpt-6.1-terra/low, once, 20 second deadline",
+  "host_helper_unchanged": true,
+  "employee_messages_sent": 0
+}

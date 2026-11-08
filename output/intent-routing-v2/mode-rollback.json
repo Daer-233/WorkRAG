@@ -1,0 +1,21 @@
+{
+  "off_immediate": true,
+  "on_refused_by_gate": true,
+  "after": {
+    "configured_mode": "shadow",
+    "effective_mode": "shadow",
+    "version": "intent-v2-factors",
+    "sample_set": "v2",
+    "calibrated": true,
+    "classifier_schema": "factors-v2",
+    "nli_factors_validated": false,
+    "model_ready": false,
+    "activation_allowed": false
+  },
+  "health": {
+    "status": "ok",
+    "library": "manuals",
+    "database": "manual_rag",
+    "collection": "manual_rag_chunks_v1"
+  }
+}

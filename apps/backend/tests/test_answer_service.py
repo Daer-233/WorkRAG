@@ -185,7 +185,7 @@ def test_answer_provider_request_contains_no_source_path_or_token() -> None:
 
     provider = OpenAICompatibleAnswerProvider(
         base_url="https://mock.test/v1",
-        api_key="REPLACE_ME",
+        api_key="local-secret-token",
         model_id="gpt-5.6-terra",
         transport=httpx.MockTransport(handler),
     )

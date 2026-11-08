@@ -3,7 +3,7 @@ uvicorn
 pydantic-settings
 python-dotenv
 psycopg[binary]
-qdrant-client
+qdrant-client>=1.16,<1.17
 httpx
 python-multipart
 Pillow
@@ -12,4 +12,10 @@ python-docx
 python-pptx
 pypdf
 beautifulsoup4
-mcp
+mcp<2
+psutil
+modelscope
+FlagEmbedding
+transformers<5
+huggingface-hub<1
+sentencepiece

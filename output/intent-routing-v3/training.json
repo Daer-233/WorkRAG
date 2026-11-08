@@ -1,0 +1,120 @@
+{
+  "schema": "bert-axes-v3",
+  "labels": {
+    "scope": [
+      "general",
+      "company",
+      "unknown"
+    ],
+    "output": [
+      "text",
+      "images",
+      "source_file",
+      "unknown"
+    ],
+    "clarification": [
+      "answer",
+      "clarify"
+    ]
+  },
+  "max_length": 96,
+  "base_relative_dir": "../erlangshen-110m-nli",
+  "base_manifest_sha256": "1b77e1641aa5d4321918d0f6905d60ec13c095064987b9f02db890bd86066943",
+  "files": {
+    "delta.safetensors": "12ba6ef421b06616440283600075c10e37df02df4704cac55678f3f7f44cd5d0"
+  },
+  "seed": 7303,
+  "trained_encoder_layers": [
+    11
+  ],
+  "frozen_encoder_layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "selection_data": "development_only",
+  "best_epoch": 10,
+  "development_axes_exact": 0.9912280440330505,
+  "data_sha256": {
+    "train": "ef6f24c91a02a533b8d1aee4a2aa43135fb3dba154222c6fe6de03249a3fce0a",
+    "development": "83c6c5b797b32a3842f5f9c1f3866254f4c658b1b5f965394cfcf484dc532e49"
+  },
+  "counts": {
+    "train": 784,
+    "development": 114
+  },
+  "torch_version": "2.13.0+cpu",
+  "training_threads": 4,
+  "runtime_threads": 2,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 1.801062599736817,
+      "development_axes_exact": 0.7456140518188477,
+      "seconds": 129.0
+    },
+    {
+      "epoch": 2,
+      "loss": 0.6260751081364495,
+      "development_axes_exact": 0.859649121761322,
+      "seconds": 137.66
+    },
+    {
+      "epoch": 3,
+      "loss": 0.2752238583503937,
+      "development_axes_exact": 0.9473684430122375,
+      "seconds": 118.11
+    },
+    {
+      "epoch": 4,
+      "loss": 0.209366016294237,
+      "development_axes_exact": 0.9385964870452881,
+      "seconds": 131.64
+    },
+    {
+      "epoch": 5,
+      "loss": 0.1380076259730992,
+      "development_axes_exact": 0.9736841917037964,
+      "seconds": 137.92
+    },
+    {
+      "epoch": 6,
+      "loss": 0.12400303714271939,
+      "development_axes_exact": 0.9824561476707458,
+      "seconds": 149.41
+    },
+    {
+      "epoch": 7,
+      "loss": 0.0689088377193726,
+      "development_axes_exact": 0.9824561476707458,
+      "seconds": 137.86
+    },
+    {
+      "epoch": 8,
+      "loss": 0.08995823914568862,
+      "development_axes_exact": 0.9473684430122375,
+      "seconds": 153.36
+    },
+    {
+      "epoch": 9,
+      "loss": 0.05337651309569732,
+      "development_axes_exact": 0.9824561476707458,
+      "seconds": 155.75
+    },
+    {
+      "epoch": 10,
+      "loss": 0.008449448012433261,
+      "development_axes_exact": 0.9912280440330505,
+      "seconds": 147.2
+    }
+  ],
+  "human_review": "pending"
+}

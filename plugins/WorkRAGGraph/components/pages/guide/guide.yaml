@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Page
+metadata:
+  name: guide
+  label: {en_US: Entry guide, zh_Hans: 入口说明}
+spec:
+  path: index.html
+execution:
+  python:
+    path: guide.py
+    attr: EntryGuide

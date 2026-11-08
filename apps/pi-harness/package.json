@@ -1,0 +1,19 @@
+{
+  "name": "workrag-pi-harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Isolated compatibility check for replacing the WorkRAG agent loop with Pi",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "1.5.0",
+    "@earendil-works/pi-ai": "1.5.0",
+    "@earendil-works/pi-schema": "1.5.0",
+    "ws": "8.18.3"
+  }
+}

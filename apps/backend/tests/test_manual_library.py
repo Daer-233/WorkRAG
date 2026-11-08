@@ -38,12 +38,12 @@ def no_gateway(monkeypatch):
 
 
 def test_isolation_rejects_design_database(monkeypatch):
-    monkeypatch.setattr(settings,'postgres_dsn','postgresql://design_rag:REPLACE_ME@127.0.0.1/design_rag')
+    monkeypatch.setattr(settings,'postgres_dsn','postgresql://design_rag:p@127.0.0.1/design_rag')
     with pytest.raises(RuntimeError): validate_isolation()
 
 
 def test_valid_manual_profile_and_cross_root_rejected(monkeypatch):
-    monkeypatch.setattr(settings,'postgres_dsn','postgresql://manual_rag:REPLACE_ME@127.0.0.1/manual_rag')
+    monkeypatch.setattr(settings,'postgres_dsn','postgresql://manual_rag:p@127.0.0.1/manual_rag')
     monkeypatch.setattr(settings,'qdrant_collection','manual_rag_chunks_v1')
     monkeypatch.setattr(settings,'data_root',DATA)
     monkeypatch.setattr(settings,'vision_analysis_derivative_root',DATA/'vision-analysis-derivatives')

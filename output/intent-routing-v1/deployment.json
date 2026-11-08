@@ -1,0 +1,19 @@
+{
+  "health": {
+    "status": "ok",
+    "library": "manuals",
+    "database": "manual_rag",
+    "collection": "manual_rag_chunks_v1"
+  },
+  "intent_status": {
+    "configured_mode": "shadow",
+    "effective_mode": "shadow",
+    "version": "intent-v1",
+    "calibrated": true,
+    "model_ready": true,
+    "activation_allowed": false
+  },
+  "image_only_clarify": true,
+  "answer_model": "gpt-6.1-terra/medium",
+  "employee_messages_sent": 0
+}

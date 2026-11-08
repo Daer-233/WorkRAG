@@ -7,11 +7,10 @@ import math
 import re
 from time import perf_counter
 
-from qdrant_client.http import models
-
 from app.clients.inference import EmbeddingClient, RerankClient
 from app.core.config import settings
-from app.providers.vector.qdrant_provider import QdrantVectorProvider
+from app.providers.vector.base import SearchFilter
+from app.providers.vector.factory import get_vector_provider
 
 
 def keyword_score(query, text):
@@ -45,7 +44,7 @@ class HybridRetriever:
     def __init__(self, embedding=None, reranker=None, provider_factory=None):
         self.embedding = embedding or EmbeddingClient()
         self.reranker = reranker or RerankClient()
-        self.provider_factory = provider_factory or QdrantVectorProvider
+        self.provider_factory = provider_factory or get_vector_provider
 
     def vector_lanes(self, question, lookup, metrics):
         started = perf_counter()
@@ -54,15 +53,13 @@ class HybridRetriever:
         started = perf_counter()
         provider = self.provider_factory()
         versions = sorted({str(pair[0]['document_version_id']) for pair in lookup.values()})
-        query_filter = models.Filter(must=[
-            models.FieldCondition(key='document_version_id', match=models.MatchAny(any=versions)),
-            models.FieldCondition(key='chunk_level', match=models.MatchValue(value='child'))])
+        query_filter = SearchFilter(None, [], document_version_ids=versions, enforce_roles=False)
         sparse = encoded['sparse_vectors'][0]
-        points = [provider.client.query_points(
-            collection_name=provider.collection_name, using=kind, query=vector,
-            query_filter=query_filter, limit=40, with_payload=True).points
+        points = [
+            provider.search_lane(kind, vector, query_filter, 40)
             for kind, vector in [('dense', encoded['dense_vectors'][0]),
-                                 ('sparse', models.SparseVector(indices=sparse['indices'], values=sparse['values']))]]
+                                 ('sparse', dict(zip(sparse['indices'], sparse['values'], strict=True)))]
+        ]
         lanes = {}
         for name, rows in zip(('dense', 'sparse'), points):
             ids = []

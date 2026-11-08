@@ -4,7 +4,6 @@ import argparse
 import base64
 import json
 import logging
-import os
 import io
 from types import SimpleNamespace as NS
 from uuid import uuid4
@@ -44,10 +43,10 @@ async def main(args):
         assert status['calibrated'] is True
         rows = (await client.get('/api/v1/manuals/entries')).raise_for_status().json()
         published = {row['title']: row for row in rows if row['status'] == 'published' and row['processing_status'] == 'ready'}
-        article = published[os.environ['WORKRAG_TEST_ARTICLE']]
-        album = published[os.environ['WORKRAG_TEST_ALBUM']]
-        reimbursement = published[os.environ['WORKRAG_TEST_REIMBURSEMENT']]
-        onboarding = published[os.environ['WORKRAG_TEST_ONBOARDING']]
+        article = published['AI赋能设计培训回顾']
+        album = published['AI赋能设计培训回顾｜现场照片']
+        reimbursement = published['费用报销规范（交通与住宿标准）']
+        onboarding = published['LSD入职指引（IT）']
         registry = get_session_registry()
         received = []
 

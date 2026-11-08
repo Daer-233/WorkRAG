@@ -15,6 +15,11 @@ def load():
     if not CONFIG.is_file(): raise RuntimeError('Run manual-instance.py init first')
     load_dotenv(CONFIG,override=True)
     os.environ['DESIGN_RAG_ENV_FILE']=str(CONFIG)
+    if os.environ.get('VECTOR_PROVIDER', 'qdrant').lower() == 'milvus':
+        sdk = Path(os.environ.get('MILVUS_SDK_PATH') or ROOT / 'data/milvus-sdk')
+        if not (sdk / 'pymilvus').is_dir():
+            raise RuntimeError('Milvus SDK not found; install requirements-milvus.txt into MILVUS_SDK_PATH')
+        sys.path.insert(0, str(sdk))
     from app.manuals.isolation import validate_isolation
     validate_isolation()
 
@@ -59,19 +64,19 @@ def initialize():
     from app.db.migrations import apply_migrations
     from app.db.connection import connection
     from app.manuals.isolation import DATA
-    from app.providers.vector.qdrant_provider import QdrantVectorProvider
+    from app.providers.vector.factory import get_vector_provider
     DATA.mkdir(parents=True,exist_ok=True)
     migrations = apply_migrations()
     with connection() as c:
         c.execute((ROOT/'apps/backend/app/manuals/schema.sql').read_text(encoding='utf-8'))
         c.commit()
-    provider=QdrantVectorProvider()
+    provider=get_vector_provider()
     provider.ensure_collection(1024)
     from qdrant_client.http import models
-    for field in ['document_version_id','manual_entry_id']:
+    for field in (['document_version_id', 'manual_entry_id'] if provider.provider_name == 'qdrant' else []):
         provider.client.create_payload_index(collection_name=provider.collection_name,field_name=field,
                                              field_schema=models.PayloadSchemaType.KEYWORD)
-    print('Manual library initialized: database=manual_rag, collection=manual_rag_chunks_v1; migrations='+str(len(migrations)))
+    print(f'Manual library initialized: database=manual_rag, collection={provider.collection_name}; migrations={len(migrations)}')
 
 
 def main():

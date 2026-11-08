@@ -1,0 +1,2748 @@
+{
+  "fingerprint": {
+    "index.jsonl": "4dca355b601daafbaa3ab956ac0cc8c15bb8cf03f77108a5facc3662ac39326c",
+    "calibration.jsonl": "05841b19bad971379399335e83137913e8abb2e5e0832d16c6250a7a68ecbc28",
+    "acceptance.jsonl": "ef6ec15764183905fdc43718c27e181db5758ac8d3b786c92db27eb7c00e54e2",
+    "bm25.py": "19a21174a0ce2c15a07d532abc7d5ab0810c1c0571672fbfff115b9d68f1869d",
+    "nli.py": "26b3e454970c6a61636176f57ae1e87af9b15b6dedebcb544bbdccc344a7e1b6",
+    "engine.py": "5e43d55bdc273bf0ee58bdf259c92b5687e78ada6f2c0440ac0e7740efe95d6a",
+    "types.py": "dd2115c3f6126c08b6af63e8f8b245af676a3689e92993d38c1642ed3acc6e5d",
+    "terra.py": "005c894ff8174e4a80eae10ead1992abda869ba7fe7e227b5fc43bbacc680d26",
+    "intent_host.py": "69cb02446463b24242be90e127127342dcf81f9649ad427114028183c6ebc626",
+    "model_manifest": "1b77e1641aa5d4321918d0f6905d60ec13c095064987b9f02db890bd86066943"
+  },
+  "passed": false,
+  "integration_passed": true,
+  "shadow_passed": false,
+  "human_review": "pending",
+  "local_auto_precision": 0.8222222222222222,
+  "clear_local_auto_coverage": 0.543859649122807,
+  "company_to_daily": 1,
+  "warm_local_probe_p95_ms": 5109.0,
+  "raw_nli_p95_ms": 5109.0,
+  "nli_hard_timeout_violations": 100,
+  "latency_measurement": "offline sequential BM25 plus NLI diagnostic probe, not live request latency",
+  "diagnostic_nli_timeout_seconds": 15.0,
+  "layers": {
+    "unresolved": 49,
+    "bm25": 45,
+    "context": 6
+  },
+  "clear_count": 57,
+  "automatic_count": 45,
+  "automatic_correct": 37,
+  "terra_not_in_offline_precision": true,
+  "cases": [
+    {
+      "id": "acceptance-daily-01",
+      "expected": "daily",
+      "bm25": {
+        "daily": 2.9229662714725184,
+        "knowledge": 2.77896793309002,
+        "images": 0.0,
+        "source_file": 4.187978033888805
+      },
+      "nli": {
+        "daily": 0.0014201065059751272,
+        "knowledge": 0.018165843561291695,
+        "images": 0.07014179229736328,
+        "source_file": 0.14937925338745117,
+        "clarify": 0.0040942607447505
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3235.0,
+      "elapsed_ms": 3235.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-daily-02",
+      "expected": "daily",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 3.8284735111585593
+      },
+      "nli": {
+        "daily": 0.001846731873229146,
+        "knowledge": 0.052162252366542816,
+        "images": 0.1447872668504715,
+        "source_file": 0.5354251861572266,
+        "clarify": 0.015934064984321594
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 5312.0,
+      "elapsed_ms": 5312.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-daily-03",
+      "expected": "daily",
+      "bm25": {
+        "daily": 7.266413812903577,
+        "knowledge": 2.0569200257920532,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.001849801861681044,
+        "knowledge": 0.02279753051698208,
+        "images": 0.018237709999084473,
+        "source_file": 0.04955623671412468,
+        "clarify": 0.005315777845680714
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3531.0,
+      "elapsed_ms": 3531.0,
+      "prediction": "daily",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-04",
+      "expected": "daily",
+      "bm25": {
+        "daily": 3.298411972445441,
+        "knowledge": 0.0,
+        "images": 3.6516694233487033,
+        "source_file": 3.1504919089038204
+      },
+      "nli": {
+        "daily": 0.005492789670825005,
+        "knowledge": 0.0006307270959950984,
+        "images": 0.14922098815441132,
+        "source_file": 0.7240584492683411,
+        "clarify": 0.006291481200605631
+      },
+      "failure": "",
+      "bm25_ms": 16.0,
+      "nli_ms": 4344.0,
+      "elapsed_ms": 4360.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-05",
+      "expected": "daily",
+      "bm25": {
+        "daily": 3.184056469526394,
+        "knowledge": 3.3490453617940448,
+        "images": 0.0,
+        "source_file": 4.187978033888805
+      },
+      "nli": {
+        "daily": 0.00331423943862319,
+        "knowledge": 0.006933323573321104,
+        "images": 0.013157282955944538,
+        "source_file": 0.25643685460090637,
+        "clarify": 0.008939730003476143
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3765.0,
+      "elapsed_ms": 3765.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-daily-06",
+      "expected": "daily",
+      "bm25": {
+        "daily": 4.394296486464921,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.007345081772655249,
+        "knowledge": 0.011390097439289093,
+        "images": 0.010765468701720238,
+        "source_file": 0.03181684389710426,
+        "clarify": 0.002885593334212899
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3703.0,
+      "elapsed_ms": 3703.0,
+      "prediction": "daily",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-07",
+      "expected": "daily",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.008288114331662655,
+        "knowledge": 0.04361389949917793,
+        "images": 0.06719285249710083,
+        "source_file": 0.2126515656709671,
+        "clarify": 0.004904199857264757
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4125.0,
+      "elapsed_ms": 4125.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-08",
+      "expected": "daily",
+      "bm25": {
+        "daily": 4.621996628260873,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 3.1504919089038204
+      },
+      "nli": {
+        "daily": 0.009188191033899784,
+        "knowledge": 0.015094701200723648,
+        "images": 0.06236361339688301,
+        "source_file": 0.3774614632129669,
+        "clarify": 0.01098713744431734
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3860.0,
+      "elapsed_ms": 3860.0,
+      "prediction": "daily",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-09",
+      "expected": "daily",
+      "bm25": {
+        "daily": 2.77035997050676,
+        "knowledge": 4.968607413654354,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.002919029211625457,
+        "knowledge": 0.05913614109158516,
+        "images": 0.053981393575668335,
+        "source_file": 0.12866756319999695,
+        "clarify": 0.007196055259555578
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4312.0,
+      "elapsed_ms": 4312.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-daily-10",
+      "expected": "daily",
+      "bm25": {
+        "daily": 3.8391762882315628,
+        "knowledge": 0.0,
+        "images": 3.0152696034247892,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.004442743957042694,
+        "knowledge": 0.046083103865385056,
+        "images": 0.028107905760407448,
+        "source_file": 0.15004314482212067,
+        "clarify": 0.014645218849182129
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3891.0,
+      "elapsed_ms": 3891.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-11",
+      "expected": "daily",
+      "bm25": {
+        "daily": 6.534992943239362,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0027194651775062084,
+        "knowledge": 0.016506394371390343,
+        "images": 0.052800264209508896,
+        "source_file": 0.3639351725578308,
+        "clarify": 0.008631293661892414
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3969.0,
+      "elapsed_ms": 3969.0,
+      "prediction": "daily",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-12",
+      "expected": "daily",
+      "bm25": {
+        "daily": 3.184056469526394,
+        "knowledge": 3.3490453617940448,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.013470051810145378,
+        "knowledge": 0.01988198608160019,
+        "images": 0.06086144223809242,
+        "source_file": 0.23998886346817017,
+        "clarify": 0.005879155360162258
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4250.0,
+      "elapsed_ms": 4250.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-13",
+      "expected": "daily",
+      "bm25": {
+        "daily": 2.77035997050676,
+        "knowledge": 4.968607413654354,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.004301759880036116,
+        "knowledge": 0.10449553281068802,
+        "images": 0.07925139367580414,
+        "source_file": 0.17128469049930573,
+        "clarify": 0.005747104994952679
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3265.0,
+      "elapsed_ms": 3265.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-14",
+      "expected": "daily",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.003871340537443757,
+        "knowledge": 0.021261630579829216,
+        "images": 0.05841531977057457,
+        "source_file": 0.13319773972034454,
+        "clarify": 0.010457723401486874
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4813.0,
+      "elapsed_ms": 4813.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-15",
+      "expected": "daily",
+      "bm25": {
+        "daily": 8.000329261872915,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.00516870291903615,
+        "knowledge": 0.008669574744999409,
+        "images": 0.04169108718633652,
+        "source_file": 0.3829626142978668,
+        "clarify": 0.012868499383330345
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4422.0,
+      "elapsed_ms": 4422.0,
+      "prediction": "daily",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-16",
+      "expected": "daily",
+      "bm25": {
+        "daily": 2.77035997050676,
+        "knowledge": 4.968607413654354,
+        "images": 3.8284735111585593,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.000652231159619987,
+        "knowledge": 0.008357667364180088,
+        "images": 0.007517020218074322,
+        "source_file": 0.030963681638240814,
+        "clarify": 0.0033089756034314632
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4203.0,
+      "elapsed_ms": 4203.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-17",
+      "expected": "daily",
+      "bm25": {
+        "daily": 3.6516694233487033,
+        "knowledge": 0.0,
+        "images": 2.648491447154264,
+        "source_file": 2.648491447154264
+      },
+      "nli": {
+        "daily": 0.004951962269842625,
+        "knowledge": 0.043574947863817215,
+        "images": 0.08931612223386765,
+        "source_file": 0.42398136854171753,
+        "clarify": 0.005546296946704388
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4344.0,
+      "elapsed_ms": 4344.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-daily-18",
+      "expected": "daily",
+      "bm25": {
+        "daily": 4.394296486464921,
+        "knowledge": 3.074298688281766,
+        "images": 3.338202718751259,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.009330236352980137,
+        "knowledge": 0.01898159831762314,
+        "images": 0.02264699712395668,
+        "source_file": 0.13580623269081116,
+        "clarify": 0.00864871870726347
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3875.0,
+      "elapsed_ms": 3875.0,
+      "prediction": "daily",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-19",
+      "expected": "daily",
+      "bm25": {
+        "daily": 7.266413812903577,
+        "knowledge": 4.968607413654354,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0015905671752989292,
+        "knowledge": 0.040124282240867615,
+        "images": 0.026725810021162033,
+        "source_file": 0.20069895684719086,
+        "clarify": 0.024613454937934875
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4421.0,
+      "elapsed_ms": 4421.0,
+      "prediction": "daily",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-daily-20",
+      "expected": "daily",
+      "bm25": {
+        "daily": 12.057430336215502,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.004202206153422594,
+        "knowledge": 0.015067888423800468,
+        "images": 0.012515721842646599,
+        "source_file": 0.25916194915771484,
+        "clarify": 0.002348381793126464
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3016.0,
+      "elapsed_ms": 3016.0,
+      "prediction": "daily",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-01",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 2.9229662714725184,
+        "knowledge": 9.38950279105533,
+        "images": 0.0,
+        "source_file": 2.648491447154264
+      },
+      "nli": {
+        "daily": 0.002605654066428542,
+        "knowledge": 0.005007228348404169,
+        "images": 0.024300573393702507,
+        "source_file": 0.13491766154766083,
+        "clarify": 0.007768175099045038
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3859.0,
+      "elapsed_ms": 3859.0,
+      "prediction": "knowledge",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "boundary",
+        "mixed"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-02",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 2.9229662714725184,
+        "knowledge": 13.566016193681406,
+        "images": 1.881142970627433,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.007202543318271637,
+        "knowledge": 0.0340396873652935,
+        "images": 0.3264271020889282,
+        "source_file": 0.13339047133922577,
+        "clarify": 0.06222431734204292
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4922.0,
+      "elapsed_ms": 4922.0,
+      "prediction": "knowledge",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-03",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 2.77035997050676,
+        "knowledge": 4.968607413654354,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0010298587149009109,
+        "knowledge": 0.018547924235463142,
+        "images": 0.015286757610738277,
+        "source_file": 0.057048194110393524,
+        "clarify": 0.0034059262834489346
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4235.0,
+      "elapsed_ms": 4235.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-04",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 9.243993256521746,
+        "images": 3.338202718751259,
+        "source_file": 3.83156692487529
+      },
+      "nli": {
+        "daily": 0.0009544079075567424,
+        "knowledge": 0.11184986680746078,
+        "images": 0.3730294406414032,
+        "source_file": 0.34539085626602173,
+        "clarify": 0.007494040299206972
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4672.0,
+      "elapsed_ms": 4672.0,
+      "prediction": "knowledge",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-05",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 5.284688761234759,
+        "images": 6.676405437502518,
+        "source_file": 3.4879072318313527
+      },
+      "nli": {
+        "daily": 0.0004076292098034173,
+        "knowledge": 0.007994151674211025,
+        "images": 0.123642697930336,
+        "source_file": 0.255983829498291,
+        "clarify": 0.0016516272444278002
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3031.0,
+      "elapsed_ms": 3031.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-06",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 6.600109456861773,
+        "images": 3.1504919089038204,
+        "source_file": 3.298411972445441
+      },
+      "nli": {
+        "daily": 0.001075415755622089,
+        "knowledge": 0.027346337214112282,
+        "images": 0.04810090735554695,
+        "source_file": 0.4499940872192383,
+        "clarify": 0.009724048897624016
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3250.0,
+      "elapsed_ms": 3250.0,
+      "prediction": "knowledge",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-07",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 2.9229662714725184,
+        "knowledge": 9.740883913727068,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0012800119584426284,
+        "knowledge": 0.09957025945186615,
+        "images": 0.09624098986387253,
+        "source_file": 0.20816020667552948,
+        "clarify": 0.0067192367278039455
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 5094.0,
+      "elapsed_ms": 5094.0,
+      "prediction": "knowledge",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-08",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 3.184056469526394,
+        "knowledge": 8.636133132396346,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0020300494506955147,
+        "knowledge": 0.06730448454618454,
+        "images": 0.07584284245967865,
+        "source_file": 0.21483056247234344,
+        "clarify": 0.02221015840768814
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3031.0,
+      "elapsed_ms": 3031.0,
+      "prediction": "knowledge",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-09",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 5.319803978522807,
+        "images": 3.4879072318313527,
+        "source_file": 2.648491447154264
+      },
+      "nli": {
+        "daily": 0.0004331601958256215,
+        "knowledge": 0.010233268141746521,
+        "images": 0.02101227082312107,
+        "source_file": 0.14914658665657043,
+        "clarify": 0.004390744026750326
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 2703.0,
+      "elapsed_ms": 2703.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-10",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 2.77035997050676,
+        "knowledge": 10.542986450285792,
+        "images": 10.12592022544178,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0012310011079534888,
+        "knowledge": 0.010146579705178738,
+        "images": 0.02179764024913311,
+        "source_file": 0.18536804616451263,
+        "clarify": 0.005793372634798288
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3766.0,
+      "elapsed_ms": 3766.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-11",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 4.030107996189447,
+        "images": 4.187978033888805,
+        "source_file": 3.1504919089038204
+      },
+      "nli": {
+        "daily": 0.0027840540278702974,
+        "knowledge": 0.03635748103260994,
+        "images": 0.05920036509633064,
+        "source_file": 0.16352593898773193,
+        "clarify": 0.004972340073436499
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4250.0,
+      "elapsed_ms": 4250.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-12",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.3917424425500307,
+        "images": 1.881142970627433,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.00042131138616241515,
+        "knowledge": 0.03433181345462799,
+        "images": 0.23212900757789612,
+        "source_file": 0.46303972601890564,
+        "clarify": 0.003422213951125741
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3328.0,
+      "elapsed_ms": 3328.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-13",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.8284735111585593,
+        "images": 2.77406767821927,
+        "source_file": 3.034560502258119
+      },
+      "nli": {
+        "daily": 0.0003749400202650577,
+        "knowledge": 0.0678221806883812,
+        "images": 0.28611764311790466,
+        "source_file": 0.45126745104789734,
+        "clarify": 0.2248239517211914
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4250.0,
+      "elapsed_ms": 4250.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary",
+        "mixed"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-14",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 3.6516694233487033,
+        "knowledge": 9.284853392171216,
+        "images": 5.135134175896877,
+        "source_file": 4.570805006731919
+      },
+      "nli": {
+        "daily": 0.012772620655596256,
+        "knowledge": 0.0752548947930336,
+        "images": 0.0023667034693062305,
+        "source_file": 0.537932276725769,
+        "clarify": 0.013322492130100727
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 5109.0,
+      "elapsed_ms": 5109.0,
+      "prediction": "knowledge",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "boundary",
+        "mixed"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-15",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 1.9216413181800585,
+        "knowledge": 8.003434115240308,
+        "images": 3.6516694233487033,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0021169218234717846,
+        "knowledge": 0.1355903446674347,
+        "images": 0.12732063233852386,
+        "source_file": 0.6779237985610962,
+        "clarify": 0.02270234376192093
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3156.0,
+      "elapsed_ms": 3156.0,
+      "prediction": "knowledge",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "boundary",
+        "mixed"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-16",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 3.184056469526394,
+        "knowledge": 12.183326472341147,
+        "images": 1.881142970627433,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0002797702036332339,
+        "knowledge": 0.029991991817951202,
+        "images": 0.02203332632780075,
+        "source_file": 0.06310964375734329,
+        "clarify": 0.0038349039386957884
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 2985.0,
+      "elapsed_ms": 2985.0,
+      "prediction": "knowledge",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-17",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 3.184056469526394,
+        "knowledge": 12.694909155468624,
+        "images": 3.8284735111585593,
+        "source_file": 2.648491447154264
+      },
+      "nli": {
+        "daily": 0.0004024945374112576,
+        "knowledge": 0.00296774972230196,
+        "images": 0.014644034206867218,
+        "source_file": 0.17284682393074036,
+        "clarify": 0.0020494102500379086
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4812.0,
+      "elapsed_ms": 4812.0,
+      "prediction": "knowledge",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-18",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.1504919089038204,
+        "images": 7.488071862767811,
+        "source_file": 3.298411972445441
+      },
+      "nli": {
+        "daily": 0.009631731547415257,
+        "knowledge": 0.14524146914482117,
+        "images": 0.02880888432264328,
+        "source_file": 0.09135330468416214,
+        "clarify": 0.01235260907560587
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4203.0,
+      "elapsed_ms": 4203.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": false,
+      "tags": [
+        "boundary",
+        "mixed"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-19",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 2.77035997050676,
+        "knowledge": 6.368112939052789,
+        "images": 1.881142970627433,
+        "source_file": 4.187978033888805
+      },
+      "nli": {
+        "daily": 0.0003623286902438849,
+        "knowledge": 0.6614074110984802,
+        "images": 0.22343365848064423,
+        "source_file": 0.2910112142562866,
+        "clarify": 0.01757872849702835
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4672.0,
+      "elapsed_ms": 4672.0,
+      "prediction": "knowledge",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "boundary",
+        "mixed"
+      ]
+    },
+    {
+      "id": "acceptance-knowledge-20",
+      "expected": "knowledge",
+      "bm25": {
+        "daily": 15.469123199442352,
+        "knowledge": 4.695254609573338,
+        "images": 5.992412660291253,
+        "source_file": 4.394296486464921
+      },
+      "nli": {
+        "daily": 0.0008915935759432614,
+        "knowledge": 0.5802479386329651,
+        "images": 0.6803763508796692,
+        "source_file": 0.5729703903198242,
+        "clarify": 0.5496073365211487
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4719.0,
+      "elapsed_ms": 4719.0,
+      "prediction": "daily",
+      "layer": "bm25",
+      "correct": false,
+      "tags": [
+        "boundary",
+        "mixed"
+      ]
+    },
+    {
+      "id": "acceptance-images-01",
+      "expected": "images",
+      "bm25": {
+        "daily": 3.298411972445441,
+        "knowledge": 2.483446196232385,
+        "images": 9.617810792802619,
+        "source_file": 9.802489414859043
+      },
+      "nli": {
+        "daily": 0.00022854312555864453,
+        "knowledge": 0.01826157048344612,
+        "images": 0.5836127996444702,
+        "source_file": 0.2513282895088196,
+        "clarify": 0.004329429939389229
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4250.0,
+      "elapsed_ms": 4250.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-images-02",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.4879072318313527,
+        "images": 13.354327589706578,
+        "source_file": 10.488138904391773
+      },
+      "nli": {
+        "daily": 0.0019459740724414587,
+        "knowledge": 0.028791796416044235,
+        "images": 0.3245958685874939,
+        "source_file": 0.23538832366466522,
+        "clarify": 0.0044886707328259945
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4469.0,
+      "elapsed_ms": 4469.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-images-03",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 2.076094095327217,
+        "images": 8.108552319353825,
+        "source_file": 6.300983817807641
+      },
+      "nli": {
+        "daily": 0.003589790780097246,
+        "knowledge": 0.018139097839593887,
+        "images": 0.09763523191213608,
+        "source_file": 0.23779284954071045,
+        "clarify": 0.004860913380980492
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4015.0,
+      "elapsed_ms": 4015.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-images-04",
+      "expected": "images",
+      "bm25": {
+        "daily": 3.082703327674432,
+        "knowledge": 0.0,
+        "images": 6.8364694810430695,
+        "source_file": 2.648491447154264
+      },
+      "nli": {
+        "daily": 0.0009486788185313344,
+        "knowledge": 0.04240670055150986,
+        "images": 0.7753850817680359,
+        "source_file": 0.2931254804134369,
+        "clarify": 0.0059154159389436245
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4547.0,
+      "elapsed_ms": 4547.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-images-05",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 8.33595444494817,
+        "source_file": 7.419868889054603
+      },
+      "nli": {
+        "daily": 0.0036966081243008375,
+        "knowledge": 0.004042427986860275,
+        "images": 0.4422314465045929,
+        "source_file": 0.3682888150215149,
+        "clarify": 0.0036732745356857777
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3922.0,
+      "elapsed_ms": 3922.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-images-06",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.525810768580007,
+        "images": 9.617810792802619,
+        "source_file": 3.1504919089038204
+      },
+      "nli": {
+        "daily": 0.0002258888416690752,
+        "knowledge": 0.003450352931395173,
+        "images": 0.025129450485110283,
+        "source_file": 0.16940627992153168,
+        "clarify": 0.0037326577585190535
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4469.0,
+      "elapsed_ms": 4469.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-images-07",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.074298688281766,
+        "images": 7.488071862767811,
+        "source_file": 3.034560502258119
+      },
+      "nli": {
+        "daily": 0.00029070544405840337,
+        "knowledge": 0.08648832142353058,
+        "images": 0.9032939076423645,
+        "source_file": 0.7669184803962708,
+        "clarify": 0.00761427404358983
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4312.0,
+      "elapsed_ms": 4312.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-images-08",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 2.6713043357512984,
+        "images": 3.670914155454977,
+        "source_file": 3.1504919089038204
+      },
+      "nli": {
+        "daily": 0.0004217333043925464,
+        "knowledge": 0.019144514575600624,
+        "images": 0.13116328418254852,
+        "source_file": 0.21038304269313812,
+        "clarify": 0.0032224261667579412
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3969.0,
+      "elapsed_ms": 3969.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-images-09",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.3917424425500307,
+        "images": 6.602541189377829,
+        "source_file": 3.4879072318313527
+      },
+      "nli": {
+        "daily": 0.0016263932920992374,
+        "knowledge": 0.09226374328136444,
+        "images": 0.31460049748420715,
+        "source_file": 0.2732781767845154,
+        "clarify": 0.006544697564095259
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4594.0,
+      "elapsed_ms": 4594.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-images-10",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.1504919089038204,
+        "images": 10.181945833334607,
+        "source_file": 3.83156692487529
+      },
+      "nli": {
+        "daily": 0.00036413472844287753,
+        "knowledge": 0.06358560919761658,
+        "images": 0.3265797197818756,
+        "source_file": 0.27043503522872925,
+        "clarify": 0.004070233553647995
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4000.0,
+      "elapsed_ms": 4000.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-images-11",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 9.425214775101239,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.0018429735209792852,
+        "knowledge": 0.0074783070012927055,
+        "images": 0.26045507192611694,
+        "source_file": 0.1305219680070877,
+        "clarify": 0.006310727447271347
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4515.0,
+      "elapsed_ms": 4515.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-images-12",
+      "expected": "images",
+      "bm25": {
+        "daily": 2.321498504836276,
+        "knowledge": 2.076094095327217,
+        "images": 14.41125837190039,
+        "source_file": 8.830701434880867
+      },
+      "nli": {
+        "daily": 0.0003614269953686744,
+        "knowledge": 0.022288138046860695,
+        "images": 0.12648114562034607,
+        "source_file": 0.2401672601699829,
+        "clarify": 0.00552366953343153
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4141.0,
+      "elapsed_ms": 4141.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-images-13",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.1504919089038204,
+        "images": 8.37080894216195,
+        "source_file": 3.298411972445441
+      },
+      "nli": {
+        "daily": 0.00020955789659637958,
+        "knowledge": 0.00873863510787487,
+        "images": 0.06428203731775284,
+        "source_file": 0.08950454741716385,
+        "clarify": 0.0009755528881214559
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4938.0,
+      "elapsed_ms": 4938.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-images-14",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 7.610366362532352,
+        "source_file": 4.570805006731919
+      },
+      "nli": {
+        "daily": 0.005578247830271721,
+        "knowledge": 0.0035981875844299793,
+        "images": 0.43916457891464233,
+        "source_file": 0.3137202858924866,
+        "clarify": 0.006028970703482628
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4265.0,
+      "elapsed_ms": 4265.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-images-15",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 6.353472322176048,
+        "source_file": 6.534992943239362
+      },
+      "nli": {
+        "daily": 0.0005939720431342721,
+        "knowledge": 0.014569668099284172,
+        "images": 0.5557438731193542,
+        "source_file": 0.2662411034107208,
+        "clarify": 0.0029608679469674826
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4125.0,
+      "elapsed_ms": 4125.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-images-16",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 4.000164630936458,
+        "source_file": 4.000164630936458
+      },
+      "nli": {
+        "daily": 0.0031153042800724506,
+        "knowledge": 0.017638158053159714,
+        "images": 0.32280755043029785,
+        "source_file": 0.13108152151107788,
+        "clarify": 0.00912704411894083
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4203.0,
+      "elapsed_ms": 4203.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-images-17",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 9.18401284989572,
+        "source_file": 3.034560502258119
+      },
+      "nli": {
+        "daily": 0.0021391662303358316,
+        "knowledge": 0.022477487102150917,
+        "images": 0.11079845577478409,
+        "source_file": 0.11411266028881073,
+        "clarify": 0.003274140413850546
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3875.0,
+      "elapsed_ms": 3875.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-images-18",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 2.483446196232385,
+        "images": 4.74514177425478,
+        "source_file": 2.366844874987695
+      },
+      "nli": {
+        "daily": 0.00027654346195049584,
+        "knowledge": 0.043199457228183746,
+        "images": 0.5338825583457947,
+        "source_file": 0.3423415422439575,
+        "clarify": 0.002826585667207837
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4610.0,
+      "elapsed_ms": 4610.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-images-19",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.6516694233487033,
+        "images": 7.7090485865916385,
+        "source_file": 4.570805006731919
+      },
+      "nli": {
+        "daily": 0.002366253174841404,
+        "knowledge": 0.012929190881550312,
+        "images": 0.2020227313041687,
+        "source_file": 0.04561864584684372,
+        "clarify": 0.006519857328385115
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4172.0,
+      "elapsed_ms": 4172.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-images-20",
+      "expected": "images",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 9.74814789042771,
+        "source_file": 6.116560353942365
+      },
+      "nli": {
+        "daily": 0.0031435126438736916,
+        "knowledge": 0.03622111678123474,
+        "images": 0.36047282814979553,
+        "source_file": 0.7190673351287842,
+        "clarify": 0.03355300799012184
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 5046.0,
+      "elapsed_ms": 5046.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-01",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 4.187978033888805
+      },
+      "nli": {
+        "daily": 0.0029148615431040525,
+        "knowledge": 0.09409753978252411,
+        "images": 0.2772373855113983,
+        "source_file": 0.6622605323791504,
+        "clarify": 0.008456123992800713
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3016.0,
+      "elapsed_ms": 3016.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-02",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 2.321498504836276,
+        "knowledge": 3.3490453617940448,
+        "images": 6.602541189377829,
+        "source_file": 6.069121004516238
+      },
+      "nli": {
+        "daily": 0.007232575211673975,
+        "knowledge": 0.005910702049732208,
+        "images": 0.021275801584124565,
+        "source_file": 0.3216419517993927,
+        "clarify": 0.045341912657022476
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4578.0,
+      "elapsed_ms": 4578.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-03",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 2.77896793309002,
+        "images": 3.670914155454977,
+        "source_file": 6.8364694810430695
+      },
+      "nli": {
+        "daily": 0.0018015583045780659,
+        "knowledge": 0.040697235614061356,
+        "images": 0.08176286518573761,
+        "source_file": 0.6370721459388733,
+        "clarify": 0.02297361195087433
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4625.0,
+      "elapsed_ms": 4625.0,
+      "prediction": "source_file",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-04",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 2.77896793309002,
+        "images": 4.000164630936458,
+        "source_file": 3.670914155454977
+      },
+      "nli": {
+        "daily": 0.0008329558768309653,
+        "knowledge": 0.017565540969371796,
+        "images": 0.029581289738416672,
+        "source_file": 0.6888999938964844,
+        "clarify": 0.005861362908035517
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 2594.0,
+      "elapsed_ms": 2594.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-05",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 3.670914155454977,
+        "source_file": 4.394296486464921
+      },
+      "nli": {
+        "daily": 0.0022369229700416327,
+        "knowledge": 0.013328894041478634,
+        "images": 0.4787917733192444,
+        "source_file": 0.42494916915893555,
+        "clarify": 0.005694977473467588
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3391.0,
+      "elapsed_ms": 3391.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-06",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 8.313911165127529,
+        "knowledge": 0.0,
+        "images": 11.485420533475677,
+        "source_file": 8.000329261872915
+      },
+      "nli": {
+        "daily": 0.0014534957008436322,
+        "knowledge": 0.03323012962937355,
+        "images": 0.07362273335456848,
+        "source_file": 0.8345649838447571,
+        "clarify": 0.012437768280506134
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4375.0,
+      "elapsed_ms": 4375.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-07",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 2.77406767821927,
+        "knowledge": 2.77896793309002,
+        "images": 2.554761751420711,
+        "source_file": 5.8607222583126966
+      },
+      "nli": {
+        "daily": 0.004848026670515537,
+        "knowledge": 0.010674937628209591,
+        "images": 0.013948771171271801,
+        "source_file": 0.49986520409584045,
+        "clarify": 0.04265577346086502
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4375.0,
+      "elapsed_ms": 4375.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-08",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 3.83156692487529
+      },
+      "nli": {
+        "daily": 0.0031357938423752785,
+        "knowledge": 0.018791096284985542,
+        "images": 0.0059022074565291405,
+        "source_file": 0.30778199434280396,
+        "clarify": 0.009517576545476913
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4718.0,
+      "elapsed_ms": 4718.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-09",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 3.082703327674432,
+        "knowledge": 0.0,
+        "images": 6.8364694810430695,
+        "source_file": 8.18293615359185
+      },
+      "nli": {
+        "daily": 0.0011560267303138971,
+        "knowledge": 0.08060108870267868,
+        "images": 0.3028642237186432,
+        "source_file": 0.8966002464294434,
+        "clarify": 0.030639203265309334
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3907.0,
+      "elapsed_ms": 3907.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-10",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 2.77406767821927,
+        "knowledge": 2.483446196232385,
+        "images": 2.554761751420711,
+        "source_file": 4.394296486464921
+      },
+      "nli": {
+        "daily": 0.00044637153041549027,
+        "knowledge": 0.024425867944955826,
+        "images": 0.043499529361724854,
+        "source_file": 0.0981476753950119,
+        "clarify": 0.002565460279583931
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4671.0,
+      "elapsed_ms": 4671.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-11",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 2.321498504836276,
+        "knowledge": 3.1504919089038204,
+        "images": 0.0,
+        "source_file": 4.187978033888805
+      },
+      "nli": {
+        "daily": 0.0006401576683856547,
+        "knowledge": 0.08267265558242798,
+        "images": 0.09655661880970001,
+        "source_file": 0.4168969392776489,
+        "clarify": 0.006366516929119825
+      },
+      "failure": "",
+      "bm25_ms": 16.0,
+      "nli_ms": 3797.0,
+      "elapsed_ms": 3813.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-12",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.338202718751259,
+        "images": 9.617810792802619,
+        "source_file": 6.950081395794144
+      },
+      "nli": {
+        "daily": 0.001583474106155336,
+        "knowledge": 0.12671205401420593,
+        "images": 0.47021862864494324,
+        "source_file": 0.2267587035894394,
+        "clarify": 0.013206863775849342
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4219.0,
+      "elapsed_ms": 4219.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-13",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 3.2609085782505534,
+        "knowledge": 3.525810768580007,
+        "images": 2.648491447154264,
+        "source_file": 6.8364694810430695
+      },
+      "nli": {
+        "daily": 0.0008101777639240026,
+        "knowledge": 0.006227787584066391,
+        "images": 0.028655359521508217,
+        "source_file": 0.8360199332237244,
+        "clarify": 0.009517892263829708
+      },
+      "failure": "",
+      "bm25_ms": 15.0,
+      "nli_ms": 4578.0,
+      "elapsed_ms": 4593.0,
+      "prediction": "source_file",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-14",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 2.321498504836276,
+        "knowledge": 5.621999604563229,
+        "images": 6.401640538102585,
+        "source_file": 7.3033388466974065
+      },
+      "nli": {
+        "daily": 0.0003652837185654789,
+        "knowledge": 0.0343945287168026,
+        "images": 0.10244571417570114,
+        "source_file": 0.4995706081390381,
+        "clarify": 0.0030789512675255537
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4500.0,
+      "elapsed_ms": 4500.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-15",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 2.321498504836276,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 8.37595606777761
+      },
+      "nli": {
+        "daily": 0.0007928673294372857,
+        "knowledge": 0.025992030277848244,
+        "images": 0.03037845529615879,
+        "source_file": 0.5121705532073975,
+        "clarify": 0.04088211432099342
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4625.0,
+      "elapsed_ms": 4625.0,
+      "prediction": "source_file",
+      "layer": "bm25",
+      "correct": true,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-16",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 6.0489649890737525,
+        "images": 2.6599019892614035,
+        "source_file": 7.486390006334245
+      },
+      "nli": {
+        "daily": 0.00046580692287534475,
+        "knowledge": 0.05631503835320473,
+        "images": 0.47539442777633667,
+        "source_file": 0.8077175617218018,
+        "clarify": 0.005516630131751299
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4032.0,
+      "elapsed_ms": 4032.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-17",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.4879072318313527,
+        "images": 9.450473115721788,
+        "source_file": 6.185147163639987
+      },
+      "nli": {
+        "daily": 0.001417158986441791,
+        "knowledge": 0.0043544829823076725,
+        "images": 0.03999405726790428,
+        "source_file": 0.2579602599143982,
+        "clarify": 0.00469953240826726
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4781.0,
+      "elapsed_ms": 4781.0,
+      "prediction": "images",
+      "layer": "bm25",
+      "correct": false,
+      "tags": [
+        "clear"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-18",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 4.642997009672552,
+        "knowledge": 0.0,
+        "images": 2.648491447154264,
+        "source_file": 6.610534857965311
+      },
+      "nli": {
+        "daily": 0.0007896494353190064,
+        "knowledge": 0.01463603600859642,
+        "images": 0.013998658396303654,
+        "source_file": 0.3249530792236328,
+        "clarify": 0.03668968379497528
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 5391.0,
+      "elapsed_ms": 5391.0,
+      "prediction": "source_file",
+      "layer": "context",
+      "correct": true,
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-19",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.1504919089038204,
+        "images": 0.0,
+        "source_file": 3.298411972445441
+      },
+      "nli": {
+        "daily": 0.0020183653105050325,
+        "knowledge": 0.012444346211850643,
+        "images": 0.015662450343370438,
+        "source_file": 0.11710193008184433,
+        "clarify": 0.043605905026197433
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 5468.0,
+      "elapsed_ms": 5468.0,
+      "prediction": "source_file",
+      "layer": "context",
+      "correct": true,
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ]
+    },
+    {
+      "id": "acceptance-source_file-20",
+      "expected": "source_file",
+      "bm25": {
+        "daily": 3.2609085782505534,
+        "knowledge": 0.0,
+        "images": 2.648491447154264,
+        "source_file": 2.648491447154264
+      },
+      "nli": {
+        "daily": 0.0008297384483739734,
+        "knowledge": 0.010944430716335773,
+        "images": 0.01464326586574316,
+        "source_file": 0.33821162581443787,
+        "clarify": 0.029822170734405518
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 5407.0,
+      "elapsed_ms": 5407.0,
+      "prediction": "source_file",
+      "layer": "context",
+      "correct": true,
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-01",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.017937032505869865,
+        "knowledge": 0.26652008295059204,
+        "images": 0.6250494122505188,
+        "source_file": 0.6798287034034729,
+        "clarify": 0.00516552897170186
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3687.0,
+      "elapsed_ms": 3687.0,
+      "prediction": "clarify",
+      "layer": "context",
+      "correct": true,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-02",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.013846511952579021,
+        "knowledge": 0.1894702911376953,
+        "images": 0.3420407474040985,
+        "source_file": 0.5761044025421143,
+        "clarify": 0.013843288645148277
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3219.0,
+      "elapsed_ms": 3219.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-03",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.02124420367181301,
+        "knowledge": 0.17078351974487305,
+        "images": 0.45667511224746704,
+        "source_file": 0.515232503414154,
+        "clarify": 0.0032589633483439684
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3203.0,
+      "elapsed_ms": 3203.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-04",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 2.77035997050676,
+        "knowledge": 4.968607413654354,
+        "images": 3.0152696034247892,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.00478576822206378,
+        "knowledge": 0.09471558034420013,
+        "images": 0.020575478672981262,
+        "source_file": 0.3616108000278473,
+        "clarify": 0.010389497503638268
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4047.0,
+      "elapsed_ms": 4047.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-05",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 2.9229662714725184,
+        "knowledge": 2.77896793309002,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.003965987358242273,
+        "knowledge": 0.1588316112756729,
+        "images": 0.04867188259959221,
+        "source_file": 0.26877832412719727,
+        "clarify": 0.008410446345806122
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3359.0,
+      "elapsed_ms": 3359.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-06",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.030304372310638428,
+        "knowledge": 0.1946418136358261,
+        "images": 0.3624323606491089,
+        "source_file": 0.5214853882789612,
+        "clarify": 0.010506991297006607
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3672.0,
+      "elapsed_ms": 3672.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-07",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.08623076230287552,
+        "knowledge": 0.2658039927482605,
+        "images": 0.133704274892807,
+        "source_file": 0.2655460834503174,
+        "clarify": 0.015998078510165215
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3406.0,
+      "elapsed_ms": 3406.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-08",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 3.082703327674432,
+        "knowledge": 0.0,
+        "images": 2.648491447154264,
+        "source_file": 6.8364694810430695
+      },
+      "nli": {
+        "daily": 0.006578999571502209,
+        "knowledge": 0.038384318351745605,
+        "images": 0.08466172218322754,
+        "source_file": 0.166311115026474,
+        "clarify": 0.012636587023735046
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3235.0,
+      "elapsed_ms": 3235.0,
+      "prediction": "source_file",
+      "layer": "bm25",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-09",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 3.298411972445441,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 3.8284735111585593
+      },
+      "nli": {
+        "daily": 0.01006373018026352,
+        "knowledge": 0.042441267520189285,
+        "images": 0.25700220465660095,
+        "source_file": 0.5801243185997009,
+        "clarify": 0.01595677062869072
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3859.0,
+      "elapsed_ms": 3859.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-10",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.009459528140723705,
+        "knowledge": 0.14354307949543,
+        "images": 0.4289361834526062,
+        "source_file": 0.6515684723854065,
+        "clarify": 0.007886968553066254
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3641.0,
+      "elapsed_ms": 3641.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-11",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.02625568024814129,
+        "knowledge": 0.09252654761075974,
+        "images": 0.15819549560546875,
+        "source_file": 0.1802576184272766,
+        "clarify": 0.00833918247371912
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3484.0,
+      "elapsed_ms": 3484.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-12",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 2.9229662714725184,
+        "knowledge": 2.77896793309002,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.010360190644860268,
+        "knowledge": 0.29211294651031494,
+        "images": 0.23264795541763306,
+        "source_file": 0.47331205010414124,
+        "clarify": 0.010635384358465672
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3750.0,
+      "elapsed_ms": 3750.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-13",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 3.0152696034247892,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.006748612504452467,
+        "knowledge": 0.02942260168492794,
+        "images": 0.018106382340192795,
+        "source_file": 0.40114474296569824,
+        "clarify": 0.004558360204100609
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3484.0,
+      "elapsed_ms": 3484.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-14",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 3.1504919089038204,
+        "images": 0.0,
+        "source_file": 3.298411972445441
+      },
+      "nli": {
+        "daily": 0.007009217515587807,
+        "knowledge": 0.1212901845574379,
+        "images": 0.4658724367618561,
+        "source_file": 0.35915347933769226,
+        "clarify": 0.03080770932137966
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3094.0,
+      "elapsed_ms": 3094.0,
+      "prediction": "clarify",
+      "layer": "context",
+      "correct": true,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-15",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 4.642997009672552,
+        "knowledge": 0.0,
+        "images": 2.648491447154264,
+        "source_file": 6.8364694810430695
+      },
+      "nli": {
+        "daily": 0.00223182188346982,
+        "knowledge": 0.03633248805999756,
+        "images": 0.022127006202936172,
+        "source_file": 0.27045848965644836,
+        "clarify": 0.005799097009003162
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3985.0,
+      "elapsed_ms": 3985.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-16",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 3.2609085782505534,
+        "knowledge": 0.0,
+        "images": 2.648491447154264,
+        "source_file": 2.648491447154264
+      },
+      "nli": {
+        "daily": 0.009849787689745426,
+        "knowledge": 0.07249046117067337,
+        "images": 0.12583646178245544,
+        "source_file": 0.23220299184322357,
+        "clarify": 0.007721297908574343
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 2531.0,
+      "elapsed_ms": 2531.0,
+      "prediction": "clarify",
+      "layer": "context",
+      "correct": true,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-17",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 4.394296486464921
+      },
+      "nli": {
+        "daily": 0.001392931560985744,
+        "knowledge": 0.014225737191736698,
+        "images": 0.0403502881526947,
+        "source_file": 0.37434646487236023,
+        "clarify": 0.12704040110111237
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 5375.0,
+      "elapsed_ms": 5375.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary",
+        "multi_turn"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-18",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 3.298411972445441,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 3.1504919089038204
+      },
+      "nli": {
+        "daily": 0.0026886765845119953,
+        "knowledge": 0.018804112449288368,
+        "images": 0.015114851295948029,
+        "source_file": 0.24252310395240784,
+        "clarify": 0.005183471832424402
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 3953.0,
+      "elapsed_ms": 3953.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-19",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 0.0,
+        "knowledge": 0.0,
+        "images": 0.0,
+        "source_file": 4.187978033888805
+      },
+      "nli": {
+        "daily": 0.0021819027606397867,
+        "knowledge": 0.08980295807123184,
+        "images": 0.10845942795276642,
+        "source_file": 0.3145882785320282,
+        "clarify": 0.020167214795947075
+      },
+      "failure": "",
+      "bm25_ms": 16.0,
+      "nli_ms": 3703.0,
+      "elapsed_ms": 3719.0,
+      "prediction": null,
+      "layer": "unresolved",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "acceptance-clarify-20",
+      "expected": "clarify",
+      "bm25": {
+        "daily": 13.05206976686043,
+        "knowledge": 2.0569200257920532,
+        "images": 0.0,
+        "source_file": 0.0
+      },
+      "nli": {
+        "daily": 0.15108275413513184,
+        "knowledge": 0.2695501148700714,
+        "images": 0.11753813177347183,
+        "source_file": 0.18828684091567993,
+        "clarify": 0.022431273013353348
+      },
+      "failure": "",
+      "bm25_ms": 0.0,
+      "nli_ms": 4500.0,
+      "elapsed_ms": 4500.0,
+      "prediction": "daily",
+      "layer": "bm25",
+      "correct": false,
+      "tags": [
+        "boundary"
+      ]
+    }
+  ]
+}

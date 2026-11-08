@@ -1,0 +1,27 @@
+{
+  "before": {
+    "configured_mode": "shadow",
+    "effective_mode": "shadow",
+    "version": "intent-v1",
+    "calibrated": true,
+    "model_ready": true,
+    "activation_allowed": false
+  },
+  "decision": {
+    "intent": "daily",
+    "method": "terra",
+    "mode": "shadow",
+    "reason": "TimeoutError",
+    "local_elapsed_ms": 2297.0,
+    "elapsed_ms": 15172.0
+  },
+  "after": {
+    "configured_mode": "shadow",
+    "effective_mode": "shadow",
+    "version": "intent-v1",
+    "calibrated": true,
+    "model_ready": false,
+    "activation_allowed": false
+  },
+  "employee_messages_sent": 0
+}

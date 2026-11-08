@@ -59,7 +59,7 @@ def main():
         raise SystemExit('Import and validate the new template first; activation requires --validated.')
     import httpx
     conn=connection()
-    from knowledge_card.deployment import BOT as bot_id
+    bot_id='9777ca2e-7df1-4441-84ca-abedd4bc5c01'
     backup=RUNTIME/'knowledge-card-activation.private.json'
     with httpx.Client(base_url='http://127.0.0.1:5300',headers={'X-API-Key':conn.credential()},timeout=60) as client:
         bot=conn.data(client.get(f'/api/v1/platform/bots/{bot_id}'))['bot']
@@ -105,7 +105,7 @@ def main():
         run('docker','cp',str(gate),'langbot:/app/data/work-knowledge-card-v1.json')
         config['card_template_id']=args.activate
         conn.data(client.put(f'/api/v1/platform/bots/{bot_id}',json={'adapter_config':config}))
-    print('Installed for 指定工作助手. Restart langbot, plugin runtime and the local Codex daemon during rollout; see handoff.')
+    print('Installed for LSD AI助手. Restart langbot, plugin runtime and the local Codex daemon during rollout; see handoff.')
 
 
 if __name__=='__main__': main()

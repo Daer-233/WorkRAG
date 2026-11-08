@@ -24,6 +24,16 @@ class SearchFilter:
     content_origins: list[str] | None = None
     page_start: int | None = None
     page_end: int | None = None
+    document_version_ids: list[str] | None = None
+    point_ids: list[str] | None = None
+    enforce_roles: bool = True
+
+
+@dataclass(frozen=True)
+class VectorHit:
+    id: str
+    score: float
+    payload: dict[str, object]
 
 
 @dataclass(frozen=True)
@@ -38,6 +48,10 @@ class VectorCandidate:
 
 class VectorProvider(Protocol):
     provider_name: str
+    collection_name: str
+
+    def delete_chunks(self, chunk_ids: list[str]) -> None: ...
+    def search_lane(self, kind, vector, search_filter: SearchFilter, limit: int) -> list[VectorHit]: ...
 
     def ensure_collection(self, dense_dimension: int) -> None: ...
 

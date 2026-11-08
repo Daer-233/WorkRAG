@@ -21,7 +21,7 @@ def read_json(path):
 
 
 def config():
-    value={'mode':'shadow','version':'intent-v2-factors','sample_set':'v2','model_path':str(MODEL),'terra_enabled':True}
+    value={'mode':'off','version':'intent-v2-factors','sample_set':'v2','model_path':str(MODEL),'terra_enabled':True}
     if CONFIG.exists(): value.update(read_json(CONFIG))
     if value['mode'] not in ('off','shadow','on'): raise ValueError('Invalid intent mode')
     path=Path(value['model_path']).resolve()

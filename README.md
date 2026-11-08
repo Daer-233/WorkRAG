@@ -1,85 +1,134 @@
-# WorkRAG｜工作知识助手
+# WorkRAG 工作知识助手
 
-面向行政、IT 和财务等内部资料的钉钉知识助手。员工可以在单聊中查询操作流程、查看来源与配图，或接着上一轮询问同一份资料。管理员在本机整理图文资料、审核分块和发布版本。
+基于 **LangBot＋LangGraph＋Pi Agent** 的工作资料检索助手。员工通过钉钉单聊提问，助手检索已发布且获授权的资料，回答操作步骤，并支持继续获取图片或原文件。管理员通过 WorkRAG 管理资料，通过 LangBot 配置模型、处理器和标准问答审核。
 
-## 系统架构
+当前问答引擎插件版本 **0.4.2**，Pi 核心版本 **1.5.0**。本仓库保存源码、配置示例和部署说明，不包含企业资料、数据库、模型权重或任何实际密钥。
+
+## 工作流
 
 ```mermaid
-flowchart LR
-    A["钉钉单聊"] --> B["LangBot 接收、确认与去重"]
-    B --> C["Host 检查 PostgreSQL 会话记忆"]
-    C --> D["新问题：BM25 → BERT → Terra 补判"]
-    D -->|日常问题| E["agent 直接回答"]
-    D -->|工作问题| F["agent 调用授权检索"]
-    C -->|资料追问| F
-    F --> G["关键词、稠密、稀疏召回"]
-    G --> H["统一重排与父块回填"]
-    H --> I["agent 按证据生成"]
-    E --> J["钉钉流式卡片"]
-    I --> J
-    I --> K["保存实际引用的资料与版本"]
+flowchart TD
+    A[钉钉单聊 / LangBot 调试] --> B[LangGraph：读取本人历史与状态]
+    B --> C{问题类型}
+    C -->|明确的图片 / 文件追问| D[核对资料、版本与权限]
+    C -->|独立问题| E{已审核标准问答可复用？}
+    C -->|指代不明| F[询问具体资料或动作]
+    E -->|是| G[核对当前来源后复用]
+    E -->|否| H[Pi Agent：模型与工具循环]
+    H --> I[LangBot 授权的外部 LLM API]
+    I --> J{是否需要工具？}
+    J -->|是| K[MCP：知识 / 图片 / 原文件 / 本人历史]
+    K --> H
+    J -->|否| L[核对本轮来源并流式回答]
+    D --> M[保存会话与引用，输出卡片或附件]
+    F --> M
+    G --> M
+    L --> M
 ```
 
-## 实现亮点
+**LangGraph** 负责记忆、标准问答复用、确定性资料追问与最终校验；**Pi** 负责内部模型／工具循环。模型继续使用 LangBot 中选择的 API 模型，不把模型密钥复制到 Pi。当前本机使用 deepseek-flash，也可另行配置兼容且支持工具调用的模型，换模型后须重新验收。
 
-- **按流程组织资料**。父块对应章节或完整流程，子块对应步骤或完整说明。管理员可在发布前调整边界、顺序、页码和配图关系。查询命中子块后回填其父块，分别返回跨资料证据。
-- **混合检索**。标题与关键词、BGE-M3 稠密向量、稀疏向量三路召回，使用 BGE-Reranker-v2-m3 统一重排。PostgreSQL 保存原文、版本与会话引用，Qdrant 保存可重建的检索索引。
-- **可追问的图文回答**。卡片显示处理状态、真实增量和来源，支持已入库图片。会话记忆按单聊和员工隔离，有效期 24 小时。追问时重新核对发布状态和版本，必要时请员工选择资料。
-- **工作与日常分流**。独立 BM25 样例索引和监督 BERT 负责本地分类，Terra 处理低置信度问题。日常路线不获得知识库权限。V3 接管范围可限定到指定机器人单聊，支持退回影子模式。钉钉接收端在消息入队后确认，短期内按消息 ID 去重。
+## 当前功能
 
-## 当前成果
+- 资料上传、解析、发布、索引和检索；使用 Qdrant、BGE-M3 与 BGE-Reranker-v2-m3。
+- 日常问答、工作资料检索、本人历史查询、模糊指代澄清。
+- 已确定单份资料后，回复“图片”“文件”或“下一步”继续查询；多资料或过期状态先澄清。
+- 员工正文只保留资料名称、操作和必要页码，隐藏版本号、证据 ID 和内部检索说明；后台仍保留完整引用供审核和附件定位。
+- 外部模型真实流式输出；当前钉钉旧模板支持默认折叠的图片区，每轮最多 3 张图，原文件通过原生附件通道返回。
+- 明确反馈进入候选，管理员审核后发布标准问答；BM25 用于召回，满足保守复用条件后才直接回答。
+- PostgreSQL 独立工作流库、签名工具范围、显式资料白名单、用户隔离与调用限制。
 
-| 指标 | 本机试点结果 |
-| --- | --- |
-| 资料规模 | 13 条记录，11 条已发布并完成索引。索引条目涉及 2 个已命名分类，也包含未归类条目与演示资料。 |
-| 检索 Hit@5 | **15/15（100%）**，小样本有依据题。 |
-| 跨资料证据覆盖 | **6/6** 个目标证据，来自 3 道跨资料题。 |
-| 无依据题正确返回证据不足 | **3/5**，另 2 道返回了不适用的资料。 |
-| 检索耗时 | **平均 9.59 秒，P95 16.67 秒**，20 道预标注问题，预热后单并发。 |
-| 意图分类 | V3 合成留出集，本地自动接受准确率 **97.0%（128/132）**，明确问法覆盖率 **97.6%（121/124）**。 |
+默认每轮最多 6 次工具调用、180 秒，Agent 请求最多 2 个并行、32 个等待；个人聊天默认保留 90 天，已发布标准问答独立保存。Pi 仅有四个只读工具，不开放终端、任意文件写入或业务审批工具。
 
+### LangBot 入口对照
 
-题量、分母、失败类型与耗时口径见 [脱敏评测报告](docs/evaluation.md)。
+| 入口 | 用途 |
+|---|---|
+| 调试助手 | 直接测试模型、资料检索、追问和反馈 |
+| 问答流水线 | 设置触发条件、运行器和输出，由机器人绑定 |
+| 问答引擎插件 | 提供 LangGraph＋Pi Runner、审核 Page 和入口说明 |
+| 资料检索工具（原 WorkRAGReadOnly） | 连接本机 WorkRAG MCP，提供四个只读工具 |
+| WorkRAG 管理页 | 上传、核对、发布和索引原始资料 |
 
-## 本地运行
+LangBot 左侧的备用知识库不等于已连接 WorkRAG。当前原始资料管理仍在 WorkRAG 页面完成。
 
-准备 Python 3.11、独立 PostgreSQL 数据库和角色 `manual_rag`、本机 Qdrant，以及 BGE Embedding 和 Rerank 服务。可以用 [配置示例](instances/manuals/.env.example) 创建本地 `instances/manuals/.env`。填写本机数据库凭据和独立图片签名密钥，从仓库根目录执行以下命令。
+## 技术与服务
+
+| 服务 | 版本／职责 | 本机地址 |
+|---|---|---|
+| LangBot | 4.11.3；平台、模型授权、卡片与插件运行时 | http://127.0.0.1:5300 |
+| WorkRAG | 资料管理与检索 API | http://127.0.0.1:8060/knowledge/ |
+| WorkRAG MCP | 四个只读工具 | 127.0.0.1:8061 |
+| Pi worker | pi-agent-core 1.5.0，Node.js 服务 | 127.0.0.1:8062 |
+| PostgreSQL | 16.11；manual_rag / workrag_agent 分库 | 127.0.0.1:5432 |
+| Qdrant | 1.16.3；manual_rag_chunks_v1 | 127.0.0.1:6333 |
+| Embedding / Rerank | BGE-M3 / BGE-Reranker-v2-m3，CPU 推理 | 127.0.0.1:8031 / 8032 |
+
+## 本机部署与启动
+
+当前启动脚本面向 **Windows＋WSL 2＋Docker Desktop、Python 3.11、Node.js ≥22.19**。现有部署代码位于 `G:\项目\WorkRAG`，Docker、模型和容器数据位于 `G:\docker`；换机器时先调整部署脚本中的绝对路径。本仓库不是跨平台的一键安装包。
+
+首次部署请阅读 [本机部署说明](deployment/README.md)、[问答引擎配置说明](deployment/agent-README.md) 和 [Pi 接入与验收](docs/Pi-Agent接入与验收.md)。需要准备：
+
+1. Docker Desktop／WSL 2、Python 环境和 Node.js，安装 Python 依赖并单独准备合适的 CPU PyTorch。
+2. 在 `apps/pi-harness` 执行 `npm ci --ignore-scripts`，安装 lockfile 固定的 Pi 依赖。
+3. 按部署说明生成本机私有配置，启动 `deployment/compose.yaml` 对应服务；下载两套 BGE 模型，初始化资料库和独立工作流库。
+4. 构建、安装 LangBot 插件，在模型页填入自己的 API 配置，给处理器选择模型并授权四个 MCP 工具与资料 ID。
+5. 导入并发布资料，先在调试助手验收，再绑定自己的机器人和模板。正式部署前自行核对平台凭据、权限与收件范围。
+
+**已配置好的当前机器**可直接运行：
 
 ```powershell
-python scripts/manual-instance.py init
-python scripts/manual-instance.py serve
+.\start-local.ps1     # 或双击 start-knowledge.bat
+.\status-local.ps1
+.\stop-local.ps1      # 停止服务，保留持久化数据
 ```
 
-知识管理界面在 `http://127.0.0.1:8060/knowledge/`。LangBot 需要另行部署和设置 CodexAgent、机器人及工作知识库绑定。部署顺序和配置边界见 [本地部署说明](docs/deployment.md)。代码与示例可用于部署，业务资料、模型权重及运行凭据由部署方保管。
+Pi 随启动器启停。切换或回退两个处理器的内部 Agent 引擎：
 
-## 开源依赖与来源
+```powershell
+.\.venv\Scripts\python.exe deployment/select_agent_engine.py pi --target both
+.\.venv\Scripts\python.exe deployment/select_agent_engine.py legacy --target both
+```
 
-### 实际使用
+两个处理器分别保存配置。不要重复运行初始化处理器脚本覆盖已配置的模型。只导入 `.lbpkg` 不会安装 Node 服务或恢复数据库、资料与私有凭据。
 
-- [LangBot](https://github.com/langbot-app/LangBot)：接收钉钉消息并管理运行器和授权。
-- [MinerU](https://github.com/opendatalab/MinerU)：提取 Markdown、页码和配图。
-- [PostgreSQL](https://github.com/postgres/postgres)：保存原文、版本与会话引用。
-- [Qdrant](https://github.com/qdrant/qdrant)：保存可重建的混合检索索引。
-- [BGE-M3](https://huggingface.co/BAAI/bge-m3)：生成稠密向量与稀疏权重。
-- [BGE-Reranker-v2-m3](https://huggingface.co/BAAI/bge-reranker-v2-m3)：对候选证据重排。
-- [FastAPI](https://github.com/fastapi/fastapi)：提供后端 HTTP API。
-- [Uvicorn](https://github.com/encode/uvicorn)：运行 ASGI 服务。
-- [Pydantic Settings](https://github.com/pydantic/pydantic-settings)：读取环境和应用配置。
-- [python-dotenv](https://github.com/theskumar/python-dotenv)：加载本地环境文件。
-- [Psycopg](https://github.com/psycopg/psycopg)：访问 PostgreSQL。
-- [Qdrant Python Client](https://github.com/qdrant/qdrant-client)：访问 Qdrant 向量索引。
-- [HTTPX](https://github.com/encode/httpx)：发起 HTTP 请求及测试接口。
-- [python-multipart](https://github.com/Kludex/python-multipart)：处理表单文件上传。
-- [pypdf](https://github.com/py-pdf/pypdf)：处理 PDF 页及页段。
-- [Pillow](https://github.com/python-pillow/Pillow)：处理图像和缩略图。
-- [PyMuPDF](https://github.com/pymupdf/PyMuPDF)：读取 PDF 页面和图像。
-- [python-docx](https://github.com/python-openxml/python-docx)：读取 Word 文档。
-- [python-pptx](https://github.com/scanny/python-pptx)：读取 PowerPoint 演示文稿。
-- [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)：解析 HTML 文档。
-- [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)：实现 MCP 服务和工具通信。
-- [FlagEmbedding](https://github.com/FlagOpen/FlagEmbedding)：运行 BGE 向量化与重排。
-- [PyTorch](https://github.com/pytorch/pytorch)、[Transformers](https://github.com/huggingface/transformers)和 [Safetensors](https://github.com/huggingface/safetensors)：用于训练本地意图分类器、加载分词器并保存权重。
+## 验证与当前边界
 
-### 设计参考
+本轮本机检查覆盖真实 DeepSeek／MCP 问答、图片和原文件追问、本人历史、无证据、工具授权拒绝、调用上限、超时取消与 Pi 重启恢复。另有实际 SDK 契约和工作流／附件测试；具体口径与历史记录见 [Pi 验收说明](docs/Pi-Agent接入与验收.md)。这些功能性检查不代表生产准确率或并发压测结论，历史评测见 [原评测记录](docs/evaluation.md)。
 
-- [Dify 父子分块文档](https://docs.dify.ai/en/cloud/use-dify/knowledge/create-knowledge/chunking-and-cleaning-text)：参考父子分块交互，WorkRAG 自行实现流程边界编辑、发布前预览和父块上下文回填。
+用户已在本人钉钉单聊确认旧模板正文、分段输出、图片默认收起／展开／放大和演示 DOCX 收件。最新正文更新优化已获得平台接口成功，客户端最终显示仍须实测；不能把接口受理当作收件或渲染成功。
+
+尚未完成：
+
+- 正式企业资料接入；当前验收资料明确标注为虚构演示，不能作为真实公司制度。
+- 真实钉钉点赞／点踩可信回调和原生图片／文件选择按钮；当前支持文字选择、语言反馈和模拟回调。
+- 普通成员完整登录验收、生产级部门身份映射与权限隔离联调。
+- LangBot 内原始资料上传／发布一体化页面、拖拽工作流编辑器。
+- 当前 Pi 助手的付款审批及其他业务写操作。仓库保留的 payment-mcp、Milvus、Codex Host 和意图分类实验属于历史模块，不代表已接入当前流水线。
+
+## 目录与文档
+
+```text
+apps/backend/        WorkRAG API、资料处理与检索
+apps/manual-web/     资料管理前端
+apps/embedding/      BGE-M3 服务
+apps/rerank/         重排服务
+apps/workrag-agent/  LangGraph、Pi 适配、MCP、存储及输出过滤
+apps/pi-harness/     Pi Node worker 与固定依赖
+plugins/WorkRAGGraph/ LangBot Runner、审核与说明页面
+ deployment/         当前 Windows 部署、兼容处理及验收脚本
+ docs/               架构、实施计划和交接记录
+```
+
+- [当前交接入口](docs/给下一聊天的接手说明.md)
+- [Pi 架构、限制、验收和回退](docs/Pi-Agent接入与验收.md)
+- [旧模板空白正文与更新方式修复](docs/旧模板空白正文修复.md)
+- [插件使用说明](plugins/WorkRAGGraph/README.md)
+- [实施计划与历史记录](docs/WorkRAG实施计划与交接_2026-11-08.md)
+
+部分历史文档记录旧机器路径、旧 Agent、A2UI 或实验功能，以当前交接说明和实际配置为准。A2UI 新卡片当前停用，已有旧模板继续使用。
+
+## 数据与密钥
+
+实际 `.env`、模型密钥、内部令牌、数据库、企业原件、截图、备份、运行日志和依赖缓存不随代码上传。`.gitignore` 排除 `data/`、`backups/`、`artifacts/`、`.venv/`、`node_modules/` 等目录；配置模板使用占位值。克隆仓库不能恢复本机企业资料或登录状态。
